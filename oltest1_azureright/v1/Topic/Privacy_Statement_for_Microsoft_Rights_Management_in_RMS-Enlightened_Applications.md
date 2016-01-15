@@ -8,43 +8,42 @@ ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 751e5e05-fbe2-4769-a5df-1362c0db2108
-ms.author: f459630d47d34d12a44295cd5237dc68
 ---
-# Privacy Statement for Microsoft Rights Management in RMS-Enlightened Applications
-Applies To: Microsoft Rights Management functionality which is embedded in applications
+# Personvernerkl&#230;ring for Microsoft Rights Management i RMS-Enlightened programmer
+Gjelder for: Microsoft Rights Management-funksjonalitet som er innebygd i programmer
 
 > [!NOTE]
-> This privacy statement is available in additional languages from the [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=41668).
+> Denne personvernerklæringen er tilgjengelig på flere språk fra den [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=41668).
 
-Microsoft is committed to protecting your privacy, while delivering software that brings you the performance, power, and convenience you desire in your personal computing. This privacy statement explains many of the data collection and use practices of the Microsoft Rights Management client software or service and any other Microsoft products or services that display or link to this notice.
+Microsoft er opptatt av å beskytte personvernet, mens levere programvare som gir deg ytelsen, kraften og bekvemmeligheten du ønsker i databehandlingen. Denne personvernerklæringen forklarer mange av fremgangsmåtene for innsamling og bruk av programvaren Microsoft Rights Management-klienten eller tjenesten og andre Microsoft-produkter og -tjenester som vises, eller koble til denne meldingen.
 
-The Rights Management functionality is designed for client machines and mobile devices to help protect access to and usage of information flowing through enabled applications that use Microsoft Rights Management services, whether installed on premises or running in a Microsoft datacenter.
+Rights Management-funksjonalitet er utformet for klientmaskiner og mobile enheter for å beskytte tilgang til og bruk av informasjon som strømmer gjennom aktiverte programmer som bruker Microsoft Rights Management-tjenester, enten det er installert på lokaler eller kjører i en Microsoft datacenter.
 
-## Processing Your Information On Behalf of Our Customer
-In order to access protected files, you will be asked to log in to Microsoft Rights Management and provide your user name and password (“Credentials”). Microsoft may collect Read Receipt Information and “Standard Device Information” which includes information such as your operating system version and hardware ID, which indicates the device manufacturer, device name, and version, and IP address.
+## Behandling av informasjon på vegne av vår kunde
+Hvis du vil ha tilgang til beskyttede filer, vil du bli spurt å logge deg på Microsoft Rights Management og oppgi brukernavn og passord ("legitimasjonsbeskrivelser"). Microsoft kan samle inn lese mottaksinformasjon og "Standard enhetsinformasjon" som inkluderer informasjon om operativsystemversjonen og maskinvare-ID, som angir enhetsprodusenten, enhetsnavnet og versjonen og IP-adresse.
 
 > [!IMPORTANT]
-> We may disclose “Read Receipt Information” (such as email address, location, and timestamp associated with opening a file) and Standard Device Information to the person or company that protected the files.
+> Vi kan oppgi "Les mottaksinformasjon" (for eksempel e-postadresse, plassering og tidsstempel forbundet med åpning av en fil) og Standard enhetsinformasjon til personen eller firmaet som filene er beskyttet.
 
-## Microsoft’s Collection and Use of Your Information
-The Credentials and Standard Device Information we collect from you may also be used by Microsoft and its controlled subsidiaries and affiliates to enable the features you are using and provide additional service(s) or carry out the transaction(s) you have requested or authorized. Standard Device Information may also be used to analyze and improve Microsoft products and services.
+## Microsofts innsamling og bruk av informasjon
+Rettigheter og Standard enhet-informasjonen vi samler inn fra deg kan også brukes av Microsoft og dets kontrollerte datterselskaper og tilknyttede selskaper til å aktivere funksjonene du bruker, og tilby flere tjenesten(e) eller utføre transaksjonen(e) du har forespurt eller godkjent. Standard enhetsinformasjon kan også brukes til å analysere og forbedre Microsoftprodukter og tjenester.
 
-We will not disclose the Credentials, Read Receipt, and/or Standard Device Information we collect from you outside of Microsoft or its controlled subsidiaries and affiliates except as you direct, or as described in your agreement(s) or this privacy statement.
+Vi vil ikke avsløre den legitimasjon, lest og/eller Standard enhetsinformasjon vi samler inn fra deg utenfor Microsoft eller dets kontrollerte datterselskaper og tilknyttede selskaper unntatt du direkte, eller som er beskrevet i dine avtalen(e) eller denne personvernerklæringen.
 
-We occasionally contract with other companies to provide services (such as customer support) on our behalf. We may provide these companies with access to your information where necessary for their engagement. These companies are required to maintain the confidentiality of your information and are prohibited from using it for any purpose other than that for which they are engaged by Microsoft.
+Vi kontrakt noen ganger med andre firmaer til å tilby tjenester (for eksempel kundestøtte) på våre vegne. Vi kan gi disse selskapene med tilgang til informasjonen der det er nødvendig for deres engasjement. Disse selskapene forventes å ivareta konfidensialiteten i opplysningene, og det er forbudt å bruke det til noe annet formål enn som de engasjert av Microsoft.
 
-We will not disclose Credentials, Read Receipt, and/or Standard Device Information to a third party (including law enforcement, other government entity, or civil litigant; excluding our subcontractors) except as you direct, as described in this privacy statement, or unless required by law. Should a third party contact us with a demand for such information, we will attempt to redirect the third party to request it directly from you. As part of that, we may provide your basic contact information to the third party. If compelled to disclose your information to a third party, we will use commercially reasonable efforts to notify you in advance of a disclosure unless legally prohibited.
+Vi vil ikke avsløre legitimasjon, lest og/eller informasjon om Standard enhet til en tredjepart (inkludert politiet, andre offentlig enhet eller sivil litigant, unntatt våre underleverandører) bortsett fra du direkte, som beskrevet i denne personvernerklæringen, eller med mindre det kreves av loven. Bør en tredjepart Kontakt oss med et behov for informasjon, vil vi forsøkte å omadressere tredjepart til å be om den direkte fra deg. Vi kan tilby grunnleggende kontaktinformasjon som en del av tredjeparten. Hvis compelled til å avsløre informasjon til en tredjepart, vil vi bruke kommersielt rimelige tiltak for å varsle deg før en tilgjengeliggjøring av informasjon, med mindre lovlig forbudt.
 
-Information that is collected by or sent to Microsoft by Microsoft Rights Management enabled applications may be stored and processed in the United States or any other country in which Microsoft or its affiliates, subsidiaries, or service providers maintain facilities. Microsoft abides by the safe harbor framework as set forth by the U.S. Department of Commerce regarding the collection, use, and retention of data from the European Union, the European Economic Area, and Switzerland.
+Informasjon som samles inn av eller sendes til Microsoft av Microsoft Rights Management-aktiverte programmer kan lagres og behandles i USA eller ethvert annet land der Microsoft eller dets tilknyttede selskaper, datterselskaper eller tjenesteleverandører har kontorer. Microsoft retter seg etter safe Harbour-prinsippene som er angitt utviklet av U.S. Department of Commerce om innsamling, bruk og oppbevaring av data fra den europeiske Unionen, det europeiske økonomiske området og Sveits.
 
 ## Microsoft Update
-When you use Microsoft Rights Management enabled applications with Windows, you may choose to participate in Microsoft Update. Microsoft Update (MU) is a service that provides updates for Microsoft software, including Microsoft Rights Management client for Windows. For details about what information is collected, how it is used and how to change your settings, see the [Update Services Privacy Statement](http://go.microsoft.com/fwlink/?linkid=50142) ([http://go.microsoft.com/fwlink/?linkid=50142](http://go.microsoft.com/fwlink/?linkid=50142)).
+Når du bruker Microsoft Rights Management-aktiverte programmer med Windows, kan du velge å delta i Microsoft Update. Microsoft Update (MU) er en tjeneste som inneholder oppdateringer for Microsoft-programvare, inkludert Microsoft Rights Management-klienten for Windows. Opplysninger om hvilken informasjon som samles inn, hvordan disse brukes og hvordan du endrer innstillingene, kan du se den [personvernerklæringen for Update Services](http://go.microsoft.com/fwlink/?linkid=50142) ([http://go.microsoft.com/fwlink/?linkid=50142](http://go.microsoft.com/fwlink/?linkid=50142)).
 
-Choice/Control: For silent installation, Microsoft Rights Management enabled applications follow the same MU settings applied to the Windows desktop. For user installations, if MU is not turned on, you may receive a prompt during installation permitting you to turn on MU. If you choose to do so, these MU settings will apply across all Windows-based applications.
+Valgkontroll: For stille installasjon aktivert Microsoft Rights Management programmer følger samme MU-innstillinger brukes på Windows-skrivebordet. Bruker-installasjoner, hvis MU ikke er slått på, kan du få en ledetekst under installasjonen av at du kan slå på MU. Hvis du velger å gjøre dette, gjelder disse MU-innstillinger på tvers av alle Windows-baserte programmer.
 
-## Security of your information
-Microsoft is committed to helping protect the security of your information. We use a variety of security technologies and procedures to help protect your information from unauthorized access, use, or disclosure. For example, we store the information you provide on computer systems with limited access, which are located in controlled facilities.
+## Sikkerheten til din informasjon
+Microsoft går inn for å beskytte sikkerheten til din informasjon. Vi bruker en rekke sikkerhetsteknologier og prosedyrer til å beskytte dine opplysninger mot uautorisert tilgang, bruk eller offentliggjøring. Vi lagrer for eksempel informasjonen du oppgir, på datasystemer med begrenset tilgang som er plassert i kontrollerte anlegg.
 
-## Changes to this privacy statement
-We will occasionally update this privacy statement to reflect changes in our products, services, and customer feedback. When we post changes, we will revise the "last updated" date at the top of this statement. If there are material changes to this statement or in how Microsoft will use your personal information, we will notify you either by posting a notice of such changes prior to implementing the change or by directly sending you a notification. We encourage you to periodically review this statement to be informed of how Microsoft is protecting your information.
+## Endringer i denne personvernerklæringen
+Vi vil fra tid til annen oppdatere denne personvernerklæringen for å gjenspeile endringer i våre produkter, tjenester og tilbakemeldinger. Når vi legger ut endringer, vil vi endre "sist oppdatert"-datoen øverst i denne erklæringen. Hvis det er betydelige endringer i denne erklæringen eller i måten Microsoft bruker dine personlige opplysninger, vil vi varsle deg ved å legge ut en melding om slike endringer før endringen eller ved å sende deg et varsel direkte. Vi oppfordrer deg til å gå gjennom denne erklæringen å være informert om hvordan Microsoft beskytter informasjonen din med jevne mellomrom.
 

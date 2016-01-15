@@ -3,237 +3,235 @@ description: na
 keywords: na
 title: Quick Start Tutorial for Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 1db923bf-7d19-4fdd-a413-bfeb58af5e03
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Quick Start Tutorial for Azure Rights Management
-Use this tutorial to quickly try out Microsoft Azure Rights Management (also known as Azure RMS) for your organization with just 5 steps that should take you less than 15 minutes. You’ll activate the service, securely send a confidential document by email to somebody in another organization, and then be able to track when that document is opened. When the confidential document is emailed, it is encrypted while in transit and can be read only by the person it is sent to, using the permissions that are set by the sender.
+# Rask Start oppl&#230;ring for Azure Rights Management
+Bruk denne opplæringen til raskt å teste Microsoft Azure Rights Management (også kjent som Azure RMS) for din organisasjon med bare 5 trinn som skal ta mindre enn 15 minutter. Du må aktivere tjenesten trygt sende konfidensielt dokument via e-post til noen i en annen organisasjon og kunne spore når dokumentet åpnes. Når konfidensielt dokument er e-postmelding, er kryptert under overføringen, og kan bare leses av personen det er sendt til, ved hjelp av tillatelsene som er angitt av avsenderen.
 
 ![](../Image/AzRMS_QuickStartStepsAll.PNG)
 
-This tutorial is aimed at IT administrators and consultants, to help them evaluate Azure Rights Management as an information protection solution for an organization. In a production environment, the instructions to activate the service would be done by an administrator and the instructions to send the document would be done by end users. Both sets of instructions are included in this tutorial, to demonstrate the end-to-end scenario of securely sending a confidential document to somebody in another organization. If you have any problems completing this tutorial, send an email message to [AskIPTeam](mailto:askipteam@microsoft.com?subject=Having%20problems%20with%20the%20Quick%20Start%20tutorial) and we will help you out.
+Denne opplæringen er rettet mot IT-ansvarlige og konsulenter, slik at de kan evaluere Azure rettighetsadministrasjon som en løsning for beskyttelse av informasjon for en organisasjon. I et produksjonsmiljø, instruksjonene for å aktivere tjenesten ville bli utført av en administrator, og instruksjonene for å sende dokumentet vil bli utført av sluttbrukere. Begge settene med instruksjonene er inkludert i denne opplæringen, til å vise ende-til-ende-scenariet av konfidensielle dokumenter på en sikker måte sendes til noen i en annen organisasjon. Hvis du har problemer med å fullføre denne opplæringen, kan du sende en e-postmelding til [AskIPTeam](mailto:askipteam@microsoft.com?subject=Having%20problems%20with%20the%20Quick%20Start%20tutorial) og vi vil hjelpe deg.
 
-To complete this tutorial, you will need the following:
+For å fullføre denne opplæringen, trenger du følgende:
 
--   A subscription that supports Azure Rights Management . This can be a paid subscription or a trial subscription. If you want to use document tracking, which is required for step 5 in this tutorial, your subscription must support document tracking. For more information about the subscription options and links to free trials, see the [Cloud subscriptions that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.
+-   Et abonnement som støtter rettighetsadministrasjon Azure. Dette kan være et betalt abonnement eller et prøveabonnement. Hvis du vil bruke dokumentsporing, som kreves for trinn 5 i denne opplæringen, må abonnementet støtte dokumentet sporing. Hvis du vil ha mer informasjon om alternativer for abonnement og koblinger til gratis prøveversjoner, se den [Cloud-abonnementer som støtter Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) delen i den [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) emnet.
 
-    Tip: If you need to get a subscription, do this in advance because this process can sometimes take a while to complete.
+    Tips: Hvis du trenger å få et abonnement, gjør dette på forhånd fordi denne prosessen kan ta litt tid å fullføre.
 
--   An administrator account to sign in to the Office 365 admin center or the Azure classic portal, so that you can activate the Rights Management service. This account must also have an email address and a working email service (for example, Exchange Online or Exchange Server).
+-   En administratorkonto til å logge på Office 365 administrasjonssenteret eller Azure portalen, slik at du kan aktivere Rights Management-tjenesten. Denne kontoen må også ha en e-postadresse og en fungerende e-tjeneste (for eksempel Exchange Online og Exchange Server).
 
--   A computer running Windows (minimum of Windows 7 SP1), and which has installed either Office 2016, Office 2013, or Office 2010.
+-   En datamaskin som kjører Windows (minimum av Windows 7 SP1), og som har installert Office-2016, 2013 Office eller Office 2010.
 
-Let’s get started.
+La oss komme i gang.
 
-## Step 1: Activate the Rights Management service
+## Trinn 1: Aktiver Rights Management-tjenesten
 ![](../Image/AzRMS_QuickStartSteps1.PNG)
 
-Even though you might have a subscription that supports Azure Rights Management, the service is disabled by default. To activate it, you can use either the Office 365 admin center, or the Azure classic portal:
+Selv om du kan ha et abonnement som støtter rettighetsadministrasjon Azure, blir tjenesten deaktivert som standard. Hvis du vil aktivere den, kan du bruke Office 365 administrasjonssenteret eller Azure portalen:
 
--   If you have an Office 365 subscription that includes Azure Rights Management, or an Office 365 subscription that excludes Azure Rights Management but you have a subscription for Azure RMS Premium: **Use the Office 365 admin center**.
+-   Hvis du har et Office 365-abonnement som inkluderer Azure Rights Management, eller en Office 365-abonnement som utelukker Azure Rights Management, men du har et abonnement for Azure RMS frittstående: **Bruker Office 365 administrasjonssenteret**.
 
--   If you do not have an Office 365 subscription: **Use the Azure classic portal**.
+-   Hvis du ikke har en Office 365-abonnement: **Bruke Azure portal**.
 
 ![](../Image/AzRMS_Tutorial_1_Screenshots.png)
 
-#### To activate Rights Management from the Office 365 admin center
+#### Aktivere Rights Management fra Office 365 administrasjonssenteret
 
-1.  Go to the [Office 365 portal](https://portal.office.com/) and sign in with your work or school account.
+1.  Gå til den [Office 365-portalen](https://portal.office.com/) og logge på med kontoen din arbeid eller et skoleprosjekt.
 
-2.  If the Office 365 admin center does not automatically display, select the app launcher icon in the upper-left and choose **Admin**. The **Admin** tile appears only to Office 365 administrators.
+2.  Hvis Office 365 administrasjonssenteret ikke vises automatisk på nytt, velger ikonet app Oppgavevelger i øverst til venstre og velger **Admin**. Den **Admin** side ved side vises bare for Office 365-administratorer.
 
     > [!TIP]
-    > For admin center help, see [About the Office 365 admin center - Admin Help](https://support.office.com/article/About-the-Office-365-admin-center-Admin-Help-58537702-d421-4d02-8141-e128e3703547).
+    > Admin center, se [om Office 365 administrasjonssenteret - Admin hjelp](https://support.office.com/article/About-the-Office-365-admin-center-Admin-Help-58537702-d421-4d02-8141-e128e3703547).
 
-3.  In the left pane, expand **SERVICE SETTINGS**.
+3.  I den venstre ruten utvider du **Innstillinger for**.
 
-4.  Click **Rights Management**.
+4.  Klikk **Rights Management**.
 
-5.  On the **RIGHTS MANAGEMENT** page, click **Manage**.
+5.  På den **RIGHTS MANAGEMENT** klikker du **Behandle**.
 
-6.  On the **rights management** page, click **activate**.
+6.  På den **rights management** klikker du **aktivere**.
 
-7.  When prompted **Do you want to activate Rights Management?**, click **activate**.
+7.  Når du blir spurt **vil du aktivere IRM?**, klikker du **aktivere**.
 
-You should now see **Rights management is activated** and the option to deactivate (you might need to manually refresh the page)
+Nå bør du se **Rights management er aktivert** og muligheten til å deaktivere (du må kanskje oppdatere manuelt på siden)
 
-At this time, do not click **advanced features**. This takes you to the Azure classic portal where you can configure templates, which are not needed for this tutorial. Instead, you can close the Office 365 admin center.
+På dette tidspunktet ikke Klikk **Avanserte funksjoner for**. Dette tar deg til Azure-portal der du kan konfigurere maler, som ikke er nødvendige for denne opplæringen. I stedet kan du lukke administrasjonssenteret for Office 365.
 
-#### To activate Rights Management from the Azure portal
+#### Aktivere Rights Management fra Azure portal
 
-1.  Go to the [Azure classic portal](http://go.microsoft.com/fwlink/p/?LinkID=275081) and sign in.
+1.  Gå til den [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=275081) og logger deg på.
 
-2.  In the left pane, click **ACTIVE DIRECTORY**.
+2.  I den venstre ruten klikker du **ACTIVE DIRECTORY**.
 
-3.  From the **active directory** page, click **RIGHTS MANAGEMENT**.
+3.  Fra den **active directory** klikker du **RIGHTS MANAGEMENT**.
 
-4.  Select the directory to manage for [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], click **ACTIVATE**, and then confirm your action.
+4.  Velg mappen som skal behandle for [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], klikker du **Aktiver**, og Bekreft handlingen.
 
-The **RIGHTS MANAGEMENT STATUS** should now display **Active** and the **ACTIVATE** option is replaced with **DEACTIVATE**.
+Den **RIGHTS MANAGEMENT STATUS** skal nå vise **aktive** og **Aktiver** alternativet er erstattet med **DEACTIVATE**.
 
-Although you can configure other options for Rights Management in the portal, these are not needed for this tutorial, so you can close the Azure classic portal.
+Selv om du kan konfigurere andre alternativer for rettighetsadministrasjon i portalen, er disse ikke nødvendige for denne opplæringen, slik at du kan lukke Azure portalen.
 
-That’s all you need to do for this first step. The service is activated so all users in your organization can now start to protect important and sensitive documents. In a production environment, you might want to restrict who can do this initially, for a phased rollout. But it’s not necessary for this tutorial.
+Det er alt du trenger å gjøre for dette første trinnet. Tjenesten er aktivert, slik at alle brukere i organisasjonen kan nå begynne å beskytte viktige og sensitive dokumenter. I et produksjonsmiljø vil du kanskje begrense hvem som kan gjøre dette i utgangspunktet for en tretrinns utrullingen. Men det er ikke nødvendig for denne opplæringen.
 
-Although not included here, for a production deployment, you probably will also probably want to configure custom templates. Templates make it easier for users to quickly apply the right settings when they need to protect files. When you activate Rights Management, you automatically get 2 default templates and it’s likely you will want to supplement these with your own custom templates in a production environment. But templates are not needed for this tutorial, so you’re ready to go to the next step.
+Selv om det ikke er inkludert her, for Produksjonsdistribusjon, vil du sannsynligvis også sannsynligvis til å konfigurere egendefinerte maler. Maler gjør det enklere for brukerne å raskt bruke de riktige innstillingene når de trenger for å beskytte filer. Når du aktiverer IRM, får du automatisk 2 standardmaler og sannsynligvis vil du legge til dine egne tilpassede maler i et produksjonsmiljø. Men maler er nødvendige ikke for denne opplæringen, slik at du er klar til å gå til neste trinn.
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|About activating Rights Management and controlling who can protect files and email when the service is activated   →|[Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md)|
-|About the default templates and how to create new, custom templates   →|[Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md)|
+|Hvis du vil ha mer informasjon|Tilleggsinformasjon|
+|----------------------------------|-----------------------|
+|Om aktivering av Rights Management og kontrollere hvem som kan beskytte aktivert filer og e-post når tjenesten er →|[Aktivering av Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md)|
+|Standardmaler og opprette nye, egendefinerte maler →|[Konfigurere egendefinerte maler for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md)|
 
-## Step 2: Install the Rights Management sharing application
+## Trinn 2: Installere rettighetsadministrasjon deling av program
 ![](../Image/AzRMS_QuickStartSteps2.PNG)
 
-The Rights Management sharing application (also known as the “RMS sharing app”) isn’t a requirement for Azure Rights Management, but we recommend it for all computers and mobile devices that support Azure Rights Management. The RMS sharing application integrates with Office applications by installing an Office add-in so that users can easily protect files directly from the ribbon. It also makes it possible to protect all files types by applying generic protection for files that are not natively supported by Azure Rights Management, and a document tracking site for users to track and revoke files that they have protected. We’ll be using the document tracking site later in this tutorial.
+Rettighetsadministrasjon deling program (også kjent som "RMS deling app") er ikke et krav for Azure Rights Management, men det anbefales for alle datamaskiner og mobile enheter som støtter rettighetsbehandling Azure. RMS deling programmet integreres med Office programmer ved å installere en Office-tillegg slik at brukere enkelt kan beskytte filer direkte fra båndet. Det gjør det også mulig å beskytte alle filtyper ved hjelp av generiske beskyttelse for filer som ikke støttes internt av Azure Rights Management og et dokument sporingsområdet for brukere til å spore og oppheve som de er beskyttet. Vi skal bruke dokumentet sporingsområdet senere i denne opplæringen.
 
-This application is free to download and offers a scripted install for production environments. But for this tutorial, we’ll install it locally.
+Dette programmet er gratis å laste ned, og tilbyr en skriptet installasjon for produksjonsmiljøer. Men for denne opplæringen vil vi installere den lokalt.
 
 ![](../Image/AzRMS_Tutorial_2_Screenshots.png)
 
-#### To download and install the Rights Management sharing application
+#### Laste ned og installere rettighetsadministrasjon deling av program
 
-1.  Go to the [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) page on the Microsoft website.
+1.  Gå til den [Microsoft Rights Management](http://go.microsoft.com/fwlink/?LinkId=303970) -siden på Microsofts webområde.
 
-2.  In the **Computers** section, click the icon for the **RMS app for Windows** and save the **Setup.exe** file to install the Microsoft Rights Management sharing application.
+2.  I den **datamaskiner** -delen, klikker du ikonet for den **RMS-app for Windows** og lagre den **Setup.exe** filen for å installere Microsoft Rights Management program for deling.
 
-3.  For a local install, you must use an administrator account to run the Setup.exe file that was downloaded. If you are prompted to continue, click **Yes**.
+3.  For en lokal installasjon, må du bruke en administratorkonto for å kjøre Setup.exe-filen som ble lastet ned. Hvis du blir bedt om å fortsette, klikker du **Ja**.
 
-4.  On the **Setup Microsoft RMS** page, click **Next**, and wait for the installation to finish.
+4.  På den **installasjonsprogrammet for Microsoft RMS** klikker du **neste**, og vent å fullføre installasjonen.
 
-5.  When the installation finishes, click **Restart** if prompted to restart your computer, or click  **Close** to complete the installation.
+5.  Når installasjonen er ferdig, klikker du **Start** Hvis du blir bedt om å starte datamaskinen på nytt, eller klikk  **Lukk** å fullføre installasjonen.
 
-You’re now ready to start protecting files that contain information that you want to share but only with the people that you specify.
+Du er nå klar til å beskytte filer som inneholder informasjon som du vil dele, men bare med personene du angir.
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|About a local installation of the Rights Management sharing application for Windows and user instructions   →|[Rights Management sharing application user guide](http://technet.microsoft.com/library/dn339006.aspx)|
-|About the scripted installation of the Rights Management sharing application for Windows and more technical information   →|[Rights Management sharing application administrator guide](http://technet.microsoft.com/library/dn339003.aspx)|
-|To understand the difference between native protection and generic protection   →|[What’s the difference between generic protection and built-in (native) protection?](https://technet.microsoft.com/library/dn574738.aspx)|
+|Hvis du vil ha mer informasjon|Tilleggsinformasjon|
+|----------------------------------|-----------------------|
+|Om en lokal installasjon av rettighetsadministrasjon deling program for Windows og bruker instruksjonene →|[Rights Management deling program Brukerhåndbok](http://technet.microsoft.com/library/dn339006.aspx)|
+|Om skriptet installasjon av rettighetsadministrasjon deling program for Windows og mer teknisk informasjon om →|[Rights Management deling program administratorhåndboken](http://technet.microsoft.com/library/dn339003.aspx)|
+|Å forstå forskjellen mellom opprinnelig beskyttelse og generell beskyttelse →|[Hva er forskjellen mellom Generell beskyttelse og innebygd (ukomprimert) beskyttelse?](https://technet.microsoft.com/library/dn574738.aspx)|
 
-## Step 3: Email your document that you want to protect
+## Trinn 3: E-dokumentet som du vil beskytte
 ![](../Image/AzRMS_QuickStartSteps3.PNG)
 
-For this step, first create and save a document using Word that will represent your document that you want to protect, and name it **Confidential.docx**. For this tutorial, it doesn’t matter what text it actually contains, but you will want it to contain some text so you can more easily confirm that the authorized recipient could read it. For example, you might type: **If you can read this from your email attachment, the sender has successfully shared a file that was protected with Azure RMS.**
+For dette trinnet først opprette og lagre et dokument ved hjelp av Word som skal representere dokumentet som du vil beskytte, og gi den navnet **Confidential.docx**. Det spiller ingen rolle hvilken tekst som inneholder faktisk for denne opplæringen, men du vil den skal inneholde noe tekst slik at du lettere kan bekrefte at autoriserte mottakeren kan lese den. Du kan for eksempel skrive: **Hvis du kan lese dette fra din e-postvedlegg, har avsenderen har blitt delt en fil som ble beskyttet med Azure RMS.**
 
-You’re then ready to safely share this document by email.
+Deretter er du klar til å trygt dele dette dokumentet via e-post.
 
 ![](../Image/AzRMS_Tutorial_3_Screenshots.png)
 
-#### To safely share your document by email
+#### Trygt dele dokumentet via e-post
 
-1.  Using Outlook, create a new message and attach the file that you just created.
+1.  Ved hjelp av Outlook, oppretter en ny melding og legge ved filen du nettopp opprettet.
 
-2.  In the **To** box, type one or more business email addresses. Make sure you specify a business email address, such as **janetm@contoso.com** or **p.dover@fabrikam.com** because currently, Azure Rights Management doesn’t support personal email addresses that you might use at home from your Internet provider. Don’t worry about whether the person you’re sending it to also has Azure Rights Management or not.
+2.  I den **til** -boksen skriver du inn ett eller flere business e-post adresser. Kontroller at du angir en e-postadresse, arb, som **janetm@contoso.com** eller **p.dover@fabrikam.com** fordi Azure Rights Management, ikke støtter for øyeblikket personlige e-postadresser som du kan bruke hjemme fra Internett-leverandøren. Ikke bry deg om personen du sender den til også har Azure Rights Management eller ikke.
 
-3.  Type a subject, such as  **Confidential document** and then type a short message for the email, such as **Please read this confidential document and do not share it with others.**
+3.  Skriv inn et emne, for eksempel  **Konfidensielt dokument** og Skriv inn en kort melding for e-post, som **Les denne konfidensielt dokument og ikke dele det med andre.**
 
-4.  Then, on the **Message** tab, in the **RMS** group, click **Share Protected** and then click **Share Protected** again:
+4.  På den **meldingen** -kategorien i den **RMS** gruppen, klikker du **del beskyttet** og deretter **del beskyttet** på nytt:
 
-5.  In the **share protected** dialog box:
+5.  I den **del beskyttet** dialogboks:
 
-    1.  Select **Viewer – View Only**.
+    1.  Velg **Viewer – Vis bare**.
 
-        This means our recipients will be able to view the document but not edit or print it.
+        Dette betyr at våre mottakerne skal kunne vise dokumentet, men ikke redigere eller skrive den ut.
 
-    2.  Select **Email me when somebody tries to open these documents**.
+    2.  Velg **e-post meg når noen prøver å åpne disse dokumentene**.
 
-        You’ll get an email notification each time the recipients try to open the attachment, and also if somebody else tries to open it—for example, your recipient forwards the email to co-worker. In this last scenario, you’ll see that access was denied and from the user details, you can decide whether to send that person a copy of the document that they can open.
+        Du får en e-postmelding hver gang mottakerne kunne åpne vedlegget, og også hvis noen andre prøver å åpne den, for eksempel mottakeren videresender e-posten til kollega. I denne siste scenariet, vil du se at tilgang ble nektet, og fra Brukerdetaljer kan du bestemme om du vil sende denne personen en kopi av dokumentet som de kan åpne.
 
-    3.  Select **Allow me to instantly revoke access to these documents**.
+    3.  Velg **La meg kalle tilbake tilgangen til disse dokumentene direkte**.
 
-        This option requires the recipients to have an Internet connection each time they open the attachment but with the benefit that if you later revoke the document, the next time they try to open it, they will not be able to. If you do not select this option, the recipients might be able to open it even without an Internet connection but with the disadvantage that if you later revoke the document, there might be a delay for when that takes effect.
+        Dette alternativet krever at mottakerne skal ha en Internett-tilkobling hver gang de åpner vedlegget, men med fordelen at hvis du opphever dokumentet senere, neste gang de forsøker å åpne den, de ikke vil kunne. Hvis du ikke velger dette alternativet, kan det hende at mottakerne kunne åpne den selv uten en Internett-tilkobling, men med ulempen at hvis du senere trekke tilbake dokumentet, kan det være en forsinkelse for da som trer i kraft.
 
-    4.  Click **Send Now**.
+    4.  Klikk **Send nå**.
 
-        The email with attachment is sent to the email addresses that you specified. In addition to your email message, they will see instructions how to read the attached document that is protected by Azure Rights Management.
+        E-post med vedlegg sendes til e-postadressene du har angitt. I tillegg til e-postmeldingen, vil de se instruksjonene for hvordan du leser det vedlagte dokumentet er beskyttet av Azure Rights Management.
 
-Now you’ve sent your protected document, you’re ready to ask your recipients to wait for it to arrive and then open it. But don’t close Outlook, because we’ll use it again in our final step to track the attachment.
+Nå som du har sendt dokumentet beskyttet, er du klar til å be mottakeren om å vente til den ankommer, og åpne den. Men ikke Lukk Outlook, fordi vi skal bruke den på nytt i vår siste trinn til å spore vedlegget.
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|Full instructions and alternative methods for protecting files that you share by email   →|[Protect a file that you share by email by using the Rights Management sharing application](https://technet.microsoft.com/library/dn574735.aspx)|
-|About the options in the **share protected** dialog box   →|[Dialog box options for the Rights Management sharing application](https://technet.microsoft.com/library/dn574738.aspx)|
+|Hvis du vil ha mer informasjon|Tilleggsinformasjon|
+|----------------------------------|-----------------------|
+|Fullstendige instruksjoner og alternative metoder for å beskytte filene du deler via e-post →|[Beskytte en fil du deler via e-post ved hjelp av rettighetsadministrasjon deling av program](https://technet.microsoft.com/library/dn574735.aspx)|
+|Om alternativene i den **del beskyttet** dialogboksen →|[Alternativene i dialogboksen for rettighetsadministrasjon deling av program](https://technet.microsoft.com/library/dn574738.aspx)|
 
-## Step 4: Ask your recipients to open the emailed document
+## Trinn 4: Be mottakeren om å åpne dokumentet sendt per epost
 ![](../Image/AzRMS_QuickStartSteps4.PNG)
 
-Your recipients can use many devices to read the protected document that you sent as an email attachment. The devices include iPads, iPhones, Android tablets and phones, Mac computers, as well as Windows computers.
+Mottakerne kan bruke flere enheter for å lese beskyttet dokumentet som er sendt som et e-postvedlegg. Enhetene inkluderer iPads, iPhones, Android tavler og telefoner, Mac-datamaskiner, samt Windows-datamaskiner.
 
-Ask them to read the email message that you sent. They will see your email message and before that, the following text:
+Be dem om å lese e-postmeldingen du sendte. De vil se e-postmeldingen, og før dette, vises følgende tekst:
 
-**The sender has protected the attachments with Microsoft RMS. You must** [sign in](http://aka.ms/rms)
-      **to open them.**
+**Avsenderen har beskyttet vedlegg med Microsoft RMS. Må du** [logge på](http://aka.ms/rms) **å åpne dem.**
 
-When they click the link, it takes them to instructions to install the RMS sharing app and if necessary, sign up for a free account. The free account grants them a subscription for RMS for individuals, which ensures that authorized users can always read a protected document, even if their organization does not have Azure RMS. They are then ready to read the protected attachment by using the following instructions.
+Når de klikker koblingen, det fører til instruksjonene for å installere RMS deling app og om nødvendig, kan du signere for en gratis konto. Den gratis kontoen gir dem et abonnement for RMS for enkeltpersoner, som sikrer at autoriserte brukere kan alltid lese et beskyttet dokument, selv om organisasjonen ikke har Azure RMS. De er klar til å lese beskyttet vedlegg ved hjelp av instruksjonene nedenfor.
 
 ![](../Image/AzRMS_Tutorial_4_Screenshots.png)
 
-#### To view the protected document attachment
+#### Til å vise vedlegget beskyttet dokument
 
-1.  Because Azure Rights Management protected a Word document, there are two attachments for the email message. These are actually two versions of the same file but with different file name extensions. Open the version that has the **.ppdf** file name extension (**Confidential.ppdf**).
+1.  Fordi Azure Rights Management beskyttet et Word-dokument, er det to vedlegg i e-postmeldingen. Dette er faktisk to versjoner av samme fil, men med forskjellige filtyper. Åpne versjonen som har den **.ppdf** Filtype (**Confidential.ppdf**).
 
-    If you have a version of [Office on your device that supports Rights Management](https://technet.microsoft.com/library/dn655136.aspx), you can open the other version of the file (**Confidential.docx**), so that it opens in Word.
+    Hvis du har en versjon av [Office på enheten som støtter rettighetsadministrasjon](https://technet.microsoft.com/library/dn655136.aspx), kan du åpne den andre versjonen av filen (**Confidential.docx**), slik at den åpnes i Word.
 
-2.  If you are prompted for your user name and password, enter your user name in the same format as the email address that was used to send you the email and attachment. For example, **janetm@contoso.com** or **p.dover@fabrikam.com**. For your password, type the password that you supplied when you signed up for RMS for individuals. Or, if your organization has Azure RMS, enter your usual work password.
+2.  Hvis du blir bedt om brukernavn og passord, skriver du inn brukernavnet i samme format som e-postadressen som ble brukt til å sende deg e-post og vedlegg. For eksempel **janetm@contoso.com** eller **p.dover@fabrikam.com**. Oppgi passordet, skriver du inn passordet du angav når du abonnerte RMS for enkeltpersoner. Eller, hvis organisasjonen har Azure RMS, skriver du inn passordet for vanlig arbeid.
 
-The document opens and you can now read the contents. For example, it might say **If you can read this from your email attachment, the sender has successfully shared a file that was protected with Azure RMS.** Because it’s read-only, you cannot change the contents.
+Dokumentet åpnes, og nå kan du lese innholdet. Det kan for eksempel si **Hvis du kan lese dette fra din e-postvedlegg, avsenderen har blitt har delt en fil som ble beskyttet med Azure RMS.** Fordi den er skrivebeskyttet, kan du ikke endre innholdet.
 
-As an optional step, you could ask your recipient to forward the email to other people that you didn’t include in your original email. Even if those other people work for an organization that has Azure Rights Management or they apply for their own RMS for individuals subscription, they won’t be able to open the attachment. When they are promoted for their user name, access to the document will be denied.
+Som et valgfritt trinn, kan du be mottakeren til å videresende e-postmeldingen til andre personer som du ikke tok med i den opprinnelige e-posten. Selv om de andre personene som arbeider i en organisasjon som har Azure Rights Management, eller de gjelder for sine egne RMS for enkeltpersoner-abonnement, vil de ikke kunne åpne vedlegget. Når de er forfremmet for brukernavnet sitt, vil du bli nektet tilgang til dokumentet.
 
-Now that the recipient has opened the attachment and optionally, forwarded it to somebody else, expect to get an email notification that reports this activity. But email messages are easy to lose over time, so a better way to track who accessed your document is to use the document tracking site, which is covered in the final step.
+Nå som mottakeren har åpnet vedlegget, og eventuelt videresendt den til noen andre, kan du forvente å få en e-postmelding som rapporterer denne aktiviteten. Men e-postmeldinger som er lett å miste over tid, så det er en bedre måte å spore hvem som får tilgang til dokumentet skal bruke dokumentsporing området, som er dekket i det siste trinnet.
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|Full instructions for viewing files that are protected by Azure Rights Management   →|[View and use files that have been protected by Rights Management](https://technet.microsoft.com/library/dn574741.aspx)|
-|About the free subscription, RMS for individuals   →|[RMS for Individuals and Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)|
-|About the two versions of the file that you see attached to the email message   →|[What’s the .ppdf file that’s automatically created?](https://technet.microsoft.com/library/dn574738.aspx)|
+|Hvis du vil ha mer informasjon|Tilleggsinformasjon|
+|----------------------------------|-----------------------|
+|Fullstendige instruksjoner for visning av filer som er beskyttet av Azure Rights Management →|[Vise og bruke filer som er beskyttet av IRM](https://technet.microsoft.com/library/dn574741.aspx)|
+|Om gratis abonnement, RMS for enkeltpersoner →|[RMS for enkeltpersoner og Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)|
+|Om de to versjonene av filen knyttet som vises til e-postmeldingen →|[Hva er filen .ppdf som er opprettet automatisk?](https://technet.microsoft.com/library/dn574738.aspx)|
 
-## Step 5: Track your protected document
+## Trinn 5: Spore beskyttet dokumentet
 ![](../Image/AzRMS_QuickStartSteps5.PNG)
 
 > [!NOTE]
-> For this step, you must have a subscription that supports document tracking. To check whether your subscription includes document tracking, see [Comparison of Rights Management Services (RMS) Offerings](https://technet.microsoft.com/dn858608.aspx).
+> Du må ha et abonnement som støtter dokumentet sporing for dette trinnet. Hvis du vil kontrollere om abonnementet omfatter dokumentsporing, kan du se [tilbud for sammenligning av Rights Management Services (RMS)](https://technet.microsoft.com/dn858608.aspx).
 
-This step is optional, but most people like to know if the attachment they sent to people has been opened, when, and even from where. For example:
+Dette trinnet er valgfritt, men de fleste liker å vite Hvis vedlegget de sendt til personer har blitt åpnet, når og der selv fra. For eksempel:
 
--   You’re expecting a response from somebody by a specified time and you can see from the document tracking site that she hasn’t opened the document even though the deadline is approaching. You send her a follow-up email or telephone her as a timely reminder.
+-   Du forventer et svar fra noen ved et bestemt tidspunkt, og du kan se fra dokumentet sporingsområdet at hun ikke åpnet dokumentet selv om fristen nærmer seg. Du kan sende henne en e-postmelding for oppfølging eller ringe henne som en påminnelse om nødvendig.
 
--   After seeing that somebody has opened the document, you follow up to ask her if she has any questions or requires additional information.
+-   Når seeing at noen har åpnet dokumentet, du har fulgt be henne Hvis hun har noen spørsmål eller krever ekstra informasjon.
 
 ![](../Image/AzRMS_Tutorial_5_Screenshots.png)
 
-#### To track your protected document
+#### Til å spore beskyttet dokumentet
 
-1.  Using Outlook, on the **Home** tab, in the **RMS** group, click **Track Usage**.
+1.  Ved hjelp av Outlook, på den **Hjem** -kategorien i den **RMS** gruppen, klikker du **Spor Bruk**.
 
-2.  If you see the **Protect and share on your terms** page, click **Sign in** and supply your user name and password again.
+2.  Hvis du ser på **Beskytt og del på dine vilkår** klikker du **logge på** og angi brukernavnet og passordet på nytt.
 
-3.  On the **Your shared documents** page, you’ll see the document that you attached to the email, **Confidential.docx**. At this point, it’s the only file displayed but as you share additional protected documents, the list will grow.
+3.  På den **delte dokumenter** -siden, ser du dokumentet som du har lagt til e-post, **Confidential.docx**. Nå er det bare filen vises, men som du deler flere beskyttede dokumenter, i listen vil vokse.
 
-    From this page, you’ll see when you shared the document (when you sent the email with the protected attachment), the date of the last activity, and the name of the recipient you sent the email to. Click the document name for additional details.
+    Du ser når du delte dokument (når du har sendt e-post med beskyttet vedlegg), datoen for den siste aktiviteten, og navnet på mottakeren du sendte e-post til fra denne siden. Klikk navnet på dokumentet for flere detaljer.
 
-4.  On the new page, which has the name of the file that you clicked, you’ll see summary details for that document only, and a list of other options that are available for the document (**List**, **Timeline**, **Map**, **Settings**).
+4.  På den nye siden som har navnet på filen som du klikket, vil du se sammendrag detaljer for dokumentet bare, og en liste over andre alternativer som er tilgjengelige for dokumentet (**listen**, **tidslinje**, **Map**, **innstillinger**).
 
-    Click each option to explore different ways to track your protected document. Or, still on the **Summary** page, click **Open in Excel** to export the information to a spreadsheet, or click **Revoke access** to stop sharing the document.
+    Klikk alternativet for å utforske ulike måter å spore beskyttet dokumentet. Eller fortsatt på den **Sammendrag av** klikker du **Åpne i Excel** å eksportere informasjonen til et regneark, eller klikk **tilbakekalle tilgangen** å avslutte deling av dokumentet.
 
-You can return to this site to track further activity for your protected document, or revoke access if necessary. You can even access the site from your mobile device or tablet, by using a browser with this link: [document tracking](http://go.microsoft.com/fwlink/?LinkId=529562)
+Du kan gå tilbake til dette området til å spore ytterligere aktivitet for beskyttede dokumentet eller oppheve tilgang Hvis det er nødvendig. Du kan også få tilgang til området fra den mobile enheten eller en tavle, ved hjelp av en webleser med denne koblingen: [dokumentsporing](http://go.microsoft.com/fwlink/?LinkId=529562)
 
-|If you want more information|Additional information|
-|--------------------------------|--------------------------|
-|Full instructions for tracking your documents   →|[Track and revoke your documents when you use the RMS sharing application](https://technet.microsoft.com/library/dn986611.aspx)|
-|Two minute video that explains and shows document tracking   →|[Azure RMS Document Tracking and Revocation](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)|
-|For troubleshooting and customer questions   →|[FAQ for Document Tracking](https://technet.microsoft.com/dn947488)|
+|Hvis du vil ha mer informasjon|Tilleggsinformasjon|
+|----------------------------------|-----------------------|
+|Fullstendige instruksjoner for å spore dokumenter-→|[Spore og oppheve dokumentene når du bruker RMS deling av program](https://technet.microsoft.com/library/dn986611.aspx)|
+|To minutters video som forklarer og viser dokumentsporing →|[Azure RMS-dokumentet sporing og opphevelse](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)|
+|For feilsøking, og kunden spørsmål →|[Vanlige spørsmål for dokumentet sporing](https://technet.microsoft.com/dn947488)|
 
-## Next Steps
-This tutorial stepped you through just one scenario for how Azure RMS can help protect your data. To see other common uses, see the [Azure RMS in action](https://technet.microsoft.com/library/jj585026.aspx) section from the [What is Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) article. There are other sections in this article that you might also find useful, such as how Azure RMS works and what business problems it can solve.
+## Neste trinn
+Denne opplæringen du gått gjennom trinnene bare ett scenario for hvordan Azure RMS kan bidra til å beskytte dine data. Hvis du vil vise andre vanlige bruksområder, kan du se den [Azure RMS handling](https://technet.microsoft.com/library/jj585026.aspx) delen fra den [Hva er Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) artikkelen. Det er andre inndelinger i denne artikkelen som kan også være nyttig, for eksempel hvordan Azure RMS fungerer og hvilke problemer kan det løse.
 
-If you’re ready to start deploying Azure RMS, use the [Azure Rights Management Deployment Roadmap](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) for your deployment steps and links for how-to instructions.
+Hvis du er klar til å distribuere Azure RMS, bruk av [Veikart for Azure Rights Management-distribusjon](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) for distribusjon av trinnene og koblinger for hvordan-instruksjoner.
 
-## See Also
-[Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
+## Se også
+[Komme i gang med Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
 

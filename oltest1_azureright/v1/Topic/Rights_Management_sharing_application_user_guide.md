@@ -3,52 +3,51 @@ description: na
 keywords: na
 title: Rights Management sharing application user guide
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: eaf6d02c-aa36-4915-856e-49bb71ab1484
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Rights Management sharing application user guide
-The Microsoft Rights Management (RMS) sharing application for Windows helps you keep important documents and pictures safe from people who shouldn’t see them, even if you email them or save them to another device. You can also use this application to open and use files that other people have protected by using the same Rights Management technology.
+# Rights Management deling program Brukerh&#229;ndbok
+Den Microsoft Rights Management (RMS) deling av programmer for Windows hjelper sikre du viktige dokumenter og bilder fra personer som ikke skal se dem, selv om du kan sende dem e-post eller lagre dem på en annen enhet. Du kan også bruke dette programmet til å åpne og bruke filer som andre personer har beskyttet ved hjelp av samme Rights Management-teknologi.
 
-All you need is a computer that runs at least Windows 7 with Service Pack 1. Then [download and install](http://go.microsoft.com/fwlink/?LinkId=303970) this free application from Microsoft.
+Alt du trenger er en datamaskin som kjører minst Windows 7 med Service Pack 1 og en lokal administratorkonto for å installere RMS deling av programmet. Deretter [laste ned og installere](http://go.microsoft.com/fwlink/?LinkId=303970) dette gratis programmet fra Microsoft.
 
-If you have questions that are not answered by this guide, see [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
+Hvis du har spørsmål som ikke besvares av denne veiledningen, kan du se [Vanlige spørsmål om Microsoft Rights Management deling av programmer for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
 
-## <a name="BKMK_SharingExamples"></a>Examples for using the RMS sharing application
-Here are just some examples of how you might use the RMS sharing application, to help protect your files.
+## <a name="BKMK_SharingExamples"></a>Eksempler for å bruke RMS deling av program
+Her er bare noen eksempler på hvordan du kan bruke Deling RMS-programmet til å beskytte filene dine.
 
-|I want to ….|How to do this|
-|----------------|------------------|
-|**… safely share financial information with somebody I trust who works for another organization**<br /><br />You work with a partner company and want to email them an Excel spreadsheet that contains projected sales figures. You want them to be able to view the figures but not change them.|You use the **Share Protected** button on the ribbon in Excel, type the email addresses of the two people that you work with in the partner company, select **Viewer – View Only**, and click **Send**.<br /><br />When the email arrives at the partner company, only the recipients in the email can view the spreadsheet and they cannot save, edit, print, or forward it.<br /><br />Step-by-step: [Protect a file that you share by email by using the Rights Management sharing application](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md).|
-|**… safely send a document by email to somebody who uses an iOS device**<br /><br />You want to email a highly confidential Word document to a coworker, who you know, regularly checks email on their iOS device.|You use File Explorer to right-click the file, and select **Share Protected** to. send the file as an attachment to your coworker.<br /><br />The recipient receives the email on their iOS device, clicks the link in the email that tells them how to download the sharing application, installs the version for iOS devices, and then views the document¹.<br /><br />Step-by-step: [Protect a file that you share by email by using the Rights Management sharing application](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md).|
-|**… check who’s opened my protected documents and when, and revoke access if necessary**<br /><br />You safely shared a confidential design document with potential suppliers and now you want to see who accessed it, when, and from where. Then, when one of the suppliers is awarded the business, you want to revoke access to the original document so the people you shared it with can no longer read it.|After you share a document by email, you go to the [document tracking site](http://go.microsoft.com/fwlink/?LinkId=529562) to check who has access that document and when. When you need to stop sharing it, you select the option to revoke access.<br /><br />Step-by-step: [Track and revoke your documents when you use the RMS sharing application](../Topic/Track_and_revoke_your_documents_when_you_use_the_RMS_sharing_application.md).|
-|**… read an attachment I’ve received in an email message that has a securely shared file attachment but I can’t read it because my company doesn’t use Rights Management**<br /><br />The email sender is somebody who you trust because you’ve done business with them in the past and you suspect that they might be sending you information about a potential new business opportunity.|You follow the instructions in the email and click the link to sign up for Microsoft Rights Management. Microsoft confirms that your organization does not have a subscription that includes Azure Rights Management, sends you an email to complete the free signup process, and you sign in with your new account. You click the second link in the email to install the Rights Management sharing app and can then open the email attachment to read about the new business opportunity.<br /><br />Step-by-step: [View and use files that have been protected by Rights Management](../Topic/View_and_use_files_that_have_been_protected_by_Rights_Management.md).|
-|**… protect company-confidential files on my laptop so they can’t be accessed by people outside my company**<br /><br />You travel a lot and use your laptop to access and update files in a folder that must be secured against unauthorized access.|You have the RMS sharing application installed on your laptop. You use File Explorer to protect the files by using a template, which quickly protects the files. If your laptop is stolen, you have peace of mind that nobody outside your company can access these documents.<br /><br />Step-by-step: [Protect a file on a device &#40;protect in-place&#41; by using the Rights Management sharing application](../Topic/Protect_a_file_on_a_device__protect_in-place__by_using_the_Rights_Management_sharing_application.md).|
-¹ PDF Rendering Powered by Foxit. Copyright © 2003–2014 by Foxit Corporation.
+|Jeg vil...|Hvordan du gjør dette|
+|--------------|-------------------------|
+|**… trygt dele økonomisk informasjon med noen jeg stoler som arbeider for en annen organisasjon**<br /><br />Du arbeider med et partnerselskap som og ønsker å sende e-post dem et Excel-regneark som inneholder salgstall som forventet. Du vil at de skal kunne vise tallene, men ikke endre dem..|Du bruker den **del beskyttet** -knappen på båndet i Excel, skriver du inn e-postadressene av to personer som du arbeider med i partnerselskapet, velg **Viewer – Vis bare**, og klikk **sende**.<br /><br />Når e-postmeldingen kommer til partnerselskapet, bare mottakerne i e-postmeldingen kan vise regnearket, og de kan ikke lagre, redigere, skrive ut eller videresende den.<br /><br />Trinnvis: [Beskytte en fil du deler via e-post ved hjelp av rettighetsadministrasjon deling av program](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md).|
+|**… trygt å sende et dokument via e-post til noen som bruker en iOS-enhet**<br /><br />Vil du sende e-post en høyst konfidensiell Word-dokument til en kollega, som du vet, regelmessig sjekker e-post på deres iOS-enhet.|Du kan bruke File Explorer høyreklikker du filen, og velg **del beskyttet** å. sende filen som et vedlegg til kollegaen din.<br /><br />Mottakeren mottar e-post på deres iOS-enhet, klikker du koblingen i e-postmeldingen som forteller dem hvordan du laster ned programmet for deling, installerer versjonen for iOS-enheter og deretter viser document¹.<br /><br />Trinnvis: [Beskytte en fil du deler via e-post ved hjelp av rettighetsadministrasjon deling av program](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md).|
+|**… kontrollere hvem som har åpnet min beskyttede dokumenter og når, og Opphev tilgang hvis nødvendig**<br /><br />Du delte trygt en konfidensiell design-dokument med potensielle leverandører, og du vil nå se hvem som får tilgang til den, når og der fra. Deretter, når en av leverandørene er tildelt virksomheten, du vil tilbakekalle tilgangen til det opprinnelige dokumentet, slik at personene du har delt den med ikke kan lese den.|Når du deler et dokument via e-post, går du til den [dokumentsporing området](http://go.microsoft.com/fwlink/?LinkId=529562) til å kontrollere hvem som har tilgang som dokumenterer og når. Når du må oppheve delingen, velger du alternativet du vil tilbakekalle tilgangen.<br /><br />Trinnvis: [Spore og oppheve dokumentene når du bruker RMS deling av program](../Topic/Track_and_revoke_your_documents_when_you_use_the_RMS_sharing_application.md).|
+|**… lese jeg har mottatt i en e-postmelding som har et sikkert delt filvedlegg vedlegg, men jeg kan ikke lese den fordi firmaet ikke bruker Rights Management**<br /><br />E-senderen er noen som du stoler på fordi du har gjort forretninger med dem tidligere, og du har mistanke om at de kan sende du vil ha informasjon om en potensiell ny forretningsmulighet.|Følg instruksjonene i e-postmeldingen, og klikk koblingen for å registrere deg for Microsoft Rights Management. Microsoft bekrefter at organisasjonen ikke har et abonnement som inkluderer Azure Rights Management, sender du en e-post til å fullføre påloggingsprosessen gratis, og du logger på med den nye kontoen. Du klikker den andre koblingen i e-postmeldingen til å installere rettighetsadministrasjon deling app og kan deretter åpne e-postvedlegg til å lese om nye muligheter for virksomheten.<br /><br />Trinnvis: [Vise og bruke filer som er beskyttet av IRM](../Topic/View_and_use_files_that_have_been_protected_by_Rights_Management.md).|
+|**… beskytte Konfidensielt for firmaet filer til den bærbare datamaskinen slik at de ikke kan ses av personer utenfor firmaet**<br /><br />Du reiser mye, og bruke den bærbare datamaskinen til å tilgang til og oppdatere filer i en mappe som må være sikret mot uautorisert tilgang.|Du har RMS deling av programmer er installert på den bærbare datamaskinen. Du kan bruke File Explorer til å beskytte filene ved hjelp av en mal som beskytter filene raskt. Hvis den bærbare datamaskinen blir stjålet, har sinnsro at ingen utenfor firmaet kan få tilgang til disse dokumentene.<br /><br />Trinnvis: [Beskytte en fil på en enhet &#40;beskytte på plass&#41; ved hjelp av rettighetsadministrasjon deling av program](../Topic/Protect_a_file_on_a_device__protect_in-place__by_using_the_Rights_Management_sharing_application.md).|
+¹ PDF-gjengivelse drives av Foxit. Copyright © 2003 – 2014 Foxit Corporation.
 
-## <a name="BKMK_SharingInstructions"></a>What do you want to do?
+## <a name="BKMK_SharingInstructions"></a>Hva vil du gjøre?
 > [!NOTE]
-> For more technical information, such as supported file types and how to install this application on an enterprise network, see the [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
+> Hvis du vil ha mer teknisk informasjon, for eksempel filtyper som støttes, og hvordan du installerer dette programmet på et bedriftsnettverk, kan du se på [Rights Management deling program administratorhåndboken](../Topic/Rights_Management_sharing_application_administrator_guide.md).
 
--   [Download and install the sharing application](https://technet.microsoft.com/library/dn574734.aspx)
+-   [Last ned og installer programmet som deling](https://technet.microsoft.com/library/dn574734.aspx)
 
--   [Protect a file on a device (protect in-place)](https://technet.microsoft.com/library/dn574733.aspx)
+-   [Beskytte en fil på en enhet (beskytte på stedet)](https://technet.microsoft.com/library/dn574733.aspx)
 
--   [Protect a file that you share by email](https://technet.microsoft.com/library/dn574735.aspx)
+-   [Beskytte en fil du deler via e-post](https://technet.microsoft.com/library/dn574735.aspx)
 
--   [Track and revoke your documents](https://technet.microsoft.com/library/dn986611.aspx)
+-   [Spore og oppheve dokumenter](https://technet.microsoft.com/library/dn986611.aspx)
 
--   [View and use files that have been protected](https://technet.microsoft.com/library/dn574741.aspx)
+-   [Vise og bruke filer som er beskyttet](https://technet.microsoft.com/library/dn574741.aspx)
 
--   [Remove protection from a file](https://technet.microsoft.com/library/dn574739.aspx)
+-   [Fjerne beskyttelsen fra en fil](https://technet.microsoft.com/library/dn574739.aspx)
 
--   [Use keyboard shortcuts](https://technet.microsoft.com/library/dn574737.aspx)
+-   [Bruke hurtigtaster](https://technet.microsoft.com/library/dn574737.aspx)
 
--   [Specify settings in the dialog box](https://technet.microsoft.com/library/dn574738.aspx)
+-   [Angi innstillingene i dialogboksen](https://technet.microsoft.com/library/dn574738.aspx)
 
-## See Also
-[Protect your docs!](http://curah.microsoft.com/60308/protect-your-docs)
+## Se også
+[Beskytt dokumentene dine!](http://curah.microsoft.com/60308/protect-your-docs)
 

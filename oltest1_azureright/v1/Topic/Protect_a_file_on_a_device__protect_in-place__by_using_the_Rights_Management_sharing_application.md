@@ -3,51 +3,50 @@ description: na
 keywords: na
 title: Protect a file on a device (protect in-place) by using the Rights Management sharing application
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 33920329-5247-4f6c-8651-6227afb4a1fa
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Protect a file on a device (protect in-place) by using the Rights Management sharing application
-When you protect a file in-place, it replaces the original, unprotected file. You can then leave the file where it is, copy it to another folder or device, or share the folder that it is in and the file will remain protected. You could also attach the protected file to an email message, although the recommended way to share a protected file by email is directly from File Explorer or an Office application (see [Protect a file that you share by email by using the Rights Management sharing application](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md)).
+# Beskytte en fil p&#229; en enhet (beskytte p&#229; plass) ved hjelp av rettighetsadministrasjon deling av program
+Når du beskytter en fil i stedet, erstatter den opprinnelige, ubeskyttet fil. Du kan la filen der det er, kopiere den til en annen mappe eller enhet, eller dele mappen den er i, og filen er beskyttet. Du kan også knytte den beskyttede filen til en e-postmelding, selv om det er den anbefalte måten å dele en beskyttet fil via e-post direkte fra File Explorer eller et Office-program (se [Beskytte en fil du deler via e-post ved hjelp av rettighetsadministrasjon deling av program](../Topic/Protect_a_file_that_you_share_by_email_by_using_the_Rights_Management_sharing_application.md)).
 
 > [!TIP]
-> If you see any errors when you try to protect files, refer to [FAQ for Microsoft Rights Management Sharing Application for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
+> Hvis du ser feilmeldinger når du prøver å beskytte filer, kan du se [Vanlige spørsmål om Microsoft Rights Management deling av programmer for Windows](http://go.microsoft.com/fwlink/?LinkId=303971).
 
-## To protect a file on a device (protect in-place)
+## Beskytte en fil på en enhet (beskytte på stedet)
 
-1.  In File Explorer, select a file to protect. Right-click, select **Protect with RMS**, and then select **Protect in-place**. For example:
+1.  Velg en fil for å beskytte i File Explorer. Høyreklikk, velg **Beskytt med RMS**, og velg deretter **beskytte på stedet**. For eksempel:
 
     ![](../Image/ADRMS_MSRMSApp_SP_CompanyDefined.png)
 
     > [!NOTE]
-    > If you do not see the **Protect with RMS** option, it’s likely that either the RMS sharing application is not installed on your computer, or your computer must be restarted to complete the installation. For more information about how to install the RMS sharing application, see [Download and install the Rights Management sharing application](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
+    > Hvis du ikke ser den **Beskytt med RMS** alternativet, er det sannsynlig at enten RMS deling program ikke er installert på datamaskinen eller datamaskinen må startes på nytt for å fullføre installasjonen. Hvis du vil ha mer informasjon om hvordan du installerer RMS deling program, se [Last ned og installer rettighetsadministrasjon deling av program](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
 
-2.  Do one of the following:
+2.  Gjør ett av følgende:
 
-    -   Select a policy template: These are predefined permissions that typically restrict access and usage to people in your organization. For example, if your organization name is "Contoso, Ltd", you might see **Contoso, Ltd - Confidential View Only**. If this is the first time you have protected a file on this computer, you will first need to select **Company-defined Protection** to download the templates.
+    -   Velg en policymal for: Disse er forhåndsdefinerte tillatelser som vanligvis begrenser tilgang og bruk til personer i organisasjonen. Hvis navnet på organisasjonen er "Contoso Ltd.", kan du se **Contoso, Ltd. - konfidensiell Vis bare**. Hvis dette er første gang du har beskyttet en fil på denne datamaskinen, må du først velge **selskapsdefinerte beskyttelse** å laste ned maler.
 
-        The next time you click the **Protect in-place** option, you will see up to 10 templates to choose from. If there are more than 10 templates available and the one you want isn’t displayed, click **Company-defined Protection** to download and see all the templates.
+        Neste gang du klikker på **beskytte på stedet** alternativet, vil du se opptil 10 maler å velge mellom. Hvis det er mer enn 10 maler som er tilgjengelige, og det du vil ha ikke vises, klikker du **selskapsdefinerte beskyttelse** å laste ned og vise alle maler.
 
-        When you select a policy template, you can also protect multiple files and a folder. When you select a folder, all the files in that folder are automatically selected for protection but new files that you create in that folder will not be automatically protected.
+        Når du velger en mal i gruppepolicy, kan du også beskytte flere filer og en mappe. Når du velger en mappe, blir alle filene i mappen velges automatisk for beskyttelse, men nye filer du oppretter i denne mappen ikke automatisk beskyttet.
 
-    -   Select **Custom Permissions**: Choose this option if the templates don’t provide the level of protection that you need  or you want to explicitly set the protection options yourself. Specify the options that you want for this file in the [add protection dialog box](http://technet.microsoft.com/library/dn574738.aspx), and then click **Apply**.
+    -   Velg **egendefinerte tillatelser**: Velg dette alternativet hvis malene ikke gir beskyttelsesnivået som du trenger, eller du vil angi alternativer for passordbeskyttelse eksplisitt selv. Angi alternativene du vil bruke for denne filen i den [Beskyttelse dialogboksen Legg til](http://technet.microsoft.com/library/dn574738.aspx), og klikk deretter **Bruk**.
 
-3.  You might quickly see a dialog box to tell you that the file is being protected, and the focus then returns to File Explorer. The selected file or files are now protected. In some cases (when adding protection changes the file name extension), the original file in File Explorer is replaced with a new file that has the Rights Management protection lock icon. For example:
+3.  Du kan raskt se en dialogboks for å fortelle deg at filen er beskyttet, og returnerer deretter fokus til Filutforsker. Den valgte filen eller filene er nå beskyttet. I noen tilfeller (ved å legge til beskyttelse endres filtypen) den opprinnelige filen i File Explorer er erstattet med en ny fil som har låseikonet for Rights Management-beskyttelse. For eksempel:
 
     ![](../Image/ADRMS_MSRMSApp_Pfile.png)
 
-If you later need to remove protection from a file, see [Remove protection from a file by using the Rights Management sharing application](../Topic/Remove_protection_from_a_file_by_using_the_Rights_Management_sharing_application.md).
+Hvis du senere trenger å fjerne beskyttelsen fra en fil, kan du se [Fjerne beskyttelsen fra en fil ved hjelp av rettighetsadministrasjon deling av program](../Topic/Remove_protection_from_a_file_by_using_the_Rights_Management_sharing_application.md).
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## Eksempler og andre instruksjoner
+For eksempler på hvordan du kan bruke IRM deling av programmet, og hvordan-instruksjoner, kan du se følgende deler fra Rights Management-brukerhåndboken for deling program:
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [Eksempler for å bruke RMS deling av program](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [Hva vil du gjøre?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## Se også
+[Rights Management deling program Brukerhåndbok](../Topic/Rights_Management_sharing_application_user_guide.md)
 

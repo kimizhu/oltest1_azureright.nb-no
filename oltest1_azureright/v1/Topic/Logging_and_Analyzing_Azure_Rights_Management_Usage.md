@@ -3,327 +3,315 @@ description: na
 keywords: na
 title: Logging and Analyzing Azure Rights Management Usage
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: a735f3f7-6eb2-4901-9084-8c3cd3a9087e
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Logging and Analyzing Azure Rights Management Usage
-Use the information in this topic to help you understand how you can use usage logging with Azure Rights Management (Azure RMS). The Azure Rights Management service can log every request that it makes for your organization, which includes requests from users, actions performed by Rights Management administrators in your organization, and actions performed by Microsoft operators to support your Azure Rights Management deployment.
+# Logging og analysere Azure Rights Management-forbruk
+Bruk informasjonen i dette emnet for å hjelpe deg med å forstå hvordan du kan bruke brukslogging med Azure Rights Management (Azure RMS). Azure Rights Management-tjenesten kan logge hver forespørsel om at den gjør for organisasjonen, som omfatter forespørsler fra brukere, handlingene som utføres av Rights Management-administratorer i organisasjonen og handlingene som utføres av Microsoft operatorer til å støtte Azure Rights Management-distribusjon.
 
-You can then use these Azure Rights Management logs to support the following business scenarios:
+Du kan deretter bruke disse loggene Azure Rights Management til å støtte følgende forretningsscenarier:
 
--   Analyze for business insights.
+-   Analysere for de trenger.
 
-    Azure Rights Management writes logs in W3C extended log format into an Azure storage account that you provide. You can then direct these logs into a repository of your choice (such as a database, an online analytical processing (OLAP) system, or a map-reduce system) to analyze the information and produce reports. As an example, you could identify who is accessing your RMS-protected data. You can determine what RMS-protected data people are accessing, and from what devices and from where. You can find out whether people can successfully read protected content. You can also identify which people have read an important document that was protected.
+    Azure Rights Management skriver loggene i W3C-utvidet loggformat til en Azure lagring konto som du oppgir. Du kan deretter angi disse loggene i et lager av ditt valg (for eksempel en database, et system for OLAP (online analytical processing), eller et kart redusere system) til å analysere informasjonen og lage rapporter. Som et eksempel, kan du identifisere hvem som har tilgang til dataene RMS-beskyttet. Du kan finne ut hva RMS-beskyttet data personer har tilgang til, og hvilke enheter og fra hvor. Du kan finne ut om personer kan lese beskyttet innhold. Du kan også identifisere hvilke personer har lest et viktig dokument som ble beskyttet.
 
--   Monitor for abuse.
+-   Skjerm for misbruk.
 
-    Azure Rights Management logging information is available to you in near-real time, so that you can continuously monitor your company’s use of Rights Management . 99.9% of logs are available within 15 minutes of an RMS-initiated action.
+    Azure Rights Management loggingsinformasjon er tilgjengelige i nær-sanntid, slik at du kan kontinuerlig overvåke bedriftens bruk av Rights Management. 99,9% av loggene er tilgjengelige innen 15 minutter til en handling som er initiert av RMS.
 
-    For example, you might want to be alerted if there is a sudden increase of people reading RMS-protected data outside standard working hours, which could indicate that a malicious user is collecting information to sell to competitors. Or, if the same user apparently accesses data from two different IP addresses within a short time frame, which could indicate that a user account has been compromised.
+    Du kan for eksempel varsles hvis det er en plutselig økning av personer som leser RMS-beskyttet data utenfor standard arbeidstimer, som kan indikere at en ondsinnet bruker samler informasjon om å selge til konkurrenter. Eller hvis den samme brukeren tilsynelatende får tilgang til data fra to forskjellige IP-adresser i et kort tidsrom, som kan indikere at en brukerkonto er kompromittert.
 
--   Perform forensic analysis.
+-   Utføre juridiske analyse.
 
-    If you have an information leak, you are likely to be asked who recently accessed specific documents and what information did a suspected person access recently. You can answer these type of questions when you use Azure Rights Management and logging because people who use protected content must always get a Rights Management license to open documents and pictures that are protected by Azure Rights Management, even if these files are moved by email or copied to USB drives or other storage devices. This means that you can use Azure Rights Management logs as a definitive source of information for forensic analysis when you protect your data by using Azure Rights Management.
-
-> [!NOTE]
-> If you are interested only in the logging of administrative tasks for Azure Rights Management, and do not want to track how users are using Rights Management, you can use the [Get-AadrmAdminLog](https://msdn.microsoft.com/library/azure/dn629430.aspx) Windows PowerShell cmdlet for Azure Rights Management.
-> 
-> You can also use the Azure classic portal for high-level usage reports that include **RMS usage**, **Most active RMS users**, **RMS device usage**, and **RMS enabled application usage**. To access these reports from the Azure classic portal, click **Active Directory**, select and open a directory, and then click **REPORTS**,
-
-Use the following sections for more information about Azure Rights Management usage logging.
-
--   [How to enable Azure Rights Management usage logging](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_EnableRMSLogging)
-
--   [How to access and use your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_AccesAndUseLogs)
-
--   [How to manage your Azure Rights Management log storage](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_ManageStorage)
-
--   [How to delegate access to your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Delegate)
-
--   [How to interpret your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Interpret)
-
--   [Windows PowerShell reference](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_PowerShell)
-
-## <a name="BKMK_EnableRMSLogging"></a>How to enable Azure Rights Management usage logging
-Azure Rights Management usage logging is optional, so if you want to use it, you must take specific steps. When you use Azure Rights Management usage logging, there is no change in how  Rights Management works and the logging process itself is free. However, you must provide an Azure storage account for the logs and you will be charged for this storage.
-
-Before you begin, make sure that you meet the following prerequisites to use Azure Rights Management usage logging:
-
-|Requirement|More information|
-|---------------|--------------------|
-|An IT-managed subscription that includes Azure Rights Management|You must have a Microsoft Azure Rights Management subscription that is managed by your organization. Organizations that use RMS for individuals cannot use Azure Rights Management usage logging.<br /><br />If your organization has users who use RMS for individuals, Azure Rights Management usage logging provides a very compelling business reason to convert RMS for individuals into a Microsoft Azure Rights Management subscription.<br /><br />For more information about the subscriptions that include Azure RMS, see the [Cloud subscriptions that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.<br /><br />For more information about RMS for individuals, see [RMS for Individuals and Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)|
-|Azure subscription|You must have a subscription to Azure and sufficient storage on Azure for your Azure Rights Management logs.|
-|Windows PowerShell for Azure Rights Management|If you haven’t already done so, download and install the Windows PowerShell module for Azure Rights Management. You will use Windows PowerShell cmdlets to configure and manage your Azure Rights Management usage logs.<br /><br />For more information, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).|
-Use the following procedure to enable Azure Rights Management usage logging, which includes steps to create an Azure storage account and then configure Azure to use this storage account for your  Rights Management logs.
+    Hvis du har en lekkasje av informasjon, er du sannsynligvis vil bli spurt om hvem som nylig åpnet enkeltdokumenter, og hvilken informasjon en mistanke om personen tilgang til nylig. Du kan svare på denne typen spørsmål når du bruker Azure Rights Management og logging fordi personer som bruker beskyttet innhold må alltid ha en IRM-lisens for å åpne dokumenter og bilder som er beskyttet av Azure Rights Management, selv om disse filene flyttes via e-post eller kopiert til USB-enheter eller andre lagringsenheter. Dette betyr at du kan bruke Azure Rights Management-loggene som en altomfattende informasjonskilde for juridiske analyse når du beskytter dataene ved hjelp av Azure Rights Management.
 
 > [!NOTE]
-> This procedure assumes that you have an Azure account. Azure Rights Management usage logging supports individual accounts but as a best practice, use work or school accounts. In addition, we recommend that you create a dedicated storage account for your Rights Management logs. You must share the storage access keys with Azure Rights Management, and potentially with other people if they will also use the log files.
+> Hvis du er interessert bare i logging av administrative oppgaver for Azure Rights Management, og gjør ikke ønsker å spore hvordan brukerne bruker Rights Management, kan du bruke den [Get-AadrmAdminLog](https://msdn.microsoft.com/library/azure/dn629430.aspx) Windows PowerShell-cmdleten for Azure Rights Management.
 > 
-> For more information about Azure storage, see the [Azure documentation for Storage](http://azure.microsoft.com/documentation/services/storage/).
+> Du kan også bruke Azure portalen for bruk på høyt nivå som inkluderer **RMS-Bruk**, **mest aktive RMS-brukere**, **RMS Enhetsbruk**, og **RMS-aktivert programbruk**. Hvis du vil ha tilgang til disse rapportene fra Azure portal, klikker du **Active Directory**, velg og åpne en mappe, og klikk deretter **rapporter**,
 
-#### How to create your storage account and enable Azure Rights Management usage logging
+Bruk følgende deler for mer informasjon om Trafikklogging Azure Rights Management.
 
-1.  Sign in to the [Azure portal](https://portal.azure.com/).
+-   [Slik aktiverer du Trafikklogging Azure Rights Management](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_EnableRMSLogging)
 
-2.  On the Hub menu, select **New** -&gt; **Data + Storage** -&gt; **Storage account**.
+-   [Hvordan få tilgang til og bruke bruken av Azure Rights Management-logger](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_AccesAndUseLogs)
+
+-   [Hvordan du kan administrere lagringsplassen Azure Rights Management-Logg](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_ManageStorage)
+
+-   [Hvordan du delegerer tilgang til bruken av Azure Rights Management-logger](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Delegate)
+
+-   [Slik tolker du bruken av Azure Rights Management-logger](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Interpret)
+
+-   [Windows PowerShell-referanse](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_PowerShell)
+
+## <a name="BKMK_EnableRMSLogging"></a>Slik aktiverer du Trafikklogging Azure Rights Management
+Trafikklogging Azure Rights Management er valgfri, slik at hvis du vil bruke den, må du ta bestemte trinn. Når du bruker Rights Management Azure Trafikklogging, skjer det ingen endringer i hvordan Rights Management fungerer og loggføringsprosessen for seg selv er gratis. Du må angi en konto for Azure lagring for loggene, og du vil bli belastet for dette lageret.
+
+Før du begynner, må du kontrollere at du oppfyller følgende forutsetninger for å bruke Azure Rights Management Trafikklogging:
+
+|Krav|Hvis du vil ha mer informasjon|
+|--------|----------------------------------|
+|Et IT-administrert abonnement som inkluderer Azure Rights Management|Du må ha et abonnement på Microsoft Azure Rights Management som administreres av organisasjonen. Organisasjoner som bruker RMS for personer kan ikke bruke Trafikklogging Azure Rights Management.<br /><br />Hvis organisasjonen har brukere som bruker RMS for enkeltpersoner, gir Azure Rights Management Trafikklogging en svært overbevisende business grunn til å konvertere RMS for personer til et abonnement på Microsoft Azure Rights Management.<br /><br />Hvis du vil ha mer informasjon om hvilke abonnementer som inkluderer Azure RMS, se den [Cloud-abonnementer som støtter Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) delen i den [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) emnet.<br /><br />Hvis du vil ha mer informasjon om RMS for enkeltpersoner, se [RMS for enkeltpersoner og Azure Rights Management](../Topic/RMS_for_Individuals_and_Azure_Rights_Management.md)|
+|Azure abonnement|Du må ha et abonnement på Azure og tilstrekkelig lagringsplass på Azure for Azure Rights Management-logger.|
+|Windows PowerShell for Azure Rights Management|Hvis du ikke allerede har gjort det, kan du laste ned og installere Windows PowerShell-modul for Azure Rights Management. Du vil bruke Windows PowerShell-cmdleter til å konfigurere og administrere Azure Rights Management bruksloggene.<br /><br />Hvis du vil ha mer informasjon, se [Installere Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).|
+Bruk følgende fremgangsmåte for å aktivere Trafikklogging Azure Rights Management, som inneholder trinn for å opprette en konto for Azure lagring og deretter konfigurere Azure for bruk av lagringsplass kontoen for Rights Management-logger.
+
+> [!NOTE]
+> Denne fremgangsmåten forutsetter at du har en Azure konto. Trafikklogging Azure Rights Management støtter individuelle konti, men som beste praksis, kan du bruke arbeid eller skolen kontoer. I tillegg anbefaler vi at du oppretter en dedikert lagring konto for Rights Management-logger. Du må dele tilgangstastene lagring med Azure Rights Management og potensielt andre hvis de vil også bruke loggfilene.
+> 
+> Hvis du vil ha mer informasjon om lagring av Azure, se den [Azure dokumentasjonen for lagring av](http://azure.microsoft.com/documentation/services/storage/).
+
+#### Hvordan du oppretter kontoen for lagring og aktivere Trafikklogging Azure Rights Management
+
+1.  Logg deg på den [Azure portal](https://manage.windowsazure.com/).
+
+2.  Velg **lagring**.
 
     > [!TIP]
-    > If you do not see this option, check that you have an Azure subscription in addition to your subscription for Rights Management.
+    > Hvis du ikke ser dette alternativet, må du kontrollere at du har et abonnement på Azure, i tillegg til abonnementet for Rights Management.
 
-3.  Keep the default deployment model of **Classic**, and then click **Create**.
+3.  Klikk **Opprett A lagring konto** og den **URL-adressen**, angi et unikt navn for lagring konto og endre om nødvendig den **plassering/AFFINITET GRUPPEN** slik at den passer til ditt område.
 
-    Specify the name for your storage account, and if necessary, change the selected options for the **Pricing tier**, **Resource Group**, **Subscription**, and whether to **Pin to dashboard**. and then click **CREATE**. Wait for the **Creating Storage Account** activity to complete.
+4.  Klikk **OK**, og vent til du ser navnet ditt lagring vise statusen **Online**.
 
-4.  Click the newly created storage account, and then click **Settings**.
+5.  Klikk **Behandle tilgangstaster**.
 
-5.  In the **Settings** blade, click the **Keys** icon.
+6.  Fra den **Behandle tilgangstaster** som viser din primære og sekundære nøkler, kopiere den primære nøkkelen til utklippstavlen, og lukk deretter dialogboksen.
 
-6.  In the **Manage keys** blade, copy the value of the  **PRIMARY ACCESS KEY** and close the blade.
-
-7.  Start Windows PowerShell with the **Run as administrator** option. Run the [Connect-AadrmService](https://msdn.microsoft.com/library/azure/dn629415.aspx) command to connect to the Azure Rights Management service:
+7.  Start Windows PowerShell med den **kjøre som administrator for** alternativet. Kjøre den [koble til AadrmService](https://msdn.microsoft.com/library/azure/dn629415.aspx) kommando for å koble til Azure Rights Management-tjenesten:
 
     ```
     Connect-AadrmService
     ```
 
-8.  Use the [Set-AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx) command to specify where you want to keep your Azure Rights Management usage logs, replacing *&lt;Access_Key&gt;* with the primary access key that you copied in step 6 and *&lt;StorageAccount&gt;* with the name of the storage account that you created in step 3:
+8.  Bruk av [Sett AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx) kommando for å angi hvor du vil beholde Azure Rights Management bruksloggene, erstatter *&lt; Access_Key &gt;* med den primære nøkkelen som du kopierte i trinn 6 og *&lt; StorageAccount &gt;* med navnet på lagringsplass kontoen du opprettet i trinn 3:
 
     ```
-    $accesskey = convertto-securestring -asplaintext -force –string <Access_Key>
-    Set-AadrmUsageLogStorageAccount -AccessKey $accesskey -StorageAccount <StorageAccount>
+    $accesskey = convertto-securestring -asplaintext -force –string <Access_Key> Set-AadrmUsageLogStorageAccount -AccessKey $accesskey -StorageAccount <StorageAccount>
     ```
 
-9. Use the [Enable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629421.aspx) command to enable Azure Rights Management usage logging:
+9. Bruk av [Aktiver AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629421.aspx) kommando for å aktivere logging for bruk av Azure Rights Management:
 
     ```
     Enable-AadrmUsageLogFeature
     ```
-    You should see the message: **The usage log feature is enabled for the Rights management service.**
+    Du skal se meldingen: **Bruk Logg-funksjonen er aktivert for Rights management-tjenesten.**
 
-Now that usage logging is enabled, Azure Rights Management starts to log all actions for your organization and saves this information to your storage account. Logging information is not available before this point.
+Nå som brukslogging er aktivert, Azure Rights Management begynner å logge alle handlinger for organisasjonen, og lagrer denne informasjonen til lagring av kontoen. Av loggingsinformasjon er ikke tilgjengelig før dette tidspunktet.
 
-For more information about how to create storage accounts, see the  [Create a storage account](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) section from the [About Azure storage accounts](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) in the Azure documentation.
+## <a name="BKMK_AccesAndUseLogs"></a>Hvordan få tilgang til og bruke bruken av Azure Rights Management-logger
+Azure Rights Management skriver logger til kontoen din Azure lagring som en rekke BLOBer. Hver blob inneholder én eller flere loggposter i utvidet W3C-loggformat. Blob-navnene er tall, i rekkefølgen de ble opprettet. Den [Slik tolker du bruken av Azure Rights Management-logger](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Interpret) senere i dette dokumentet inneholder mer informasjon om logginnholdet og hvordan opprettes.
 
-## <a name="BKMK_AccesAndUseLogs"></a>How to access and use your Azure Rights Management usage logs
-Azure Rights Management writes logs to your Azure storage account as a series of blobs. Each blob contains one or more log records, in W3C extended log format. The blob names are numbers, in the order in which they were created. The [How to interpret your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Interpret) section later in this document contains more information about the log contents and their creation.
+Det kan ta litt tid for logger skal vises i lagringsplass kontoen etter en Azure Rights Management-handling. De fleste loggene vises innen 15 minutter.
 
-It can take a while for logs to appear in your storage account after an Azure Rights Management action. Most logs appear within 15 minutes.
+Lagringsplass kontoen du opprettet for rettighetsadministrasjon Azure bruksloggene er som en postboks og støtter lesing av direkte fra lagringsplass kontoen, men det er ikke optimalisert for å brukes på denne måten. I stedet for best ytelse og for å redusere kostnader, anbefaler vi at du laster ned loggene til lokalt, for eksempel en lokal mappe, en database eller et kart redusere lageret.
 
-The storage account that you created for your Azure Rights Management usage logs is like a mailbox and supports reading directly from the storage account, but it is not optimized to be used in this way. Instead, for best performance and to help reduce costs, we recommend that you download the logs to local storage, such as a local folder, a database, or a map-reduce repository.
+Du kan laste ned din bedre effektiviteten på to måter:
 
-You can download your usage logs in two ways:
+-   Bruke Windows PowerShell-cmdlet [Get-AadrmUsageLog](https://msdn.microsoft.com/library/azure/dn629401.aspx).
 
--   Use the Windows PowerShell cmdlet [Get-AadrmUsageLog](https://msdn.microsoft.com/library/azure/dn629401.aspx).
+    Dette er den enkleste måten å få tilgang til av bruksloggene. Denne cmdleten laster ned logger av datamaskinen, laster du ned hver blob som en fil på en plassering du angir.
 
-    This is the simplest way to access your usage logs. This cmdlet downloads logs to your computer, downloading each blob as a file to a location that you specify.
+-   Bruk av [Azure lagring SDK](http://www.windowsazure.com/en-us/develop/net/) å skrive dine egne egendefinerte programmet til å laste ned loggene.
 
--   Use the [Azure Storage SDK](http://www.windowsazure.com/en-us/develop/net/) to write your own custom application to download the logs.
+    Et egendefinert program kan gi større fleksibilitet enn cmdleten Get-AadrmUsageLogs. Du kan for eksempel delegere nedlasting av loggene til noen eller en prosess som ikke må bruke Azure Rights Management administrativ legitimasjon. Eller du vil avspørre loggene i sanntid, fordi du vil overvåke for misbruk.
 
-    A custom application can provide more flexibility than the Get-AadrmUsageLogs cmdlet. For example, you might want to delegate the download of logs to somebody or a process that must not use your Azure Rights Management administrative credentials. Or, you might want to poll the logs in real time because you want to monitor for misuse.
+#### Å laste ned bruksloggene ved hjelp av PowerShell
 
-#### To download your usage logs by using PowerShell
+-   Start Windows PowerShell med den **Kjør som administrator** alternativ, og kjøre **Get-AadrmUsageLog –Path &lt;location&gt;**. For eksempel når du har opprettet en mappe med navnet **logs** på E-stasjonen:
 
--   Start Windows PowerShell with the **Run as administrator** option and run **Get-AadrmUsageLog –Path &lt;location&gt;**. For example, after creating a folder named **logs** on your E drive:
+    -   Å laste ned alle tilgjengelige logger til mappen E:\logs: `Get-AadrmUsageLog -Path "e:\logs"`
 
-    -   To download all available logs to your E:\logs folder: `Get-AadrmUsageLog -Path "e:\logs"`
+    -   Å laste ned en rekke BLOBer: `Get-AadrmUsageLog –Path "e:\logs" –FromCounter 1024 –ToCounter 2047`
 
-    -   To download a specific range of blobs: `Get-AadrmUsageLog –Path "e:\logs" –FromCounter 1024 –ToCounter 2047`
+Når du kjører disse cmdlets, viser navnet på den siste bloben som ble lastet ned i Windows PowerShell. Du kan tilordne dette navnet til en variabel, som lar deg kjøre Get-AadrmUsageLog i en løkke eller en tidsplan, laster du ned bare trinnvis logger hver gang.
 
-When you run these cmdlets, Windows PowerShell displays the name of the last blob that was downloaded. You can assign this name to a variable, which lets you run Get-AadrmUsageLog in a loop or a schedule job, downloading only the incremental logs each time.
+For eksempel:
 
-For example:
-
-**PS C:\&gt; $LastBlobName = Get-AadrmUsageLog –Path "e:\logs"**
+**PS C:\ &gt; $LastBlobName = Get-AadrmUsageLog – banen "e:\logs"**
 
 **1527**
 
-**PS C:\&gt; $LastBlobName**
+**PS C:\ &gt; $LastBlobName**
 
 **1527**
 
 > [!TIP]
-> You can aggregate all your downloaded log files into a CSV format by using [Microsoft’s Log Parser](http://www.microsoft.com/download/details.aspx?id=24659), which is a tool to convert between various well-known log formats. You can also use this tool to convert data to SYSLOG format, or import it into a database. After you have installed the tool, run **LogParser.exe /?** for help and information to use this tool. For example, you might run the following command to import all information into a .log file format: **logparser –i:w3c –o:csv “SELECT &#42; INTO AllLogs.csv FROM &#42;.log”**.
+> Du kan samle alle nedlastede loggfilene til en CSV-format ved hjelp av [Microsofts Logg Parser](http://www.microsoft.com/download/details.aspx?id=24659), som er et verktøy for å konvertere mellom forskjellige velkjente loggformater. Du kan også bruke dette verktøyet til å konvertere data til SYSLOG-format, eller du kan importere den til en database. Når du har installert verktøyet, kjører du **LogParser.exe /?** for hjelp og informasjon for å bruke dette verktøyet. Du kan for eksempel kjøre følgende kommando for å importere all informasjon i et .log format: **logparser –i:w3c –o:csv “SELECT &#42; INTO AllLogs.csv FROM &#42;.log”**.
 
-You can suspend and resume usage logging. When you suspend logging, Azure Rights Management retains your storage account information, so that you can easily resume logging again.
+Du kan stoppe midlertidig og fortsette Trafikklogging. Når du vil stoppe logging, beholder Azure Rights Management kontoinformasjonen lagring slik at du enkelt kan gjenoppta logging på nytt.
 
-#### To suspend and resume usage logging
+#### I hvilemodus og reaktiverer Trafikklogging
 
--   To suspend logging, use the following cmdlet: [Disable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629404.aspx)
+-   Hvis du vil stoppe logging, kan du bruke cmdleten følgende: [Deaktiver AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629404.aspx)
 
--   To resume logging, use the following cmdlet: [Enable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629421.aspx)
+-   Hvis du vil gjenoppta logging, kan du bruke cmdleten følgende: [Aktiver AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629421.aspx)
 
--   To check whether logging is enabled or disabled, use the following cmdlet: [Get-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629425.aspx)
+-   Hvis du vil kontrollere om logging er aktivert eller deaktivert, kan du bruke cmdleten følgende: [Get-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629425.aspx)
 
-    A value of **True** means that usage logging is enabled for Azure Rights Management and a value of **False** means that usage logging is disabled.
+    En verdi på **SANN** betyr at brukslogging er aktivert for Azure Rights Management og en verdi på **False** betyr at brukslogging er deaktivert.
 
-## <a name="BKMK_ManageStorage"></a>How to manage your Azure Rights Management log storage
-You are charged for the storage space that is used to keep your Azure Rights Management logs.
+## <a name="BKMK_ManageStorage"></a>Hvordan du kan administrere lagringsplassen Azure Rights Management-Logg
+Du blir belastet for lagringsplass som brukes til å holde loggene Azure Rights Management.
 
-Azure Rights Management does no automatic management of your usage log files. If you take no action, they will remain in your storage account. However, to conserve space and reduce storage costs, you might want to delete them after you have downloaded them. Or you can choose which files to delete. With one exception, Azure Rights Management does not use these log files, so there are no restrictions about when you can delete them.
+Azure Rights Management ikke ingen automatisk behandling av din bruk av loggfiler. Hvis du ikke gjør noe, forblir i lagring-kontoen. Hvis du vil spare plass og redusere lagringskostnadene, kan du likevel å slette dem etter at du har lastet dem ned. Eller du kan velge hvilke filer som skal slettes. Med ett unntak bruker Azure Rights Management ikke disse loggfilene, så det er ingen begrensninger om når du kan slette dem.
 
-The file that you must not delete (or modify) is named **metadata** that is in the **rms-metadata** container. Azure Rights Management uses this blob to keep track of the last blob number that it used. If this file is deleted, Azure Rights Management starts a new container for logs, with a blob number that starts from 1, and all future downloads that use the Get-AadrmUsageLog cmdlet use this new container to download log files. As a result, any logs in the original container are retained, but orphaned. The only way to download these orphaned logs is to use the Azure storage SDK.
+Er navnet på filen som du ikke må slette (eller endre) **metadata** som er i den **rms-metadata** beholder. Azure Rights Management bruker denne blob til å holde oversikt over det siste blob-nummeret som ble brukt. Hvis denne filen slettes, Azure Rights Management starter en ny beholder logger med en blob-tall som starter fra 1, og alle fremtidige nedlastinger som bruker cmdleten Get-AadrmUsageLog bruker denne nye beholderen for å laste ned filer. Alle loggene i den opprinnelige beholderen er derfor beholdt, men frittstående. Den eneste måten å laste ned disse foreldreløse loggene er å bruke Azure lagring SDK.
 
 > [!TIP]
-> Instead of managing your Azure Rights Management log storage yourself, you can delegate this management function to another company by sharing your storage account name and access key. For more information, see the [How to delegate access to your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Delegate) section later in this topic.
+> I stedet for å behandle Azure Rights Management Logg lagringen selv, kan du delegere denne management-funksjonen til et annet selskap ved å dele lagringsplass kontoen navnet og få tilgang til nøkkelen. Hvis du vil ha mer informasjon, se den [Hvordan du delegerer tilgang til bruken av Azure Rights Management-logger](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_Delegate) senere i dette emnet.
 
-In some circumstances, you might want to regenerate your storage access keys. For example:
+I noen tilfeller vil du kanskje Lag din tilgangstaster for lagring. For eksempel:
 
--   You change the company that manages your Azure Rights Management usage logs.
+-   Du kan endre firma som styrer bruksloggene Azure Rights Management.
 
--   You suspect that your storage access key is compromised.
+-   Du mistenker at nøkkelen storage access settes i fare.
 
-If this happens to you, this is when you use the secondary access key (on the assumption that you were previously using the primary access key) to ensure service continuity. When you regenerate the access key that you were not previously using, you then configure Azure Rights Management to use the new key. Use the following procedure to regenerate the secondary access key and configure Azure Rights Management to use it:
+Hvis dette skjer for deg, er når du bruker sekundære hurtigtast (på antakelsen om at du tidligere har brukt den primære nøkkelen) å sikre kontinuitet i tjenesten. Når du genererer på nytt som du ikke tidligere har brukt, kan du deretter konfigurere Azure Rights Management for å bruke den nye nøkkelen. Bruk følgende fremgangsmåte til å generere nøkkelen sekundære bruddene på nytt og konfigurere Azure Rights Management for å bruke den:
 
-#### To regenerate the secondary access key
+#### Generere nøkkelen sekundære bruddene på
 
-1.  Sign in to the [Azure  portal](https://portal.azure.com/).
+1.  Logg deg på den [Azure portal](https://manage.windowsazure.com/).
 
-2.  Click **All Resources**, and search for your storage by typing the storage name in the text box..
+2.  Velg **lagring**.
 
-3.  Select your storage, and click **Settings**.
+3.  Klikk **Behandle tilgangstaster**.
 
-4.  Click the **Keys** icon.
+4.  I den **Behandle tilgangstaster** -dialogboksen klikker du **Lag** ved siden av sekundær tilgangstast, og kopier den nye sekundære bruddene nøkkelen til utklippstavlen.
 
-5.  In the **Manage  keys** section, click **Regenerate secondary key** click Yes to confirm that you want to regenerate secondary access key, and copy the new secondary access key to the clipboard.
-
-    Do not close the Azure portal.
-
-6.  Start Windows PowerShell with the **Run as administrator** option and use the [Set-AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx) cmdlet to configure Azure Rights Management to use this new access key, replacing *&lt;StorageAccount&gt;* with the name of your storage account and *&lt;Access_Key&gt;* with the regenerated secondary access key that you just copied:
+5.  Start Windows PowerShell med den **Kjør som administrator** alternativet og bruker den [Sett AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx) cmdlet til å konfigurere Azure Rights Management for å bruke denne nye tilgangstasten erstatter *&lt; StorageAccount &gt;* med navnet på kontoen for lagring og *&lt; Access_Key &gt;* med gjenskapte sekundære hurtigtast du nettopp kopierte:
 
     ```
     Set-AadrmUsageLogStorageAccount -StorageAccount <StorageAccount>-AccessKey <Access_Key>
     ```
     > [!WARNING]
-    > Although you can switch to another storage account when you run this command, this action orphans your previous logs and they will no longer be accessible to the Set-AadrmUsageLogStorageAccount cmdlet or similar management commands and functions.
+    > Selv om du kan bytte til en annen lagringsplass kontoen når du kjører denne kommandoen, denne handlingen orphans tidligere loggene og de vil ikke lenger være tilgjengelig for den cmdleten Set-AadrmUsageLogStorageAccount eller lignende kommandoer og funksjoner.
 
-7.  Back in the Azure portal, **Manage  Keys** section, regenerate your primary access key.
+6.  Tilbake i den **Behandle tilgangstaster** dialogboks-boksen, regenerere den primære nøkkelen.
 
-For more information about how to manage your storage access keys, see the  [Manage your storage access keys](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) section from the [About Azure storage accounts](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) in the Azure documentation.
+## <a name="BKMK_Delegate"></a>Hvordan du delegerer tilgang til bruken av Azure Rights Management-logger
+Du kan delegere tilgang til RMS-logger ved å dele lagringsplass kontoen navnet og få tilgang til nøkkelen. Du vil kanskje representanttilgang til en annen bruker administrative, en utvikler i organisasjonen din eller en uavhengig programvareleverandør (ISV). Fordi de ikke har administratorrettigheter på RMS, kan de bruke cmdleten Get-AardrmUsageLog til å laste ned loggene RMS. I stedet må de bruke Windows Storage SDK til å laste ned loggene. De kan også skrive et program for å lese loggene direkte fra Azure lagring.
 
-## <a name="BKMK_Delegate"></a>How to delegate access to your Azure Rights Management usage logs
-You can delegate access to your RMS logs by sharing your storage account name and access key. You might want to delegate access to another administrative user, to a developer within your own organization, or to an independent software vendor (ISV). Because they will not have your RMS administrator credentials, they cannot use the Get-AardrmUsageLog cmdlet to download the RMS logs. Instead, they must use the Windows Storage SDK to download the logs. Alternatively, they can write an application to read the logs directly from Azure Storage.
+Det er trygt å dele lagringsplass kontoen navnet og få tilgang til nøkkelen på denne måten når lagringsplass kontoen er dedikert til RMS-logger. Selv om andre personer som har access-nøkkelen, kan de kan bruke dette til å få tilgang til en annen konto for lagring eller bruke RMS leier kontoen.
 
-It is safe to share your storage account name and access key in this way when the storage account is dedicated to your RMS logs. Even though other people have your access key, they cannot use this to access any other storage account or use your RMS tenant account.
+## <a name="BKMK_Interpret"></a>Slik tolker du bruken av Azure Rights Management-logger
+Bruk informasjonen nedenfor for å hjelpe deg med å tolke bruksloggene Azure Rights Management.
 
-## <a name="BKMK_Interpret"></a>How to interpret your Azure Rights Management usage  logs
-Use the following information to help you interpret the Azure Rights Management usage  logs.
+### Lagring konto-oppsett
+Første gang Azure Rights Management skriver logger på kontoen for lagring, oppretter følgende to programmer:
 
-### The storage account layout
-The first time Azure Rights Management writes logs to your storage account, it creates the following two containers:
+-   **Rms-metadata**: Denne beholderen er reservert for Azure Rights Management. Ikke endre eller slette denne beholderen.
 
--   **Rms-metadata**: This container is reserved for Azure Rights Management . Do not modify or delete this container.
+-   **Rms - logger - &lt; guid &gt;**: Denne beholderen er der Azure Rights Management oppretter og lagrer loggene. Hvis du ikke lenger vil logging informasjonen de inneholder, kan du trygt slette alle filer i denne beholderen.
 
--   **Rms-logs-&lt;guid&gt;**: This container is where Azure Rights Management creates and saves the logs. You can safely delete any files in this container if you no longer want the logging information that they contain.
+Over tid, Azure Rights Management kan opprette flere **Rms - logger - &lt; guid &gt;** beholdere. For eksempel hvis den **Rms-metadata** beholder blir ødelagt eller slettes ved et uhell, Azure Rights Management tilbakestiller innholdet og oppretter en ny **Rms - logger - &lt; guid &gt;** beholder for alle fremtidige logger. Gamle loggene i den gamle beholderen slettes ikke, men er løse.
 
-Over time, Azure Rights Management might create additional **Rms-logs-&lt;guid&gt;** containers. For example, if the **Rms-metadata** container becomes corrupted or it is accidentally deleted, Azure Rights Management resets its contents and creates a new **Rms-logs-&lt;guid&gt;** container for all future logs. The old logs in the old container are not deleted but are orphaned.
+### Logg-sekvens
+Azure rettighetsadministrasjon skriver loggene som en rekke BLOBer. Hver blob inneholder én eller flere loggposter, i utvidet W3C-loggformat.
 
-### The log sequence
-Azure Rights Management writes the logs as a series of blobs. Each blob contains one or more log records, in extended W3C log format.
-
-The name of each blob is a number. Within each log container the first blob is named 000000001. Each blob is named sequentially in the order in which it was created. Each blob contains one or more log records. Each log record has a UTC time stamp that indicates when the corresponding request was served by Azure Rights Management.
+Navnet på hver blob er et tall. Innenfor hver loggbeholder kalles første blob 000000001. Hver blob heter fortløpende i rekkefølgen den ble opprettet. Hver blob inneholder én eller flere loggposter. Hver loggpost har et UTC-tidsstempel som angir når den tilsvarende forespørselen ble betjent av Azure Rights Management.
 
 > [!IMPORTANT]
-> The Azure Rights Management logging system is optimized to provide you with logs quickly, rather than in strict sequential order. The order of the blobs, as well as the order of log records within a blob, might be out of chronological sequence. The only reason the blobs are named sequentially is to enable you to efficiently download them incrementally.
+> Logging av Azure Rights Management-systemet er optimalisert for å gi deg logger raskt, i stedet for i strengt sekvensiell rekkefølge. Rekkefølgen på BLOBer, i tillegg til rekkefølgen på loggposter innenfor en blob, kanskje ikke i kronologisk rekkefølge. Det er den eneste grunnen til BLOBer kalles sekvensielt slik at du kan effektivt laste dem ned trinnvis.
 > 
-> Two examples of potential log sequence results:
+> To eksempler på mulige Logg sekvens resultater:
 > 
-> -   The log records in blob 000000004 might overlap chronologically with the log records in blob 000000003. In an extreme case, all log records in blob 000000004 might have been generated before all log records in blob 000000003.
-> -   The second log record in a blob might have been generated before the first log record, but was written to storage in reverse order.
+> -   Loggposter i blob-000000004 kan overlappe kronologisk med loggposter i blob-000000003. I et ekstremt tilfelle kan alle loggposter i blob 000000004 genereres før alle loggposter i blob-000000003.
+> -   Den andre loggposten i en blob kan ha blitt generert før den første loggposten, men ble skrevet til lagring i omvendt rekkefølge.
 
-Before you analyze your Azure Rights Management usage logs, we recommend that you download and import the log into a repository where you can sort the logs based on their timestamp. For more information about to download the logs, see the [How to access and use your Azure Rights Management usage logs](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_AccesAndUseLogs) section in this topic.
+Før du analyserer Azure Rights Management bruksloggene, anbefaler vi at du laster ned og importere loggen til en database der du kan sortere logger basert på deres tidsstempel. Hvis du vil ha mer informasjon om å laste ned loggene, se den [Hvordan få tilgang til og bruke bruken av Azure Rights Management-logger](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md#BKMK_AccesAndUseLogs) delen i dette emnet.
 
-Because the logs are not necessarily chronological but the majority of them are written within 15 minutes of the request, when you identify the logs that you want by using their timestamp , add 15 minutes to the time that you are interested in. Then download these logs. This strategy should ensure that you get almost all logs.
+Siden loggene ikke nødvendigvis kronologisk, men fleste av dem er skrevet i løpet av 15 minutter av forespørselen, når du identifiserer loggene som du vil bruke ved hjelp av deres tidsstempel, må du legge til 15 minutter til tiden du er interessert i. Deretter laster du ned disse loggene. Denne strategien skal sørge for at du får nesten alle logger.
 
-One other thing to remember is that the timestamp on each log record is the local time of the Azure Rights Management service that processed the request. Because Azure Rights Management runs on multiple servers across multiple data center, sometimes the logs might seem to be out of sequence, even when they are sorted by their timestamp. However, the different is small and usually within a minute. In most cases, this is not an issue that would be a problem for log analysis.
+En ting å huske er at tidsstempelet på hver loggpost er lokal tid av Azure Rights Management-tjenesten behandlet forespørselen. Ettersom Azure Rights Management kjører på flere servere på tvers av flere datasenter, kan noen ganger loggene virke å være i feil rekkefølge, selv når de sorteres etter deres tidsstempel. Imidlertid er de ulike liten og vanligvis innenfor et minutt. I de fleste tilfeller er dette ikke et problem som ville være et problem for analyse av loggen.
 
-### The blob format
-Each blob is in W3C extended log format. It starts with the following two lines:
+### Blob-format
+Hver blob er utvidet W3C-loggformat. Den starter med følgende to linjer:
 
 **#Software: RMS**
 
 **#Version: 1.1**
 
-The first line identifies that these are Azure Rights Management logs. The second line identifies that the rest of the blob follows the version 1.1 specification. We recommend that any applications that parse these logs verify these two lines before continuing to parse the rest of the blob.
+Den første linjen angir at disse er Azure Rights Management-logger. Den andre linjen angir at resten av BLOBen følger versjon 1.1-spesifikasjonen. Vi anbefaler at alle programmer som kan analysere disse loggene kontrollerer disse to linjer før du fortsetter å analysere resten av BLOBen.
 
-The third line enumerates a list of field names that are separated by tabs:
+Den tredje linjen lister opp en liste over feltnavn som er atskilt med tabulatorer:
 
-**#Fields: date            time            row-id        request-type           user-id       result          correlation-id          content-id                owner-email           issuer                     template-id             file-name                  date-published      c-info         c-ip**
+**#Fields: dato tid rad-ID-typen til forespørselen om bruker-id resultatet Korrelasjons-id innholds-id eier e-utstederen mal-id filnavn Utgivelsesdato c-info c-ip**
 
-Each of the subsequent lines is a log record. The values of the fields are in the same order as the preceding line, and are separated by tabs. Use the following table to interpret the fields.
+Hver av de etterfølgende linjene er en loggpost. Verdiene i feltene er i samme rekkefølge som den foregående linjen, og er atskilt med tabulatorer. Bruk tabellen nedenfor til å tolke feltene.
 
-|Field name|W3C data type|Description|Example value|
-|--------------|-----------------|---------------|-----------------|
-|date|Date|UTC date when the request was served.<br /><br />The source is the local clock on the server that served the request.|2013-06-25|
-|time|Time|UTC time in 24-hour format when the request was served.<br /><br />The source is the local clock on the server that served the request.|21:59:28|
-|row-id|Text|Unique GUID for this log record.<br /><br />This value is useful when you aggregate logs or copy logs into another format.|1c3fe7a9-d9e0-4654-97b7-14fafa72ea63|
-|request-type|Name|Name of the RMS API that was requested.|AcquireLicense|
-|user-id|String|The user who made the request.<br /><br />The value is enclosed in single quotation marks. Some request types are anonymous, in which case the value is ”.|‘joe@contoso.com’|
-|result|String|‘Success’ if the request was served successful.<br /><br />The error type in single quotation marks if the request failed.|‘Success’|
-|correlation-id|Text|GUID that is common between the RMS client log and server log for a given request.<br /><br />This value can be useful to help troubleshooting client issues.|cab52088-8925-4371-be34-4b71a3112356|
-|content-id|Text|GUID, enclosed in curly braces that identifies the protected content (for example, a document).<br /><br />This field has a value only if request-type is AcquireLicense and is blank for all other request types.|{bb4af47b-cfed-4719-831d-71b98191a4f2}|
-|owner-email|String|Email address of the owner of the document.|alice@contoso.com|
-|issuer|String|Email address of the document issuer.|alice@contoso.com (or) FederatedEmail.4c1f4d-93bf-00a95fa1e042@contoso.onmicrosoft.com'|
-|Template-id|String|ID of the template used to protect the document.|{6d9371a6-4e2d-4e97-9a38-202233fed26e}|
-|File-name|String|File name of the document that was protected.|TopSecretDocument.docx|
-|Date-published|Date|Date when the document was protected.|2015-10-15T21:37:00|
-|c-info|String|Information about the client platform that is making the request.<br /><br />The specific string varies, depending on the application (for example, the operating system or the browser).|'MSIPC;version=1.0.623.47;AppName=WINWORD.EXE;AppVersion=15.0.4753.1000;AppArch=x86;OSName=Windows;OSVersion=6.1.7601;OSArch=amd64'|
-|c-ip|Address|IP address of the client that makes the request.|64.51.202.144|
+|Feltnavn|W3C-datatype|Beskrivelse|Verdien for eksempel|
+|------------|----------------|---------------|------------------------|
+|dato|Dato|UTC-datoen da forespørselen ble vist.<br /><br />Kilden er den lokale klokken på serveren som betjenes av forespørselen.|2013-06-25|
+|tid|Tid|UTC-tid i 24-timers format når forespørselen ble vist.<br /><br />Kilden er den lokale klokken på serveren som betjenes av forespørselen.|21:59:28|
+|rad-id|Tekst|Unik GUID for denne loggposten.<br /><br />Denne verdien er nyttig når du samle logger eller Kopier logger til et annet format.|1c3fe7a9-d9e0-4654-97b7-14fafa72ea63|
+|Forespørsel-type|Navn|Navnet på RMS-API som ble forespurt.|AcquireLicense|
+|bruker-id|Streng|Brukeren som sendte forespørselen.<br /><br />Verdien er omsluttet av enkle anførselstegn. Noen forespørselstyper er anonym, da verdien er ".|'en joe@contoso.com'|
+|resultatet|Streng|'Fullført' hvis forespørselen ble vist vellykket.<br /><br />Feiltype i enkle anførselstegn hvis forespørselen mislyktes.|'Fullført'|
+|Korrelasjons-id|Tekst|GUIDEN som er felles mellom RMS-klienten logg og Logg på server for en bestemt forespørsel.<br /><br />Denne verdien kan være nyttig for å feilsøke problemer med klienten.|cab52088-8925-4371-be34-4b71a3112356|
+|Innholds-id|Tekst|GUID, omsluttet av klammeparenteser som identifiserer det beskyttede innholdet (for eksempel et dokument).<br /><br />Dette feltet har en verdi Hvis typen til forespørselen om AcquireLicense og er tomt for alle andre forespørselstyper.|{bb4af47b-cfed-4719-831d-71b98191a4f2}|
+|eieren av e-post|Streng|E-postadressen til eieren av dokumentet.|alice@contoso.com|
+|utsteder|Streng|E-postadressen til utstederen av dokumentet.|alice@contoso.com (eller) FederatedEmail.4c1f4d-93bf-00a95fa1e042@contoso.onmicrosoft.com'|
+|Mal-id|Streng|IDen for malen som brukes til å beskytte dokumentet.|{6d9371a6-4e2d-4e97-9a38-202233fed26e}|
+|Filnavn|Streng|Filnavnet på dokumentet som ble beskyttet.|TopSecretDocument.docx|
+|Publisert av dato|Dato|Datoen da dokumentet ble beskyttet.|2015-10-15T21:37:00|
+|c-info|Streng|Informasjon om klient-plattform som foretar forespørselen.<br /><br />Den bestemte strengen varierer, avhengig av programmet (for eksempel operativsystemet eller leseren).|' MSIPC; versjon = 1.0.623.47; Prognavn = WINWORD. EXE; AppVersion = 15.0.4753.1000; AppArch = x 86; OSName = Windows: OSVersion = 6.1.7601; OSArch = amd64'|
+|c-ip|Adresse|IP-adressen til klienten som kommer med forespørselen.|64.51.202.144|
 
-#### Exceptions for the user-id field
-Although the user-id field usually indicates the user who made the request, there are two exceptions where the value does not map to a real user:
+#### Unntak for feltet bruker-id
+Selv om bruker-id-feltet angir vanligvis brukeren som sendte forespørselen, er det to unntak der verdien ikke er tilordnet til en ekte bruker:
 
--   The value **'microsoftrmsonline@&lt;YourTenantID&gt;.rms.&lt;region&gt;.aadrm.com'**.
+-   Verdien **' microsoftrmsonline ved &lt; YourTenantID &gt;. rms. &lt; område &gt;. aadrm.com'**.
 
-    This indicates an Office 365 service, such as Exchange Online or Sharepoint Online, is making the request. In the string, *&lt;YourTenantID&gt;* is the GUID for your tenant and *&lt;region&gt;* is the region where your tenant is registered. For example, **na** represents North America, **eu** represents Europe, and **ap** represents Asia.
+    Dette indikerer en Office 365-tjeneste, for eksempel Exchange Online eller Sharepoint Online, er å gjøre forespørselen. I strengen, *&lt; YourTenantID &gt;* er GUIDEN for din leier og *&lt; område &gt;* er området der leier er registrert. For eksempel **na** representerer Nord-Amerika, **eu** representerer Europa, og **ap** representerer Asia.
 
--   If you are using the RMS connector.
+-   Hvis du bruker RMS-koblingen.
 
-    Requests from this connector are logged with the service principal name that RMS automatically generates when you install the RMS connector.
+    Forespørsler fra denne koblingen er logget med hovednavn for tjeneste RMS genereres automatisk når du installerer RMS-koblingen.
 
-#### Typical request types
-There are many request types for Azure Rights Management but the following table identifies some of the most typically used request types.
+#### Vanlig forespørselstyper
+Det finnes mange forespørselstyper for Azure Rights Management, men tabellen nedenfor viser noen av de mest vanlige forespørselstyper.
 
-|Request type|Description|
-|----------------|---------------|
-|AcquireLicense|A client from a Windows based machine is requesting a license for RMS-protected content.|
-|AcquirePreLicense|A client, on behalf of the user, is requesting for a license for RMS-protected content.|
-|AcquireTemplates|A call was made to acquires templates based on template IDs|
-|AcquireTemplateInformation|A call was made to get the IDs of the template from the service.|
-|AddTemplate|A call is  made from the Azure classic portal to add a template.|
-|BECreateEndUserLicenseV1|A call is  made from a mobile device to create an end-user license.|
-|BEGetAllTemplatesV1|A call is  made from a mobile device (back-end) to get all the templates.|
-|Certify|The client is certifying the content for protection.|
-|Decrypt|The client is attempting to decrypt the RMS-protected content.|
-|DeleteTemplateById|A call is  made from the Azure classic portal, to delete a template by template  ID.|
-|ExportTemplateById|A call is  made from the Azure classic portal to export a template based on a template ID.|
-|FECreateEndUserLicenseV1|Similar to the AcquireLicense request but from mobile devices.|
-|FECreatePublishingLicenseV1|The same as Certify and GetClientLicensorCert combined, from mobile clients.|
-|FEGetAllTemplates|A call is  made, from a mobile device (front-end) to get the templates.|
-|GetAllTemplates|A call is  made from the Azure classic portal, to get all the templates.|
-|GetClientLicensorCert|The client is requesting a publishing certificate (that is later used to protect content) from a Windows-based computer.|
-|GetConfiguration|An Azure PowerShell cmdlet is called to get the configuration of the Azure RMS tenant.|
-|GetConnectorAuthorizations|A call  is made from the RMS connectors to get their configuration from the cloud.|
-|GetTenantFunctionalState|The Azure classic portal is checking whether Azure RMS is activated.|
-|GetTemplateById|A call is  made from the Azure classic portal to get a template by specifying a template ID.|
-|ExportTemplateById|A call is being made from the Azure classic portal to export a template by specifying a template ID.|
-|FindServiceLocationsForUser|A call is made to query for URLs, which is used to call Certify or AcquireLicense.|
-|ImportTemplate|A call is  made from the Azure classic portal to import a template.|
-|ServerCertify|A call is  made from an RMS-enabled client (such as SharePoint) to certify the server.|
-|SetUsageLogFeatureState|A call is  made to enable usage logging.|
-|SetUsageLogStorageAccount|A call is  made to specify the location of the Azure RMS logs.|
-|SignDigest|A call is made when a key is used for signing purposes. This is called typically once per AcquireLicence (or FECreateEndUserLicenseV1), Certify, and GetClientLicensorCert (or FECreatePublishingLicenseV1).|
-|UpdateTemplate|A call is  made from the Azure classic portal to update an existing template.|
+|Type forespørsel|Beskrivelse|
+|--------------------|---------------|
+|AcquireLicense|en klient fra en Windows-basert maskin ber om en lisens til RMS-beskyttet innhold.|
+|AcquirePreLicense|en-klient på vegne av brukeren ber om en lisens til RMS-beskyttet innhold.|
+|AcquireTemplates|et kall ble gjort til får maler som er basert på malen IDer|
+|AcquireTemplateInformation|et kall ble gjort til å hente IDer med malen fra tjenesten.|
+|AddTemplate|oppringingen blir foretatt fra Azure portal for å legge til en mal.|
+|BECreateEndUserLicenseV1|et kall gjøres fra en mobil enhet til å opprette en sluttbrukerlisens.|
+|BEGetAllTemplatesV1|et kall gjøres fra en mobil enhet (back-end) til å hente alle malene.|
+|Certify|klienten er sertifisering innholdet for beskyttelse.|
+|Dekryptere|klienten forsøker å dekryptere det RMS-beskyttet innholdet.|
+|DeleteTemplateById|et kall gjøres fra Azure portal til å slette en mal og mal-ID.|
+|ExportTemplateById|oppringingen blir foretatt fra Azure portal til å eksportere en mal basert på en mal-ID|
+|FECreateEndUserLicenseV1|ligner på AcquireLicense-forespørselen, men fra mobile enheter.|
+|FECreatePublishingLicenseV1|det samme som Certify og GetClientLicensorCert kombineres, fra mobile klienter.|
+|FEGetAllTemplates|et kall gjøres, fra en mobil enhet (front) til å hente malene.|
+|GetAllTemplates|oppringingen blir foretatt fra Azure portal for å få alle malene.|
+|GetClientLicensorCert|klienten ber om et sertifikat for publisering (som senere brukes til å beskytte innhold) fra en Windows-basert datamaskin.|
+|GetConfiguration|kalles en Azure PowerShell-cmdleten for å få konfigurasjonen av Azure RMS-leier.|
+|GetConnectorAuthorizations|et kall gjøres fra RMS-koblinger til å få sine konfigurasjoner fra skyen.|
+|GetTenantFunctionalState|The Azure portal kontrollerer om Azure RMS er aktivert.|
+|GetTemplateById|oppringingen blir foretatt fra Azure portal for å få en mal ved å angi en mal-ID|
+|ExportTemplateById|et kall gjøres fra Azure portal til å eksportere en mal ved å angi en mal-ID|
+|FindServiceLocationsForUser|et kall gjøres til å søke etter URL-adresser, som brukes til å kalle Certify eller AcquireLicense.|
+|ImportTemplate|et kall gjøres fra Azure portal til å importere en mal.|
+|ServerCertify|oppringingen blir foretatt et RMS-aktivert klient (for eksempel SharePoint) for å sertifisere serveren.|
+|SetUsageLogFeatureState|et kall gjøres til å aktivere Trafikklogging.|
+|SetUsageLogStorageAccount|et kall gjøres til å angi plasseringen av Azure RMS-loggene.|
+|SignDigest|et kall gjøres når en nøkkel brukes for å signere formål. Dette kalles vanligvis én gang per AcquireLicence (eller FECreateEndUserLicenseV1), Certify, og GetClientLicensorCert (eller FECreatePublishingLicenseV1).|
+|UpdateTemplate|et kall gjøres fra Azure portal til å oppdatere en eksisterende mal.|
 
-## <a name="BKMK_PowerShell"></a>Windows PowerShell reference
-Use the following Windows PowerShell cmdlets to help you configure and use Azure Rights Management usage logging:
+## <a name="BKMK_PowerShell"></a>Windows PowerShell-referanse
+Bruk følgende Windows PowerShell-cmdleter til å hjelpe deg med å konfigurere og bruke Azure Rights Management Trafikklogging:
 
--   [Disable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629404.aspx)
+-   [Deaktiver AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629404.aspx)
 
--   [Enable-AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629421.aspx)
+-   [Aktiver AadrmUsageLogFeature](https://msdn.microsoft.com/library/azure/dn629421.aspx)
 
 -   [Get-AadrmUsageLog](https://msdn.microsoft.com/library/azure/dn629401.aspx)
 
@@ -333,10 +321,10 @@ Use the following Windows PowerShell cmdlets to help you configure and use Azure
 
 -   [Get-AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629419.aspx)
 
--   [Set-AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx)
+-   [Sett AadrmUsageLogStorageAccount](https://msdn.microsoft.com/library/azure/dn629426.aspx)
 
-For more information about using Windows PowerShell for Azure Rights Management, see [Administering Azure Rights Management by Using Windows PowerShell](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md).
+Hvis du vil ha mer informasjon om hvordan du bruker Windows PowerShell for Azure Rights Management, se [Administrasjon av Azure Rights Management ved hjelp av Windows PowerShell](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md).
 
-## See Also
-[Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md)
+## Se også
+[Ved hjelp av Azure Rights Management](../Topic/Using_Azure_Rights_Management.md)
 

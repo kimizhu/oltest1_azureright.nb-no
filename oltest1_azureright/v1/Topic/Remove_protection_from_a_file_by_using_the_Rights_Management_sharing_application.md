@@ -3,36 +3,35 @@ description: na
 keywords: na
 title: Remove protection from a file by using the Rights Management sharing application
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: da95b938-eaad-4c83-a21e-ff1d4872aae4
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Remove protection from a file by using the Rights Management sharing application
-To remove protection from a file (that is, unprotect a file) that was previously protected by using the RMS sharing application, use the **Remove Protection** option from File Explorer.
+# Fjerne beskyttelsen fra en fil ved hjelp av rettighetsadministrasjon deling av program
+Å fjerne beskyttelsen fra en fil (det vil si oppheve beskyttelsen av en fil) som tidligere var beskyttet ved hjelp av RMS deling program, bruker du **fjerne beskyttelse** alternativet fra File Explorer.
 
 > [!IMPORTANT]
-> You must be an owner of the file to remove protection.
+> Du må være en eier av filen for å fjerne beskyttelsen.
 
-### To remove protection from a file
+### Å fjerne beskyttelsen fra en fil
 
-1.  From File Explorer, right-click the file (for example, Sample.ptxt), select **Protect with RMS**, click **Protect in-place**, and then click **Remove Protection**:
+1.  Fra File Explorer, høyreklikk filen (for eksempel Sample.ptxt), velger du **Beskytt med RMS**, klikker du **beskytte på stedet**, og klikk deretter **fjerne beskyttelse**:
 
     ![](../Image/ADRMS_MSRMSApp_RemoveProtection.png)
 
-    You might be prompted for credentials.
+    Du kan bli bedt om påloggingsinformasjon.
 
-The original protected file is deleted (for example, Sample.ptxt) and replaced with a file that has the same name but with the unprotected file name extension (for example, Sample.txt).
+Den opprinnelige beskyttede filen er slettet (for eksempel Sample.ptxt) og erstattet med en fil med samme navn, men den ubeskyttede filtypen (for eksempel Sample.txt).
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## Eksempler og andre instruksjoner
+For eksempler på hvordan du kan bruke IRM deling av programmet, og hvordan-instruksjoner, kan du se følgende deler fra Rights Management-brukerhåndboken for deling program:
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [Eksempler for å bruke RMS deling av program](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [Hva vil du gjøre?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## Se også
+[Rights Management deling program Brukerhåndbok](../Topic/Rights_Management_sharing_application_user_guide.md)
 

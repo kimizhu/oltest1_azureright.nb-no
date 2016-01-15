@@ -3,59 +3,58 @@ description: na
 keywords: na
 title: Configuring Usage Rights for Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 97ddde38-b91b-42a5-8eb4-3ce6ce15393d
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Configuring Usage Rights for Azure Rights Management
-When you set protection on files or emails by using Azure Rights Management (Azure RMS) and you do not use a template, you must configure the usage rights yourself. In addition, when you configure custom templates for Azure RMS, you select the usage rights that will then be automatically applied when the template is selected by users, administrators, or configured services. For example, in the Azure  classic portal you can select roles that configure a logical grouping of usage rights, or you can configure the individual rights.
+# Konfigurere bruksrettigheter for Azure Rights Management
+Når du angir beskyttelse på filer eller e-post ved hjelp av Azure Rights Management (Azure RMS), og du ikke bruker en mal, må du konfigurere bruksrettighetene selv. Når du konfigurerer egendefinerte maler for Azure RMS, velger du i tillegg bruksrettigheter som deretter brukes automatisk når malen er valgt av brukere, administratorer, eller konfigurert tjenester. For eksempel i Azure portal kan du velge roller som konfigurerer en logisk gruppering av bruksrettigheter, eller du kan konfigurere individuelle rettigheter.
 
-Use this topic to help you configure the usage rights you want for the application you’re using and understand how these rights are interpreted by applications.
+Bruke dette emnet til å hjelpe deg med å konfigurere bruksrettigheter du vil bruke for programmet du bruker, og forstå hvordan disse rettighetene tolkes av programmer.
 
-## Usage Rights and Descriptions
-The following table lists and describes the usage rights that Rights Management supports, and how they are used and interpreted. In this table, the **Common name** is typically how you might see the usage right displayed or referenced, as a more friendly version of the single-word value that is used in the code (the **Encoding in policy** value). The **API Constant or Value** is the SDK name for an MSIPC API call, used when you write an RMS-enlightened application that checks for a usage right, or adds a usage right to a policy.
+## Bruksrettigheter og beskrivelser
+Følgende tabell viser og beskriver bruksrettigheter som støtter rettighetsbehandling, og hvordan de brukes og tolkes. I denne tabellen, den **vanlig navn** er vanligvis hvor du kan se Bruk høyre vises eller referert til som en mer brukervennlig versjon av ettordsverdi som brukes i koden (den **koding i policyen** verdi). Den **API konstant eller verdien** er navnet på SDK for et MSIPC API-kall, brukes når du skriver et RMS-enlightened program som ser etter en Bruk høyre, eller legger til en høyre mot en policy.
 
-|Common name|Encoding in policy|Description|Implementation in Office custom rights|Name in the Azure  classic portal|Name in AD RMS templates|API constant or value|Additional information|
-|---------------|----------------------|---------------|------------------------------------------|-------------------------------------|----------------------------|-------------------------|--------------------------|
-|Edit Content, Edit|DOCEDIT|Allows the user to modify, rearrange, format or filter the content inside the application. It does not grant the right to save the edited copy.|As part of the **Change** and **Full Control** options.|**Edit Content**|**Edit**|Not applicable|In Office applications, this right also allows the user to save the document.|
-|Save|EDIT|Allows the user to save the document in its current location.|As part of the **Change** and **Full Control** options.|**Save File**|**Save**|IPC_GENERIC_WRITEL"EDIT"|In Office applications, this right also allows the user to modify the document.|
-|Comment|COMMENT|Enables the option to add annotations or comments to the content.|Not implemented|Not implemented|Not implemented|IPC_GENERIC_COMMENTL"COMMENT"|This right is available in the SDK, is available as an ad-hoc policy in the RMS Protection module for Windows PowerShell, and has been implemented in some software vendor applications. However, it is not widely used and is not currently supported by Office applications.|
-|Save As, Export|EXPORT|Enables the option to save the content to a different file name (Save As). Depending on the application, the file might be saved without protection.|As part of the **Change** and **Full Control** options.|**Export Content (Save As)**|**Export (Save As)**|IPC_GENERIC_EXPORTL"EXPORT"|This right also allows the user to perform other export options in applications, such as **Send to OneNote**.|
-|Forward|FORWARD|Enables the option to forward an email message and to add recipients to the **To** and **Cc** lines.|Denied when using the **Do Not Forward** standard policy.|**Forward**|**Forward**|IPC_EMAIL_FORWARDL"FORWARD"|Does not allow the forwarder to grant rights to other users as part of the forward action.|
-|Full Control|OWNER|Grants all rights to the document and all available actions can be performed.|As the **Full Control** custom option.|**Full Control**|**Full Control**|IPC_GENERIC_ALLL"OWNER"|Includes the ability to remove protection.|
-|Print|PRINT|Enables the options to print the content.|As the **Print Content** option in custom permissions. Not a per-recipient setting.|**Print**|**Print**|IPC_GENERIC_PRINTL"PRINT|No additional information|
-|Reply|REPLY|Enables the Reply option in an email client, without allowing changes in the **To** or **Cc** lines.|Not applicable|**Reply**|**Reply**|IPC_EMAIL_REPLY|No additional information|
-|Reply All|REPLYALL|Enables the **Reply All** option in an email client, but doesn’t allow the user to add recipients to the **To** or **Cc** lines.|Not applicable|**Reply All**|**Reply All**|IPC_EMAIL_REPLYALLL"REPLYALL"|No additional information|
-|View, Open, Read|VIEW|Allows the user to open the document and see the content.|As the **Read** custom policy, **View** option.|**View Content**|**View**|IPC_GENERIC_READL"VIEW"|No additional information|
-|Copy|EXTRACT|Enables options to copy data from the document into the same or another document.|As the **Allow users with Read access to copy content** custom policy option.|**Copy and Extract content**|**Extract**|IPC_GENERIC_EXTRACTL"EXTRACT"|In some applications it also allows the whole document to be saved in unprotected form.|
-|View Rights|VIEWRIGHTSDATA|Allows the user to see the policy that is applied to the document.|Not implemented|**View Assigned Rights**|**View Rights**|IPC_READ_RIGHTSL"VIEWRIGHTSDATA"|Ignored by some applications.|
-|Change Rights|EDITRIGHTSDATA|Allows the user to change the policy that is applied to the document. Includes including removing protection.|Not implemented|**Change Rights**|**Edit Rights**|IPC_WRITE_RIGHTSL"EDITRIGHTSDATA"|No additional information|
-|Allow Macros|OBJMODEL|Enables the option to run macros or perform other programmatic or remote access to the content in a document.|As the **Allow Programmatic Access** custom policy option. Not a per-recipient setting.|**Allow Macros**|**Allow Macros**|Not applicable|No additional information|
+|Fellesnavn|Koding i policy|Beskrivelse|Implementering i egendefinerte Office-rettigheter|Navn i Azure portal|Navn i AD RMS-maler|API-konstant eller verdi|Tilleggsinformasjon|
+|--------------|-------------------|---------------|-----------------------------------------------------|-----------------------|-----------------------|----------------------------|-----------------------|
+|Rediger innhold, Rediger|DOCEDIT|Lar brukeren endre, ordne, formatere eller filtrere innholdet i programmet. Den gir ikke rett til å lagre den redigerte versjonen.|Som en del av den **endre** og **Full kontroll** alternativer.|**Rediger innhold**|**Rediger**|Ikke tilgjengelig|Denne rettigheten kan også brukeren å lagre dokumentet i Office-programmer.|
+|Lagre|REDIGER|Tillater brukeren å lagre dokumentet i gjeldende plassering.|Som en del av den **endre** og **Full kontroll** alternativer.|**Lagre fil**|**Lagre**|IPC_GENERIC_WRITEL "REDIGER"|Denne rettigheten kan også brukeren å endre dokumentet i Office-programmer.|
+|Kommentar|KOMMENTAR|Aktiverer alternativet for å legge til merknader eller merknader i innholdet.|Ikke implementert|Ikke implementert|Ikke implementert|IPC_GENERIC_COMMENTL "KOMMENTAR"|Denne rettigheten er tilgjengelig i SDK er tilgjengelig som en ad hoc-policy i RMS-beskyttelse-modul for Windows PowerShell og er implementert i noen programmer for leverandøren. Men det er ikke særlig utbredt, og støttes ikke av Office-programmer.|
+|Lagre som, eksport|EKSPORTER|Aktiverer alternativet for å lagre innholdet på et annet filnavn (Lagre som). Avhengig av applikasjonen, kan filen lagres uten beskyttelse.|Som en del av den **endre** og **Full kontroll** alternativer.|**Eksportere innhold (Lagre som)**|**Eksportere (Lagre som)**|IPC_GENERIC_EXPORTL "EKSPORT"|Denne rettigheten kan også til å utføre andre eksportalternativer i programmer, for eksempel **Send til OneNote**.|
+|Fremover|FREMOVER|Aktiverer alternativet å videresende en e-postmelding og legge til mottakere i **til** og **kopi** linjer.|Nektet ved hjelp av den **ikke Videresend** standard policy.|**Fremover**|**Fremover**|IPC_EMAIL_FORWARDL "FREMOVER"|Tillater videresending til å gi rettigheter til andre brukere som en del av Videresend-handlingen.|
+|Full kontroll|EIER|Gir alle rettigheter til dokumentet og alle tilgjengelige handlinger kan utføres.|Som den **Full kontroll** egendefinerte alternativet.|**Full kontroll**|**Full kontroll**|IPC_GENERIC_ALLL "EIER"|Inkluderer muligheten til å fjerne beskyttelsen.|
+|Skriv ut|SKRIV UT|Aktiverer alternativer for utskrift av innhold.|Som den **Skriv ut innhold** alternativ i egendefinerte tillatelser. Ikke en per mottaker-innstilling.|**Skriv ut**|**Skriv ut**|IPC_GENERIC_PRINTL SKRIV UT"|Ingen tilleggsinformasjon|
+|Svar|SVAR|Aktiverer alternativet svar i e-postklient, uten å tillate endringer i den **til** eller **kopi** linjer.|Ikke tilgjengelig|**Svar**|**Svar**|IPC_EMAIL_REPLY|Ingen tilleggsinformasjon|
+|Svar til alle|REPLYALL|Gjør det mulig for **Svar til alle** alternativ i e-postklient, men ikke la brukeren legge til mottakere som skal til **til** eller **kopi** linjer.|Ikke tilgjengelig|**Svar til alle**|**Svar til alle**|IPC_EMAIL_REPLYALLL "REPLYALL"|Ingen tilleggsinformasjon|
+|Vis åpne, Les|VIS|Lar brukeren til å åpne dokumentet og vise innholdet.|Som den **lese** egendefinert policy, **Vis** alternativet.|**Vis innhold**|**Vis**|IPC_GENERIC_READL "VIS"|Ingen tilleggsinformasjon|
+|Kopier|TREKK UT|Aktiverer alternativene for å kopiere data fra dokumentet til den samme eller et annet dokument.|Som den **Tillat brukere med lesetilgang å kopiere innhold** alternativet egendefinert policy.|**Kopier og Trekk ut innhold**|**Trekk ut**|IPC_GENERIC_EXTRACTL "EXTRACT"|I noen programmer kan også hele dokumentet lagres ubeskyttet.|
+|Visningsrettigheter|VIEWRIGHTSDATA|Lar brukeren se policyen som er brukt i dokumentet.|Ikke implementert|**Vis tilordnet rettigheter**|**Visningsrettigheter**|IPC_READ_RIGHTSL "VIEWRIGHTSDATA"|Ignorert av noen programmer.|
+|Endre rettigheter|EDITRIGHTSDATA|Tillater brukeren å endre policyen som er brukt i dokumentet. Inkluderer blant annet fjerne beskyttelsen.|Ikke implementert|**Endre rettigheter**|**Rediger rettigheter**|IPC_WRITE_RIGHTSL "EDITRIGHTSDATA"|Ingen tilleggsinformasjon|
+|Tillater at makroer|OBJMODEL|Gir mulighet til å kjøre makroer eller utføre andre programmatisk eller ekstern tilgang til innholdet i et dokument.|Som den **Tillat programmatisk tilgang** alternativet egendefinert policy. Ikke en per mottaker-innstilling.|**Tillater at makroer**|**Tillater at makroer**|Ikke tilgjengelig|Ingen tilleggsinformasjon|
 
-## Rights included in permissions  levels
-Some applications group usage rights together into permissions levels, to make it easier to select usage rights that are typically used together. These permisisons levels help to abstract a level of complexity from users, so they can choose options that are role-based.  For example, **Reviewer** and **Co-Author**. Although these options often show users a summary of the rights, they might not include every right that is listed in the previous table.
+## Rettighetene som er inkludert i tillatelsesnivåene
+Noen programmer gruppere bruksrettigheter til tillatelsesnivåer for å gjøre det enklere å velge bruksrettigheter som vanligvis brukes sammen. Disse permisisons hjelper til abstrakt et nivå av kompleksitet fra brukere, slik at de kan velge alternativer som er rollebasert.  For eksempel **redaktør** og **medforfatter**. Selv om disse alternativene vises ofte brukere et sammendrag av rettighetene, kan de ikke ta hver rettighet som er oppført i tabellen ovenfor.
 
-Use the following table for a list of these permissions levels and a complete list of the rights that they contain.
+Bruk tabellen nedenfor for en oversikt over disse tillatelsesnivåene og en fullstendig liste over rettighetene de inneholder.
 
-|Permissions Level|Applications|Rights included (common name)|
-|---------------------|----------------|---------------------------------|
-|Viewer|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Reply<br /><br />Reply All|
-|Reviewer|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />Reply [footnote 1]<br /><br />Reply All [footnote 1]<br /><br />Forward [footnote 1]|
-|Co-Author|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />Copy<br /><br />View Rights<br /><br />Change Rights<br /><br />Allow Macros<br /><br />Save As, Export<br /><br />Print<br /><br />Reply [footnote 1]<br /><br />Reply All [footnote 1]<br /><br />Forward [footnote 1]|
-|Co-Owner|Azure classic portal<br /><br />Rights Management sharing application for Windows|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />Copy<br /><br />View Rights<br /><br />Change Rights<br /><br />Allow Macros<br /><br />Save As, Export<br /><br />Print<br /><br />Reply [footnote 1]<br /><br />Reply All [footnote 1]<br /><br />Forward [footnote 1]<br /><br />Full Control|
-Footnote 1: Not applicable to the Rights Management sharing application for Windows
+|Tillatelsesnivået|Programmer|Rettighetene som er inkludert (felles navn)|
+|---------------------|--------------|-----------------------------------------------|
+|Viewer|Azure portal<br /><br />Rettighetsadministrasjon deling av programmer for Windows|Vis åpne, Les<br /><br />Svar<br /><br />Svar til alle|
+|Redaktør|Azure portal<br /><br />Rettighetsadministrasjon deling av programmer for Windows|Vis åpne, Les<br /><br />Lagre<br /><br />Rediger innhold, Rediger<br /><br />Reply<sup>*</sup><br /><br />Svar til alle<sup>*</sup><br /><br />Fremover<sup>*</sup>|
+|Medforfatter|Azure portal<br /><br />Rettighetsadministrasjon deling av programmer for Windows|Vis åpne, Les<br /><br />Lagre<br /><br />Rediger innhold, Rediger<br /><br />Kopier<br /><br />Visningsrettigheter<br /><br />Endre rettigheter<br /><br />Tillater at makroer<br /><br />Lagre som, eksport<br /><br />Skriv ut<br /><br />Reply<sup>*</sup><br /><br />Svar til alle<sup>*</sup><br /><br />Fremover<sup>*</sup>|
+|Medeier|Azure portal<br /><br />Rettighetsadministrasjon deling av programmer for Windows|Vis åpne, Les<br /><br />Lagre<br /><br />Rediger innhold, Rediger<br /><br />Kopier<br /><br />Visningsrettigheter<br /><br />Endre rettigheter<br /><br />Tillater at makroer<br /><br />Lagre som, eksport<br /><br />Skriv ut<br /><br />Reply<sup>*</sup><br /><br />Svar til alle<sup>*</sup><br /><br />Fremover<sup>*</sup><br /><br />Full kontroll|
+<sup>*</sup> Gjelder ikke for rettighetsadministrasjon deling av programmer for Windows
 
-## Rights included in the default templates
-The rights that are included with the default templates are as follows:
+## Rettighetene som er inkludert i standardmaler
+Rettighetene som er inkludert i standardmaler er som følger:
 
-|Display Name|Rights included (common name)|
-|----------------|---------------------------------|
-|&lt;organization name&gt; - Confidential View Only|View, Open, Read|
-|&lt;organization name&gt; - Confidential|View, Open, Read<br /><br />Save<br /><br />Edit Content, Edit<br /><br />View Rights<br /><br />Allow Macros<br /><br />Forward<br /><br />Reply<br /><br />Reply All|
+|Visningsnavn|Rettighetene som er inkludert (felles navn)|
+|----------------|-----------------------------------------------|
+|&lt; navn &gt; organisasjon - bare konfidensiell|Vis åpne, Les|
+|&lt; navn &gt; organisasjon - konfidensiell|Vis åpne, Les<br /><br />Lagre<br /><br />Rediger innhold, Rediger<br /><br />Visningsrettigheter<br /><br />Tillater at makroer<br /><br />Fremover<br /><br />Svar<br /><br />Svar til alle|
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Se også
+[Konfigurere Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
 

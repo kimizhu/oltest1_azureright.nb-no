@@ -3,286 +3,284 @@ description: na
 keywords: na
 title: What is Azure Rights Management?
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: aeeebcd7-6646-4405-addf-ee1cc74df5df
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# What is Azure Rights Management?
-Azure Rights Management (Azure RMS) is an information protection solution for organizations that want to protect their data in today's challenging working environment.
+# Hva er Azure Rights Management?
+Azure Rights Management (Azure RMS) er en løsning for beskyttelse av informasjon for organisasjoner som vil beskytte sine data i dagens utfordrende arbeidsmiljø.
 
-These challenges include the need to be Internet-connected, with users bringing personal device to work, accessing company data on the road and home, and sharing sensitive information with important business partners. As part of their daily work, users share information by using email, file-sharing sites, and cloud services. In these scenarios, traditional security controls (such as access control lists and NTFS permissions) and firewalls have limited effectiveness if you want to protect your company data while still empowering your users to work efficiently.
+Disse utfordringene er behovet for å være Internett-tilkoblede brukere å bringe personlige enheten skal fungere, tilgang til firmadataene på veien og Hjem og deling av sensitiv informasjon med viktige forretningspartnere. Som en del av deres daglige arbeid, kan brukere dele informasjon ved hjelp av e-post, webområder for deling av filer, og sky tjenester. I disse scenariene, har tradisjonell sikkerhetskontroller (for eksempel lister og NTFS-tillatelser) og brannmurer begrenset effektiv hvis du vil beskytte dataene selskap mens du fremdeles styrke brukerne til å arbeide effektivt.
 
-In comparison, Azure RMS can protect your company’s sensitive information in all these scenarios. It uses encryption, identity, and authorization policies to help secure your files and email, and it works across multiple devices—phones, tablets, and PCs. Information can be protected both within your organization and outside your organization because that protection remains with the data, even when it leaves your organization’s boundaries. As an example, employees might email a document to a partner company, or they save a document to their cloud drive. The persistent protection that Azure RMS provides not only helps to secure your company data, but might also be legally mandated for compliance, legal discovery requirements, or simply good information management practices.
+Til sammenligning kan Azure RMS beskytte selskapets sensitiv informasjon i disse scenariene. Den bruker kryptering, identitet og retningslinjer for godkjenning til å sikre filer og e-post, og den fungerer på tvers av flere enheter, telefoner, tavler og PCer. Informasjon som kan beskyttes i organisasjonen og utenfor organisasjonen fordi den beskyttelsen fortsetter med data, selv når den forlater grensene for din organisasjon. For eksempel ansatte kan sende e-post et dokument til en partnerselskapet, eller de lagrer et dokument til sine cloud-stasjon. Fast beskyttelse som Azure RMS gir ikke bare bidrar til å sikre dataene selskap, men også kan være lovlig obligatorisk for overholdelse, discovery juridiske krav eller ganske enkelt en god plan metoder.
 
-But very importantly, authorized people and services (such as search and indexing) can continue to read and inspect the data that Azure RMS protects, which is not easily accomplished with other information protection solutions that use peer-to-peer encryption. This ability is sometimes referred to as “reasoning over data” and is a crucial element in maintaining control of your organization’s data.
+Men svært viktigere autoriserte personer og tjenester (for eksempel søk og indeksering) kan fortsette å lese og se dataene som beskytter Azure RMS, ikke gjøres lett med andre løsninger for beskyttelse som bruker kryptering for node-til-node. Denne funksjonen blir noen ganger referert til som "logikk over data", og er et viktig element i å beholde kontrollen over organisasjonens data.
 
-The following picture shows how Azure RMS works as a Rights Management solution for Office 365 as well as for on-premises servers and services. You'll also see that it supports the popular end user devices that run Windows, Mac OS, iOS, Android, and Windows Phone.
+Det påfølgende bildet viser hvordan Azure RMS fungerer som en Rights Management-løsning for Office 365 samt lokale servere og tjenester. Du vil også se at den støtter populære sluttbruker-enheter som kjører Windows, Mac OS, iOS, Android og Windows Phone.
 
 ![](../Image/AzRMS_elements.png)
 
 > [!TIP]
-> At this point, you might find the additional resources useful:
+> Du kan nå finne flere ressurser nyttig:
 > 
-> -   Two minute video: [What is Microsoft Azure Rights Management](http://technet.microsoft.com/dn833005.aspx)
-> -   Five-step tutorial: [Quick Start Tutorial for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md)
-> -   Azure RMS requirements, including subscription options to purchase or evaluate: [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md)
+> -   To minutters video: [Hva er Microsoft Azure Rights Management](http://technet.microsoft.com/dn833005.aspx)
+> -   Fem trinn opplæring: [Rask Start opplæring for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md)
+> -   Azure RMS-krav, inkludert alternativer for abonnement til å kjøpe eller vurdere: [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md)
 
-Use the following sections to learn more about Azure RMS:
+Bruk delene nedenfor for å lære mer om Azure RMS:
 
--   [What problems does Azure RMS solve?](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMSrequirements)
+-   [Hvilke problemer løser Azure RMS?](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMSrequirements)
 
-    -   [Security, compliance, and regulatory requirements](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScompliance)
+    -   [Sikkerhet, samsvar og lovbestemte krav](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScompliance)
 
--   [Azure RMS in action: What administrators and users see](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMSpictures)
+-   [Azure RMS i aksjon: Administratorer og brukere ser](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMSpictures)
 
-    -   [Activating and configuring Rights Management](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_ManagementPortal)
+    -   [Aktivere og konfigurere Rights Management](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_ManagementPortal)
 
-    -   [Automatically protecting files on file servers running Windows Server and File Classification Infrastructure](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_FCI)
+    -   [Automatisk beskyttelse av filer på filservere som kjører Windows Server og filen klassifisering infrastruktur](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_FCI)
 
-    -   [Automatically protecting emails with Exchange Online and data loss prevention policies](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_DLP)
+    -   [Automatisk beskyttelse av e-post med Exchange Online og datapolicyer tap forebygging](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_DLP)
 
-    -   [Automatically protecting files with SharePoint Online and protected libraries](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharePoint)
+    -   [Automatisk beskyttelse av filer med SharePoint Online og beskyttet biblioteker](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharePoint)
 
-    -   [Users safely share attachments with mobile users](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharingApp)
+    -   [Brukere dele trygt vedlegg med mobile brukere](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharingApp)
 
--   [How does Azure RMS work? Under the hood](../Topic/What_is_Azure_Rights_Management_.md#BKMK_HowRMSworks)
+-   [Hvordan fungerer Azure RMS? Under panseret](../Topic/What_is_Azure_Rights_Management_.md#BKMK_HowRMSworks)
 
-    -   [Cryptographic controls used by Azure RMS: Algorithms and key lengths](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScrytographics)
+    -   [Brukes av Azure RMS kryptografiske kontroller: Algoritmer og nøkler](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScrytographics)
 
-    -   [Walkthrough of how Azure RMS works: First use, content protection, content consumption](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Walthrough)
+    -   [Gjennomgang av hvordan Azure RMS fungerer: Bruk først, beskyttelse, innhold forbruk av innhold](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Walthrough)
 
--   [Next steps](../Topic/What_is_Azure_Rights_Management_.md#BKMK_NextSteps)
+-   [Neste trinn](../Topic/What_is_Azure_Rights_Management_.md#BKMK_NextSteps)
 
-## <a name="BKMK_RMSrequirements"></a>What problems does Azure RMS solve?
-Use the following table to identify business requirements or problems that your organization might have, and how Azure RMS can address these.
+## <a name="BKMK_RMSrequirements"></a>Hvilke problemer løser Azure RMS?
+Bruk tabellen nedenfor til å identifisere forretningskrav eller problemer som organisasjonen kan ha og hvordan Azure RMS kan løse disse.
 
-|Requirement or problem|Solved by Azure RMS|
-|--------------------------|-----------------------|
-|Protect all file types|√ In previous implementation of Rights Management, only Office files could be protected, using native protection. Now, [generic protection](https://technet.microsoft.com/library/dn574738%28v=ws.10%29.aspx) means that all file types are supported.|
-|Protect files anywhere|√ When a file is saved to a location ([protect in-place](https://technet.microsoft.com/library/dn574733%28v=ws.10%29.aspx)), the protection stays with the file, even if it is copied to storage that is not under the control of IT, such as a cloud storage service.|
-|Share files securely by email|√ When a file is shared by email ([share protected](https://technet.microsoft.com/library/dn574735%28v=ws.10%29.aspx)), the file is protected as an attachment to an email message, with instructions how to open the protected attachment. The email text is not encrypted, so the recipient can always read these instructions. However, because the attached document is protected, only authorized users will be able to open it, even if the email or document is forwarded to other people.|
-|Auditing and monitoring|√ You can [audit and monitor usage](https://technet.microsoft.com/library/dn529121.aspx) of your protected files, even after these files leave your organization’s boundaries.<br /><br />For example, you work for Contoso, Ltd. You are working on a joint project with 3 people from Fabrikam, Inc. You email these 3 people a document that you protect and restrict to read-only. Azure RMS auditing can provide the following information:<br /><br />Whether the people you specified in Fabrikam opened the document, and when.<br /><br />Whether other people that you didn’t specify attempted (and failed) to open the document—perhaps because it was forwarded or saved to a shared location that others could access.<br /><br />Whether any of the specified people tried (and failed) to print or change the document.|
-|Support for all commonly used devices, not just Windows computers|√ [Supported devices](https://technet.microsoft.com/library/dn655136.aspx) include:<br /><br />Windows computers and phones<br /><br />Mac computers<br /><br />iOS tablets and phones<br /><br />Android tablets and phones|
-|Support for business-to-business collaboration|√ Because Azure RMS is a cloud service, there’s no need to explicitly configure trusts with other organizations before you can share protected content with them. If they already have an Office 365 or an Azure AD directory, collaboration across organizations is automatically supported. If they do not, users can sign up for the free [RMS for individuals](https://technet.microsoft.com/library/dn592127.aspx) subscription.|
-|Support for on-premises services, as well as Office 365|√  In addition to working [seamlessly with Office 365](https://technet.microsoft.com/library/jj585004.aspx), you can also use Azure RMS with the following on-premises services when you deploy the [RMS connector](https://technet.microsoft.com/library/dn375964.aspx):<br /><br />Exchange Server<br /><br />SharePoint Server<br /><br />Windows Server running File Classification Infrastructure|
-|Easy activation|√ [Activating the Rights Management service](https://technet.microsoft.com/library/jj658941.aspx) for users requires just a couple of clicks in the Azure classic portal.|
-|Ability to scale across your organization, as needed|√ Because Azure RMS runs as a cloud service with the Azure elasticity to scale up and out, you don’t have to provision or deploy additional on-premises servers.|
-|Ability to create simple and flexible policies|√ [Customized rights policy templates](https://technet.microsoft.com/library/dn642472.aspx) provide a quick and easy solution for administrators to apply policies, and for users to apply the correct level of protection for each document and restrict access to people inside your organization.<br /><br />For example, for a company-wide strategy paper to be shared with all employees, you could apply a read-only policy to all internal employees. Then, for a more sensitive document, such as a financial report, you could restrict access to executives only.|
-|Broad application support|√ Azure RMS has tight integration with Microsoft Office applications and services, and extends support for other applications by using the RMS sharing application.<br /><br />√ The   [Microsoft Rights Management SDK](https://msdn.microsoft.com/library/hh552972%28v=vs.85%29.aspx) provides your internal developers and software vendors with APIs to write custom applications that support Azure RMS.<br /><br />For more information, see [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md).|
-|IT must maintain control of data|√ Organizations can choose to manage their own tenant key and use the “[Bring Your Own Key](https://technet.microsoft.com/library/dn440580.aspx)” (BYOK) solution and store their tenant key in Hardware Security Modules (HSMs).<br /><br />√ Support for auditing and [usage logging](https://technet.microsoft.com/library/dn529121.aspx) so that you can analyze for business insights, monitor for abuse, and (if you have an information leak) perform forensic analysis.<br /><br />√ Delegated access by using the [super user feature](https://technet.microsoft.com/library/mt147272.aspx) ensures that IT can always access protected content, even if a document was protected by an employee who then leaves the organization. In comparison, peer-to-peer encryption solutions risk losing access to company data.<br /><br />√ Synchronize [just the directory attributes that Azure RMS needs](https://azure.microsoft.com/documentation/articles/active-directory-aadconnectsync-attributes-synchronized/) to support a common identity for your on-premises Active Directory accounts, by using a [directory synchronization tool](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-get-started-tools-comparison/), such as Azure AD Connect.<br /><br />√ Enable single-sign on without replicating passwords to the cloud, by using AD FS.<br /><br />√ Organizations always have the choice to stop using Azure RMS without losing access to content that was previously protected by Azure RMS. For information about decommissioning options, see [Decommissioning and Deactivating Azure Rights Management](../Topic/Decommissioning_and_Deactivating_Azure_Rights_Management.md). In addition, organizations who have deployed Active Directory Rights Management Services (AD RMS) can [migrate to Azure RMS](https://technet.microsoft.com/library/dn858447.aspx) without losing access to data that was previously protected by AD RMS.|
+|Krav eller problem|Ved Azure RMS|
+|----------------------|-----------------|
+|Beskytte alle filtyper|√ i forrige implementeringen av Rights Management, bare Office-filer kan være beskyttet, med innebygd beskyttelse. Nå [Generell beskyttelse](https://technet.microsoft.com/library/dn574738%28v=ws.10%29.aspx) betyr at alle filtyper som støttes.|
+|Beskytte filer hvor som helst|√ Når en fil lagres på en plassering ([beskytte på stedet](https://technet.microsoft.com/library/dn574733%28v=ws.10%29.aspx)), beskyttelse skal holdes sammen med filen, selv om det er kopiert til lagring som ikke er under kontroll av IT, for eksempel en sky lagring tjeneste.|
+|Dele filer på en sikker måte via e-post|√ Når en fil er delt via e-post ([del beskyttet](https://technet.microsoft.com/library/dn574735%28v=ws.10%29.aspx)), filen er beskyttet som et vedlegg til en e-postmelding med instruksjoner hvordan du åpner vedlegget beskyttet. I e-postmeldingen er ikke kryptert, slik at mottakeren kan alltid lese disse instruksjonene. Men fordi det vedlagte dokumentet er beskyttet, vil bare autoriserte brukere kunne åpne den, selv om e-post eller dokumentet blir videresendt til andre personer.|
+|Overvåking og overvåking|√ kan du [kontrollere og overvåke bruk av](https://technet.microsoft.com/library/dn529121.aspx) av de beskyttede filene, selv etter at disse filene la grensene for din organisasjon.<br /><br />For eksempel arbeider du for Contoso, Ltd. Du arbeider på et felles prosjekt med 3 personer fra Fabrikam, Inc. Disse 3 personer e et dokument som du beskytter og begrense til skrivebeskyttet. Azure RMS-overvåking kan gi følgende informasjon:<br /><br />-   Om personene du har angitt i Fabrikam åpnet dokumentet, og når.<br />-   Om andre personer du ikke angav forsøkte (og mislyktes) til å åpne dokumentet, kanskje fordi den ble videresendt eller lagret på en delt plassering som andre kan få tilgang.<br />-   Om noen av de angitte prøvd (og kan) til å skrive ut eller endre dokumentet.|
+|Støtte for alle vanlige enheter, ikke bare Windows-datamaskiner|√ [støttede enheter](https://technet.microsoft.com/library/dn655136.aspx) inkluderer:<br /><br />-   Windows-maskiner og telefoner<br />-   Mac-datamaskiner<br />-   iOS tavler og telefoner<br />-   Android tavler og telefoner|
+|Støtte for bedrift-til-bedrift-samarbeid|√ Fordi Azure RMS er en cloud-tjeneste, er det ikke nødvendig å konfigurere eksplisitt klareringer med andre organisasjoner før du kan dele beskyttet innhold med dem. Hvis de allerede har et Office 365 eller en Azure AD-katalog, støttes automatisk samarbeid på tvers av organisasjoner. Hvis de ikke gjør dette, kan brukerne registrere seg for en gratis [RMS for enkeltpersoner](https://technet.microsoft.com/library/dn592127.aspx) abonnementet.|
+|Støtte for lokale tjenester, i tillegg til Office 365|√ i tillegg til å arbeide [sømløst med Office 365](https://technet.microsoft.com/library/jj585004.aspx), kan du også bruke Azure RMS med følgende lokale tjenester når du distribuerer den [RMS-kontakt](https://technet.microsoft.com/library/dn375964.aspx):<br /><br />-   Exchange Server<br />-   SharePoint Server<br />-   Windows Server som kjører filen klassifisering infrastruktur|
+|Enkel aktivering|√ [aktivere Rights Management-tjenesten](https://technet.microsoft.com/library/jj658941.aspx) krever bare et par klikk i Azure portal for brukere.|
+|Muligheten til å utvide på tvers av organisasjonen, etter behov|√ Fordi Azure RMS kjører som en skytjeneste med Azure elasticity til å skalere opp og ut, og du trenger ikke å klargjøre eller distribuere flere lokale servere.|
+|Muligheten til å opprette policyer for enkel og fleksibel|√ [tilpasset policymaler for rettigheter](https://technet.microsoft.com/library/dn642472.aspx) gir en rask og enkel løsning for administratorer å bruke policyer, og for brukere å bruke riktig nivå av beskyttelse for hvert dokument, og begrense tilgangen til personer i organisasjonen.<br /><br />For en firmaet strategi papiret som skal deles med alle ansatte, kan du for eksempel bruke en skrivebeskyttet policy til alle interne medarbeidere. Deretter, for en mer følsomme dokument, for eksempel en finansrapport, kan du begrense tilgangen til bare ledere.|
+|Bred-støtte|√ Azure RMS har tett integrering med Microsoft Office-programmer og tjenester, og utvider støtte for andre programmer ved hjelp av RMS deling av programmet.<br /><br />√ Den   [Microsoft Rights Management SDK](https://msdn.microsoft.com/library/hh552972%28v=vs.85%29.aspx) gir APIer til å skrive egendefinerte programmer som støtter Azure RMS interne utviklere og programvareleverandører.<br /><br />Hvis du vil ha mer informasjon, se [Hvordan programmer støtter Azure rettighetsbehandling](../Topic/How_Applications_Support_Azure_Rights_Management.md).|
+|IT må opprettholde kontrollen over data|√ Organisasjoner kan velge å administrere sine egne leier-tasten og bruk av "[bringe din egen nøkkel](https://technet.microsoft.com/library/dn440580.aspx)" (BYOK)-løsning og lagre sine leier nøkkelen i maskinvare sikkerhet moduler (HSMs).<br /><br />√ Støtte for overvåking og [Trafikklogging](https://technet.microsoft.com/library/dn529121.aspx) slik at du kan analysere for business innsikt, overvåke for misbruk, utfører juridiske analyse og (Hvis du har en lekkasje av informasjon).<br /><br />√ Delegated access ved hjelp av den [super bruker funksjonen](https://technet.microsoft.com/library/mt147272.aspx) sikrer at IT can alltid tilgang beskyttet innhold, selv om et dokument er beskyttet av en ansatt som deretter forlater organisasjonen. I sammenligning, node-til-node-kryptering løsninger risiko tapende tilgang til data for firmaet.<br /><br />√ Synkronisere [de katalogattributter som Azure RMS må](https://azure.microsoft.com/documentation/articles/active-directory-aadconnectsync-attributes-synchronized/) å støtte en felles identitet for lokale Active Directory-kontoer ved hjelp av en [directory-synkronisering verktøyet](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-get-started-tools-comparison/), for eksempel koble til Azure AD.<br /><br />√ gjør det mulig for enkel pålogging på uten replikere passord til skyen, ved hjelp av AD FS.<br /><br />√ Organisasjoner har alltid muligheten til å slutte å bruke Azure RMS uten å miste tilgang til innhold som tidligere var beskyttet av Azure RMS. Informasjon om dekommisjonering alternativer, kan du se [Dekommisjonering og deaktivere Azure Rights Management](../Topic/Decommissioning_and_Deactivating_Azure_Rights_Management.md). I tillegg kan organisasjoner som har distribuert Active Directory Rights Management Services (AD RMS) [overføre til Azure RMS](https://technet.microsoft.com/library/dn858447.aspx) uten å miste tilgang til data som tidligere ble beskyttet av AD RMS.|
 > [!TIP]
-> If you are familiar with the on-premises version of Rights Management, Active Directory Rights Management Services (AD RMS), you might be interested in the comparison table from [Comparing Azure Rights Management and AD RMS](../Topic/Comparing_Azure_Rights_Management_and_AD_RMS.md).
+> Hvis du er kjent med den lokale versjonen av Rights Management, Active Directory Rights Management Services (AD RMS), du kan være interessert i sammenligning-tabellen fra [Sammenligne Azure Rights Management og AD RMS](../Topic/Comparing_Azure_Rights_Management_and_AD_RMS.md).
 
-### <a name="BKMK_RMScompliance"></a>Security, compliance, and regulatory requirements
-Azure RMS supports the following security, compliance and regulatory requirements:
+### <a name="BKMK_RMScompliance"></a>Sikkerhet, samsvar og lovbestemte krav
+Azure RMS støtter følgende sikkerhet, samsvar og lovbestemte krav:
 
-√ Use of industry-standard cryptography and supports FIPS 140-2. For more information, see the [Cryptographic controls used by Azure RMS: Algorithms and key lengths](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScrytographics) section in this topic.
+√ Bruk av industristandard kryptografi og støtter FIPS 140-2. Hvis du vil ha mer informasjon, se den [Brukes av Azure RMS kryptografiske kontroller: Algoritmer og nøkler](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMScrytographics) delen i dette emnet.
 
-√ Support for Thales Hardware Security Modules (HSMs) to store your tenant key in Microsoft Azure data centers. Azure RMS uses separate security worlds for its data centers in North America, EMEA (Europe, Middle East and Africa), and Asia, so your keys can be used only in your region.
+√ Støtte for Thales maskinvare sikkerhet moduler (HSMs) til å lagre nøkkelen leier Microsoft Azure data centers. Azure RMS bruker separate sikkerhet verdener for sine datasentre i Nord-Amerika, EMEA (Europa, Midtøsten og Afrika) og Asia, slik at nøklene kan bare brukes i din region.
 
-√ Certified for the following:
+√ Sertifisert for følgende:
 
--   ISO/IEC 27001:2013 (includes [ISO/IEC 27018](http://azure.microsoft.com/blog/2015/02/16/azure-first-cloud-computing-platform-to-conform-to-isoiec-27018-only-international-set-of-privacy-controls-in-the-cloud/))
+-   ISO/IEC 27001:2013 (inkluderer [ISO/IEC 27018](http://azure.microsoft.com/blog/2015/02/16/azure-first-cloud-computing-platform-to-conform-to-isoiec-27018-only-international-set-of-privacy-controls-in-the-cloud/))
 
--   SOC 2 SSAE 16/ISAE 3402 attestations
+-   Orb 2 SSAE 16/ISAE 3402 attestations
 
 -   HIPAA BAA
 
--   EU Model Clause
+-   EU-modell-setningsdel
 
--   FedRAMP as part of Azure Active Directory in Office 365 certification, issued FedRAMP Agency Authority to Operate by HHS
+-   FedRAMP som en del av Azure Active Directory i Office 365-sertifisering, utstedt FedRAMP Agency myndighet til Operate ved HHS
 
--   PCI DSS Level 1
+-   DSS PCI-nivå 1
 
-For more information about these external certifications, see the [Azure Trust Center](http://azure.microsoft.com/support/trust-center/compliance/).
+Hvis du vil ha mer informasjon om disse eksterne sertifiseringer, se den [Azure klareringssenteret](http://azure.microsoft.com/support/trust-center/compliance/).
 
-## <a name="BKMK_RMSpictures"></a>Azure RMS in action: What administrators and users see
-The pictures in this section show some typical examples of how administrators and users see and can use Azure RMS to help protect sensitive or confidential information.
+## <a name="BKMK_RMSpictures"></a>Azure RMS i aksjon: Administratorer og brukere ser
+Bildene i denne delen viser noen vanlige eksempler på hvordan administratorer og brukere se og kan bruke Azure RMS til å beskytte sensitiv eller konfidensiell informasjon.
 
 > [!NOTE]
-> In all these examples where Azure RMS protects data, the content owner continues to have full access to the data (file or email), even if the applied protection grants permissions to a group that the owner wasn’t a member of, or even if the applied protection includes an expiration date.
+> I alle disse eksemplene der Azure RMS beskytter data, fortsetter innholdseieren har full tilgang til data (fil eller e-post), selv om brukte beskyttelse gir tillatelser til en gruppe som eier ikke var medlem av, eller selv om du brukte beskyttelse inneholder en utløpsdato.
 > 
-> Similarly, IT can always access the protected data without restrictions, by using the super user feature of Rights Management that grants delegated access to authorized users or services that you specify. In addition, IT can track and monitor usage for data that has been protected—for example, who is accessing the data and when.
+> På samme måte IT can alltid tilgang til de beskyttede dataene uten begrensninger, ved hjelp av super bruker funksjonen for rettighetsadministrasjon som gir delegert tilgang til autoriserte brukere eller tjenester som du angir. I tillegg, IT kan spore og overvåke forbruk for data som er beskyttet, for eksempel hvem som har tilgang til data og når.
 
-For other screenshots and videos that show RMS in action, check the [Microsoft Rights Management services portal](http://www.microsoft.com/rms), the [Microsoft Rights Management (RMS) Team Blog](http://blogs.technet.com/b/rms), and [curated content for Azure RMS on the Curah! site](http://curah.microsoft.com/Search?query="Azure%20RMS").
+For andre skjermbilder og videoer som viser RMS i bruk, kan du se den [Microsoft Rights Management services portal](http://www.microsoft.com/rms),  [Teamblogg for Microsoft Rights Management (RMS)](http://blogs.technet.com/b/rms), og [curated innhold for Azure RMS på Curah! område](http://curah.microsoft.com/Search?query="Azure%20RMS").
 
-### <a name="BKMK_Example_ManagementPortal"></a>Activating and configuring Rights Management
-Although you can use Windows PowerShell to activate and configure Azure RMS, it’s easiest from the management portal. As soon as the service is activated, you have two default templates that administrators and users can select to quickly and easily apply information protection to files. But you can also create your own custom templates for additional options and settings.
-
-|||
-|-|-|
-|![](../Image/AzRMS_StoryboardActivate_small1.png)<br /><br />[Bigger picture](http://technet.microsoft.com/98d53a12-3b19-4622-bb1e-75ef56df5438) (by default, in same browser window)|You can use either the Office 365 admin center (first picture) or the Azure classic portal (second picture) to activate RMS.<br /><br />Just one click to activate and another click to confirm, then information protection is enabled for administrators and users in your organization.|
-|![](../Image/AzRMS_TemplatesPortal_small.png)<br /><br />[Bigger picture](http://technet.microsoft.com/596e4fec-124c-41b1-8efd-63d5179193fb) (by default, in same browser window)|After activation, two rights policy templates are automatically available for your organization. One template is for read-only (**Confidential View Only** is included in the name), the other for read and modify access (**Confidential**).<br /><br />When these templates are applied to files or emails, they restrict access to users in your organization. This is a very quick and easy way to help prevent your company data leaking to people outside your organization.<br /><br />Tip: You can easily recognize these default templates, because they are automatically prefixed by your organization name. In our example, **VanArsdel, Ltd**.<br /><br />If you do not want users to see these templates or if you want to create your own templates, you can do this from the Azure classic portal. As this picture shows, a wizard takes you through the custom template creation process.|
-|![](../Image/AzRMS_TemplatesSettings3.png)<br /><br />[Bigger picture](http://technet.microsoft.com/f5df80e5-efc9-4c0f-91be-060225977356) (by default, in same browser window)|Offline access, expiration settings, and whether to publish the template immediately (make it visible in applications that support Rights Management) are some of the configuration settings available if you decide to create your own templates.|
-|![](../Image/AzRMS_TemplatesPortal_ExplorerWord3.png)<br /><br />[Bigger picture](http://technet.microsoft.com/597a3402-fd5a-4bcf-b5e6-5c983dbde697) (by default, in same browser window)|As a result of publishing these templates, users can now select them in applications such as  File Explorer and Microsoft Word:<br /><br />A user could choose the default template, **VanArsdel, Ltd – Confidential**. Then, only employees from the VanArsdel organization can open and use this document, even if it’s later emailed to somebody outside the organization or saved to a public location.<br /><br />A user could choose the custom template that the administrator created, **Sales and Marketing – Read and Print Only**. Then, not only is the file protected from people outside the organization, but it’s also restricted to employees from the Sales and Marketing department. Further, these employees do not have full rights to the document, only read and print. For example, they cannot modify it or copy from it.|
-For more information, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md) and [Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
-
-To help users protect important company files, see [Helping Users to Protect Files by Using Azure Rights Management](../Topic/Helping_Users_to_Protect_Files_by_Using_Azure_Rights_Management.md).
-
-Next, see some examples of how administrators can apply the templates to automatically configure information protection for files and emails.
-
-### <a name="BKMK_Example_FCI"></a>Automatically protecting files on file servers running Windows Server and File Classification Infrastructure
-This example shows how you can use Azure RMS to automatically protect files on file servers that run at least Windows Server 2012 and are configured to use File Classification Infrastructure.
-
-There are many ways to apply classification values to files. For example, you can inspect the contents of files and accordingly apply built-in classifications such as Confidentiality and Personally Identifiable Information. However, in this example, an administrator creates a custom classification of **Marketing** that is automatically applied to all user documents that are saved in the **Marketing Promotions** folder. Although this folder is protected with NTFS permissions that restricts access to members of the Marketing group, the administrator knows that these permissions can be lost if somebody from that group moves or emails the files. Then, the information in the files could be accessed by unauthorized users.
+### <a name="BKMK_Example_ManagementPortal"></a>Aktivere og konfigurere Rights Management
+Selv om du kan bruke Windows PowerShell til å aktivere og konfigurere Azure RMS, er det enklest fra management-portalen. Så snart tjenesten er aktivert, har du to standardmaler som administratorer og brukere kan velge å raskt og enkelt bruke informasjonsbeskyttelse av på filer. Men du kan også opprette dine egne tilpassede maler for flere alternativer og innstillinger.
 
 |||
 |-|-|
-|![](../Image/AzRMS_FCI_ConnectorSmall.png)<br /><br />[Bigger picture](http://technet.microsoft.com/cf18c56b-c301-4640-8d9e-9e677e494091) (by default, in same browser window)|The administrators installs and configures the Rights Management (RMS) connector, which acts as a relay between on-premises servers and Azure RMS.|
-|![](../Image/AzRMS_ExampleFCI_ConfigurationSmall.png)<br /><br />[Bigger picture](http://technet.microsoft.com/ba3e247d-ea5e-4009-8eac-74f70270ece0) (by default, in same browser window)|On the file server, the administrator configures the classification rules and tasks so that all user files in the **Marketing Promotions** folder are automatically classified as **Marketing** and protected with RMS encryption.<br /><br />She selects the custom RMS template that was created in our first example, which restricts access to members of the Sales and Marketing departments: **Sales and Marketing – Read and Print Only**.<br /><br />As a result, all documents in that folder are automatically configured with the Marketing classification and protected by the Sales and Marketing RMS template.|
-|![](../Image/AzRMS_FCI_EmailSmall.png)<br /><br />[Bigger picture](http://technet.microsoft.com/ad666594-68df-4289-835a-235b2af9bf4b) (by default, in same browser window)|How RMS helps to prevent data leaking to people who should not have access to sensitive or confidential information:<br /><br />Janet, from Marketing, emails a confidential report from the Marketing Promotions folder. This report contains new product features and advertising plans and is requested by a co-worker who is currently traveling on business. However, Janet mistakenly emails it to the wrong person—she didn’t notice that she accidentally selected a recipient with a similar name, in another company.<br /><br />The recipient cannot read the confidential report because he is not a member of the Sales and Marketing group.|
-For more information, see [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
+|![](../Image/AzRMS_StoryboardActivate_small1.png)<br /><br />[Store bildet](http://technet.microsoft.com/98d53a12-3b19-4622-bb1e-75ef56df5438) (som standard i samme webleservindu)|Du kan bruke enten Office 365 administrasjonssenteret (bilde først) eller Azure portal (andre bildet) for å aktivere RMS.<br /><br />Bare ett klikk for å aktivere og en annen Klikk for å bekrefte, og deretter informasjonsbeskyttelse er aktivert for administratorer og brukere i organisasjonen.|
+|![](../Image/AzRMS_TemplatesPortal_small.png)<br /><br />[Store bildet](http://technet.microsoft.com/596e4fec-124c-41b1-8efd-63d5179193fb) (som standard i samme webleservindu)|Etter aktivering er to rettigheter policymaler automatisk tilgjengelig for organisasjonen. Er en mal for skrivebeskyttet (**bare konfidensiell** er inkludert i navnet), den andre for lese og endre tilgang (**Konfidensielt**).<br /><br />Disse malene som brukes til filer eller e-post, kan de begrense tilgang til brukere i organisasjonen. Dette er en svært rask og enkel måte å forhindre at firmadataene lekker til personer utenfor organisasjonen. **Tip:** Du kan enkelt gjenkjenne disse standardmalene fordi de er automatisk prefikset navnet på organisasjonen. I vårt eksempel **VanArsdel Ltd,**.<br />Hvis du ikke vil at brukere skal se disse malene, eller hvis du vil opprette dine egne maler, kan du gjøre dette fra Azure portal. Som bildet viser, leder en veiviseren deg gjennom opprettingen av egendefinert mal.|
+|![](../Image/AzRMS_TemplatesSettings3.png)<br /><br />[Store bildet](http://technet.microsoft.com/f5df80e5-efc9-4c0f-91be-060225977356) (som standard i samme webleservindu)|Frakoblet tilgang, utløpsdato innstillinger og om du vil publisere malen umiddelbart (gjøre det synlig i programmer som støtter rettighetsbehandling) er noen av konfigurasjonsinnstillingene tilgjengelige hvis du bestemmer deg for å lage dine egne maler.|
+|![](../Image/AzRMS_TemplatesPortal_ExplorerWord3.png)<br /><br />[Store bildet](http://technet.microsoft.com/597a3402-fd5a-4bcf-b5e6-5c983dbde697) (som standard i samme webleservindu)|Som et resultat av publiserer disse malene, kan brukere nå velge dem i programmer, for eksempel File Explorer og Microsoft Word:<br /><br />-   En bruker kan bruke standardmalen, **VanArsdel Ltd. – konfidensielt**. Bare ansatte fra VanArsdel organisasjonen kan deretter åpne og bruke dette dokumentet, selv om den senere en e-postmelding til noen utenfor organisasjonen eller lagret på en felles plassering.<br />-   En bruker kan bruke den egendefinerte malen som administratoren har opprettet, **Salg og markedsføring – Les og Skriv ut bare**. Deretter filen som er beskyttet fra personer utenfor organisasjonen ikke bare, men det er også begrenset til ansatte fra salg og markedsføring. Videre disse ansatte ikke har full tilgang til dokumentet, bare lese og skrive ut. De kan ikke endre eller kopiere fra den.|
+Hvis du vil ha mer informasjon, se [Aktivering av Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md) og [Konfigurere egendefinerte maler for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
 
-### <a name="BKMK_Example_DLP"></a>Automatically protecting emails with Exchange Online and data loss prevention policies
-The previous example showed how you could automatically protect files that contain sensitive or confidential information, but what if the information is not in a file, but in an email message? This is where Exchange Online data loss prevention (DLP) policies comes in, either prompting users to apply information protection (by using Policy Tips) or automatically applying it for them (by using transport rules).
+For å hjelpe brukere med å beskytte filer som er viktige for firmaet, kan du se [Hjelpe brukere til å beskytte filer ved hjelp av Azure Rights Management](../Topic/Helping_Users_to_Protect_Files_by_Using_Azure_Rights_Management.md).
 
-In this example, the administrator configures a policy to help keep the organization in compliance with US regulations for protecting personally identifiable information data, but rules can also be configured for other compliance regulations, or custom rules that you define.
+Deretter kan du se noen eksempler på hvordan administratorer kan bruke maler for å konfigurere automatisk informasjonsbeskyttelse for filer og e-post.
 
-|||
-|-|-|
-|![](../Image/AzRMS_DLPExample1.png)<br /><br />[Bigger picture](http://technet.microsoft.com/58461319-3981-4b7f-a195-956a1778e907) (by default, in same browser window)|The Exchange template named **U.S. Personally Identifiable Information (PII) Data** is used by the administrator to create and configure a new DLP policy. This template looks for information such as social security numbers and driver license numbers in email messages.<br /><br />The rules are configured so that email messages that contain this information and that are sent outside the organization automatically have rights protection applied by using an RMS template that restricts access to company employees only.<br /><br />Here, the rule is configured to use one of the default templates, **VanArsdel, Ltd – Confidential**, from our first example. But you can also see how the choice of templates includes any custom templates you’ve created, and a **No Do Forward** option that is specific to Exchange.|
-|![](../Image/AzRMS_DLPUnprotectedEmail_small.png)<br /><br />[Bigger picture](http://technet.microsoft.com/bfb0762d-06fb-42e4-beff-eb391f4bedf0) (by default, in same browser window)|The hiring manager writes an email message that contains the social security number of a recently hired employee. He sends this email message to Sherrie in the Human Resources department.|
-|![](../Image/AzRMS_DLPProtectedEmail_small.png)<br /><br />[Bigger picture](http://technet.microsoft.com/59e3b68e-4bed-4962-bb1e-e82d82f8000a) (by default, in same browser window)|If this email message is sent or forwarded to somebody outside the organization, the DLP rule automatically applies rights protection.<br /><br />The email is encrypted when it leaves the organization’s infrastructure, so that the social security number in the email message cannot be read while in transit, or in the recipient’s inbox. The recipient will not be able to read the message unless he or she is a VanArsdel employee.|
-For more information, see the following sections:
+### <a name="BKMK_Example_FCI"></a>Automatisk beskyttelse av filer på filservere som kjører Windows Server og filen klassifisering infrastruktur
+Dette eksemplet viser hvordan du kan bruke Azure RMS automatisk beskytte filer på servere som kjører minst Windows Server 2012 og er konfigurert til å bruke filen klassifisering infrastruktur.
 
--   [Exchange Online and Exchange Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_ExchangeIntro) in the [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) topic.
-
--   [Exchange Online: IRM Configuration](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_ExchangeOnline) in the [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) topic.
-
-### <a name="BKMK_Example_SharePoint"></a>Automatically protecting files with SharePoint Online and protected libraries
-This shows how you can easily protect documents when you use SharePoint Online and protected libraries.
-
-In this example, the SharePoint administrator for Contoso has created a library for each department that they use to centrally store and check out documents for editing and version control. For example, there is a library for Sales, one for Marketing, one for Human Resources, and so on. When a new document is uploaded or created in one of these protected libraries, that document inherits the protection of the library (no need to select a rights policy template) and that document is automatically protected and remains protected, even if it’s moved outside the SharePoint library.
+Det er mange måter å bruke klassifisering verdier til filer. Du kan for eksempel kontrollere innholdet i filene og bruke tilsvarende innebygde klassifiseringer som konfidensialitet og personlig identifiserbar informasjon. I dette eksemplet oppretter imidlertid en administrator egendefinerte klassifisering av **markedsføring** som skal brukes automatisk på alle brukerdokumenter som er lagret i den **markedsføring reklame** mappen. Selv om denne mappen er beskyttet med NTFS-tillatelser som begrenser tilgang til medlemmer av gruppen markedsføring, administratoren du vet at disse tillatelsene kan gå tapt hvis noen fra gruppen flyttes eller via e-post filer. Informasjonen i filene kan deretter åpnes av uautoriserte brukere.
 
 |||
 |-|-|
-|![](../Image/AzRMS_StoryboardSPO_small1.png)<br /><br />[Bigger picture](http://technet.microsoft.com/2fc90989-9289-4431-9e6a-07740b7f6e5a) (by default, in same browser window)|The administrator enables Information Rights Management for the SharePoint site.|
-|![](../Image/AzRMS_StoryboardSPO_small2.png)<br /><br />[Bigger picture](http://technet.microsoft.com/a18f2e99-5ac4-4103-a88c-527846374091) (by default, in same browser window)|Then, she enables Rights Management for a library. Although there are additional options, this simple setting is often all that’s needed.<br /><br />When documents are now downloaded from this library, they  are automatically protected by Rights Management, inheriting the protection that’s configured for the library.|
-|![](../Image/AzRMS_StoryboardSPO_small3.png)<br /><br />[Bigger picture](http://technet.microsoft.com/0ebd6806-0190-441e-84db-72ac4b97e4a2) (by default, in same browser window)|When somebody from the sales department checks out this sales report from the library, they can clearly see from the information banner at the top that it’s a protected document with restricted access.<br /><br />The document remains protected even if the user renames it, saves it to another location, or shares it by email. No matter what the file is named, where it’s stored, or whether it’s shared by email, only members of the sales department can read it.|
-For more information, see the following sections:
+|![](../Image/AzRMS_FCI_ConnectorSmall.png)<br /><br />[Store bildet](http://technet.microsoft.com/cf18c56b-c301-4640-8d9e-9e677e494091) (som standard i samme webleservindu)|Administratorene installerer og konfigurerer koblingen RMS (Rights Management), som fungerer som et relay mellom lokale servere og Azure RMS.|
+|![](../Image/AzRMS_ExampleFCI_ConfigurationSmall.png)<br /><br />[Store bildet](http://technet.microsoft.com/ba3e247d-ea5e-4009-8eac-74f70270ece0) (som standard i samme webleservindu)|På filserveren, administratoren konfigurerer regler for klassifisering og aktiviteter slik at alle brukerfiler i den **markedsføring reklame** mappen er automatisk klassifisert som **markedsføring** og beskyttet av RMS-kryptering.<br /><br />Hun velger Egendefinert RMS-malen som ble opprettet i vårt første eksempel som begrenser tilgang til medlemmer av salg og markedsføring avdelinger: **Salg og markedsføring – lese og skrive ut bare**.<br /><br />Som et resultat alle dokumenter i denne mappen er automatisk konfigurert med markedsføring klassifiseringen og beskyttet av salg og markedsføring RMS mal.|
+|![](../Image/AzRMS_FCI_EmailSmall.png)<br /><br />[Store bildet](http://technet.microsoft.com/ad666594-68df-4289-835a-235b2af9bf4b) (som standard i samme webleservindu)|Hvordan RMS bidrar til å forhindre at data lekker til personer som ikke skal ha tilgang til sensitiv eller konfidensiell informasjon:<br /><br />-   Janet, fra markedsføring, e-postmeldinger konfidensielle rapporter fra mappen markedsføring kampanjer. Denne rapporten inneholder nye produktfunksjoner og reklame planer og blir forespurt av en medarbeider som for øyeblikket reiser på business. Imidlertid Janet feilaktig via e-post den til feil person, hun ikke Legg merke til at hun ved et uhell merket en mottaker med lignende navn, i et annet firma.<br />    Mottakeren kan ikke lese rapporten konfidensielt fordi han ikke er medlem av salg og markedsføring gruppe.|
+Hvis du vil ha mer informasjon, se [Distribusjon av Azure Rights Management-kobling](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
 
--   [SharePoint Online and SharePoint Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_SharePointIntro) in the [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) topic.
+### <a name="BKMK_Example_DLP"></a>Automatisk beskyttelse av e-post med Exchange Online og datapolicyer tap forebygging
+I forrige eksempel viste hvordan du kan beskytte filer som inneholder sensitiv eller konfidensiell informasjon automatisk, men hva hvis informasjonen er ikke i en fil, men i en e-postmelding? Her er der Exchange Online tap forebygging (DLP) datapolicyer, enten å be brukerne bruke informasjonsbeskyttelse (ved hjelp av Policy Tips) eller automatisk ved å bruke den for dem (ved hjelp av Transportregler).
 
--   [SharePoint Online and OneDrive for Business: IRM Configuration](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_SharePointOnline) in the [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) topic.
-
-### <a name="BKMK_Example_SharingApp"></a>Users safely share attachments with mobile users
-The previous examples showed how administrators can automatically apply information protection to sensitive and confidential data. But there will be some occasions when users might need to apply this protection themselves. For example, they are collaborating with partners in another organization, they need custom permissions or settings that are not defined in templates, for or ad-hoc situations that are not covered by the previous examples. In these situations, users can apply the RMS templates themselves or configure custom permissions.
-
-This example shows how users can easily share a document with somebody they’re collaborating with from another company, but still be able to protect the document and be confident that the recipient can read it, even from a popular mobile device. This scenario uses the Rights Management sharing application, which you can automatically deploy to Windows computers in your organization. Or, users can install it themselves.
-
-In this example, Alice from Contoso, emails a confidential Word document that she sends to Bob, at Fabrikam. He reads the document on his iPad, but he could just as easily read it on an iPhone, an Android tablet or phone, a Mac computer, or a Windows phone or computer.
+Administratoren konfigurerer en policy for å holde organisasjonen samsvar oss bestemmelser for å beskytte data for personlig identifiserbar informasjon i dette eksemplet, men du kan også konfigurere regler for andre samsvarsreguleringer eller egendefinerte regler som du definerer.
 
 |||
 |-|-|
-|![](../Image/AzRMS_StoryboardEmail_small1.png)<br /><br />[Bigger picture](http://technet.microsoft.com/feeef78d-3c2e-432b-817d-d06f784be226) (by default, in same browser window)|From her Windows PC, Alice creates a standard email message and attaches a document.<br /><br />She clicks **Share Protected** on the ribbon, which loads the **share protected** dialog box from the RMS sharing application.<br /><br />Alice wants to restrict Bob to viewing and editing the document, and doesn’t want him to copy or print it, so she selects **REVIEWER – View and Edit**. She also wants to be emailed when somebody tries to open the document, and have the ability to revoke the document later if necessary and know that revocation will take effect immediately.|
-|![](../Image/AzRMS_StoryboardEmail_small2.png)<br /><br />[Bigger picture](http://technet.microsoft.com/e748fd78-8bba-4168-96cf-f96def078283) (by default, in same browser window)|Bob sees the email on his iPad.<br /><br />In addition to Alice’s message and attachment, there are instructions that he follows to sign up and install the RMS sharing app on his iPad.|
-|![](../Image/AzRMS_StoryboardEmail_small3.png)<br /><br />[Bigger picture](http://technet.microsoft.com/7dba5ff9-a61d-4a83-8adc-d6ffb0e85df6) (by default, in same browser window)|Bob can now open the attachment. He is first asked to sign in to confirm that he is the intended recipient.<br /><br />When Bob views the document, he also sees the restricted access information that tells him he can view and edit the document, but not copy or print.|
-|![](../Image/AzRMS_StoryboardEmail_small4.png)<br /><br />[Bigger picture](http://technet.microsoft.com/9f642a2e-58ad-44ab-9f81-f890d15380f9) (by default, in same browser window)|Alice receives an email message that tells her Bob successfully opened the document that she sent, and when he accessed the document.<br /><br />If Bob forwards his email with the attachment, or saves it where others can access it, or it is intercepted on the network, other people will not be able to read the document.|
-For more information, see [Protect a file that you share by email](https://technet.microsoft.com/library/dn574735.aspx) and [View and use files that have been protected](https://technet.microsoft.com/library/dn574741.aspx) from the [Rights Management sharing application user guide](https://technet.microsoft.com/library/dn339006.aspx).
+|![](../Image/AzRMS_DLPExample1.png)<br /><br />[Store bildet](http://technet.microsoft.com/58461319-3981-4b7f-a195-956a1778e907) (som standard i samme webleservindu)|Exchange-malen heter **USA Personlig identifiserbar informasjon (PII) Data** brukes av administratoren til å opprette og konfigurere en ny DLP-policy. Denne malen ser etter informasjon som personnummer og driver lisensnumre i e-postmeldinger.<br /><br />Reglene er konfigurert slik at e-postmeldinger som inneholder denne informasjonen, og som sendes utenfor organisasjonen automatisk rettighetsbeskyttelse brukt ved å bruke en RMS-mal som begrenser tilgang til bare ansatte i firmaet.<br /><br />Her regelen er konfigurert til å bruke én av standardmalene som, **VanArsdel Ltd. – konfidensielt**, fra vårt første eksempel. Men du kan også se hvordan valg av maler inkluderer egendefinerte maler du har opprettet, og en **Nei fremover gjør** alternativet som er spesifikk for Exchange.|
+|![](../Image/AzRMS_DLPUnprotectedEmail_small.png)<br /><br />[Store bildet](http://technet.microsoft.com/bfb0762d-06fb-42e4-beff-eb391f4bedf0) (som standard i samme webleservindu)|Den leder som ansetter, skriver en e-postmelding som inneholder en nylig ansatte personnummer. Han sender denne e-postmeldingen til Sherrie i personalavdelingen.|
+|![](../Image/AzRMS_DLPProtectedEmail_small.png)<br /><br />[Store bildet](http://technet.microsoft.com/59e3b68e-4bed-4962-bb1e-e82d82f8000a) (som standard i samme webleservindu)|Hvis denne e-postmeldingen sendes eller videresendes til noen utenfor organisasjonen, gjelder regelen DLP automatisk rettighetsbeskyttelse.<br /><br />E-postmeldingen krypteres når den etterlater organisasjonens infrastruktur, slik at e-postadresse i e-postmeldingen ikke kan lese mens du er i transitt, eller i mottakerens innboks. Mottakeren vil ikke kunne lese meldingen, med mindre han eller hun er ansatt en VanArsdel.|
+Hvis du vil ha mer informasjon, kan du se følgende deler:
 
-In addition, the [Quick Start Tutorial for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md) includes step-by-step instructions for this scenario.
+-   [Exchange Online og Exchange Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_ExchangeIntro) i den [Hvordan programmer støtter Azure rettighetsbehandling](../Topic/How_Applications_Support_Azure_Rights_Management.md) emnet.
 
-Now you’ve seen some examples of what Azure RMS can do, you might be interested in how it does it. For technical information about how Azure RMS works, see the next section.
+-   [Exchange Online: IRM-konfigurasjonen](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_ExchangeOnline) i den [Konfigurere programmer for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) emnet.
 
-## <a name="BKMK_HowRMSworks"></a>How does Azure RMS work? Under the hood
-One important thing to understand about how Azure RMS works is that the Rights Management service (and Microsoft) do not see or store your data as part of the information protection process. Information that you protect is never sent to or stored in Azure unless you explicitly store it in Azure or use another cloud service that stores it in Azure. Azure RMS simply makes the data in a document unreadable to anyone other than authorized users and services:
+### <a name="BKMK_Example_SharePoint"></a>Automatisk beskyttelse av filer med SharePoint Online og beskyttet biblioteker
+Dette viser hvordan du enkelt kan beskytte dokumenter når du bruker SharePoint Online og beskyttet biblioteker.
 
--   The data is encrypted at the application level and includes a policy that defines the authorized use for that document.
+I dette eksemplet er SharePoint-administratoren for Contoso opprettet et bibliotek for hver avdeling som de bruker til å sentralt lagre og sjekke ut dokumenter for redigering og versjonskontroll. Det er for eksempel et bibliotek for salg, én for markedsføring, én for menneskelige ressurser og så videre. Når et nytt dokument lastes opp eller opprettet på en av disse bibliotekene som er beskyttet, dokumentet arver beskyttelse av biblioteket (ikke nødvendig å velge en rettighetsmal policy), og dette dokumentet er beskyttet automatisk og forblir beskyttet, selv om den er flyttet utenfor SharePoint-biblioteket.
 
--   When a protected document is used by a legitimate user or it is processed by an authorized service, the data in the document is decrypted and the rights that are defined in the policy are enforced.
+|||
+|-|-|
+|![](../Image/AzRMS_StoryboardSPO_small1.png)<br /><br />[Store bildet](http://technet.microsoft.com/2fc90989-9289-4431-9e6a-07740b7f6e5a) (som standard i samme webleservindu)|Administratoren aktiverer IRM (Information Rights Management) for SharePoint-området.|
+|![](../Image/AzRMS_StoryboardSPO_small2.png)<br /><br />[Store bildet](http://technet.microsoft.com/a18f2e99-5ac4-4103-a88c-527846374091) (som standard i samme webleservindu)|Deretter kan hun Rights Management for et bibliotek. Selv om det er flere alternativer, enkel innstillingen er ofte det som er nødvendig.<br /><br />Når dokumenter lastes ned nå fra dette biblioteket, blir de automatisk beskyttet av Rights Management, arver beskyttelsen som er konfigurert for biblioteket.|
+|![](../Image/AzRMS_StoryboardSPO_small3.png)<br /><br />[Store bildet](http://technet.microsoft.com/0ebd6806-0190-441e-84db-72ac4b97e4a2) (som standard i samme webleservindu)|Når noen fra salgsavdelingen sjekker ut denne salgsrapport fra biblioteket, kan de tydelig se fra informasjon-banner på toppen at det er et beskyttet dokument med begrenset tilgang.<br /><br />Dokumentet forblir beskyttet, selv om brukeren endrer navn på den, lagrer den i et annet sted eller deler dem via e-post. Uansett hva filen heter, der den er lagret, eller om den deles via e-post, kan bare medlemmer av salgsavdelingen lese den.|
+Hvis du vil ha mer informasjon, kan du se følgende deler:
 
-At a high level, you can see how this process works in the following picture. A document containing the secret formula is protected, and then successfully opened by an authorized user or service. The document is protected by a content key (the green key in this picture). It is unique for each document and is placed in the file header where it is protected by your RMS tenant root key (the red key in this picture). Your tenant key can be generated and managed by Microsoft, or you can generate and manage your own tenant key.
+-   [SharePoint Online og SharePoint Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_SharePointIntro) i den [Hvordan programmer støtter Azure rettighetsbehandling](../Topic/How_Applications_Support_Azure_Rights_Management.md) emnet.
 
-Throughout the protection process when Azure RMS is encrypting and decrypting, authorizing, and enforcing restrictions, the secret formula is never sent to Azure.
+-   [SharePoint Online- og OneDrive for bedrifter: IRM-konfigurasjonen](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_SharePointOnline) i den [Konfigurere programmer for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) emnet.
+
+### <a name="BKMK_Example_SharingApp"></a>Brukere dele trygt vedlegg med mobile brukere
+De forrige eksemplene viste hvordan administratorer kan bruke automatisk informasjonsbeskyttelse for sensitive og konfidensielle data. Men det vil være noen anledninger når brukere må kanskje bruke denne beskyttelsen seg selv. For eksempel de samarbeider med partnere i en annen organisasjon, må de egendefinerte tillatelser eller innstillinger som ikke er definert i maler for eller ad-hoc situasjoner som ikke dekkes av eksemplene ovenfor. I slike tilfeller kan brukere bruke RMS-malene seg selv eller konfigurere egendefinerte tillatelser.
+
+Dette eksemplet viser hvordan brukere kan enkelt dele et dokument med noen de samarbeider med fra et annet firma, men fremdeles kunne beskytte dokumentet, og være trygg på at mottakeren kan lese den, selv fra en mobil enhet som er populære. Dette scenarioet bruker Rights Management deling programmet, som du kan distribuere automatisk til Windows-maskiner i organisasjonen. Eller brukere kan installere det selv.
+
+I dette eksemplet Anne fra Contoso, via e-post et konfidensielt dokument hun sender til Bjørn på Fabrikam. Han leser dokumentet på sin iPad, men han kan like enkelt lese den på en iPhone, en Android tavle eller telefon en Mac-datamaskin eller en Windows eller datamaskinen.
+
+|||
+|-|-|
+|![](../Image/AzRMS_StoryboardEmail_small1.png)<br /><br />[Store bildet](http://technet.microsoft.com/feeef78d-3c2e-432b-817d-d06f784be226) (som standard i samme webleservindu)|Fra hennes Windows PC Anne oppretter en standard e-postmelding og legger ved et dokument.<br /><br />Hun klikker **dele beskyttet** på båndet, som laster inn den **del beskyttet** dialogboksen fra RMS deling av programmet.<br /><br />Anne vil begrense Bob til visning og redigering av dokumentet, og ikke vil ha ham til å kopiere eller skrive det ut, slik at hun velger **REDAKTØR – Vis og rediger**. Hun vil også være en e-postmelding når noen prøver å åpne dokumentet, og har muligheten til å trekke tilbake dokumentet senere om nødvendig, og vet at tilbakekalling trer i kraft umiddelbart.|
+|![](../Image/AzRMS_StoryboardEmail_small2.png)<br /><br />[Store bildet](http://technet.microsoft.com/e748fd78-8bba-4168-96cf-f96def078283) (som standard i samme webleservindu)|BOB ser e-posten på sin iPad.<br /><br />I tillegg til Karis meldingen og vedlegg er instruksjonene som han følger for å registrere deg og installerer RMS deling app på sin iPad.|
+|![](../Image/AzRMS_StoryboardEmail_small3.png)<br /><br />[Store bildet](http://technet.microsoft.com/7dba5ff9-a61d-4a83-8adc-d6ffb0e85df6) (som standard i samme webleservindu)|Bjørn kan nå åpne vedlegget. Han er først bedt om å logge på å bekrefte at han er den tiltenkte mottakeren.<br /><br />Når Bob viser dokumentet, ser han også begrenset tilgang informasjonen som forteller ham han ikke kan vise og redigere dokumentet, men kopiere eller skrive ut.|
+|![](../Image/AzRMS_StoryboardEmail_small4.png)<br /><br />[Store bildet](http://technet.microsoft.com/9f642a2e-58ad-44ab-9f81-f890d15380f9) (som standard i samme webleservindu)|Anne mottar en e-postmelding som forteller henne Bob åpnet dokumentet som hun har sendt, og når han tilgang til dokumentet.<br /><br />Hvis Bob videresender hans e-post med vedlegget eller lagrer den der andre har tilgang til den, eller den er fanget opp på nettverket, kan ikke andre personer lese dokumentet.|
+Hvis du vil ha mer informasjon, se [beskytte en fil du deler via e-post](https://technet.microsoft.com/library/dn574735.aspx) og [visning og bruke filer som er beskyttet](https://technet.microsoft.com/library/dn574741.aspx) fra den [Rights Management deling Brukerhåndbok for programmet](https://technet.microsoft.com/library/dn339006.aspx).
+
+I tillegg til [Rask Start opplæring for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md) inneholder trinnvise instruksjoner for dette scenariet.
+
+Nå du har sett noen eksempler på hva som kan gjøre Azure RMS, kan du være interessert i hvordan det fungerer. Hvis du vil ha teknisk informasjon om hvordan Azure RMS fungerer, kan du se den neste delen.
+
+## <a name="BKMK_HowRMSworks"></a>Hvordan fungerer Azure RMS? Under panseret
+En viktig ting å forstå om hvordan Azure RMS fungerer er at Rights Management-tjenesten (og Microsoft) ikke se eller lagre data som en del av prosessen informasjon beskyttelse. Informasjon som du beskytter aldri sendt til eller lagret i Azure, med mindre du eksplisitt lagrer den i Azure eller bruke en annen cloud-tjeneste som lagrer den i Azure. Azure RMS ganske enkelt, blir dataene i et dokument uleselig for alle bortsett fra autoriserte brukere og tjenester:
+
+-   Dataene krypteres på programnivå, og inkluderer en policy som definerer godkjent bruk for dokumentet.
+
+-   Når et beskyttet dokument brukes av en lovlig bruker, eller den er behandlet av en autorisert service, dekrypteres dataene i dokumentet, og rettighetene som er definert i policyen trer i kraft.
+
+På et høyt nivå, kan du se hvordan dette gjøres i følgende bilde. Et dokument som inneholder den hemmelig formelen er beskyttet, og deretter åpnet av en autorisert bruker eller tjeneste. Dokumentet er beskyttet av en innhold nøkkel (grønn-tasten på dette bildet). Det er unikt for hvert dokument, og er plassert i filhodet der den er beskyttet av RMS leier rotnøkkelen (rød nøkkelen i bildet). Leier nøkkelen kan genereres og administreres av Microsoft, eller du kan generere og behandle leier nøkkelen.
+
+Gjennom hele beskyttelse prosessen når Azure RMS er kryptering og dekryptering, godkjenning og fremtvinge begrensninger, hemmelige formelen ikke blir sendt til Azure.
 
 ![](../Image/AzRMS_SecretColaFormula_final.png)
 
-For a detailed description of what’s happening, see the [Walkthrough of how Azure RMS works: First use, content protection, content consumption](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Walthrough) section in this topic.
+For en detaljert beskrivelse av hva som skjer, kan du se den [Gjennomgang av hvordan Azure RMS fungerer: Bruk først, beskyttelse, innhold forbruk av innhold](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Walthrough) delen i dette emnet.
 
-For technical details about the algorithms and key lengths that Azure RMS uses, see the next section.
+Hvis du vil ha tekniske detaljer om algoritmer og nøkler som Azure RMS-bruker, kan du se den neste delen.
 
-### <a name="BKMK_RMScrytographics"></a>Cryptographic controls used by Azure RMS: Algorithms and key lengths
-Even if you don't need to know yourself how RMS works, you might be asked about the cryptographic controls that it uses, to make sure that the security protection is industry-standard.
+### <a name="BKMK_RMScrytographics"></a>Brukes av Azure RMS kryptografiske kontroller: Algoritmer og nøkler
+Selv om du ikke trenger å kjenne deg selv hvordan fungerer RMS, blir du kanskje spurt om kryptografiske kontroller som bruker den til å forsikre deg om at sikkerhetsbeskyttelse industristandard.
 
 |||
 |-|-|
-|Documentation protection method:|Algorithm: AES<br /><br />Key length: 128 bits and 256 bits [footnote 1]|
-|Key protection method:|Algorithm: RSA<br /><br />Key length: 2048 bits|
-|Certificate signing:|Algorithm: SHA-256|
-Footnote 1:
-             256 bits is used by the Rights Management sharing application for generic protection and native protection when the file has a .ppdf file name extension or is a protected text or image file (such as .ptxt or .pjpg).
+|Dokumentasjonen beskyttelse metode:|Algoritme: AES<br /><br />Nøkkellengde: 128 bits og 256 bits <sup>1</sup>|
+|Nøkkelbeskyttelse metode:|Algoritme: RSA<br /><br />Nøkkellengde: 2048 biter|
+|Sertifikatsignering:|Algoritme: SHA-256|
+<sup>1</sup> 256 biter brukes av rettighetsadministrasjon deling program for generell beskyttelse og innebygd beskyttelse når filen har en .ppdf filtype eller er en beskyttet fil tekst eller bilde (for eksempel .ptxt eller .pjpg).
 
-### <a name="BKMK_Walthrough"></a>Walkthrough of how Azure RMS works: First use, content protection, content consumption
-To understand in more detail how Azure RMS works, let's walk through a typical flow after the [Azure RMS service is activated](https://technet.microsoft.com/library/jj658941.aspx) and when a user first uses RMS on their Windows computer (a process sometimes known as **initializing the user environment** or bootstrapping), **protects content** (a document or email), and then **consumes**  (opens and uses) content that has been protected by somebody else.
+### <a name="BKMK_Walthrough"></a>Gjennomgang av hvordan Azure RMS fungerer: Bruk først, beskyttelse, innhold forbruk av innhold
+For å forstå i detalj hvordan Azure RMS fungerer, la oss gå gjennom en vanlig flyt etter den [Azure RMS-tjenesten er aktivert](https://technet.microsoft.com/library/jj658941.aspx) og når en bruker første gang RMS på deres Windows-datamaskin (noen ganger kalt **under initialisering av miljøet bruker** eller ved oppstart), **beskytter innholdet** (et dokument eller e-post), og deretter **forbruker**  (åpner og bruker) innhold som er beskyttet av en annen.
 
-After the user environment is initialized, that user can then protect documents or consume protected documents on that computer.
+Etter at brukeren miljøet er initialisert, kan brukeren deretter beskytte dokumenter eller bruke beskyttede dokumenter på datamaskinen.
 
 > [!NOTE]
-> If this user moves to another Windows computer, or another user uses this same Windows computer, the initialization process is repeated.
+> Hvis denne brukeren går til en annen Windows-datamaskin, eller en annen bruker bruker samme Windows datamaskin, gjentas initialiseringsprosessen.
 
-#### Initializing the user environment
-Before a user can protect content or consume protected content on a Windows computer, the user environment must be prepared on the device. This is a one-time process and happens automatically without user intervention when a user tries to protect or consume protected content:
-
-|||
-|-|-|
-|![](../Image/AzRMS.png)|The RMS client on the computer first connects to Azure RMS, and authenticates the user by using their Azure Active Directory account.<br /><br />When the user’s account is federated with Azure Active Directory, this authentication is automatic and the user is not prompted for credentials.|
+#### Initialisering av brukermiljø
+Før en bruker kan beskytte innhold eller forbruke beskyttet innhold på en Windows-datamaskin, må brukeren miljøet være forberedt på enheten. Dette er en engangs prosess og skjer automatisk uten brukermedvirkning når en bruker prøver å beskytte eller forbruker beskyttet innhold:
 
 |||
 |-|-|
-|![](../Image/AzRMS_useractivation2.png)|After the user is authenticated, the connection is automatically redirected to the organization’s RMS tenant, which issues certificates that let the user authenticate to Azure RMS in order to consume protected content and to protect content offline.<br /><br />A copy of the user’s certificate is stored in Azure RMS so that if the user moves to another device, the certificates are created by using the same keys.|
-
-#### Content protection
-When a user protects a document, the RMS client takes the following actions on an unprotected document:
+|![](../Image/AzRMS.png)|RMS-klienten på datamaskinen først kobles til Azure RMS, og godkjenner brukeren ved hjelp av deres Azure Active Directory-konto.<br /><br />Når brukerens konto er samlet med Azure Active Directory, denne godkjenningen er automatisk, og brukeren blir ikke spurt etter legitimasjon.|
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentprotection1.png)|The RMS client creates a random key (the content key) and encrypts the document using this key with the AES symmetric encryption algorithm.|
+|![](../Image/AzRMS_useractivation2.png)|Når brukeren er godkjent, er tilkoblingen automatisk videresendt til organisasjonens RMS leier som problemer sertifikater som brukeren kan godkjenne Azure RMS for å kunne bruke beskyttet innhold, og for å beskytte innhold i frakoblet modus.<br /><br />En kopi av brukerens sertifikat lagres i Azure RMS, slik at hvis brukeren flytter til en annen enhet, sertifikatene er opprettet ved hjelp av de samme nøklene.|
+
+#### Beskyttelse av innhold
+Når en bruker beskytter et dokument, tar RMS-klienten følgende handlinger på en ubeskyttet dokument:
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentprotection2.png)|The RMS client then creates a certificate that includes a policy for the document, either based on a template or by specifying specific rights for the document. This policy includes the rights for different users or groups and other restrictions, such as an expiration date.<br /><br />The RMS client then uses the organization’s key that was obtained when the user environment was initialized and uses this key to encrypt the policy and the symmetric content key. The RMS client also signs the policy with the user’s certificate that was obtained when the user environment was initialized.|
+|![](../Image/AzRMS_documentprotection1.png)|RMS-klient oppretter en tilfeldig tast (content-nøkkel) og krypterer dokumentet med denne nøkkelen med symmetrisk kryptering AES-algoritmen.|
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentprotection3.png)|Finally, the RMs client embeds the policy into a file with the body of the document encrypted previously, which together comprise a protected document.<br /><br />This document can be stored anywhere or shared by using any method, and the policy always stays with the encrypted document.|
-
-#### Content consumption
-When a user wants to consume a protected document, the RMS client starts by requesting access to the Azure RMS service:
+|![](../Image/AzRMS_documentprotection2.png)|RMS-klienten oppretter deretter et sertifikat som inneholder en policy for dokumentet, enten basert på en mal, eller ved å angi bestemte rettigheter for dokumentet. Denne policyen inneholder rettigheter for forskjellige brukere eller grupper og andre begrensninger, for eksempel en utløpsdato.<br /><br />RMS-klienten bruker deretter organisasjonens nøkkelen som ble hentet når brukeren miljøet ble initialisert, og bruker denne nøkkelen til å kryptere policyen og den symmetriske nøkkelen som innhold. RMS-klienten logger også policy med brukerens sertifikat som ble hentet når brukeren miljøet ble initialisert.|
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentconsumption1.png)|The authenticated user sends the document policy and the user’s certificates to Azure RMS. The service decrypts and evaluates the policy, and builds a list of rights (if any) the user has for the document.|
+|![](../Image/AzRMS_documentprotection3.png)|Til slutt, bygger RMs-klienten policyen til en fil med i brødteksten til dokumentet kryptert tidligere, som sammen utgjør et beskyttet dokument.<br /><br />Dette dokumentet kan lagres hvor som helst eller deles ved hjelp av en av metodene, og policyen forblir alltid med kryptert dokument.|
+
+#### Innhold forbruk
+Når en bruker ønsker å bruke et beskyttet dokument, starter RMS-klienten som ber om tilgang til Azure RMS-tjenesten:
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentconsumption2.png)|The service then extracts the AES content key from the decrypted policy. This key is then encrypted with the user’s public RSA key that was obtained with the request.<br /><br />The re-encrypted content key is then embedded into an encrypted use license with the list of user rights, which is then returned to the RMS client.|
+|![](../Image/AzRMS_documentconsumption1.png)|Den godkjente brukeren sender policy for dokumentnummer og brukerens sertifikater til Azure RMS. Tjenesten dekrypterer evaluerer policyen og bygger en liste med rettigheter (Hvis noen) brukeren har for dokumentet.|
 
 |||
 |-|-|
-|![](../Image/AzRMS_documentconsumption3.png)|Finally, the RMS client takes the encrypted use license and decrypts it with its own user private key. This lets the RMS client decrypt the document’s body as it is needed and render it on the screen.<br /><br />The client also decrypts the rights list and passes them to the application, which enforces those rights in the application’s user interface.|
+|![](../Image/AzRMS_documentconsumption2.png)|Tjenesten trekker deretter ut nøkkelen AES innhold fra den dekrypterte policyen. Denne nøkkelen er deretter kryptert med brukerens fellesnøkkel RSA-nøkkel som er innhentet med forespørselen.<br /><br />Nøkkelen for kryptert på nytt innhold bygges deretter inn i en kryptert brukerlisens med liste over brukerrettigheter, som deretter blir returnert til RMS-klienten.|
 
-#### Variations
-The preceding walkthroughs cover the standard scenarios but there are some variations:
+|||
+|-|-|
+|![](../Image/AzRMS_documentconsumption3.png)|Til slutt RMS-klienten tar krypterte brukerlisensen og dekrypterer den med sin egen private nøkkel for brukeren. Dette gjør at RMS-klienten dekryptere dokumentets brødtekst som det er nødvendig, og gjengi det på skjermen.<br /><br />Klienten også dekrypterer liste over tilgangsrettigheter og sender dem til programmet, som håndhever de rettighetene i programmets brukergrensesnitt.|
 
--   **Mobile devices**: When mobile devices protect or consume files with Azure RMS, the process flows are much simpler. Mobile devices don’t first go through the user initialization process because instead, each transaction (to protect or consume content) is independent. As with Windows computers, mobile devices connect to the Azure RMS service and authenticate. To protect content, mobile devices submit a policy and Azure RMS sends them a publishing license and symmetric key to protect the document. To consume content, when mobile devices connect to the Azure RMS service and authenticate, they send the document policy to Azure RMS and request a use license to consume the document. In response, Azure RMS sends the necessary keys and restrictions to the mobile devices. Both processes use TLS to protect the key exchange and other communications.
+#### Variasjoner
+Foregående gjennomgangene dekker standard scenarier, men det finnes noen variasjoner:
 
--   **RMS connector**: When Azure RMS is used with the RMS connector, the process flows remain the same. The only difference is that the connector acts as a relay between the on-premises services (such as Exchange Server and SharePoint Server) and Azure RMS. The connector itself does not perform any operations, such as the initialization of the user environment, or encryption or decryption. It simply relays the communication that would usually go to an AD RMS server, handling the translation between the protocols that are used on each side. This scenario lets you use Azure RMS with on-premises services.
+-   **Mobile enheter**: Når mobile enheter beskytte eller bruke filer med Azure RMS, er flyter de prosessen mye enklere. Mobile enheter gå ikke først gjennom initialiseringsprosessen bruker fordi i stedet hver transaksjon (for å beskytte eller forbruker innhold) er uavhengig. Med Windows-datamaskiner, mobile enheter koble til tjenesten Azure RMS og godkjenne. For å beskytte innhold, mobile enheter sender en policy og Azure RMS sender dem en lisens for publisering og symmetriske nøkkelen til å beskytte dokumentet. Hvis du vil bruke innhold, når mobilenheter kobler til tjenesten Azure RMS og godkjenne, de sender policy for dokumentnummer til Azure RMS og be om en brukerlisens forbruker dokumentet. I svaret sender Azure RMS nødvendige nøklene og begrensningene til mobile enheter. Begge prosesser bruker TLS til å beskytte nøkkelutvekslingen og annen kommunikasjon.
 
--   **Generic protection (.pfile)**: When Azure RMS generically protects a file, the flow is basically the same for content protection except that the RMS client creates a policy that grants all rights. When the file is consumed, it is decrypted before it is passed to the target application. This scenario lets you protect all files, even if they don’t natively support RMS.
+-   **RMS connector**: Når det brukes Azure RMS med RMS-kobling, forblir de samme prosess-flyter. Den eneste forskjellen er at koblingen fungerer som et relay mellom lokale tjenester (for eksempel Exchange Server og SharePoint Server) og Azure RMS. Selve koblingen utfører ikke noen operasjoner, for eksempel initialiseringen av brukermiljø, eller kryptering eller dekryptering. Den ganske enkelt formidler kommunikasjon som vanligvis ville gå til en AD RMS-server, som håndterer oversettelsen mellom protokollene som skal brukes på hver side. Dette scenariet kan du bruke Azure RMS med lokale tjenester.
 
--   **Protected PDF (.ppdf)**: When Azure RMS natively protects an Office file, it also creates a copy of that file and protects it in the same way. The only difference is that the file copy is in PPDF file format, which the RMS sharing application knows how to open for viewing only. This scenario lets you send protected attachments via email, knowing that the recipient on a mobile device will always be able to read them even if the mobile device doesn’t have an app that natively supports protected Office files.
+-   **Generell beskyttelse (.pfile)**: Når Azure RMS generisk beskytter en fil, er flyten i hovedsak det samme for innholdsbeskyttelse bortsett fra at RMS-klient oppretter en policy som gir alle rettigheter. Når filen er brukt, er den dekryptert, før den sendes til målprogrammet. Dette scenariet kan du beskytte alle filer, selv om de ikke opprinnelig støtte RMS.
 
-## <a name="BKMK_NextSteps"></a>Next steps
-To learn more about Azure RMS, use the other topics in the [Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md) section, such as [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) to learn how your existing applications can integrate with Azure RMS to provide an information protection solution. Review [Terminology for Azure Rights Management](../Topic/Terminology_for_Azure_Rights_Management.md) so that you’re familiar with the terms that you might come across as you’re configuring and using Azure RMS, and be sure to also check [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) before you start your deployment. If you want to dive right in and try it out for yourself, use the [Quick Start Tutorial for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md).
+-   **Beskyttet PDF-fil (.ppdf)**: Når Azure RMS beskytter opprinnelig en Office-fil, opprettes det en kopi av filen og også beskytter den på samme måte. Den eneste forskjellen er at kopiering av fil i filformatet for PPDF, som RMS deling programmet vet hvordan du åpner bare for visning. Denne situasjonen kan du sende beskyttet vedlegg via e-post, hvis du vet at mottakeren på en mobil enhet alltid skal kunne lese dem, selv om den mobile enheten ikke har et program som støtter beskyttet Office-filer.
 
-If you’re ready to start deploying Azure RMS for your organization, use the [Azure Rights Management Deployment Roadmap](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) for your deployment steps and links for how-to instructions.
+## <a name="BKMK_NextSteps"></a>Neste trinn
+Hvis du vil vite mer om Azure RMS, kan du bruke de andre emnene i den [Komme i gang med Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md) delen, som [Hvordan programmer støtter Azure rettighetsbehandling](../Topic/How_Applications_Support_Azure_Rights_Management.md) å finne ut hvordan dine eksisterende programmer kan integrere med Azure RMS å tilby en løsning for beskyttelse av informasjon. Se gjennom [Terminologi for Azure Rights Management](../Topic/Terminology_for_Azure_Rights_Management.md) slik at du er kjent med betingelsene du kanskje kommer over når du konfigurerer og bruker Azure RMS, og være sikker på å også av [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) før du starter distribusjonen. Hvis du vil kaste høyre i og prøve det selv, kan du bruke den [Rask Start opplæring for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md).
+
+Hvis du er klar til å starte distribusjon av Azure RMS for organisasjonen, bruker du [Veikart for Azure Rights Management-distribusjon](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) for distribusjon av trinnene og koblinger for hvordan-instruksjoner.
 
 > [!TIP]
-> For additional information and help, use the resources and links in [Information and Support for Azure Rights Management](../Topic/Information_and_Support_for_Azure_Rights_Management.md).
+> Hvis du vil ha mer informasjon og hjelp, kan du bruke ressurser og koblinger i [Informasjon og støtte for Azure Rights Management](../Topic/Information_and_Support_for_Azure_Rights_Management.md).
 
-## See Also
-[Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
+## Se også
+[Komme i gang med Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
 

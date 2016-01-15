@@ -3,56 +3,55 @@ description: na
 keywords: na
 title: Azure Rights Management Deployment Roadmap
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 086600c2-c5d8-47ec-a4c0-c782e1797486
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Azure Rights Management Deployment Roadmap
-Use the following steps to prepare for, implement, and manage Azure Rights Management (Azure RMS) for your organization.
+# Veikart for Azure Rights Management-distribusjon
+Bruk følgende trinn til å forberede, gjennomføre og administrere Azure Rights Management (Azure RMS) for organisasjonen.
 
-However, if you just want to quickly try Azure RMS for yourself, rather than roll it out in a production environment, see [Quick Start Tutorial for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md).
+Imidlertid Hvis du vil raskt prøve Azure RMS selv, heller enn rulle ut i et produksjonsmiljø, se [Rask Start opplæring for Azure Rights Management](../Topic/Quick_Start_Tutorial_for_Azure_Rights_Management.md).
 
 > [!IMPORTANT]
-> Before you do the following steps, make sure that you have reviewed [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).
+> Før du gjør de følgende trinnene, må du kontrollere at du har gått gjennom [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).
 
-## Step 1: Confirm that you have a subscription that includes Azure Rights Management
-There is more than one type of subscription that includes [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)]. See the [Cloud subscriptions that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic, and check that your subscription includes the functionality that you want to use in your organization by referring to the table in [Comparison of Rights Management Services (RMS) Offerings](https://technet.microsoft.com/dn858608).
+## Trinn 1: Kontroller at du har et abonnement som inkluderer Azure Rights Management
+Det er mer enn én type abonnement som inkluderer [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)]. Se den [Cloud-abonnementer som støtter Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedSubscriptions) delen i den [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) emne, og kontroller at abonnementet inkluderer funksjonalitet du vil bruke i organisasjonen ved å referere til tabellen i [tilbud for sammenligning av Rights Management Services (RMS)](https://technet.microsoft.com/dn858608).
 
-## Step 2: Prepare your tenant account to use Rights Management
-Before you begin using [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], do the following preparation:
+## Trinn 2: Forberede leier kontoen du bruker Rights Management
+Før du begynner å bruke [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], gjøre følgende forberedelser:
 
-1.  Make sure that your Azure or Office 365 tenant contains the user accounts and groups that will be used by Azure RMS to authenticate users from your organization. If necessary, create these account and groups, or synchronize them from your on-premises directory. For more information, see [Preparing for Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md).
+1.  Kontroller at din Azure eller Office 365 leier inneholder brukerkontoene og gruppene som skal brukes av Azure RMS til å godkjenne brukere i organisasjonen. Om nødvendig opprette disse konto og grupper, eller synkronisere dem fra den lokale katalogen. Hvis du vil ha mer informasjon, se [Forbereder Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md).
 
-2.  Decide whether you want Microsoft to manage your tenant key (the default), or generate and manage your tenant key yourself (known as bring your own key, or BYOK). Note that currently, you cannot use BYOK if you use Exchange Online. For more information, see [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md).
+2.  Bestemme om du vil at Microsoft skal behandle leier nøkkelen (standard), eller generere og behandle leier-nøkkelen selv (kjent som gir din egen nøkkel eller BYOK). Legg merke til at for øyeblikket, du ikke kan bruke BYOK Hvis du bruker Exchange Online. Hvis du vil ha mer informasjon, se [Planlegging og implementering av Azure Rights Management leier nøkkelen](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md).
 
-3.  Install the Windows PowerShell module for [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] on at least one computer that has Internet access. You can do this step now, or later. For more information, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+3.  Installere Windows PowerShell-modul for [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] på minst én datamaskin som har Internett-tilgang. Du kan gjøre dette trinnet nå eller senere. Hvis du vil ha mer informasjon, se [Installere Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
 
-4.  If you are currently using on-premises Rights Management services: Perform a migration to move the keys, templates, and URLs to the cloud. For more information, see [Migrating from AD RMS to Azure Rights Management](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md).
+4.  Hvis du bruker lokale Rights Management services: Utføre en overføring for å flytte nøkler, maler og URL-adresser til skyen. Hvis du vil ha mer informasjon, se [Migrering fra AD RMS til Azure Rights Management](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md).
 
-5.  Activate Rights Management so that you can begin to use the service. If a phased deployment is required, configure user onboarding controls to restrict usage to specific users. For more information, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
+5.  Aktiver Rights Management, slik at du kan begynne å bruke tjenesten. Hvis det kreves en tretrinns distribusjon, konfigurere brukerkontroller kort for å begrense bruk av bestemte brukere. Hvis du vil ha mer informasjon, se [Aktivering av Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
 
-Optionally, consider configuring the following:
+Du kan også vurdere å konfigurere følgende:
 
--   Custom templates if the default rights policy templates are not sufficient for your organization. You can do this step now, or later. For more information, see [Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
+-   Egendefinerte maler hvis standard rettigheter policymaler er ikke nok for organisasjonen. Du kan gjøre dette trinnet nå eller senere. Hvis du vil ha mer informasjon, se [Konfigurere egendefinerte maler for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
 
--   Usage logging so that you can monitor how your organization is using Rights Management. You can do this step now, or later. For more information, see [Logging and Analyzing Azure Rights Management Usage](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md).
+-   Bruk kommentarer slik at du kan overvåke hvordan organisasjonen bruker Rights Management. Du kan gjøre dette trinnet nå eller senere. Hvis du vil ha mer informasjon, se [Logging og analysere Azure Rights Management-forbruk](../Topic/Logging_and_Analyzing_Azure_Rights_Management_Usage.md).
 
-## Step 3: Configure your applications and services for Rights Management
-Configuring your applications can include installing the Rights Management sharing application and enabling support for information rights management (IRM) features in SharePoint Online or Exchange Online. For more information, see [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
+## Trinn 3: Konfigurere programmer og tjenester for rettighetsadministrasjon
+Konfigurasjon av programmene kan inkludere installere rettighetsadministrasjon deling av programmet og hvordan du aktiverer støtte for information rights management (IRM)-funksjoner i SharePoint Online eller Exchange Online. Hvis du vil ha mer informasjon, se [Konfigurere programmer for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
 
-If you have existing IT services that need to inspect files that Azure RMS will protect—such as data leak prevention (DLP) solutions, content encryption gateways (CEG), and anti-malware products—configure the service accounts to be super users for Azure RMS. For more information, see [Configuring Super Users for Azure Rights Management and Discovery Services or Data Recovery](../Topic/Configuring_Super_Users_for_Azure_Rights_Management_and_Discovery_Services_or_Data_Recovery.md).
+Hvis du har eksisterende IT-tjenester trenger for å kontrollere filene som vil beskytte Azure RMS, for eksempel data lekkasje forebygging (DLP) løsninger, innhold kryptering gatewayer (CEG) og anti-malware produkter – Konfigurer tjenestekontoer for å være Superbrukere for Azure RMS. Hvis du vil ha mer informasjon, se [Konfigurere Superbrukere for Azure Rights Management og tjenester for oppdagelse eller gjenoppretting av Data](../Topic/Configuring_Super_Users_for_Azure_Rights_Management_and_Discovery_Services_or_Data_Recovery.md).
 
-If you have on-premises services that you want to use with Azure Rights Management, install and configure the Rights Management connector. For more information, see [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
+Hvis du har lokale tjenester som du vil bruke med Azure Rights Management, Installer og Konfigurer Rights Management-koblingen. Hvis du vil ha mer informasjon, se [Distribusjon av Azure Rights Management-kobling](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
 
-## Step 4: Publish and consume rights-protected content
-You’re now ready to publish and consume protected content, and log how your company is using Rights Management. For more information, see [Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md).
+## Trinn 4: Publisere og bruke rettighetsbeskyttet innhold
+Du er nå klar til å publisere og bruke beskyttet innhold, og logg hvordan firmaet ditt bruker Rights Management. Hvis du vil ha mer informasjon, se [Ved hjelp av Azure Rights Management](../Topic/Using_Azure_Rights_Management.md).
 
-## Step 5: Administer Rights Management for your tenant account as needed
-As you begin to use [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], you might find the [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] module for Windows PowerShell useful to help script or automate administrative changes. For more information, see [Administering Azure Rights Management by Using Windows PowerShell](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md).
+## Trinn 5: Administrere Rights Management for leieradministrasjon kontoen etter behov
+Når du begynner å bruke [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], kan det hende at [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] modul for Windows PowerShell nyttig å hjelpe skript eller automatisere administrative endringer. Hvis du vil ha mer informasjon, se [Administrasjon av Azure Rights Management ved hjelp av Windows PowerShell](../Topic/Administering_Azure_Rights_Management_by_Using_Windows_PowerShell.md).
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Se også
+[Konfigurere Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
 

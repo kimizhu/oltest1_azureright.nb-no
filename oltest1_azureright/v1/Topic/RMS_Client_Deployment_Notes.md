@@ -3,74 +3,73 @@ description: na
 keywords: na
 title: RMS Client Deployment Notes
 search: na
-ms.date: 2015-11-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 03cc8c6f-3b63-4794-8d92-a5df4cdf598f
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# RMS Client Deployment Notes
-The  Rights Management Service client (RMS client) version 2 is also known as the MSIPC client. It is software for Windows computers that communicates with Microsoft Rights Management services on-premises or in the cloud to help protect access to and usage of information as it flows through applications and devices, within the boundaries of your organization, or outside  those managed boundaries. In addition to shipping with the [Rights Management sharing application for Windows](https://technet.microsoft.com/library/dn919648.aspx), the RMS client is  available [as an optional download](http://www.microsoft.com/download/details.aspx?id=38396) that can, with acknowledgment and acceptance of its license agreement, be freely distributed with  third-party software so that clients can  protect and consume content that has been  protected by Rights Management services.
+# RMS-klient distribusjon notater
+Tjenesten for Rights Management-klienten (RMS client) versjon 2 er også kjent som MSIPC-klient. Det er programvare for Windows-datamaskiner som kommuniserer med Microsoft Rights Management services på lokaler eller i skyen for å beskytte tilgang til og bruk av informasjon som den flyter gjennom programmer og enheter, innenfor grensene av organisasjonen eller utenfor de administrerte grenser. I tillegg til levering med den [Rights Management deling av programmer for Windows](https://technet.microsoft.com/library/dn919648.aspx), RMS-klienten er tilgjengelig [som en valgfri nedlasting](http://www.microsoft.com/download/details.aspx?id=38396) som kan, med bekreftelse og godkjenning av lisensavtalen, fritt distribueres med tredjeparts programvare slik at klienter kan beskytte og forbruker innhold som er beskyttet av Rights Management services.
 
-This topic includes the following sections:
+Dette emnet inneholder følgende deler:
 
--   [Redistributing the RMS Client](#BKMK_RedistributeInstaller)
+-   [Distribuerte RMS-klienten](#BKMK_RedistributeInstaller)
 
--   [Installing the RMS Client](#BKMK_InstallClient)
+-   [Installere RMS-klienten](#BKMK_InstallClient)
 
--   [Questions and Answers About the RMS Client](#BKMK_QA)
+-   [Spørsmål og svar om RMS-klienten](#BKMK_QA)
 
--   [RMS Client Settings](#BKMK_Settings)
+-   [RMS-klientinnstillinger](#BKMK_Settings)
 
--   [AD RMS Only: Limiting the RMS Client to Use Trusted AD RMS Servers](#BKMK_UsingTrustedServers)
+-   [AD RMS: Hvis du begrenser RMS-klienten til å bruke klarerte AD RMS-servere](#BKMK_UsingTrustedServers)
 
--   [RMS Service Discovery](#BKMK_ServiceDiscovery)
+-   [RMS-Service Discovery-konfigurasjon](#BKMK_ServiceDiscovery)
 
-## <a name="BKMK_RedistributeInstaller"></a>Redistributing the RMS Client
-The RMS client can be freely redistributed and bundled with other applications and IT solutions. If you are an application developer or solution provider and want to redistribute the  RMS client, you have two options:
+## <a name="BKMK_RedistributeInstaller"></a>Distribuerte RMS-klienten
+RMS-klienten kan fritt distribuert og sammen med andre programmer og IT-løsninger. Hvis du er en utvikler eller løsningsforhandlere og ønsker å videreformidle RMS-klienten, har du to alternativer:
 
--   Recommended: Embed the RMS client installer in your application installation and run it in silent mode (the **/quiet** switch, detailed in the next section).
+-   Anbefalt: Bygg inn RMS-klienten installasjonsprogrammet i din installasjon av programmer og kjøre den i stille modus (den **/quiet** bryteren, som beskrevet i neste del).
 
--   Make the RMS client a prerequisite for your application. With this option, you might need to provide users with additional instructions for them to obtain, install, and update their computers with the client before they can use your application.
+-   Kontroller RMS-klienten en forutsetning for programmet. Med dette alternativet må du kanskje gi brukere ytterligere instrukser for dem å skaffe, installere og oppdatere sine datamaskiner med klienten, før de kan bruke programmet.
 
-## <a name="BKMK_InstallClient"></a>Installing the RMS Client
-The RMS client is contained in an installer executable file named **setup_msipc_***&lt;arch&gt;***.exe**, where *&lt;arch&gt;* is either **x86** (for 32-bit client computers) or **x64** (for 64-bit client computers). The 64-bit (x64) installer package installs both a 32-bit runtime executable for compatibility with 32-bit applications that run on a 64-bit operating system installation, as well as a 64-bit runtime executable for supporting native 64-bit applications. The 32-bit (x86) installer will not run on a 64-bit Windows installation.
+## <a name="BKMK_InstallClient"></a>Installere RMS-klienten
+RMS-klienten ligger i en kjørbar installeringsfil som kalles **setup_msipc_***&lt; arch &gt;***.exe**, der *&lt; arch &gt;* er enten **x86** (for klientmaskiner på 32-biters) eller **x64** (for klientmaskiner på 64-biters). 64-bit (x 64) installasjonspakken installeres både en 32-biters runtime kjørbare for kompatibilitet med 32-biters programmer som kjører på en 64-biters operativsystem installasjon, samt en 64-biters runtime kjørbar som støtter opprinnelig 64-biters programmer. Installasjonsprogrammet for 32-biters (x 86) kan ikke kjøres på en 64-biters Windows-installasjon.
 
 > [!NOTE]
-> You need elevated privileges to install the RMS client, such as a member of the Administrators group on the local computer.
+> Du trenger forhøyede rettigheter til å installere RMS-klienten, for eksempel et medlem av gruppen Administratorer på den lokale datamaskinen.
 
-You can install the  RMS client by using either of the following installation methods:
+Du kan installere RMS-klienten ved hjelp av en av følgende installasjonsmetoder:
 
--   **Silent mode.** By using the **/quiet** switch as part of the command-line options, you can silently install the  RMS client on computers. The following  example  shows a silent mode installation for the  RMS client on a 64-bit client computer:
+-   **Stille modus.** Ved hjelp av den **/quiet** bytte som en del av kommandolinjealternativene, kan du stille installere RMS-klienten på datamaskiner. Følgende eksempel viser en installasjon i stille modus for RMS-klienten på en klientdatamaskin for 64-biters:
 
     ```
     setup_msipc_x64.exe /quiet
     ```
 
--   **Interactive mode.** Alternately, you can install the  RMS client by using the GUI-based setup program that's provided by the  RMS Client  Installation Wizard. To do this, double-click the  RMS client installer package (**setup_msipc_***&lt;arch&gt;***.exe**) in the folder to which it was copied or downloaded on your local computer.
+-   **Interaktiv modus.** Du kan eventuelt installere RMS-klienten ved hjelp av GUI-basert installasjonsprogram som tilbys av veiviseren for installasjon av RMS-klienten. Hvis du vil gjøre dette, dobbeltklikker du installasjonspakken RMS-klienten (**setup_msipc_***&lt; arch &gt;***.exe**) i mappen som den ble overført eller lastet ned på den lokale datamaskinen.
 
-## <a name="BKMK_QA"></a>Questions and Answers About the RMS Client
-The following section contains frequently asked questions about the RMS client and the answers to them.
+## <a name="BKMK_QA"></a>Spørsmål og svar om RMS-klienten
+Følgende del inneholder vanlige spørsmål om RMS-klienten og svarene på dem.
 
-### Which operating systems support the RMS client?
-The RMS client is supported with the following operating systems:
+### Hvilke operativsystemer støtter RMS-klienten?
+RMS-klienten støttes med følgende operativsystemer:
 
-|Windows Server Operating System|Windows Client Operating System|
-|-----------------------------------|-----------------------------------|
-|Windows Server 2012 R2|Windows 8.1|
+|Windows Server-operativsystem|Windows-klient-operativsystem|
+|---------------------------------|---------------------------------|
+|Windows Server 2012 R2|8.1 for Windows|
 |Windows Server 2012|Windows 8|
-|Windows Server 2008 R2|Windows 7 with minimum of SP1|
-|Windows Server 2008 (AD RMS only)|Windows Vista with minimum of SP2 (AD RMS only)|
+|Windows Server 2008 R2|Windows 7 med minimum SP1|
+|Windows Server 2008 (bare AD RMS)|Windows Vista med minimum av SP2 (bare AD RMS)|
 
-### Which processors or platforms support the  RMS client?
-The  RMS client is supported on x86 and x64 computing platforms.
+### Hvilke prosessorer eller plattformer støtte RMS-klienten?
+RMS-klienten støttes på x 86 og x 64 databehandling plattformer.
 
-### Where is the  RMS client installed?
-By default, the RMS client is installed in %ProgramFiles%\Active Directory Rights Management Services Client 2.&lt;minor version number&gt;.
+### Der er RMS-klienten installert?
+RMS-klienten er installert som standard i %ProgramFiles%\Active Directory Rights Management Services Client 2. &lt; versjonsnummer &gt;.
 
-### What files  are associated with the RMS client software?
-The following files  are installed as part of the  RMS client software:
+### Hvilke filer er knyttet til RMS-klientprogramvaren?
+Følgende filer installeres som en del av RMS-klientprogramvaren:
 
 -   Msipc.dll
 
@@ -80,161 +79,161 @@ The following files  are installed as part of the  RMS client software:
 
 -   MSIPCEvents.man
 
-In addition to these files, the RMS client also installs multilingual user interface (MUI) support files in 44 languages. To verify the languages supported, run the RMS client installation and when the installation is complete, review the contents of the multilingual support folders under the default path.
+I tillegg til disse filene installerer RMS-klienten også støttefiler for multilingual user interface (MUI) i 44 språk. Kjør installasjonen av RMS-klienten for å kontrollere språkene som støttes, og når installasjonen er fullført, kan du se gjennom innholdet i mappene flerspråklig støtte under standardbanen.
 
-### Is the RMS client included by default when I install a supported operating system?
-No. This version of the  RMS client ships as an optional download that can be installed separately on computers running supported versions of the Microsoft Windows operating system.
+### Er RMS-klienten som er inkludert som standard når jeg installere et operativsystem som støttes?
+Nr. Denne versjonen av RMS-klienten som leveres som en valgfri nedlasting som kan installeres separat på datamaskiner som kjører støttede versjoner av Microsoft Windows-operativsystemet.
 
-### Is the RMS client automatically updated by Microsoft Update?
-If you installed this RMS client by using the silent installation option, the RMS client  inherits your current Microsoft Update settings. If you installed the RMS client by using the GUI-based setup program, the RMS client installation wizard  prompts you to enable Microsoft Update.
+### RMS-klienten oppdateres automatisk av Microsoft Update?
+Hvis du har installert denne RMS-klienten ved hjelp av alternativet for stille installasjon, arver gjeldende innstillinger for Microsoft Update i RMS-klienten. Hvis du installerte RMS-klienten ved hjelp av installasjonsprogrammet for GUI-basert, veiviseren for installasjon av RMS-klienten ber deg om å aktivere Microsoft Update.
 
-## <a name="BKMK_Settings"></a>RMS Client Settings
-The following section contains settings information about the RMS client. This information might be helpful if you have problems with applications or services that use the RMS client.
+## <a name="BKMK_Settings"></a>RMS-klientinnstillinger
+Følgende del inneholder for innstillingsinformasjon om RMS-klienten. Denne informasjonen kan være nyttig hvis du har problemer med programmer eller tjenester som bruker RMS-klienten.
 
 > [!NOTE]
-> Some settings depend on whether the RMS-enlightened application runs as a client mode application (such as Microsoft Word and Outlook, or the RMS sharing application), or server mode application  (such as SharePoint and Exchange).  In the following tables, these settings are identified as **Client Mode** and **Server Mode**, respectively.
+> Noen innstillinger avhenger av om RMS-enlightened-programmet kjører som en modus klientprogram (for eksempel Microsoft Word og Outlook eller RMS deling program), eller server modus program (for eksempel SharePoint og Exchange).  I følgende tabeller, identifiseres disse innstillingene som **klientmodus** og **Server-modus**, henholdsvis.
 
-### Where the RMS Client Stores Licenses on Client Computers
-The RMS client stores licenses on the local disk and also caches some  information in the Windows registry.
+### Hvor RMS-klienten butikkene lisenser på klientdatamaskiner
+RMS-klienten lagrer lisenser på den lokale disken og bufrer også informasjon i Windows-registret.
 
-|Description|Client Mode Paths|Server Mode Paths|
-|---------------|---------------------|---------------------|
-|License store location|%localappdata%\Microsoft\MSIPC|%allusersprofile%\Microsoft\MSIPC\Server\*&lt;SID&gt;*\|
-|Template store location|%localappdata%\Microsoft\MSIPC\Templates|%allusersprofile%\Microsoft\MSIPC\Server\Templates\*&lt;SID&gt;*\|
-|Registry location|HKEY_CURRENT_USER<br /> \Software<br /> \Classes<br /> \Local Settings<br /> \Software<br /> \Microsoft<br /> \MSIPC|HKEY_CURRENT_USER<br /> \Software<br /> \Microsoft<br /> \MSIPC<br /> \Server<br /> \*&lt;SID&gt;*|
+|Beskrivelse|Klienten modus baner|Server modus baner|
+|---------------|------------------------|----------------------|
+|Lisens lagerlokasjon|%localappdata%\Microsoft\MSIPC|%ALLUSERSPROFILE%\Microsoft\MSIPC\Server\*&lt; SID &gt;*\|
+|Mal Lagre plassering|%localappdata%\Microsoft\MSIPC\Templates|%ALLUSERSPROFILE%\Microsoft\MSIPC\Server\Templates\*&lt; SID &gt;*\|
+|Sted i registret|HKEY_CURRENT_USER<br /> \Software<br /> \Classes<br /> \Local innstillinger<br /> \Software<br /> \Microsoft<br /> \MSIPC|HKEY_CURRENT_USER<br /> \Software<br /> \Microsoft<br /> \MSIPC<br /> \Server<br /> \*&lt; SID &gt;*|
 > [!NOTE]
-> *&lt;SID&gt;* is the secure identifier (SID) for the account under which the server application is running. For example, if the application is running under the built-in Network Service account,    replace *&lt;SID&gt;* with the value of the well-known SID for that account (S-1-5-20).
+> *&lt; SID &gt;* er sikker ID (SID) for kontoen som kjører serverprogrammet. Hvis applikasjonen kjører under den innebygde Network Service-kontoen, for eksempel erstatte *&lt; SID &gt;* med verdien av den velkjente SID for kontoen (S-1-5-20).
 
-### Windows Registry Settings for the RMS Client
-You can use Windows registry keys to set or modify some RMS client configurations. For example, as an administrator for RMS-enlightened applications that communicate with AD RMS servers, you might want to update the enterprise service location (override the AD RMS server that is currently selected for publishing) depending on the client computer's current location within your Active Directory topology. Or, you might  want to enable  RMS tracing at the client computer, to help troubleshoot a problem with an RMS-enlightened application. Use the following table to identify the registry settings that you can change for the RMS client.
+### Windows-registerinnstillingene for RMS-klienten
+Du kan bruke Windows-registernøklene til å angi eller endre noen konfigurasjoner for RMS-klienten. Som administrator for RMS-enlightened programmer som kommuniserer med AD RMS-servere du kan for eksempel oppdatere enterprise service plasseringen (overstyring av AD RMS-serveren som er valgt for publisering) avhengig av klientdatamaskinens gjeldende plassering i Active Directory-topologi. Eller du vil aktivere sporing av RMS på klientdatamaskinen, for å feilsøke et problem med et program for RMS-enlightened. Bruk tabellen nedenfor til å identifisere registerinnstillingene som du kan endre for RMS-klienten.
 
-|Task|Settings|
-|--------|------------|
-|AD RMS only: To update the enterprise service location for a client computer|Update the following registry keys:<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterpriseCertification<br />REG_SZ: default<br /><br />**Value:**&lt;http or https&gt;:// *RMS_Cluster_Name*/_wmcs/Certification<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterprisePublishing<br />REG_SZ: default<br /><br />**Value:** &lt;http or https&gt;:// *RMS_Cluster_Name*/_wmcs/Licensing|
-|To enable and disable tracing|Update the following registry key:<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC<br />REG_DWORD: Trace<br /><br />**Value:** 1 to enable tracing, 0 to disable tracing (default)|
-|To change the frequency in days to refresh templates|The following registry values specify how often templates  will be refreshed on the user’s computer if the TemplateUpdateFrequencyInSeconds value is not set.  If neither of these values are set, the default refresh interval for applications using the RMS client  (version 1.0.1784.0) to download templates is 1 day. Versions prior to this have a default value of every 7 days.<br /><br />**Client Mode:**<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />REG_DWORD: TemplateUpdateFrequency<br /><br />**Value:** An integer value that specifies the number of days (minimum of 1) between downloads.<br /><br />**Server Mode:**<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt;SID&gt;*<br />REG_DWORD: TemplateUpdateFrequency<br /><br />**Value:** An integer value that specifies the number of days  (minimum of 1) between downloads.|
-|To change the frequency in seconds to refresh templates<br /><br />Important: If this is specified, the value to refresh templates in days is ignored. Specify one or the other,  not both.|The following registry values specify how often templates  will be refreshed on the user’s computer. If this value or the value to change the frequency in days (TemplateUpdateFrequency) is not set,  the default refresh interval for applications using the RMS client (version 1.0.1784.0) to download templates is 1 day. Versions prior to this have a default value of every 7 days.<br /><br />**Client Mode:**<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />REG_DWORD: TemplateUpdateFrequencyInSeconds<br /><br />**Value:** An integer value that specifies the number of seconds (minimum of 1) between downloads.<br /><br />**Server Mode:**<br /><br />HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt;SID&gt;*<br />REG_DWORD: TemplateUpdateFrequencyInSeconds<br /><br />**Value:** An integer value that specifies the number of seconds   (minimum of 1) between downloads.|
-|AD RMS only: To  download templates immediately at the next publishing request|During testing and evaluations, you might want the RMS client to download templates as soon as possible. To do this, remove the following registry key and the RMS client will download templates immediately at the next publishing request rather than wait for the time specified by the TemplateUpdateFrequency registry setting:<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\&lt;Server Name&gt;\Template<br /><br />**Note**: &lt;Server Name&gt; could have both external (corprights.contoso.com) and internal (corprights) URLs and therefore two different entries.|
-|AD RMS only: To enable support  for federated authentication|If the RMS client computer connects to an AD RMS cluster by using a federated trust, you must configure the federation home realm.<br /><br />HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />REG_SZ: FederationHomeRealm<br /><br />**Value:** The value of this registry entry is the uniform resource identifier (URI) for the federation service (for example, "https://fs-01.contoso.com").|
-|AD RMS only: To  support partner federation servers that require forms-based authentication for user input|By default, the  RMS client operates in silent mode and user input is not required. Partner federation servers, however, might be configured to require user input such as by way of forms-based authentication. In this case, you must configure the RMS client     ignore  silent mode so that the federated authentication form appears in a browser window and the user is promoted for authentication.<br /><br />HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />REG_DWORD: EnableBrowser<br /><br />**Note**: If the federation server is configured to use forms-based authentication, this key is required. If the federation server is configured to use Windows integrated authentication, this key is not required.|
-|AD RMS only: To  block ILS service consumption|By default, the RMS client enables consuming content protected by the ILS service but you can configure the client to block this service by setting the following registry key. If this registry key is set to block the ILS service, any attempts to open and consume content protected by the ILS service will return the following error:<br />HRESULT_FROM_WIN32(ERROR_ACCESS_DISABLED_BY_POLICY)<br /><br />HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />REG_DWORD: **DisablePassportCertification**<br /><br />**Value:** 1 to block ILS consumption, 0 to allow ILS consumption (default)|
+|Oppgave|Innstillinger|
+|-----------|-----------------|
+|AD RMS: Oppdatere plasseringen for enterprise-service for en klientdatamaskin|Oppdater følgende registernøkler:<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterpriseCertification<br />    REG_SZ: standard<br />    **Verdi:**&lt; http eller https &gt; :// *RMS_Cluster_Name*/_wmcs/sertifisering<br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation\EnterprisePublishing<br />    REG_SZ: standard<br />    **Verdi:** &lt; http eller https &gt; :// *RMS_Cluster_Name*/_wmcs/Licensing|
+|Slik aktiverer og deaktiverer sporing|Oppdater følgende registernøkkel:<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC<br />    REG_DWORD: Spor<br />    **Verdi:** 1 for å aktivere sporing, 0 for å deaktivere sporing (standard)|
+|Endre frekvensen i dager for å oppdatere maler|Følgende registerverdier angir hvor ofte oppdateres maler på brukerens datamaskin Hvis verdien for TemplateUpdateFrequencyInSeconds ikke er angitt.  Hvis ingen av disse verdiene er angitt, er standard Oppdateringsintervall for programmer som bruker RMS-klienten (versjon 1.0.1784.0) til å laste ned maler 1 dag. Versjoner før dette har en standardverdi på hver 7 dager.<br /><br />**Klientmodus:**<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />    REG_DWORD: TemplateUpdateFrequency<br />    **Verdi:** Et heltall som angir antall dager (minimum 1) mellom nedlastinger.<br /><br />**Server-modus:**<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt; SID &gt;*<br />    REG_DWORD: TemplateUpdateFrequency<br />    **Verdi:** Et heltall som angir antall dager (minimum 1) mellom nedlastinger.|
+|Endre hyppigheten i sekunder for å oppdatere maler **Important:** Hvis dette er angitt, ignoreres verdien du vil oppdatere maler i dager. Angi en eller den andre, ikke begge.|Følgende registerverdier angir hvor ofte maler vil bli oppdatert på brukerens datamaskin. Hvis denne verdien eller verdien du vil endre frekvensen i dager (TemplateUpdateFrequency) ikke er angitt, er standard Oppdateringsintervall for programmer som bruker RMS-klienten (versjon 1.0.1784.0) til å laste ned maler 1 dag. Versjoner før dette har en standardverdi på hver 7 dager.<br /><br />**Klientmodus:**<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />    REG_DWORD: TemplateUpdateFrequencyInSeconds<br />    **Verdi:** Et heltall som angir antall sekunder (minimum 1) mellom nedlastinger.<br /><br />**Server-modus:**<br /><br />-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\Server\*&lt; SID &gt;*<br />    REG_DWORD: TemplateUpdateFrequencyInSeconds<br />    **Verdi:** Et heltall som angir antall sekunder (minimum 1) mellom nedlastinger.|
+|AD RMS: Laste ned maler umiddelbart ved neste forespørsel publisering|Under testingen og evalueringer vil du kanskje RMS-klienten til å laste ned maler så snart som mulig. Hvis du vil gjøre dette, fjerner følgende registernøkkel og RMS-klienten vil laste ned maler umiddelbart ved neste forespørsel publisering i stedet venter tiden som er angitt av registerinnstilling for TemplateUpdateFrequency:<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\ &lt; servernavn &gt; \Template **Note:** &lt; servernavn &gt; kan ha ekstern (en corprights.contoso.com) og URL-adresser til intern (corprights) og derfor to ulike oppføringer.|
+|AD RMS: Aktivere støtte for medlemmer av organisasjonsnettverk godkjenning|Hvis datamaskinen RMS-klienten kobler seg til en AD RMS-klyngen ved hjelp av en forent klarering, må du konfigurere den federation hjemmeområde.<br /><br />-   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />    REG_SZ: FederationHomeRealm<br />    **Verdi:** Verdien til registernøkkelen er uniform resource identifier (URI) for federation service (for eksempel "https://fs-01.contoso.com").|
+|AD RMS: Støtte for sammenslutningsservere partner som krever skjemabasert godkjenning for brukerinndata|Som standard RMS-klienten, opererer i stille modus og brukerinndata kreves ikke. Partner sammenslutningsservere, imidlertid kan være konfigurert til å kreve brukerinndata slik som ved hjelp av skjemabasert godkjenning. I dette tilfellet må du konfigurere RMS-klienten ignorerer stille modus, slik at skjemaet samlede godkjenning vises i et leservindu, og brukeren er forfremmet til godkjenning.<br /><br />-   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\Federation<br />    REG_DWORD: EnableBrowser **Note:** Hvis federation-serveren er konfigurert til å bruke skjemabasert godkjenning, kreves denne nøkkelen. Hvis federation-serveren er konfigurert for å bruke integrert Windows-godkjenning, er det ikke nødvendig å bruke denne nøkkelen.|
+|AD RMS: Blokker ILS for forbruk av tjeneste|RMS-klienten gjør at tid innhold som er beskyttet av ILS-tjenesten som standard, men kan du konfigurere klienten for å blokkere denne tjenesten ved å angi følgende registernøkkel. Hvis denne registernøkkelen er satt til å blokkere ILS-tjenesten, forsøk på å åpne og bruke innhold som er beskyttet av ILS-tjenesten returnerer følgende feil:<br />HRESULT_FROM_WIN32(ERROR_ACCESS_DISABLED_BY_POLICY)<br /><br />-   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC<br />    REG_DWORD: **DisablePassportCertification**<br />    **Verdi:** 1 for å blokkere ILS forbruk, 0 for å tillate ILS-forbruk (standard)|
 
-### Managing Template Distribution for the RMS Client
-Templates make it easy for users and administrators to quickly apply Rights Management protection and the RMS client automatically downloads templates from its RMS servers or service If you put the  templates in the following folder location, the RMS client will not download any templates from its default location and instead, download the templates that you have put in this folder. The RMS client might continue to download templates from other available RMS servers.
+### Behandle malen distribusjon for RMS-klienten
+Maler gjør det enkelt for brukere og administratorer raskt ta i bruk IRM-beskyttelse og RMS-klienten laster ned automatisk maler fra RMS-serverne eller service Hvis du legger til malene i følgende mappe, RMS-klienten ikke vil laste ned maler fra standardplasseringen og laste ned maler som du har satt inn i denne mappen i stedet. RMS-klienten kan fortsette å laste ned maler fra andre tilgjengelige RMS-servere.
 
-**Client Mode:** %localappdata%\Microsoft\MSIPC\UnmanagedTemplates
+**Klientmodus:** %localappdata%\Microsoft\MSIPC\UnmanagedTemplates
 
-**Server Mode:** %allusersprofile%\Microsoft\MSIPC\Server\UnmanagedTemplates\*&lt;SID&gt;*
+**Server-modus:** %allusersprofile%\Microsoft\MSIPC\Server\UnmanagedTemplates\*&lt; SID &gt;*
 
-When you use this folder, there is no special naming convention required except that the templates should be issued by the RMS server or service and they must have the  .xml file name extension. For example, Contoso-Confidential.xml or Contoso-ReadOnly.xml are valid names.
+Når du bruker denne mappen, er det ingen spesielle navnekonvensjonen kreves bortsett fra at malene skal utstedes av RMS-serveren eller tjenesten og de må ha filtypen XML. Contoso-Confidential.xml eller Contoso-ReadOnly.xml er for eksempel gyldige navn.
 
-## <a name="BKMK_UsingTrustedServers"></a>AD RMS Only: Limiting the RMS Client to Use Trusted AD RMS Servers
-The RMS client can be limited to using only specific trusted AD RMS servers by making the following changes to the Windows registry on local computers.
+## <a name="BKMK_UsingTrustedServers"></a>AD RMS: Hvis du begrenser RMS-klienten til å bruke klarerte AD RMS-servere
+RMS-klienten kan være begrenset til å bruke bare bestemte klarerte AD RMS-servere ved å gjøre følgende endringer i Windows-registret på lokale datamaskiner.
 
-**To enable limiting RMS client to use only trusted AD RMS servers**
+**Hvis du vil aktivere begrense RMS klarerte klienten bare å bruke AD RMS-servere**
 
 -   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\TrustedServers\
     REG_DWORD: AllowTrustedServersOnly
 
-    **Value:** If a non-zero value is specified, the RMS client will trust only the specified servers that are configured in the TrustedServers list and the  Azure  Rights Management service.
+    **Verdi:** Hvis det er angitt en annen verdi enn null, klareres RMS-klienten bare de angitte serverne som er konfigurert i listen over TrustedServers og Azure Rights Management-tjenesten.
 
-**To add members to the list of trusted AD RMS servers**
+**Legge til medlemmer i listen over klarerte AD RMS-servere**
 
 -   HKEY_LOCAL_MACHINE\Software\Microsoft\MSIPC\TrustedServers\
-    REG_SZ: *&lt;URL_or_HostName&gt;*
+    REG_SZ: *&lt; URL_or_HostName &gt;*
 
-    **Value:** The string values added in this registry key location can be either DNS domain name format (for example, **adrms.contoso.com**) or full URLs to trusted AD RMS servers (for example, **https://adrms.contoso.com**). If a specified URL starts with **https://**,  the RMS client will use SSL or TLS to contact   the specified AD RMS server.
+    **Verdi:** Strengverdier som er lagt til i denne plassering av registret kan være enten navneformat for DNS-domene (for eksempel **adrms.contoso.com**) eller fullstendig URL-adresser til klarerte AD RMS-servere (for eksempel **https://adrms.contoso.com**). Hvis en angitt URL-adresse som begynner med **https://**,  RMS-klienten vil bruke SSL eller TLS til å kontakte den angitte AD RMS-serveren.
 
-## <a name="BKMK_ServiceDiscovery"></a>RMS Service Discovery
-RMS service discovery lets the RMS client check which RMS server or service to communicate with before  protecting content. Service discovery might also happen when the RMS client consumes protected content, but this is less likely to happen because   the policy attached to the content  contains   the preferred RMS server or service and only if that is unsuccessful does the client then run service discovery.
+## <a name="BKMK_ServiceDiscovery"></a>RMS-Service Discovery-konfigurasjon
+RMS service discovery kan kontrollere hvilke RMS-server eller tjeneste til å kommunisere med før du beskyttet innhold RMS-klienten. Discovery Service kan også skje når RMS-klienten bruker beskyttet innhold, men dette er mindre sannsynlig til å skje fordi policyen som er knyttet til innholdet inneholder foretrukket RMS-server eller tjeneste, og bare hvis det er mislykket klienten deretter kjører service Discovery-konfigurasjon.
 
-Service discovery first looks for an on-premises version of Rights Management (AD RMS). If that is unsuccessful, service discovery automatically looks for the cloud version of Rights Management (Azure RMS).
+Service discovery søker først etter en lokale versjon av Rights Management (AD RMS). Hvis det er vellykket, ser service discovery automatisk for sky-versjonen av Rights Management (Azure RMS).
 
-To perform service discovery for an on-premises deployment, the RMS client checks the following:
+Hvis du vil utføre service Discovery-konfigurasjon for en distribusjon på lokaler, kontrollerer RMS-klienten følgende:
 
-1.  The Windows registry on the local computer: If service discovery settings are configured in the registry, these settings are tried first.  By default, these settings are not configured in the registry.
+1.  Windows-registret på den lokale datamaskinen: Hvis service discovery-innstillingene er konfigurert i registret, blir disse innstillingene, forsøkes først.  Disse innstillingene er ikke konfigurert i registret som standard.
 
-2.  Active Directory Domain Services: A domain-joined computer queries Active Directory for a service connection point (SCP). If an SCP is registered, the URL of the RMS server is returned to the RMS client to use.
+2.  Active Directory-domenetjenester: En datamaskin som er tilknyttet et domene spørringer Active Directory for et service connection point (SCP). Hvis en SCP er registrert, returnerte URL-adressen til RMS-serveren til RMS-klienten til å bruke.
 
-### AD RMS Only: Enabling Server-Side Service Discovery by Using Active Directory
-If your account has  sufficient privileges (Enterprise Admins and  local administrator for the AD RMS server), you can automatically register a a service connection point (SCP) when you install the AD RMS root cluster server. If a SCP already exists in the forest, you must first delete the existing SCP before you can register  a new one.
+### AD RMS: Aktivere inkluderinger for serversiden Service Discovery-konfigurasjon ved hjelp av Active Directory
+Hvis du har tilstrekkelige rettigheter (Enterprise Admins og lokal administrator for AD RMS-serveren), kan du automatisk registrere et service connection point (SCP) når du installerer AD RMS-rotserver for klynge. Hvis det allerede finnes en SCP i skogen, må du først slette eksisterende SCP før du kan registrere en ny.
 
-You can register and delete an SCP after AD RMS is installed by using the following procedure. Before you start, make sure that your account has the required privileges (Enterprise Admins and  local administrator for the AD RMS server).
+Du kan registrere og slette en SCP etter AD RMS er installert ved hjelp av følgende fremgangsmåte. Før du starter, må du kontrollere at kontoen har de nødvendige rettighetene (Enterprise Admins og lokal administrator for AD RMS-serveren).
 
-##### To enable AD RMS service discovery by registering an SCP in Active Directory
+##### Å aktivere AD RMS service Discovery-konfigurasjon ved å registrere en SCP i Active Directory
 
-1.  Open the Active Directory Management Services console at the AD RMS server:
+1.  Åpne Active Directory Management Services-konsollen på AD RMS-serveren:
 
-    -   If you are using Windows Server 2008 R2 or Windows Server 2008, click **Start**, click **Administrative Tools**, and then click **Active Directory Rights Management Services**.
+    -   Hvis du bruker Windows Server 2008 R2 eller Windows Server 2008, klikker du **Start**, klikker du **Administrative verktøy**, og klikk deretter **Active Directory Rights Management Services**.
 
-    -   If you are using Windows Server 2012 R2 or Windows Server 2012,  in Server Manager, click **Tools**, and then click **Active Directory Rights Management Services**.
+    -   Hvis du bruker Windows Server 2012 R2 eller Windows Server 2012 i Server Manager, klikker du **Verktøy**, og klikk deretter **Active Directory Rights Management Services**.
 
-2.  In the AD RMS console right-click the AD RMS cluster, and then click **Properties**.
+2.  Høyreklikk AD RMS-klyngen i AD RMS-konsollen, og klikk deretter **Egenskaper**.
 
-3.  Click the **SCP** tab.
+3.  Klikk på **SCP** i kategorien.
 
-4.  Select the **Change SCP** check box.
+4.  Velg den **Endre SCP** merket.
 
-5.  Select the **Set SCP to current certification cluster** option, and then click **OK**.
+5.  Velg den **Angi SCP til gjeldende sertifisering klyngen** alternativet, og klikk deretter **OK**.
 
-### Enabling Client-Side Service Discovery by Using the Windows Registry
-As an alternative to using an SCP or where an SCP does not exist, you can configure the registry on the client computer so that the RMS client can locate its AD RMS server.
+### Aktivering av Søk etter webtjenesten på klientsiden ved hjelp av Windows-registret
+Som et alternativ til å bruke en SCP eller der en SCP ikke finnes, kan du konfigurere registret på klienten slik at RMS-klienten kan finne en AD RMS-server.
 
-##### To enable client-side AD RMS service discovery by using the Windows registry
+##### Aktivere klientsiden AD RMS service Discovery-konfigurasjon ved hjelp av Windows-registret
 
-1.  Open the Windows registry editor, Regedit.exe:
+1.  Åpne Registerredigering, Regedit.exe:
 
-    -   On the client computer, in the Run window, type **regedit**, and then press ENTER to open the Registry Editor.
+    -   På klientmaskinen, i vinduet Kjør skriver du inn **regedit**, og trykk deretter ENTER for å åpne Registerredigering.
 
-2.  In the Registry Editor, navigate to **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC**.
+2.  I Registerredigering, gå til **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC**.
 
     > [!IMPORTANT]
-    > If you are running a 32-bit application on a 64-bit computer, the path will be as follows: 
+    > Hvis du kjører en 32-biters program på en 64-biters datamaskin, blir banen som følger: 
     > **HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\MSIPC**
 
-3.  To create the ServiceLocation subkey, right-click **MSIPC**, point to **New**, click **Key**, and then type **ServiceLocation**.
+3.  Hvis du vil opprette undernøkkelen ServiceLocation, høyreklikker du **MSIPC**, velger du **Ny**, klikker du **nøkkel**, og skriv deretter inn **ServiceLocation**.
 
-4.  To create the EnterpriseCertification subkey, right-click **ServiceLocation**, point to **New**, click **Key**, and then type **EnterpriseCertification**.
+4.  Hvis du vil opprette undernøkkelen EnterpriseCertification, høyreklikker du **ServiceLocation**, velger du **Ny**, klikker du **nøkkel**, og skriv deretter inn **EnterpriseCertification**.
 
-5.  To set the enterprise certification URL, double-click the **(Default)** value, under the **EnterpriseCertification** subkey, and when the **Edit String** dialog box appears,  for **Value data**, type &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Certification, and then click **OK**.
+5.  Hvis du vil angi URL-adressen for enterprise-sertifisering, dobbeltklikker du på **(standard)** verdi under den **EnterpriseCertification** undernøkkelen, og når den **Rediger streng** dialogboks vises, for **Verdidata**, type &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Certification, og klikk deretter **OK**.
 
-6.  To create the EnterprisePublishing subkey, right-click **ServiceLocation**, point to **New**, click **Key**, and then type EnterprisePublishing.
+6.  Hvis du vil opprette undernøkkelen EnterprisePublishing, høyreklikker du **ServiceLocation**, velger du **Ny**, klikker du **nøkkel**, og skriv deretter inn EnterprisePublishing.
 
-7.  To set the enterprise publishing URL, double-click **(Default)** , under the **EnterprisePublishing** subkey, and when the **Edit String** dialog box appears, type for **Value data** the following &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Licensing, and then click **OK**.
+7.  Hvis du vil angi enterprise publiserer URL-adresse, dobbeltklikker du **(standard)** , under den **EnterprisePublishing** undernøkkel, og når den **Rediger streng** vises, skriver du inn for **Verdidata** følgende &lt;http or https&gt;://*AD RMS_cluster_name*/_wmcs/Licensing, og klikk deretter **OK**.
 
-8.  Close the Registry Editor.
+8.  Lukk Registerredigering.
 
-If the RMS client can't find an SCP by querying Active Directory and it's not specified in the registry, service discovery calls for AD RMS will fail.
+Hvis RMS-klienten ikke kan finne en SCP ved å spørre Active Directory, og det er ikke angitt i registret, mislykkes discovery servicehenvendelser for AD RMS.
 
-### Redirecting Licensing Server Traffic
-In some cases, you might need to redirect traffic during service discovery, for example, when two organizations are merged and the old licensing server in one organization is retired and clients need to be redirected to a new licensing server. Or, you migrate from AD RMS to Azure RMS. To enable licensing redirection, use the following procedure.
+### Omdirigere Licensing servertrafikk
+I noen tilfeller må du kanskje omdirigere trafikk under service Discovery-konfigurasjon, for eksempel når to organisasjoner er slått sammen og den gamle lisensierende serveren i en organisasjon er utgått og klienter må bli omadressert til en ny lisensserver. Eller du migrere fra AD RMS til Azure RMS. Bruk følgende fremgangsmåte for å aktivere lisensiering omadressering.
 
-##### To enable RMS licensing redirection by using the Windows registry
+##### Slik aktiverer du RMS lisensiering omadressering ved hjelp av Windows-registret
 
-1.  Open the Windows registry editor, Regedit.exe:
+1.  Åpne Registerredigering, Regedit.exe:
 
-    -   On the client computer, in the Run window, type **regedit**, and then press ENTER to open the Registry Editor.
+    -   På klientmaskinen, i vinduet Kjør skriver du inn **regedit**, og trykk deretter ENTER for å åpne Registerredigering.
 
-2.  In the Registry Editor, navigate to one of the following:
+2.  I Registerredigering, går du til ett av følgende:
 
-    -   For 64-bit version of Office on x64 platform: HKLM\SOFTWARE\Microsoft\MSIPC\Servicelocation
+    -   For 64-biters versjonen av Office på x 64 plattform: HKLM\SOFTWARE\Microsoft\MSIPC\Servicelocation
 
-    -   For 32-bit version of Office on x64 platform: HKLM\SOFTWARE\Wow6432Node\Microsoft\MSIPC\Servicelocation
+    -   For 32-biters versjonen av Office på x 64 plattform: HKLM\SOFTWARE\Wow6432Node\Microsoft\MSIPC\Servicelocation
 
-3.  Create a LicensingRedirection subkey, by right-clicking **Servicelocation**, point to **New**, click **Key**, and then type **LicensingRedirection**.
+3.  Opprett en undernøkkel med LicensingRedirection ved å høyreklikke **Servicelocation**, velger du **Ny**, klikker du **nøkkel**, og skriv deretter inn **LicensingRedirection**.
 
-4.  To set the licensing redirection, right-click the **LicensingRedirection** subkey, select **New**, and then select **String value**.  For **Name**, specify the previous server licensing URL and for **Value** specify the new server licensing URL.
+4.  Hvis du vil angi lisensiering omadressering, høyreklikker du **LicensingRedirection** undernøkkelen, velg **Ny**, og velg deretter **Strengverdi**.  For **navnet**, angi tidligere server licensing URL-adressen og **verdien** angir den nye serveren lisensiering URL-adressen.
 
-    For example, to redirect licensing from a server at Contoso.com to one at Fabrikam.com, you might enter the following values:
+    For eksempel vil omadressere til en i Fabrikam.com-lisensiering fra en server på Contoso.com, kan du angi følgende verdier:
 
-    **Name:**`https://contoso.com/_wmcs/licensing`
+    **Navn:** `https://contoso.com/_wmcs/licensing`
 
-    **Value:**`https://fabrikam.com/_wmcs/licensing`
+    **Verdi:** `https://fabrikam.com/_wmcs/licensing`
 
     > [!NOTE]
-    > If the old licensing server has both intranet and extranet URLs specified then a new name and value mapping has to be set for both of these URLs under the LicensingRedirection key.
+    > Hvis den gamle lisensierende serveren har både intranett og ekstranett URL-adresser angitt deretter et nytt navn og verditilordning må angis for begge disse URL-adressene under nøkkelen LicensingRedirection.
 
-5.  Repeat the previous step for all servers that need to be redirected.
+5.  Gjenta det forrige trinnet for alle servere som skal omadresseres.
 
-6.  Close the Registry Editor.
+6.  Lukk Registerredigering.
 
