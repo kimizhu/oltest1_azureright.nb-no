@@ -3,130 +3,123 @@ description: na
 keywords: na
 title: How Applications Support Azure Rights Management
 search: na
-ms.date: 2016-01-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 2cdc7bde-4044-4021-b887-11476f99afd9
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# How Applications Support Azure Rights Management
-Use the following information to help you understand how your end-user applications (such as the Office applications, Word, Excel, PowerPoint, and Outlook) and services (such as Exchange and SharePoint) can use Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] to help protect your organization’s data:
+# Hvordan programmer st&#248;tter Azure rettighetsbehandling
+Bruk informasjonen nedenfor for å hjelpe deg med å forstå hvordan sluttbrukeren programmer (for eksempel i Office-programmer, Word, Excel, PowerPoint og Outlook) og tjenester (for eksempel Exchange og SharePoint) kan bruke Microsoft [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] til å beskytte organisasjonens data:
 
--   [RMS sharing application for Windows and mobile platforms](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_SharingAppIntro)
+-   [RMS deling program for Windows og mobile plattformer](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_SharingAppIntro)
 
--   [Office applications: Word, Excel, PowerPoint, Outlook](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_OfficeAppsIntro)
+-   [Office-programmer: Word, Excel, PowerPoint, Outlook](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_OfficeAppsIntro)
 
-    -   [Exchange Online and Exchange Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_ExchangeIntro)
+    -   [Exchange Online og Exchange Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_ExchangeIntro)
 
-    -   [SharePoint Online and SharePoint Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_SharePointIntro)
+    -   [SharePoint Online og SharePoint Server](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_SharePointIntro)
 
--   [File servers that run Windows Server and use File Classification Infrastructure (FCI)](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_FCIIntro)
+-   [Servere som kjører Windows Server og bruke filen klassifisering infrastruktur (FCI)](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_FCIIntro)
 
--   [Other applications that support the RMS APIs](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_APIAppsIntro)
+-   [Andre programmer som støtter RMS-APIs](../Topic/How_Applications_Support_Azure_Rights_Management.md#BKMK_APIAppsIntro)
 
 > [!NOTE]
-> To verify the applications and versions that [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS) supports, see [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).
+> Kontrollere programmer og versjoner som [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] (Azure RMS) støtter, kan du se [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).
 
-In some cases, information protection is automatically applied, according to policies that you configure. For example, this is the case with SharePoint libraries, classified files, and Exchange transport rules. In other cases, users must apply information protection themselves from their applications, either by selecting a template or by selecting specific options. For example, this is the case when users share a file by email, or protect a file in-place by restricting access or usage to selected users or to users outside the organization.
+I noen tilfeller brukes informasjonsbeskyttelse automatisk, i henhold til policyene du konfigurerer. Dette er for eksempel tilfellet med SharePoint-biblioteker, klassifisert filer og Exchange Transportregler. I andre tilfeller må brukere bruke informasjonsbeskyttelse seg fra sine programmer, enten ved å velge en mal eller velge bestemte alternativer. Dette er for eksempel tilfellet når brukere dele en fil via e-post eller beskytte en fil i stedet ved å begrense tilgangen til eller bruken til valgte brukere eller brukere utenfor organisasjonen.
 
-Templates make it easier for users (and administrators who configure policies) to apply the correct level of protection and restrict access to people inside your organization. Although [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] comes with two default templates, you will probably want to create custom templates to reduce the times when they have to specify individual options. For more information, see [Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
+Maler gjør det enklere for brukere (og administratorer konfigurere policyer) til å bruke riktig nivå av beskyttelse og begrense tilgangen til personer i organisasjonen. Selv om [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] leveres med to standardmaler sannsynligvis vil du opprette egendefinerte maler for å redusere ganger når de har til å angi flere alternativer. Hvis du vil ha mer informasjon, se [Konfigurere egendefinerte maler for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
 
-For the cases where users must apply information protection themselves, be sure to provide them with instructions and guidance how and when to do this. The instructions should be specific for the application and versions that they use and how they use them, and the guidance for when and how to apply information protection should be appropriate for your business. For more information, see [Helping Users to Protect Files by Using Azure Rights Management](../Topic/Helping_Users_to_Protect_Files_by_Using_Azure_Rights_Management.md).
+For tilfellene der brukerne må bruke informasjonsbeskyttelse, må du gi dem veiledning og instruksjonene for hvordan og når du gjør dette. Instruksjonene bør være spesifikke for programmet og versjoner som de bruker og hvordan de bruker dem, og retningslinjer for når og hvordan for å bruke informasjon beskyttelse må være riktig for din virksomhet. Hvis du vil ha mer informasjon, se [Hjelpe brukere til å beskytte filer ved hjelp av Azure Rights Management](../Topic/Helping_Users_to_Protect_Files_by_Using_Azure_Rights_Management.md).
 
-For information about how to configure these applications for Azure RMS, see [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
+Hvis du vil ha informasjon om hvordan du konfigurerer disse programmene for Azure RMS, se [Konfigurere programmer for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
 
 > [!TIP]
-> For examples and screenshots of applications using Azure RMS, see the [Azure RMS in action: What administrators and users see](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMSpictures) section from the [What is Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) topic.
+> Eksempler og skjermbilder av programmer som bruker RMS Azure, se den [Azure RMS i aksjon: Administratorer og brukere ser](../Topic/What_is_Azure_Rights_Management_.md#BKMK_RMSpictures) delen fra den [Hva er Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) emnet.
 
-## <a name="BKMK_SharingAppIntro"></a>RMS sharing application for Windows and mobile platforms
-The RMS sharing application is a free, downloadable application that is required to support Office 2010, but also recommended for Windows computers, Mac computers, and mobile devices. One of its benefits is that it can apply generic protection for applications and files that do not natively support [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], which means that all files can be protected. For more information about the different protection levels, see the [Level of protection – native and generic](http://technet.microsoft.com/library/dn339003.aspx) section from the [Rights Management sharing application administrator guide](http://technet.microsoft.com/library/dn339003.aspx).
+## <a name="BKMK_SharingAppIntro"></a>RMS deling program for Windows og mobile plattformer
+RMS-deling-programmet er et gratis, nedlastbart program som er nødvendig for å støtte Office 2010, men også anbefalt for Windows-datamaskiner, Mac datamaskiner og mobile enheter. En av fordelene er at den kan bruke Generell beskyttelse for programmer og filer som ikke støtter innebygd [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)], noe som betyr at alle filer kan være beskyttet. Hvis du vil ha mer informasjon om de forskjellige beskyttelsesnivåene, se den [nivå av beskyttelse – opprinnelig og generell](http://technet.microsoft.com/library/dn339003.aspx) delen fra den [Rights Management deling program administratorhåndboken](http://technet.microsoft.com/library/dn339003.aspx).
 
-When users protect their files by using the RMS sharing application, they can also track the documents that they protected, and if necessary, revoke access to them. They do this by using the [document tracking site](http://go.microsoft.com/fwlink/?LinkId=529562).
+Når brukere beskytter filene ved å bruke RMS kan deling program, de også spore dokumenter som de er beskyttet og oppheve tilgang til dem hvis det er nødvendig. Dette gjøres ved hjelp av den [dokumentsporing området](http://go.microsoft.com/fwlink/?LinkId=529562).
 
-For Windows computers, the RMS sharing application unobtrusively integrates with and enhances the  applications that users already use:
+For Windows-datamaskiner, integreres med RMS deling program uhindret, og forbedrer programmene som brukerne allerede bruker:
 
--   An Office add-in for Word, Excel, PowerPoint, and Outlook is installed. This provides users with a **Share Protected** button on the ribbon, which invokes an easy-to-use dialog box of settings that are most commonly used to protect files to be emailed. This button also provides a quick way to access the document tracking site.
+-   En Office-tillegget for Word, Excel, PowerPoint og Outlook er installert. Dette gir brukere med en **del beskyttet** -knappen på båndet, som aktiverer en enkelt å bruke dialogboksen Innstillinger som er mest brukt til å beskytte filer som skal være en e-postmelding. Denne knappen gir også en rask måte å få tilgang til dokumentet sporingsområdet.
 
--   A new right-click option for File Explorer. This provides users with a **Protect in-place** option, which invokes an easy-to-use dialog box of settings that are most commonly used to protect files stored on a disk.
+-   En ny Høyreklikk alternativet for Filutforsker. Dette gir brukere med en **beskytte på stedet** alternativ, som aktiverer en enkelt å bruke dialogboksen Innstillinger som er mest brukt til å beskytte filer som er lagret på en disk.
 
--   A viewer to open files that have been protected by [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)]. This viewer is automatically invoked when there is no other application installed that could open the protected file.
+-   Et vindu for å åpne filer som er beskyttet av [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)]. Dette visningsprogrammet startes automatisk når det er ingen andre program installert som kan åpne den beskyttede filen.
 
--   Backend configuration for Office 2010 that lets Word, Excel, PowerPoint, and Outlook from this suite work seamlessly with [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
+-   Bakserveren konfigurasjonen for Office 2010 som gjør at Word, Excel, PowerPoint og Outlook fra denne pakken fungerer sømløst med [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)].
 
-Although the RMS sharing application for Windows can be downloaded and installed for a single computer by using the [Microsoft Rights Management page](http://go.microsoft.com/fwlink/?LinkId=303970), it also supports an enterprise deployment for silent installation and custom configuration. For more information, see the following resources:
+Selv om deling av programmer for Windows RMS kan lastes ned og installeres for en enkelt datamaskin ved hjelp av den [Microsoft Rights Management side](http://go.microsoft.com/fwlink/?LinkId=303970), den støtter også en enterprise-distribusjon for stille installasjon og tilpasset konfigurering. Hvis du vil ha mer informasjon, kan du se følgende ressurser:
 
--   [Rights Management sharing application administrator guide](http://technet.microsoft.com/library/dn339003.aspx)
+-   [Rights Management deling program administratorhåndboken](http://technet.microsoft.com/library/dn339003.aspx)
 
--   [Rights Management sharing application user guide](http://technet.microsoft.com/library/dn339006.aspx)
+-   [Rights Management deling program Brukerhåndbok](http://technet.microsoft.com/library/dn339006.aspx)
 
-The RMS sharing application for mobile devices supports the most commonly used mobile devices, such as iPad and iPhone, Android, Windows Phone, and Windows RT. Users can download this app from the relevant store, and there are links to these from the [Microsoft Rights Management page](http://go.microsoft.com/fwlink/?LinkId=303970).
+RMS deling program for mobile enheter som støtter de mest brukte mobile enhetene, for eksempel iPad og iPhone, Android, Windows Phone og Windows rett Brukere kan laste ned denne app fra det aktuelle lageret, og det finnes koblinger til disse fra den [Microsoft Rights Management side](http://go.microsoft.com/fwlink/?LinkId=303970).
 
-**If you have Microsoft Intune**: Because the RMS sharing app includes the Microsoft Intune App Software Development Kit, you can use  the following options:
+## <a name="BKMK_OfficeAppsIntro"></a>Office-programmer: Word, Excel, PowerPoint, Outlook
+Disse programmene støtter rettighetsbehandling ved hjelp av IRM (IRM) opprinnelig og la brukerne bruke beskyttelse til et lagret dokument eller en e-postmelding som skal sendes. Brukere kan bruke maler eller velge svært tilpassede innstillinger for begrensninger for tilgang, rettigheter og bruk. Brukere kan for eksempel konfigurere en fil slik at den kan bare åpnes av personer i organisasjonen, eller kontroll om filen kan redigeres, eller begrenset til skrivebeskyttet, eller hindre at det skrives ut. Et utløpstidspunkt kan konfigureres for tid-sensitive filer, (direkte av brukere eller ved å bruke en mal) for når filen kan ikke åpnes. For Outlook, kan brukere også velge den **ikke Videresend** alternativet for å hindre at data lekkasje.
 
--   Deploy and manage the app for iOS and Android devices that are enrolled by Intune.
+### <a name="BKMK_ExchangeIntro"></a>Exchange Online og Exchange Server
+Når du bruker Exchange Online og Exchange Server, kan du bruke informasjonen rights management (IRM)-integrasjon, som gir mer informasjon om løsninger for beskyttelse:
 
--   Manage the app for Android devices that are not enrolled by Intune.
+-   **Exchange ActiveSync IRM** slik at mobile enheter kan beskytte og bruke beskyttede e-postmeldinger.
 
-## <a name="BKMK_OfficeAppsIntro"></a>Office applications: Word, Excel, PowerPoint, Outlook
-These applications natively support Rights Management by using information rights management (IRM) and let users apply protection to a saved document or to an email message to be sent. Users can apply templates or choose very customized settings for access, rights, and usage restrictions. For example, users can configure a file so that it can be accessed only by people in your organization, or control whether the file can be edited, or restricted to read-only, or prevent it from being printed. For time-sensitive files, an expiration time can be configured (directly by users or by applying a template) for when the file can no longer be accessed. For Outlook, users can also choose the **Do Not Forward** option to help prevent data leakage.
+-   RMS-støtte for den **Outlook Web App**, implementert for Outlook-klienten på samme måte, slik at brukere kan beskytte e-postmeldinger med maler, eller ved å angi alternativer, og brukere kan lese og bruke beskyttede e-postmeldinger som sendes til dem.
 
-### <a name="BKMK_ExchangeIntro"></a>Exchange Online and Exchange Server
-When you use Exchange Online or Exchange Server, you can use information rights management (IRM) integration, which provides additional information protection solutions:
+-   **Beskyttelse regler** for Outlook-klienter som en administrator konfigurerer for å bruke automatisk RMS-malene til å sende e-post meldinger for angitt mottakere. For eksempel når intern e-post sendes til den juridiske avdelingen, de bare kan leses av medlemmer av den juridiske avdelingen, og kan ikke videresendes. Brukere ser beskyttelse brukes i e-postmeldingen før du sender den, og som standard, de kan fjerne den hvis de finner ut at det ikke er nødvendig. E-postmeldinger krypteres før de sendes. Hvis du vil ha mer informasjon, se [Outlook-regler for beskyttelse mot](http://technet.microsoft.com/library/dd638178%28v=exchg.150%29.aspx) og [oppretter du en regel for beskyttelse av Outlook](http://technet.microsoft.com/library/dd638196%28v=exchg.150%29.aspx) i Exchange-biblioteket.
 
--   **Exchange ActiveSync IRM** so that mobile devices can protect and consume protected email messages.
+-   **Transport regler** at en administrator konfigurerer for å bruke RMS-maler automatisk på e-post meldinger basert på Egenskaper, for eksempel avsender, mottaker, Meldingsemne og innholdet. Disse er lignende i konsept til regler for beskyttelse, men ikke la brukere fjerne beskyttelsen, kan brukes på Outlook Web Access og e-post sendt av mobile enheter og ikke kryptere e-postmeldinger før de sendes fra klienten. Hvis du vil ha mer informasjon, se [opprette en regel for beskyttelse av Transport](http://technet.microsoft.com/library/dd302432.aspx) i Exchange-biblioteket.
 
--   RMS support for the **Outlook Web App**, implemented similarly to the Outlook client, so that users can protect email messages by templates or by specifying individual options, and users can read and use protected email messages that are sent to them.
+-   **Datapolicyer tap forebygging (DLP)** som inneholder sett med vilkår for å filtrere e-postmeldinger, og ta forholdsregler for å hindre tap av data for konfidensiell eller sensitiv innhold (for eksempel personlige opplysninger eller kredittkortinformasjon). Tips for policy kan brukes når sensitive data oppdages, til å varsle brukere de skal bruke informasjonsbeskyttelse, basert på informasjonen i e-postmeldingen. Hvis du vil ha mer informasjon, se [Data tap forebygging](http://technet.microsoft.com/library/jj150527%28v=exchg.150%29.aspx) i Exchange-biblioteket.
 
--   **Protection rules** for Outlook clients that an administrator configures to automatically apply RMS templates to email messages for specified recipients. For example, when internal emails are sent to your legal department, they can only be read by members of the legal department and cannot be forwarded. Users see the protection applied to the email message before sending it, and by default, they can remove it if they decide it is not necessary. Emails are encrypted before they are sent. For more information, see [Outlook Protection Rules](http://technet.microsoft.com/library/dd638178%28v=exchg.150%29.aspx) and [Create an Outlook Protection Rule](http://technet.microsoft.com/library/dd638196%28v=exchg.150%29.aspx) in the Exchange library.
+-   **Office 365 meldingskryptering** at bruker transport regler for å sende kryptert e-post til personer utenfor firmaet, og e-postmeldingen blir lest i en webleser med et grensesnitt som ligner på Outlook Web App. Du kan tilpasse tekst for ansvarsfraskrivelse og toppteksten i selskapets krypterte e-postmeldinger, og selv legge til firmalogoen. Hvis du vil ha mer informasjon, se [Office 365 meldingskryptering](http://office.microsoft.com/o365-message-encryption-FX104179182.aspx) fra webområdet for Office.
 
--   **Transport rules** that an administrator configures to automatically apply RMS templates to email messages based on properties such as sender, recipient, message subject, and content. These are similar in concept to protection rules but do not let users remove the protection, can be applied to Outlook Web Access and emails sent by mobile devices, and do not encrypt email messages before they are sent from the client. For more information, see [Create a Transport Protection Rule](http://technet.microsoft.com/library/dd302432.aspx) in the Exchange library.
+Hvis du bruker Exchange Server, kan du bruke beskyttelsesfunksjonene informasjon med [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] ved å distribuere RMS-kobling, som fungerer som et relay mellom lokale servere og RMS cloud-tjeneste. Hvis du vil ha mer informasjon, se [Distribusjon av Azure Rights Management-kobling](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
 
--   **Data loss prevention (DLP) policies** that contain sets of conditions to filter email messages, and take actions to help prevent data loss for confidential or sensitive content (for example, personal information or credit card information). Policy Tips can be used when sensitive data is detected, to alert users that they might need to apply information protection, based on the information in the email message. For more information, see [Data Loss Prevention](http://technet.microsoft.com/library/jj150527%28v=exchg.150%29.aspx) in the Exchange library.
+### <a name="BKMK_SharePointIntro"></a>SharePoint Online og SharePoint Server
+Når du bruker SharePoint Online eller SharePoint Server, kan du bruke informasjonen rights management (IRM)-integrasjon, som gjør at administratorer beskytte lister eller biblioteker, slik at når en bruker sjekker ut et dokument, filen er beskyttet slik at bare autoriserte personer kan vise og bruke filen etter informasjon beskyttelse policyene du angir. For eksempel kan filen være skrivebeskyttet, deaktivere kopiering av tekst, kan ikke lagre en lokal kopi, og forhindre utskrift av filen.
 
--   **Office 365 Message Encryption** that uses transport rules to send encrypted emails to people outside your company, and the email is read in a browser with an interface similar to the Outlook Web App. You can customize the disclaimer text and header text in your company’s encrypted emails, and even add your company logo. For more information, see [Office 365 Message Encryption](http://office.microsoft.com/o365-message-encryption-FX104179182.aspx) from the Office website.
+For lister og biblioteker brukes alltid informasjon om beskyttelse av en administrator aldri en sluttbruker. Og det er brukt på listen eller biblioteket nivå for alle dokumenter i beholderen, og ikke på individuelle filer.  Hvis du bruker SharePoint Online, kan brukere også bruke IRM til sine OneDrive for Business-biblioteket.
 
-If you use Exchange Server, you can use the information protection features with [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] by deploying the RMS connector, which acts as a relay between your on-premises servers and the RMS cloud service. For more information, see [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
+IRM-tjenesten må først aktiveres for SharePoint. Deretter angir du IRM (Information Rights Management) for et bibliotek. Når det gjelder SharePoint Online og OneDrive for bedrifter, kan brukerne også angi Information Rights Management for sine OneDrive for Business-biblioteket. SharePoint bruker ikke policymaler for rettigheter, selv om det er SharePoint konfigurasjonsinnstillinger som du kan velge som samsvarer mest mulig med innstillingene som du kan angi i maler.
 
-### <a name="BKMK_SharePointIntro"></a>SharePoint Online and SharePoint Server
-When you use SharePoint Online or SharePoint Server, you can use information rights management (IRM) integration, which lets administrators protect lists or libraries so that when a user checks-out a document, the file is protected so that only authorized people can view and use the file according to the information protection policies that you specify. For example, the file might be read-only, disable the copying of text, prevent saving a local copy, and prevent printing the file.
-
-For lists and libraries,  information protection is always applied by an administrator, never an end user. And it is applied at the list or library level for all documents in that container, rather than on individual files.  If you use SharePoint Online, users can also apply IRM to their OneDrive for Business library.
-
-The IRM service must first be enabled for SharePoint. Then, you specify Information Rights Management for a library. In the case of SharePoint Online and OneDrive for Business, users can also specify Information Rights Management for their OneDrive for Business library. SharePoint does not use rights policy templates, although there are SharePoint configuration settings that you can select that closely match the settings that you can specify in templates.
-
-If you use SharePoint Server, you can use the information protection features with [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] by deploying the RMS connector, which acts as a relay between your on-premises servers and the RMS cloud service. For more information, see [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
+Hvis du bruker SharePoint Server, kan du bruke beskyttelsesfunksjonene informasjon med [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] ved å distribuere RMS-kobling, som fungerer som et relay mellom lokale servere og RMS cloud-tjeneste. Hvis du vil ha mer informasjon, se [Distribusjon av Azure Rights Management-kobling](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
 
 > [!NOTE]
-> Currently, there are some limitations when you use IRM with SharePoint:
+> Det finnes enkelte begrensninger når du bruker IRM med SharePoint:
 > 
-> -   You cannot use the default or custom templates that you manage in the Azure classic portal.
-> -   Files that have a .PPDF file name extension for protected PDF files are not supported. Files that have .PDF file name extension and that have been natively protected by RMS are supported when you use a PDF reader that natively supports RMS.
-> -   Because Office on mobile devices does not yet support RMS, these devices must use a browser to view files that have been protected with RMS, and the files are read-only.
+> -   Du kan ikke bruke standard eller egendefinerte maler som du administrerer i Azure portal.
+> -   Filer som har en. PPDF-filtypen for beskyttet PDF-filer støttes ikke. Filer som har. PDF-filtypen, og som er opprinnelig beskyttet av RMS støttes når du bruker en PDF-leser som støtter RMS.
+> -   Fordi Office på mobile enheter ikke støtter ennå RMS, disse enhetene må bruke en webleser til å vise filer som er beskyttet av RMS, og filene er skrivebeskyttet.
 
-Azure RMS applies usage restrictions and data encryption for documents when they are downloaded from SharePoint, and not when the document is first created in SharePoint or uploaded to the library. For information about how documents are protected before they are downloaded, see [Data Encryption in OneDrive for Business and SharePoint Online](https://technet.microsoft.com/library/dn905447.aspx) from the SharePoint documentation.
+Azure RMS gjelder bruksbegrensninger og datakryptering for dokumenter når de er lastet ned fra SharePoint, og ikke når dokumentet er første opprettes i SharePoint eller lastes opp til biblioteket. Hvis du vil ha informasjon om hvordan dokumenter er beskyttet før de er lastet ned, kan du se [datakryptering i OneDrive for bedrifter og SharePoint Online](https://technet.microsoft.com/library/dn905447.aspx) fra SharePoint-dokumentasjonen.
 
-For more information about using Azure RMS with SharePoint, see the following  post from the Office blog: [What’s New with Information Rights Management in SharePoint and SharePoint Online](http://blogs.office.com/2012/11/09/whats-new-with-information-rights-management-in-sharepoint-and-sharepoint-online/)
+Hvis du vil ha mer informasjon om hvordan du bruker Azure RMS med SharePoint, kan du se følgende artikkel fra Office-blogg: [Hva er nytt med Information Rights Management i SharePoint og SharePoint Online](http://blogs.office.com/2012/11/09/whats-new-with-information-rights-management-in-sharepoint-and-sharepoint-online/)
 
-## <a name="BKMK_FCIIntro"></a>File servers that run Windows Server and use File Classification Infrastructure (FCI)
-When you configure Windows Server to use File Classification Infrastructure, this File Server Resource Manager feature can scan local files and determine whether they contain sensitive data. For files that meet this criteria, they are tagged with classification properties that an administrator defines. The File Classification Infrastructure can then take automatic action, according to the classification. One of these actions include applying information protection by using [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] and the deployment of the Rights Management connector (also known as the RMS connector). Office files are then automatically protected by Azure RMS.
+## <a name="BKMK_FCIIntro"></a>Servere som kjører Windows Server og bruke filen klassifisering infrastruktur (FCI)
+Når du konfigurerer Windows-Server til å bruke filen klassifisering infrastruktur, kan denne funksjonen File Server Resource Manager skanne lokale filer og avgjøre om de inneholder sensitive data. For filer som oppfyller disse kriteriene, kodes de med klassifisering egenskaper som definerer en administrator. Filen klassifisering infrastruktur kan da automatisk, i henhold til klassifiseringen. En av disse handlingene inkluderer å bruke informasjonsbeskyttelse av ved hjelp av [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] og distribusjon av Rights Management-koblingen (også kjent som RMS-kontakt). Office-filer er deretter automatisk beskyttet av Azure RMS.
 
-To protect all file types, you would not use the RMS connector, but instead, run a Windows PowerShell script, using cmdlets from the [RMS Protection tool](https://www.microsoft.com/en-us/download/details.aspx?id=47256).
+Vil du beskytte alle filtyper, må du ikke bruke RMS-koblingen, men i stedet kjøre et Windows PowerShell-skript ved hjelp av cmdleter fra den [RMS-beskyttelse verktøyet](https://www.microsoft.com/en-us/download/details.aspx?id=47256).
 
-The classification policies are fully configurable and highly extensible so that you can prevent potential data leakage from unauthorized and authorized users. It can even help to reduce the risk of data leakage by network administrators because you can configure policies that don’t require these administrators to have access to the files.
+Klassifisering-policyer er fullt ut konfigurerbar og svært utvidbar, slik at du kan hindre potensielle data lekkasje fra uautorisert og autoriserte brukere. Det kan også bidra til å redusere risikoen for at data lekkasje av nettverksadministratorer fordi du kan konfigurere policyer som ikke krever disse administratorer har tilgang til filene.
 
-For instructions to deploy and configure the RMS connector for Office files, see [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
+For instruksjoner for å distribuere og konfigurere RMS-kontakt for Office-filer, kan du se [Distribusjon av Azure Rights Management-kobling](../Topic/Deploying_the_Azure_Rights_Management_Connector.md).
 
-For instructions to use the Windows PowerShell script for all file types, see [RMS Protection with Windows Server File Classification Infrastructure &#40;FCI&#41;](../Topic/RMS_Protection_with_Windows_Server_File_Classification_Infrastructure__FCI_.md).
+For instruksjoner for å bruke Windows PowerShell-skriptet for alle filtyper, kan du se [RMS-beskyttelse med Windows Server-filen klassifisering infrastruktur &#40;FCI&#41;](../Topic/RMS_Protection_with_Windows_Server_File_Classification_Infrastructure__FCI_.md).
 
-## <a name="BKMK_APIAppsIntro"></a>Other applications that support the RMS APIs
-By using the RMS SDK, your internal developers can write line-of-business applications to natively support [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)]. How information protection is integrated with these applications depends on how they are written. For example, the integration might be automatically applied with minimal user interaction required, or for a more customized experience, users might be prompted to configure settings to apply information protection to files. For more information about the SDK, see the [Microsoft Rights Management SDK](http://msdn.microsoft.com/library/hh552972%28v=vs.85%29.aspx).
+## <a name="BKMK_APIAppsIntro"></a>Andre programmer som støtter RMS-APIs
+Ved å bruke RMS-SDK, kan de interne utviklerne skrive LOB programmer støtter [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)]. Hvordan informasjonsbeskyttelse er integrert med disse programmene, avhengig av hvordan de er skrevet. Hvis du for eksempel integreringen kan brukes automatisk med minimal brukermedvirkning kreves, eller for en mer tilpasset opplevelse, brukere kan bli bedt om å konfigurere innstillinger for å bruke informasjonsbeskyttelse av på filer. Hvis du vil ha mer informasjon om SDK, se den [Microsoft Rights Management SDK](http://msdn.microsoft.com/library/hh552972%28v=vs.85%29.aspx).
 
-Similarly, many software vendors provide applications to provide  information protection solutions, also known as enterprise rights management (ERM) products. A popular example is a PDF reader that supports [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] for specific platforms. You can use the table in the [Client device capabilities](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_ClientCapabilities) section of the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic to identify applications that support RMS (RMS-enlightened applications), and then use a web search to purchase or download the application.
+På samme måte tilbyr mange programvareleverandører programmer for å gi informasjon beskyttelse løsninger, også kalt rettigheter (ERM) produkter for virksomhetsstyring. En populær eksempel er en PDF-leser som støtter [!INCLUDE[aad_rightsmanagement_2](../Token/aad_rightsmanagement_2_md.md)] for bestemte plattformer. Du kan bruke tabellen i den [Enheten klientegenskaper](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_ClientCapabilities) delen av den [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) emnet til å identifisere programmer som støtter RMS (RMS-enlightened programmer), og deretter bruke et websøk til å kjøpe eller laste ned programmet.
 
 > [!TIP]
-> For newly released applications, check the RMS community channels, listed in [Information and Support for Azure Rights Management](../Topic/Information_and_Support_for_Azure_Rights_Management.md).
+> For programmer som nylig utgitte, kontrollere RMS fellesskapet kanaler, som vises i [Informasjon og støtte for Azure Rights Management](../Topic/Information_and_Support_for_Azure_Rights_Management.md).
 
-## See Also
-[Getting Started with Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
+## Se også
+[Komme i gang med Azure Rights Management](../Topic/Getting_Started_with_Azure_Rights_Management.md)
 

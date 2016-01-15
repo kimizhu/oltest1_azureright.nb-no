@@ -3,386 +3,346 @@ description: na
 keywords: na
 title: Migrating from AD RMS to Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 828cf1f7-d0e7-4edf-8525-91896dbe3172
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Migrating from AD RMS to Azure Rights Management
-Use the following set of instructions to  migrate your Active Directory Rights Management Services (AD RMS) deployment to Azure Rights Management (Azure RMS). After the migration, users will still have access to documents and email messages that your organization protected by using AD RMS, and newly protected content will use Azure RMS.
+# Migrering fra AD RMS til Azure Rights Management
+Bruk følgende sett med instruksjoner for å migrere Active Directory Rights Management Services (AD RMS)-distribusjon til Azure Rights Management (Azure RMS). Etter en overføring, brukere vil fortsatt ha tilgang til dokumenter og e-postmeldinger i organisasjonen beskyttet ved hjelp av AD RMS og nylig beskyttet innhold vil bruke Azure RMS.
 
-Not sure whether this AD RMS migration is right for your organization?
+Ikke sikker på om denne AD RMS-overføring er riktige for din organisasjon?
 
--   For an introduction to Azure RMS,  the business problems that it can solve, what it looks like to administrators and users, and how it works, see [What is Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md)
+-   For en introduksjon til Azure RMS, business-problemer som det kan løse, hvordan det ser ut til administratorer og brukere og hvordan det fungerer, kan du se [Hva er Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md)
 
--   For a comparison of Azure RMS with AD RMS, see [Comparing Azure Rights Management and AD RMS](../Topic/Comparing_Azure_Rights_Management_and_AD_RMS.md).
+-   En sammenligning mellom Azure RMS med AD RMS, se [Sammenligne Azure Rights Management og AD RMS](../Topic/Comparing_Azure_Rights_Management_and_AD_RMS.md).
 
-## Prerequisites for migrating AD RMS to Azure RMS
-Before you start the migration to Azure RMS, make sure that the following prerequisites are in place and that you understand any limitations.
+## Forutsetninger for å overføre AD RMS til Azure RMS
+Før du starter overføringen til Azure RMS, må du kontrollere at følgende forutsetninger er på plass, og at du forstår alle begrensninger.
 
-|Requirement|More information|
-|---------------|--------------------|
-|A supported RMS deployment|All releases of AD RMS from Windows Server 2008 through Windows Server 2012 R2 support a migration to Azure RMS:<br /><br />Windows Server 2008 (x86 or x64)<br /><br />Windows Server 2008 R2 (x64)<br /><br />Windows Server 2012 (x64)<br /><br />Windows Server 2012 R2 (x64)<br /><br />All valid AD RMS topologies are supported:<br /><br />Single forest, single RMS cluster<br /><br />Single forest, multiple licensing-only RMS clusters<br /><br />Multiple forests, multiple RMS clusters<br /><br />**Note**: By default, multiple RMS clusters migrate to a single Azure RMS tenant. If you want different RMS tenants, you must treat them as different migrations. A key from one RMS cluster cannot be imported to more than one Azure RMS tenant.|
-|All requirements to run Azure RMS, including an Azure RMS tenant (not activated)|See [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).<br /><br />Although you must have an Azure RMS tenant before you can migrate from AD RMS, we recommend that you do not activate the Rights Management service before the migration. The migration process includes this step after you have exported keys and templates from AD RMS and imported them to Azure RMS. However, if Azure RMS is already activated, you can still migrate from AD RMS.|
-|Preparation for Azure RMS:<br /><br />Directory synchronization between your on-premises directory and Azure Active Directory<br /><br />Mail-enabled groups in Azure Active Directory|See [Preparing for Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md).|
-|If you have used the Information Rights Management (IRM) functionality of Exchange Server (for example, transport rules and Outlook Web Access) or SharePoint Server with AD RMS:<br /><br />Plan for a short period of time when IRM will not be available on these servers|You can continue to use IRM on these servers with Azure RMS after the migration. However, one of the migration steps is to temporarily disable the IRM service, install and configure a connector, reconfigure the servers, and then re-enable IRM.<br /><br />This is the only interruption to service during the migration process.|
-Limitations:
+|Krav|Hvis du vil ha mer informasjon|
+|--------|----------------------------------|
+|En støttet RMS-distribusjon|Alle versjoner av AD RMS fra Windows Server 2008 og Windows Server 2012 R2 støtter migrering til Azure RMS:<br /><br />-   Windows Server 2008 (x 86 eller x 64)<br />-   Windows Server 2008 R2 (x 64)<br />-   Windows Server 2012 (x 64)<br />-   Windows Server 2012 R2 (x 64) **Note:** Hvis du kjører Windows RMS på Windows Server 2003, blir denne versjonen av operativsystemet ikke støttes under 2015. Du kan overføre denne versjonen av RMS til Azure RMS, men denne prosessen støttes bare hvis operativsystemet støttes fortsatt. For å unngå dette, kan du importere klarerte publisering domenet (TPD) til en versjon av AD RMS som støttes, og deretter importere TPD uten alternativet for RMS 1.0-kompatibilitet. Hvis du vil ha mer informasjon om TPDs, kan du se [Trusted Publishing Domain](http://technet.microsoft.com/library/dd996639%28v=ws.10%29.aspx)<br />Alle gyldige AD RMS-topologi støttes:<br /><br />-   Enkel skog, enkel RMS-klyngen<br />-   Én skog, flere bare lisensiering RMS-klynger<br />-   Flere skoger, flere RMS-klynger **Note:** Som standard overfører flere RMS-klynger til en enkelt Azure RMS leier. Hvis du ønsker en annen RMS-eiere, må du behandle dem som forskjellige overføringer. En nøkkel fra én RMS-klyngen kan ikke importeres til mer enn én Azure RMS leier.|
+|Alle kravene til å kjøre Azure RMS, inkludert en Azure RMS leier (ikke aktivert)|Se [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).<br /><br />Selv om du må ha en Azure RMS leier før du kan overføre fra AD RMS, anbefaler vi at du ikke aktiverer Rights Management-tjenesten før overføringen. Dette trinnet omfatter overføringsprosessen med etter at du har eksportert nøkler og maler fra AD RMS og importert dem til Azure RMS. Imidlertid Hvis Azure RMS allerede er aktivert, kan du fremdeles overføre fra AD RMS.|
+|Forberedelse av Azure RMS:<br /><br />-   Directory-synkronisering mellom den lokale katalogen og Azure Active Directory<br />-   E-post grupper i Active Directory-Azure|Se [Forbereder Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md).|
+|Hvis du har brukt funksjonen (IRM-Information Rights Management) for Exchange Server (for eksempel Transportregler og Outlook Web Access) eller SharePoint Server med AD RMS:<br /><br />-   Planlegge for en kort periode når IRM ikke vil være tilgjengelig på disse serverne|Du kan fortsette å bruke IRM på disse serverne med Azure RMS etter migreringen. En av overføringstrinnene er imidlertid å midlertidig deaktivere IRM-tjenesten, installere og konfigurere en kobling, konfigurere servere og aktivere IRM på nytt.<br /><br />Dette er det eneste avbruddet til tjeneste under overføringsprosessen.|
+Begrensninger:
 
--   Although the migration process supports migrating your server licensing certificate (SLC) key to a hardware security module (HSM) for Azure RMS, Exchange Online does not currently support this configuration. If you want full IRM functionality with Exchange Online after you migrate to Azure RMS, your Azure RMS tenant key must be [managed by Microsoft](http://technet.microsoft.com/library/dn440580.aspx). Alternatively, you can run IRM with reduced functionality in Exchange Online  when your Azure RMS tenant is managed by you (BYOK). For more information about using Exchange Online with Azure RMS, see [Step 6. Configure IRM integration for Exchange Online](#BKMK_Step6Migration) in these instructions.
+-   Selv om overføringsprosessen støtter overføring av din server licensing sertifikat (SLC) nøkkel til hardware sikkerhetsmodul (HSM) for Azure RMS, støtter Exchange Online for øyeblikket ikke denne konfigurasjonen. Hvis du vil ha full IRM-funksjonalitet med Exchange Online når du overfører til Azure RMS, Azure RMS leier nøkkelen må være [administreres av Microsoft](http://technet.microsoft.com/library/dn440580.aspx). Du kan eventuelt kjøre IRM med redusert funksjonalitet i Exchange Online når Azure RMS-leier behandles av deg (BYOK). Hvis du vil ha mer informasjon om hvordan du bruker Exchange Online med Azure RMS, se [Step 6. Configure IRM integration for Exchange Online](#BKMK_Step6Migration) i disse instruksjonene.
 
--   If you have software and clients that are not supported with Azure RMS, they will not be able to protect or consume content that is protected by Azure RMS. Be sure to check the supported applications and clients section in the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.
+-   Hvis du har programvaren og -klienter som ikke støttes med Azure RMS, vil de ikke kunne beskytte eller forbruker innhold som er beskyttet av Azure RMS. Husk å sjekke støttede programmer og klienter-delen i den [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) emnet.
 
--   If you import your on-premises key to Azure RMS as archived (you do not set the TPD to be the active during the import process) and you migrate users in batches for a phased migration, content that is newly protected by the migrated users will not be accessible to users who remain on AD RMS. In this scenario, whenever  possible, keep the migration time short and migrate users in logical batches such that if they collaborate with one another, they are migrated together.
+-   Hvis du importerer den lokale nøkkelen til Azure RMS som arkivert (du ikke definerer TPD skal være aktiv under importprosessen) og du overføre brukere satsvis for en tretrinns overføring, innhold som nylig er beskyttet av overførte brukere vil ikke være tilgjengelig for brukere som beholdes på AD RMS. I dette scenariet, når det er mulig, holde overføringstid kort og overføre brukere i logiske grupper, slik at hvis de samarbeider med en annen, flyttes de sammen.
 
-    This limitation does not apply when you set the TPD to active during the import process, because all users will protect content by using the same key. We recommend this configuration because it lets you migrate all users independently and at your own pace.
+    Denne begrensningen gjelder ikke når du setter TPD til aktiv under importprosessen, fordi alle brukerne vil beskytte innholdet ved hjelp av den samme nøkkelen. Vi anbefaler denne konfigurasjonen fordi du kan overføre alle brukere uavhengig av hverandre og i ditt eget tempo.
 
--   If you collaborate with external partners (for example, by using trusted user domains or federation), they must also migrate to Azure RMS either at the same time as your migration, or as soon as possible afterwards. To continue to access content that your organization previously protected by using AD RMS, they must make client configuration changes that are similar to those that you make, and included in this document.
+-   Hvis du kan samarbeide med eksterne partnere (for eksempel ved hjelp av klarert bruker domener eller føderasjonen), må de også overføre til Azure RMS enten samtidig som migreringen, eller så snart som mulig etterpå. For å fortsette å få tilgang til innhold at organisasjonen tidligere beskyttet ved hjelp av AD RMS, de må klienten konfigurasjonsendringer som ligner på de som du gjør, og er inkludert i dette dokumentet.
 
-    Because of the possible configuration variations that your partners might have, exact instructions for this reconfiguration are out of scope for this document. For help, contact Microsoft Customer Support Services (CSS).
+    På grunn av mulige konfigurasjoner variasjoner som partnerne kan ha, er nøyaktige instruksjoner for denne rekonfigurering utenfor området for dette dokumentet. Hvis du trenger hjelp, kan du kontakte Microsofts kundestøttetjeneste (CSS).
 
-## Steps for migrating AD RMS to Azure RMS
+## Trinn for å overføre AD RMS til Azure RMS
 
-|Migration step|More information|
-|------------------|--------------------|
-|**1. Download the Azure RMS Management Administration Tools**|For instructions, see [Step 1: Download the Azure Rights Management Administration Tool](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step1Migration).|
-|**2. Export configuration data from AD RMS and import it to Azure RMS**|You export the configuration data (keys, templates, URLs) from AD RMS to an XML file, and then upload that file to Azure RMS by using the Import-AadrmTpd Windows PowerShell cmdlet. Additional steps might be needed, depending your on AD RMS key configuration:<br /><br />**Software-protected key to software-protected key migration**: Centrally managed, password-based keys in AD RMS to Microsoft-managed Azure RMS tenant key. This is the simplest migration path and no additional steps are required.<br /><br />**HSM-protected  key to HSM-protected key migration**: Keys that are stored by an HSM for AD RMS to customer-managed Azure RMS tenant key (the “bring your own key” or BYOK scenario). This requires additional steps to transfer the key from your on-premises Thales HSM to the Azure RMS HSM.<br /><br />**Software-protected key to HSM-protected key migration**: Centrally managed, password-based keys in AD RMS to customer-managed Azure RMS tenant key (the “bring your own key” or BYOK scenario). This requires the most configuration because you must first extract your software key and import it to an on-premises HSM, and then do the additional steps to transfer the key from your on-premises Thales HSM to the Azure RMS HSM.<br /><br />For instructions, see [Step 2. Export configuration data from AD RMS and import it to Azure RMS](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step2Migration).|
-|**3. Activate your RMS tenant**|If possible, do this step after the import process and not before.<br /><br />For more information and instructions, see [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).|
-|**4. Configure imported templates**|When you import your rights policy templates, their status is archived. If you want users to be able to see and use them, you must change the template status to published in the Azure classic portal.<br /><br />For instructions, see [Step 4. Configure imported templates](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step4Migration).|
-|**5. Reconfigure clients to use Azure RMS**|Existing Windows computers must be reconfigured to use the Azure RMS service instead of AD RMS. This step applies to computers in your organization, and to computers in partner organizations if you have collaborated with them while you were running AD RMS.<br /><br />In addition, if you have deployed the [mobile device extensions](http://technet.microsoft.com/library/dn673574.aspx) to support mobile devices such as iOS phones and iPads, Android phones and tablets, Windows phone, and Mac computers, you must remove the SRV records in DNS that redirected these clients to use AD RMS.<br /><br />For instructions, see [Step 5. Reconfigure clients to use Azure RMS](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step5Migration).|
-|**6. Configure IRM integration with Exchange Online**|This step is required if you want to use Exchange Online with Azure RMS.<br /><br />For instructions, see [Step 6. Configure IRM integration for Exchange Online](#BKMK_Step6Migration).|
-|**7. Deploy the RMS connector**|This step is required if you want to use any of the following on-premises services with Azure RMS:<br /><br />Exchange Server (for example, transport rules and Outlook Web Access)<br /><br />SharePoint Server<br /><br />Windows Server that runs File Classification Infrastructure<br /><br />For instructions, see [Step 7. Deploy the RMS connector](#BKMK_Step7Migration).|
-|**8. Decommission AD RMS**|When you have confirmed that all clients are using Azure RMS and no longer accessing the AD RMS servers, you can decommission your AD RMS deployment.<br /><br />For instructions, see [Step 8. Decommission AD RMS](#BKMK_Step8Migration).|
-|**9. Re-key your Azure RMS tenant key**|This step is required if you were not running in Cryptographic Mode 2 before the migration, and optional but recommended for all migrations to help safeguard the security of your Azure RMS tenant key.<br /><br />For instructions, see [Step 9. Re-key your Azure RMS tenant key](#BKMK_Step9Migration).|
+|Trinn for overføring|Hvis du vil ha mer informasjon|
+|------------------------|----------------------------------|
+|**1. Last ned Azure RMS-administrasjonsverktøy for administrasjon**|For instruksjoner, se [Step 1: Download the Azure Rights Management Administration Tool](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step1Migration).|
+|**2. Eksporter konfigurasjonsdata fra AD RMS og importere den til Azure RMS**|Du eksporterer konfigurasjonen (nøkler, maler, URL-adresser) fra AD RMS til en XML-fil, og deretter laste opp filen til Azure RMS ved hjelp av Import-AadrmTpd Windows PowerShell-cmdleten. Forholdsregler kan trenge, avhengig av din på viktige AD RMS-konfigurasjon:<br /><br />-   Programvare-beskyttede nøkkelen til programvare-beskyttede nøkler overføring: Sentralt administrerte, passordbaserte nøkler i AD RMS til Microsoft-administrerte Azure RMS leier nøkkel. Dette er den enkleste banen for migrering og kreves ingen ekstra trinn.<br />-   HSM-beskyttede nøkkelen til HSM-beskyttede nøkler overføring: Nøkler som lagres som en HSM for AD RMS til kunde-administrerte Azure RMS leier nøkkel (den "hente din egen nøkkel" eller BYOK scenario). Dette krever flere trinn for å overføre nøkkelen fra din lokale Thales HSM til Azure RMS HSM.<br />-   Programvare-beskyttede nøkkelen til HSM-beskyttede nøkler overføring: Sentralt administrerte passordbaserte nøkler i AD RMS til kunde-administrerte Azure RMS leier nøkkel (den "hente din egen nøkkel" eller BYOK scenario). Dette forutsetter at de fleste konfigurasjonen fordi må du først pakke ut nøkkelen programvare og importere den til et lokale HSM, og gjør deretter flere trinn for å overføre nøkkelen fra din lokale Thales HSM til Azure RMS HSM.<br /><br />For instruksjoner, se [Step 2. Export configuration data from AD RMS and import it to Azure RMS](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step2Migration).|
+|**3. Aktivere RMS-leier**|Hvis det er mulig, kan du utføre dette trinnet etter importen og ikke før.<br /><br />For mer informasjon og instruksjoner, kan du se [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).|
+|**4. Konfigurere importerte maler**|Når du importerer policymaler for rettigheter, er deres status arkivert. Hvis du vil at brukere skal kunne se og bruke dem, må du endre status for skjemamal som publiseres i Azure Management-portalen.<br /><br />For instruksjoner, se [Step 4. Configure imported templates](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step4Migration).|
+|**5. Konfigurere klienter til å bruke RMS Azure**|Eksisterende Windows-datamaskiner må konfigureres for å bruke Azure RMS-tjeneste i stedet for AD RMS. Dette trinnet gjelder for datamaskiner i din organisasjon, og datamaskiner i partnerorganisasjoner Hvis du har samarbeidet med dem mens du kjørte AD RMS.<br /><br />Hvis du har distribuert i tillegg til [filtyper på mobil enhet](http://technet.microsoft.com/library/dn673574.aspx) for å støtte mobile enheter som telefoner iOS og iPads, Android telefoner og tavler, Windows phone og Mac-datamaskiner, må du fjerne SRV-poster i DNS som omadressert disse klientene til å bruke AD RMS.<br /><br />For instruksjoner, se [Step 5. Reconfigure clients to use Azure RMS](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step5Migration).|
+|**6. Konfigurere IRM integrasjonen med Exchange Online**|Dette trinnet er nødvendig hvis du vil bruke Exchange Online med Azure RMS.<br /><br />For instruksjoner, se [Step 6. Configure IRM integration for Exchange Online](#BKMK_Step6Migration).|
+|**7. Distribuere RMS-kobling**|Dette trinnet er nødvendig hvis du vil bruke en av følgende lokale tjenester med Azure RMS:<br /><br />-   Exchange Server (for eksempel Transportregler og Outlook Web Access)<br />-   SharePoint Server<br />-   Windows-Server som kjører filen klassifisering infrastruktur<br /><br />For instruksjoner, se [Step 7. Deploy the RMS connector](#BKMK_Step7Migration).|
+|**8. Dekommisjonering av AD RMS**|Når du har bekreftet som alle klientene som bruker RMS Azure og ikke lenger tilgang til AD RMS-servere, kan du avslutte AD RMS-distribusjon.<br /><br />For instruksjoner, se [Step 8. Decommission AD RMS](#BKMK_Step8Migration).|
+|**9. Nye nøkler Azure RMS leier nøkkelen**|Dette trinnet er nødvendig hvis du kjørte ikke i kryptografiske modus 2 før overføringen, og valgfri, men anbefales for alle overføringer å beskytte sikkerheten til Azure RMS leier-tasten.<br /><br />For instruksjoner, se [Step 9. Re-key your Azure RMS tenant key](#BKMK_Step9Migration).|
 
-### <a name="BKMK_Step1Migration"></a>Step 1: Download the Azure Rights Management Administration Tool
-Go to the Microsoft Download Center and download the [Azure Rights Management Administration Tool](http://go.microsoft.com/fwlink/?LinkId=257721), which contains the Azure RMS administration module for Windows PowerShell.
+### <a name="BKMK_Step1Migration"></a>Trinn 1: Laste ned verktøyet Azure Rights Management-Administrasjon
+Gå til Microsoft Download Center og laste ned den [Azure Rights Management-administrasjonsverktøy](http://go.microsoft.com/fwlink/?LinkId=257721), som inneholder Azure RMS Administrasjon-modulen for Windows PowerShell.
 
-### <a name="BKMK_Step2Migration"></a>Step 2. Export configuration data from AD RMS and import it to Azure RMS
-This step is a two-part process:
+### <a name="BKMK_Step2Migration"></a>Trinn 2. Eksporter konfigurasjonsdata fra AD RMS og importere den til Azure RMS
+Dette trinnet er en prosess i to deler:
 
-1.  Export the configuration data from AD RMS by exporting the trusted publishing domains (TPDs) to an .xml file. This process is the same for all migrations.
+1.  Eksporter konfigurasjonen av data fra AD RMS ved å eksportere de klarerte publisering domenene (TPDs) til en XML-fil. Denne prosessen er den samme for alle overføringer.
 
-2.  Import the configuration data to Azure RMS. There are different processes for this step, depending on your current AD RMS deployment configuration and your preferred topology for your Azure RMS tenant key.
+2.  Importere konfigurasjonsdataene til Azure RMS. Det finnes forskjellige prosesser for dette trinnet, avhengig av den gjeldende konfigurasjonen for AD RMS-distribusjon og foretrukne topologien for Azure RMS leier-tasten.
 
-#### Export the configuration data from AD RMS
-Do the following procedure on all AD RMS clusters, for all trusted publishing domains that have protected content for your organization. You do not need to run this on licensing-only clusters.
-
-> [!NOTE]
-> If you are using Windows Server 2003 Rights Management, instead of these instructions, follow the procedure [Export SLC, TUD, TPD and RMS private key](http://technet.microsoft.com/library/jj835767%28v=ws.10%29.aspx) from the [Migrating from Windows RMS to AD RMS in a Different Infrastructure](http://technet.microsoft.com/library/jj835767%28v=ws.10%29.aspx) topic.
-
-###### To export the configuration data (trusted publishing domain information)
-
-1.  Log on the AD RMS cluster as a user with AD RMS administration permissions.
-
-2.  From the AD RMS management console (**Active Directory Rights Management Services**), expand the AD RMS cluster name, expand **Trust Policies**, and then click **Trusted Publishing Domains**.
-
-3.  In the results pane, select the trusted publishing domain, and then, from the Actions pane, click **Export Trusted Publishing Domain**.
-
-4.  In the **Export Trusted Publishing Domain** dialog box:
-
-    -   Click **Save As** and save to path and a file name of your choice. Make sure to specify **.xml** as the file name extension (this is not appended automatically).
-
-    -   Specify and confirm a strong password. Remember this password, because you will need it later, when you import the configuration data to Azure RMS.
-
-    -   Do not select the checkbox to save the trusted domain file in RMS version 1.0.
-
-When you have exported all the trusted publishing domains, you’re ready to start the procedure to import this data to Azure RMS.
-
-#### Import the configuration data to Azure RMS
-The exact procedures for this step depend on your current AD RMS deployment configuration, and your preferred topology for your Azure RMS tenant key.
-
-Your current AD RMS deployment will be using one of the following configurations for your server licensor certificate (SLC) key:
-
--   Password protection in the AD RMS database. This is the default configuration.
-
--   HSM protection by using a Thales hardware security module (HSM).
-
--   HSM protection by using a hardware security module (HSM) from a supplier other than Thales.
-
--   Password protected by using an external cryptographic provider.
+#### Eksporter konfigurasjonen av data fra AD RMS
+Gjør følgende på alle AD RMS-klynger, for alle klarerte publisering domener som har beskyttet innhold for organisasjonen. Du trenger ikke å kjøre denne på bare lisensiering klynger.
 
 > [!NOTE]
-> For more information about using hardware security modules with AD RMS, see [Using AD RMS with Hardware Security Modules](http://technet.microsoft.com/library/jj651024.aspx).
+> Følg denne fremgangsmåten hvis du bruker Rights Management for Windows Server 2003, i stedet for disse instruksjonene, [eksportere SLC, TUD, TPD og RMS privatnøkkelen](http://technet.microsoft.com/library/jj835767%28v=ws.10%29.aspx) fra den [overføring fra Windows RMS til AD RMS i en annen infrastruktur](http://technet.microsoft.com/library/jj835767%28v=ws.10%29.aspx) emnet.
 
-The two Azure RMS tenant key topology options are: Microsoft manages your tenant key (**Microsoft-managed**) or you manage your tenant key (**customer-managed**). When you manage your own Azure RMS tenant key, it’s sometimes referred to as “bring your own key” (BYOK) and requires a hardware security module (HSM) from Thales. For more information, see the [Choose your tenant key topology: Managed by Microsoft (the default) or managed by you (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ChooseTenantKey) section in the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic.
+###### Hvis du vil eksportere konfigurasjonsdataene klarert (domeneinformasjon for publisering)
+
+1.  Logg på AD RMS-klyngen som en bruker med AD RMS administrasjonsrettigheter.
+
+2.  Fra AD RMS-administrasjonskonsollen (**Active Directory Rights Management Services**), Utvid klyngenavnet AD RMS, **stoler policyer**, og klikk deretter **klarerte domener som publiserer**.
+
+3.  Velg det klarerte domenet for publisering i resultater-ruten, og fra handlinger-ruten, klikk **Eksporter klarert domene publisering**.
+
+4.  I den **Eksporter klarert av publisering domene** dialogboks:
+
+    -   Klikk **Lagre som** og lagre bane og et filnavn for ditt valg. Sørg for å angi **.xml** som filtype (dette ikke er lagt til automatisk).
+
+    -   Angi og Bekreft et sterkt passord. Husk dette passordet, fordi du trenger den senere, når du importerer konfigurasjonsdataene til Azure RMS.
+
+    -   Ikke Merk av for å lagre filen klarert domene i RMS-versjon 1.0.
+
+Når du har eksportert alle klarerte publisering domener, er du klar til å starte prosedyren for å importere disse dataene til Azure RMS.
+
+#### Importere konfigurasjonsdataene til Azure RMS
+Nøyaktige fremgangsmåten for dette trinnet avhenger av den gjeldende konfigurasjonen for AD RMS-distribusjon og foretrukne topologien for Azure RMS leier-tasten.
+
+Gjeldende AD RMS distribusjonen skal bruke én av følgende konfigurasjoner for server LISENSGIVEREN sertifikat (SLC) nøkkelen:
+
+-   Passordbeskyttelse i AD RMS-databasen. Dette er standardkonfigurasjonen.
+
+-   HSM beskyttelse ved hjelp av en Thales hardware security module (HSM).
+
+-   HSM beskyttelse ved å bruke en hardware sikkerhetsmodul (HSM) fra en annen leverandør enn Thales.
+
+-   Passordet er beskyttet ved hjelp av en ekstern kryptografileverandøren.
+
+> [!NOTE]
+> Hvis du vil ha mer informasjon om bruk av maskinvare sikkerhet moduler med AD RMS, se [ved hjelp av AD RMS med maskinvare sikkerhet moduler](http://technet.microsoft.com/library/jj651024.aspx).
+
+To Azure RMS leier viktige topologi alternativene er: Styrer Microsoft leier-tasten (**Microsoft-administrerte**) eller du administrere leier-tasten (**Kunde-administrerte**). Når du administrerer din egen Azure RMS leier nøkkel, det blir noen ganger referert til som "hente din egen nøkkel" (BYOK) og krever en hardware security module (HSM) fra Thales. Hvis du vil ha mer informasjon, se den [Choose your tenant key topology: Managed by Microsoft (the default) or managed by you (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ChooseTenantKey) delen i den [Planlegging og implementering av Azure Rights Management leier nøkkelen](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) emnet.
 
 > [!IMPORTANT]
-> Exchange Online is not currently  compatible with Azure RMS BYOK.  If you want to use BYOK after your migration and plan to use Exchange Online, make sure that you understand how this configuration reduces IRM functionality for Exchange Online. Review  the information in the [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) section in the  [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic to help you choose the best Azure RMS tenant key topology for your migration.
+> Exchange Online er ikke kompatibel med Azure RMS-BYOK.  Hvis du vil bruke BYOK etter migreringen og planlegger å bruke Exchange Online, må du kontrollere at du forstår hvordan denne konfigurasjonen reduserer IRM-funksjonalitet for Exchange Online. Les informasjonen i den [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) delen i den  [Planlegging og implementering av Azure Rights Management leier nøkkelen](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) emne for å hjelpe deg å velge den beste Azure RMS for klientadministrasjon viktige topologi for migreringen.
 
-Use the following table to identify which procedure to use for your migration. Combinations that are not listed are not supported.
+Bruk tabellen nedenfor til å identifisere hvilken fremgangsmåte som skal brukes for migreringen. Kombinasjoner som ikke er oppført, støttes ikke.
 
-|Current AD RMS deployment|Chosen Azure RMS tenant key topology|Migration instructions|
-|-----------------------------|----------------------------------------|--------------------------|
-|Password protection in the AD RMS database|Microsoft-managed|See the **Software-protected key to software-protected key migration** procedure after this table.<br /><br />This is the simplest migration path and requires only that you transfer your configuration data to Azure RMS.|
-|HSM protection by using a Thales nShield hardware security module (HSM)|Customer-managed (BYOK)|See the **HSM-protected key to HSM-protected key migration** procedure after this table.<br /><br />This requires the BYOK toolset and two set of steps to transfer the key from your on-premises HSM to the Azure RMS HSMs and then transfer your configuration data to Azure RMS.|
-|Password protection in the AD RMS database|Customer-managed (BYOK)|See the **Software-protected key to HSM-protected key migration** procedure after this table.<br /><br />This requires the BYOK toolset and three sets of steps to first extract your software key and import it to an on-premises HSM, then transfer the key from your on-premises HSM to the Azure RMS HSMs, and finally transfer your configuration data to Azure RMS.|
-|HSM protection by using a hardware security module (HSM) from a supplier other than Thales|Customer-managed (BYOK)|Contact the supplier for you HSM for instructions how to transfer your key from this HSM to a Thales nShield Hardware Security Module (HSM). Then follow the instructions for the **HSM-protected key to HSM-protected key migration** procedure after this table.|
-|Password protected by using an external cryptographic provider|Customer-managed (BYOK)|Contact the supplier for you cryptographic provider for instructions how to transfer your key to a Thales nShield hardware security module (HSM). Then follow the instructions for the **HSM-protected key to HSM-protected key migration** procedure after this table.|
-Before you start these procedures, make sure that you can access the .xml files that you created earlier when you exported the trusted publishing domains. For example, these might be saved to a USB thumb drive that you move from the AD RMS server to the Internet-connected workstation.
+|Gjeldende AD RMS-distribusjon|Valgt Azure RMS leier viktige topologi|Instruksjoner for overføring|
+|---------------------------------|------------------------------------------|--------------------------------|
+|Passordbeskyttelse i AD RMS-databasen|Microsoft-administrerte|Se den **programvare-beskyttede nøkkelen til programvare-beskyttede nøkler migrering** prosedyren etter denne tabellen.<br /><br />Dette er den enkleste banen for migrering og krever bare at du overfører din konfigurasjonsdataene til Azure RMS.|
+|HSM beskyttelse ved hjelp av en Thales nShield hardware security module (HSM)|Kunde-administrerte (BYOK)|Se den **HSM-beskyttede nøkkelen til HSM-beskyttede nøkler migrering** prosedyren etter denne tabellen.<br /><br />Dette krever verktøysettet BYOK og to sett med trinn for å overføre nøkkelen fra din lokale HSM til Azure RMS-HSMs og deretter overføre konfigurasjonsdataene til Azure RMS.|
+|Passordbeskyttelse i AD RMS-databasen|Kunde-administrerte (BYOK)|Se den **programvare-beskyttede nøkkelen til HSM-beskyttede nøkler migrering** prosedyren etter denne tabellen.<br /><br />Dette krever verktøysettet BYOK og tre trinnsettene først pakke ut programvarenøkkel og importere den til en lokale HSM, deretter overføre nøkkelen fra din lokale HSM til Azure RMS-HSMs, og Overfør til slutt i konfigurasjonsdataene til Azure RMS.|
+|HSM beskyttelse ved å bruke en hardware sikkerhetsmodul (HSM) fra en annen leverandør enn Thales|Kunde-administrerte (BYOK)|Kontakt leverandøren du HSM for instruksjoner om hvordan du overfører din nøkkel fra denne HSM til en Thales nShield Hardware Security Module (HSM). Deretter følger du instruksjonene for den **HSM-beskyttede nøkkelen til HSM-beskyttede nøkler migrering** prosedyren etter denne tabellen.|
+|Passordet er beskyttet ved hjelp av en ekstern kryptografileverandøren|Kunde-administrerte (BYOK)|Kontakt leverandøren hvis du kryptografileverandøren instruksjoner overføre nøkkelen til en Thales nShield hardware security module (HSM). Deretter følger du instruksjonene for den **HSM-beskyttede nøkkelen til HSM-beskyttede nøkler migrering** prosedyren etter denne tabellen.|
+Før du starter denne fremgangsmåten, kontroller at du har tilgang til XML-filer som du opprettet tidligere når du har eksportert de klarerte domenene for publisering. Dette kan for eksempel lagres på en USB-enhet som du flytter fra AD RMS-serveren til Internett-tilkoblede arbeidsstasjonen.
 
 > [!NOTE]
-> However you store these files, use security best practices to protect them because this data includes your private key.
+> Imidlertid kan du lagre disse filene, Bruk fremgangsmåter til å beskytte dem, fordi disse dataene inkluderer den private nøkkelen.
 
-##### Software-protected key to software-protected key migration
-Use this procedure to import the AD RMS configuration to Azure RMS, to result in your Azure RMS tenant key that is managed by Microsoft.
+##### Programvare-beskyttede nøkkelen til programvare-beskyttede nøkler migrering
+Bruk denne fremgangsmåten til å importere AD RMS-konfigurasjonen til Azure RMS, vil resultere i Azure RMS leier nøkkelen som administreres av Microsoft.
 
-###### To import the configuration data to Azure RMS
+###### Importere konfigurasjonsdataene til Azure RMS
 
-1.  On an Internet-connected workstation, download and install the Windows PowerShell module for Azure RMS (minimum version 2.1.0.0), which includes the [Import-AadrmTpd](http://msdn.microsoft.com/library/azure/dn857523.aspx) cmdlet.
+1.  På en Internett-tilkoblede arbeidsstasjon, laste ned og installere Windows PowerShell-modul for Azure RMS (minimum versjon 2.1.0.0), som inneholder den [Import-AadrmTpd](http://msdn.microsoft.com/library/azure/dn857523.aspx) cmdleten.
 
     > [!TIP]
-    > If you have previously downloaded and installed the module, check the version number by running: `(Get-Module aadrm -ListAvailable).Version`
+    > Hvis du tidligere har lastet ned og installert modulen, kontrollerer du versjonsnummeret ved å kjøre: `(Get-Module aadrm -ListAvailable).Version`
 
-    For installation instructions, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+    For å lese installasjonsinstrukser, kan du se [Installere Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
 
-2.  Start Windows PowerShell with the **Run as administrator** option and use the [Connect-AadrmService](http://msdn.microsoft.com/library/azure/dn629415.aspx) cmdlet to connect to the Azure RMS service:
+2.  Start Windows PowerShell med den **Kjør som administrator** alternativet og bruker den [koble til AadrmService](http://msdn.microsoft.com/library/azure/dn629415.aspx) cmdlet til å koble til tjenesten Azure RMS:
 
     ```
     Connect-AadrmService
     ```
-    When prompted, enter your [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] tenant administrator credentials (typically, you will use an account that is a global administrator for Azure Active Directory or Office 365).
+    Når du blir spurt, skriver du inn din [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] for klientadministrasjon administratorlegitimasjon (vanligvis bruker du en konto som er en global administrator for Azure Active Directory eller Office 365).
 
-3.  Use the [Import-AadrmTpd](http://msdn.microsoft.com/library/azure/dn857523.aspx) cmdlet to upload the first exported trusted publishing domain (.xml) file. If you have more than one .xml file because you had multiple trusted publishing domains, choose the file that contains the exported trusted publishing domain that you want to use in Azure RMS to protect content after the migration. Use the following command:
+3.  Bruk av [Import-AadrmTpd](http://msdn.microsoft.com/library/azure/dn857523.aspx) cmdlet til å laste opp først eksportert klarerte publisering domene (XML) fil. Hvis du har mer enn én XML-filen fordi du hadde flere publisering klarerte domener, velger du filen som inneholder det eksporterte klarerte publisering domenet du vil bruke i Azure RMS for å beskytte innhold etter migreringen. Bruker du følgende kommando:
 
     ```
     Import-AadrmTpd -TpdFile <PathToTpdPackageFile> -ProtectionPassword -Active $True -Verbose
     ```
-    For example: **Import-AadrmTpd -TpdFile E:\contosokey1.xml -ProtectionPassword -Active $true -Verbose**
+    For eksempel: **Import-AadrmTpd -TpdFile E:\contosokey1.xml -ProtectionPassword -Active $true -Verbose**
 
-    When prompted, enter the password that you specified earlier, and confirm that you want to perform this action.
+    Når du blir spurt, skriver du inn passordet du angav tidligere, og Bekreft at du vil utføre denne handlingen.
 
-4.  When the command completes, repeat step 3 for each remaining  .xml file that you created by exporting your trusted publishing domains. But for these files, set **-Active** to **false** when you run the Import command. For example: **Import-AadrmTpd -TpdFile E:\contosokey2.xml -ProtectionPassword -Active $false -Verbose**
+4.  Når kommandoen er fullført, kan du Gjenta trinn 3 for hver gjenstående XML-filen du opprettet ved å eksportere de klarerte domenene for publisering. Men for disse filene, kan du angi **-Active** til **false** Når du kjører Import-kommandoen. For eksempel: **Import-AadrmTpd -TpdFile E:\contosokey2.xml -ProtectionPassword -Active $false -Verbose**
 
-5.  Use the [Disconnect-AadrmService](http://msdn.microsoft.com/library/azure/dn629416.aspx) cmdlet to disconnect from the Azure RMS service:
+5.  Bruk av [Koble fra AadrmService](http://msdn.microsoft.com/library/azure/dn629416.aspx) cmdlet til å koble fra Azure RMS-tjenesten:
 
     ```
     Disconnect-AadrmService
     ```
 
-You’re now ready to go to [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
+Du er nå klar til å gå til [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
 
-##### HSM-protected key to HSM-protected key migration
-It’s a two-part procedure to import your HSM key and AD RMS configuration to Azure RMS, to result in your Azure RMS tenant key that is managed by you (BYOK).
+##### HSM-beskyttede nøkkelen til HSM-beskyttede nøkler migrering
+Det er en todelt prosedyre til å importere HSM-tasten og konfigurasjon for AD RMS til Azure RMS, vil resultere i Azure RMS leier nøkkelen som administreres av deg (BYOK).
 
-You must first package your HSM key so it's ready to transfer to Azure RMS, and then import it with the configuration data.
+Du må først pakke HSM-tasten slik at den er klar til å overføre til Azure RMS, og deretter importere den med konfigurasjonsdataene.
 
-###### Part 1: Package your HSM key so it's ready to transfer to Azure RMS
+###### Del 1: Pakke HSM-tasten slik at den er klar til å overføre til Azure RMS
 
-1.  Follow the steps in the [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) section of the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md), using the procedure **Generate and transfer your tenant key – over the Internet** with the following exceptions:
+1.  Følg trinnene i den [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) delen av den [Planlegging og implementering av Azure Rights Management leier nøkkelen](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md), ved hjelp av fremgangsmåten **Generer og overfør ditt leier nøkkel – via Internett** med følgende unntak:
 
-    -   Do not follow the steps for **Generate your tenant key**, because you already have the equivalent from your AD RMS deployment. You must identify the key used by your AD RMS server from the Thales installation and use this key during the migration. Thales encrypted key files are usually named **key_(keyAppName)_(keyIdentifier)** locally on the server.
+    -   Ikke bruk fremgangsmåten for **generere leier-nøkkel**, fordi du allerede har tilsvarende fra AD RMS-distribusjon. Du må identifisere nøkkelen som brukes av AD RMS-serveren fra Thales-installasjonen og bruker denne nøkkelen under overføringen. Thales krypterte viktige filer, kalles vanligvis **key_(keyAppName)_(keyIdentifier)** lokalt på serveren.
 
-    -   Do not follow the steps for **Transfer your tenant key to Azure RMS**, which uses the  Add-AadrmKey command.  Instead, you will transfer your prepared HSM key when you upload your exported trusted publishing domain, by using the Import-AadrmTpd command.
+    -   Ikke bruk fremgangsmåten for **overføre leier nøkkelen til Azure RMS**, som bruker kommandoen Legg til AadrmKey.  I stedet vil du overføre forberedt HSM nøkkelen når du laster opp eksporterte klarerte publisering domenet ditt, ved hjelp av kommandoen Importer-AadrmTpd.
 
-2.  On the Internet-connected workstation, in Windows PowerShell session, reconnect to the Azure RMS service.
+2.  Koble til Azure RMS-tjenesten i Windows PowerShell-økt på en Internett-tilkoblede arbeidsstasjon.
 
-Now that you’ve prepared your HSM key for Azure RMS, you’re ready to import your HSM key file and AD RMS configuration data.
+Nå som du har forberedt HSM-nøkkel for Azure RMS, er du klar til å importere nøkkelfilen for HSM og AD RMS-konfigurasjonsdata.
 
-###### Part 2: Import the HSM key and configuration data to Azure RMS
+###### Del 2: Importere HSM-tasten og konfigurasjon av dataene til Azure RMS
 
-1.  Still on the Internet-connect workstation and in the Windows PowerShell session, upload the first exported trusted publishing domain (.xml) file. If you have more than one .xml file because you had multiple trusted publishing domains, choose the file that contains the exported trusted publishing domain that corresponds to the HSM key you want to use in Azure RMS to protect content after the migration. Use the following command:
+1.  Fortsatt på en arbeidsstasjon med Internett-tilkobling og Windows PowerShell-økten, laste opp første eksporterte klarerte publisering domene (.xml) filen. Hvis du har mer enn én XML-filen fordi du hadde flere publisering klarerte domener, velger du filen som inneholder de eksporterte klarerte publisering domenet som tilsvarer HSM-tasten du vil bruke i Azure RMS for å beskytte innhold etter migreringen. Bruker du følgende kommando:
 
     ```
     Import-AadrmTpd -TpdFile <PathToTpdPackageFile> -ProtectionPassword -HsmKeyFile <PathToBYOKPackage> -Active $True -Verbose
     ```
-    For example: **Import -TpdFile E:\no_key_tpd_contosokey1.xml  -HsmKeyFile E:\KeyTransferPackage-contosokey.byok -ProtectionPassword -Active $true -Verbose**
+    For eksempel: **Import -TpdFile E:\no_key_tpd_contosokey1.xml  -HsmKeyFile E:\KeyTransferPackage-contosokey.byok -ProtectionPassword -Active $true -Verbose**
 
-    When prompted, enter the password that you specified earlier, and confirm that you want to perform this action.
+    Når du blir spurt, skriver du inn passordet du angav tidligere, og Bekreft at du vil utføre denne handlingen.
 
-2.  When the command completes, repeat step 1 for each remaining  .xml file that you created by exporting your trusted publishing domains. But for these files, set **-Active** to **false** when you run the Import command.  For example: **Import -TpdFile E:\contosokey2.xml -HsmKeyFile E:\KeyTransferPackage-contosokey.byok -ProtectionPassword -Active $false -Verbose**
+2.  Når kommandoen er fullført, kan du Gjenta trinn 1 for hver gjenstående XML-filen du opprettet ved å eksportere de klarerte domenene for publisering. Men for disse filene, kan du angi **-Active** til **false** Når du kjører Import-kommandoen.  For eksempel: **Import -TpdFile E:\contosokey2.xml -HsmKeyFile E:\KeyTransferPackage-contosokey.byok -ProtectionPassword -Active $false -Verbose**
 
-3.  Use the [Disconnect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) cmdlet to disconnect from the Azure RMS service:
+3.  Bruk av [Koble fra AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) cmdlet til å koble fra Azure RMS-tjenesten:
 
     ```
     Disconnect-AadrmService
     ```
 
-You’re now ready to go to [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
+Du er nå klar til å gå til [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
 
-##### Software-protected key to HSM-protected key migration
-It’s a three-part procedure to import the AD RMS configuration to Azure RMS, to result in your Azure RMS tenant key that is managed by you (BYOK).
+##### Programvare-beskyttede nøkkelen til HSM-beskyttede nøkler migrering
+Det er en tredelt prosedyre til å importere AD RMS-konfigurasjonen til Azure RMS, vil resultere i Azure RMS leier nøkkelen som administreres av deg (BYOK).
 
-You must first extract your server licensor certificate (SLC) key from the configuration data and transfer the key to an on-premises Thales HSM, then package and transfer your HSM key to Azure RMS, and then import the configuration data.
+Du må først pakke ut din server LISENSGIVEREN sertifikat (SLC) nøkkel fra konfigurasjonsdataene og overføre nøkkelen til en lokale Thales HSM, og deretter pakke og overføre HSM-nøkkelen til Azure RMS, og deretter importere konfigurasjonsdataene.
 
-###### Part 1: Extract your SLC from the configuration data and import the key to your on-premises HSM
+###### Del 1: Trekke ut din SLC fra konfigurasjonsdataene og importere nøkkelen til din lokale HSM
 
-1.  Use the following steps in the [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) section of the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic:
+1.  Bruk følgende trinn i den [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) delen av den [Planlegging og implementering av Azure Rights Management leier nøkkelen](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) emne:
 
-    -   **Generate and transfer your tenant key – over the Internet**: **Prepare your Internet-connected workstation**
+    -   **Generer og overfør ditt leier nøkkel – via Internett**: **Klargjør Internett-tilkoblede arbeidsstasjonen**
 
-    -   **Generate and transfer your tenant key – over the Internet**: **Prepare your disconnected workstation**
+    -   **Generer og overfør ditt leier nøkkel – via Internett**: **Forberede pulten frakoblet**
 
-    Do not follow the steps to generate your tenant key, because you already have the equivalent in the exported configuration data (.xml) file. Instead, you will run a command to extract this key from the file and import it to your on-premises HSM.
+    Ikke Følg fremgangsmåten for å generere nøkkelen leier, fordi du allerede har tilsvarende i den eksporterte konfigurasjonsfilen dataene (XML). I stedet vil du kjøre en kommando for å pakke ut denne nøkkelen fra filen og importerer den til din lokale HSM.
 
-2.  On the disconnected workstation, run the following command:
+2.  På frakoblet arbeidsstasjonen, kjører du følgende kommando:
 
     ```
     KeyTransferRemote.exe -ImportRmsCentrallyManagedKey -TpdFilePath <TPD> -ProtectionPassword -KeyIdentifier <KeyID> -ExchangeKeyPackage <BYOK-KEK-pka-Region> -NewSecurityWorldPackage <BYOK-SecurityWorld-pkg-Region>
     ```
-    For example, for North America: **KeyTransferRemote.exe -ImportRmsCentrallyManagedKey -TpdFilePath E:\contosokey1.xml -ProtectionPassword -KeyIdentifier contosorms1key –- -ExchangeKeyPackage &lt;BYOK-KEK-pka-NA-1&gt; -NewSecurityWorldPackage &lt;BYOK-SecurityWorld-pkg-NA-1&gt;**
+    For eksempel for Nord-Amerika: **KeyTransferRemote.exe -ImportRmsCentrallyManagedKey -TpdFilePath E:\contosokey1.xml -ProtectionPassword -KeyIdentifier contosorms1key –- -ExchangeKeyPackage &lt;BYOK-KEK-pka-NA-1&gt; -NewSecurityWorldPackage &lt;BYOK-SecurityWorld-pkg-NA-1&gt;**
 
-    Additional information:
+    Tilleggsinformasjon:
 
-    -   The ImportRmsCentrallyManagedKey parameter indicates that the operation is to import the SLC key.
+    -   Parameteren ImportRmsCentrallyManagedKey angir at operasjonen er å importere SLC-nøkkelen.
 
-    -   If you don’t specify the password in the command, you will be prompted to specify it.
+    -   Hvis du ikke angir passordet for kommandoen, blir du bedt om å angi den.
 
-    -   The KeyIdentifier parameter is for a key friendly name that creates the key file name. You must use only lower-case ASCII characters.
+    -   KeyIdentifier-parameteren er for en egendefinert nøkkelnavnet som oppretter filen navnet. Du må bare bruke små ASCII-tegn.
 
-    -   The ExchangeKeyPackage parameter specifies a region-specific key exchange key (KEK) package that has a name beginning with BYOK-KEK-pkg-.
+    -   Parameteren ExchangeKeyPackage angir en områdespesifikk nøkkelutveksling key (KEK)-pakken som har et navn som begynner med BYOK-KEK - pkg-.
 
-    -   The NewSecurityWorldPackage parameter specifies a region-specific security world package that has a name beginning with BYOK-SecurityWorld-pkg-.
+    -   Parameteren NewSecurityWorldPackage angir en bestemt region verden sikkerhetspakken som har et navn som begynner med BYOK-SecurityWorld - pkg-.
 
-    This command results in the following:
+    Denne kommandoen gir følgende:
 
-    -   An HSM key file: %NFAST_KMDATA%\local\key_mscapi_&lt;KeyID&gt;
+    -   En nøkkelfil for HSM: %NFAST_KMDATA%\local\key_mscapi_ &lt; KeyID &gt;
 
-    -   RMS configuration data file with the SLC removed: %NFAST_KMDATA%\local\no_key_tpd_&lt;KeyID&gt;.xml
+    -   RMS konfigurasjon av datafilen med SLC fjernet: %NFAST_KMDATA%\local\no_key_tpd_ &lt; KeyID &gt; XML
 
-3.  If you have more than one RMS configuration data files, repeat step 2 for the remainder of these files.
+3.  Hvis du har mer enn én RMS-konfigurasjon-datafiler, må du Gjenta trinn 2 for resten av disse filene.
 
-Now that your SLC has been extracted so that it’s an HSM-based key, you’re ready to package and transfer it to Azure RMS.
+Nå som SLC er pakket ut slik at det er en nøkkel HSM-basert, er du klar til å pakke og overføre den til Azure RMS.
 
-###### Part 2: Package and transfer your HSM key to Azure RMS
+###### Del 2: Pakke og overføre HSM-nøkkelen til Azure RMS
 
-1.  Use the following steps from the [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) section of the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md):
+1.  Bruk fremgangsmåten nedenfor fra den [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) delen av det [Planlegging og implementering av Azure Rights Management leier nøkkelen](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md):
 
-    -   **Generate and transfer your tenant key – over the Internet**: **Prepare your tenant key for transfer**
+    -   **Generer og overfør ditt leier nøkkel – via Internett**: **Forberede leier nøkkelen for overføring**
 
-    -   **Generate and transfer your tenant key – over the Internet**: **Transfer your tenant key to Azure RMS**
+    -   **Generer og overfør ditt leier nøkkel – via Internett**: **Overføre leier nøkkelen til Azure RMS**
 
-Now that you’ve transferred your HSM key to Azure RMS, you’re ready to import your AD RMS configuration data, which contains only a pointer to the newly transferred tenant key.
+Nå som du har overført HSM-nøkkelen til Azure RMS, er du klar til å importere AD RMS-konfigurasjonsdata, som inneholder en peker til den nylig overført leier nøkkelen.
 
-###### Part 3: Import the configuration data to Azure RMS
+###### Del 3: Importere konfigurasjonsdataene til Azure RMS
 
-1.  Still on the Internet-connected workstation and in the Windows PowerShell session, copy over the RMS configuration files with the SLC removed (from the disconnected workstation, %NFAST_KMDATA%\local\no_key_tpd_&lt;KeyID&gt;.xml)
+1.  Fremdeles på Internett-tilkoblede arbeidsstasjonen og Windows PowerShell-økten, kopiere over RMS-konfigurasjonsfiler med SLC fjernet (fra den frakoblede arbeidsstasjonen, %NFAST_KMDATA%\local\no_key_tpd_ &lt; KeyID &gt; XML)
 
-2.  Upload the first file. If you have more than one .xml file because you had multiple trusted publishing domains, choose the file that contains the exported trusted publishing domain that corresponds to the HSM key you want to use in Azure RMS to protect content after the migration. Use the following command:
+2.  Last opp den første filen. Hvis du har mer enn én XML-filen fordi du hadde flere publisering klarerte domener, velger du filen som inneholder de eksporterte klarerte publisering domenet som tilsvarer HSM-tasten du vil bruke i Azure RMS for å beskytte innhold etter migreringen. Bruker du følgende kommando:
 
     ```
     Import-AadrmTpd -TpdFile <PathToNoKeyTpdPackageFile> -ProtectionPassword -HsmKeyFile <PathToKeyTransferPackage> -Active $true -Verbose
     ```
-    For example: **Import -TpdFile E:\no_key_tpd_contosorms1key.xml -ProtectionPassword -HsmKeyFile E:\KeyTransferPackage-contosorms1key.byok -Active $true -Verbose**
+    For eksempel: **Import -TpdFile E:\no_key_tpd_contosorms1key.xml -ProtectionPassword -HsmKeyFile E:\KeyTransferPackage-contosorms1key.byok -Active $true -Verbose**
 
-    When prompted, enter the password that you specified earlier, and confirm that you want to perform this action.
+    Når du blir spurt, skriver du inn passordet du angav tidligere, og Bekreft at du vil utføre denne handlingen.
 
-3.  When the command completes, repeat step 2 for each remaining  .xml file that you created by exporting your trusted publishing domains. But for these files, set **-Active** to **false** when you run the Import command. For example: **Import -TpdFile E:\no_key_tpd_contosorms2key.xml -ProtectionPassword -HsmKeyFile E:\KeyTransferPackage-contosorms1key.byok -Active $false -Verbose**
+3.  Når kommandoen er fullført, kan du Gjenta trinn 2 for hver gjenstående XML-filen du opprettet ved å eksportere de klarerte domenene for publisering. Men for disse filene, kan du angi **-Active** til **false** Når du kjører Import-kommandoen. For eksempel: **Import -TpdFile E:\no_key_tpd_contosorms2key.xml -ProtectionPassword -HsmKeyFile E:\KeyTransferPackage-contosorms1key.byok -Active $false -Verbose**
 
-4.  Use the [Disconnect-AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) cmdlet to disconnect from the Azure RMS service:
+4.  Bruk av [Koble fra AadrmService](http://msdn.microsoft.com/library/windowsazure/dn629416.aspx) cmdlet til å koble fra Azure RMS-tjenesten:
 
     ```
     Disconnect-AadrmService
     ```
 
-You’re now ready to go to [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
+Du er nå klar til å gå til [Step 3. Activate your RMS tenant](../Topic/Migrating_from_AD_RMS_to_Azure_Rights_Management.md#BKMK_Step3Migration).
 
-### <a name="BKMK_Step3Migration"></a>Step 3. Activate your RMS tenant
-Instructions  for this step are fully covered in the [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md) topic.
+### <a name="BKMK_Step3Migration"></a>Trinn 3. Aktivere RMS-leier
+Instruksjoner for dette trinnet er fullstendig dekket i den [Aktivering av Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md) emnet.
 
 > [!TIP]
-> If you have an Office 365 subscription, you can activate Azure RMS from the Office 365 admin center or the Azure classic portal. We recommend that you use the Azure classic portal because you will use this management portal to complete the next step.
+> Hvis du har et abonnement på Office 365, kan du aktivere Azure RMS fra Office 365 administrasjonssenteret eller Azure Management-portalen. Vi anbefaler at du bruker Azure Management-portalen fordi du vil bruke denne management-portalen for å fullføre neste trinn.
 
-**What if your Azure RMS tenant is already activated?** If the Azure RMS service is already activated for your organization, users might have already used Azure RMS to protect content with an automatically generated tenant key (and the default templates) rather than your existing keys (and templates) from AD RMS. This is unlikely to happen on computers that are well-managed on your intranet, because they will be automatically configured for your AD RMS infrastructure. But it can happen on workgroup computers or computers that infrequently connect to your intranet. Unfortunately, it’s also difficult to identify these computers, which is why we recommend you do not activate the service before you import the configuration data from AD RMS.
+**Hva skjer hvis Azure RMS-leier allerede er aktivert?** Hvis Azure RMS-tjenesten er allerede aktivert for organisasjonen, kanskje brukere har allerede brukt Azure RMS for å beskytte innhold med et automatisk generert leier nøkkelen (og standardmalene) i stedet for eksisterende nøkler (og maler) fra AD RMS. Dette er sannsynligvis ikke skje på datamaskiner som er godt administrert på intranettet, fordi de vil automatisk bli konfigurert for AD RMS-infrastrukturen. Men det kan skje på datamaskiner i arbeidsgruppen eller datamaskiner som sjelden kobler til intranettet. Dessverre, det er også vanskelig å identifisere disse datamaskinene som er grunnen til at vi anbefaler at du ikke aktiverer tjenesten før du importerer konfigurasjonsdataene fra AD RMS.
 
-If your Azure RMS tenant is already activated and you can identify these computers, make sure that you run the CleanUpRMS_RUN_Elevated.cmd script on these computers, as described in Step 5. Running this script forces them to reinitialize the user environment, so that they download the updated tenant key and imported templates.
+Hvis Azure RMS-leier allerede er aktivert, og du kan identifisere disse datamaskinene, må du kontrollere at du kjører CleanUpRMS_RUN_Elevated.cmd-skriptet på disse datamaskinene, som beskrevet i trinn 5. Kjører dette skriptet, tvinger dem til å initialisere brukermiljø, slik at de laster ned den oppdaterte leier nøkkelen og importerte maler.
 
-### <a name="BKMK_Step4Migration"></a>Step 4. Configure imported templates
-Because the templates that you imported have a default state of **Archived**, you must change this state to be **Published** if you want users to be able to use these templates with Azure RMS.
+### <a name="BKMK_Step4Migration"></a>Trinn 4. Konfigurere importerte maler
+Fordi du importerte maler har en standard staten **arkivert**, må du endre denne tilstanden for å være **publisert** Hvis du vil at brukerne skal kunne bruke disse malene med Azure RMS.
 
-In addition, if your templates in AD RMS used the **ANYONE** group, this group is automatically removed  when you import the templates to Azure RMS; you must manually add the equivalent group or users and the same rights to the imported templates. The equivalent group for Azure RMS is named **AllStaff-&lt;tenant_GUID&gt;@&lt;tenant_name&gt;.onmicrosoft.com**. For example, this group might look like the following for Contoso: **AllStaff-9c11c87a-ac8b-46a3-8d5c-f4d0b72ee29a@contoso.onmicrosoft.com**.
+Hvis malene i AD RMS brukes i tillegg til **ANYONE** gruppen, kan denne gruppen fjernes automatisk når du importerer maler til Azure RMS, må du manuelt legge til den samme gruppen eller brukere og de samme rettighetene til de importerte malene. Den samme gruppen for Azure RMS heter **AllStaff-&lt;tenant_GUID&gt;@&lt;tenant_name&gt;.onmicrosoft.com&gt;**. Denne gruppen kan for eksempel se ut som følgende for Contoso Ltd.: **AllStaff-9c11c87a-ac8b-46a3-8d5c-f4d0b72ee29a@contoso.onmicrosoft.com**.
 
-If  you're not sure whether your AD RMS templates include the ANYONE group, expand the  [Sample Windows PowerShell script to identify AD RMS templates that include the ANYONE group](#BKMK_ScriptForANYONE) section in this step to copy and use the sample PowerShell script to identify these templates. For more information about using Windows PowerShell with AD RMS, see  [Using Windows PowerShell to Administer AD RMS](https://technet.microsoft.com/library/ee221079%28v=ws.10%29.aspx).
+Ser du organisasjonen er automatisk opprettet gruppen Hvis du kopierer en av malene som standard rettigheter policy i Azure portal, og deretter finne den **brukernavn** på den **rettigheter** siden. Du kan imidlertid bruke ikke Azure portalen til å legge til denne gruppen og må i stedet bruke ett av følgende alternativer for Azure RMS PowerShell:
 
-You can see your organization's automatically created group if you copy one of the default rights policy templates in the Azure classic portal, and then identify the **USER NAME** on the **RIGHTS** page. However, you cannot use the classic portal to add this group to a template that was manually created or imported and instead must use one of the following Azure RMS PowerShell options:
+-   Bruk av [eksport-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx) cmdlet til å eksportere malen til en. CSV-fil som du kan redigere for å legge til "AllStaff"-grupper og rettigheter til eksisterende grupper og rettigheter, og deretter bruke den [Import-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx) cmdlet til å importere denne endringen tilbake til Azure RMS.
 
--   Use the [New-AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx) PowerShell cmdlet to define the  "AllStaff" group and rights as a rights definition object, and run this command again for each of the other groups or users already granted rights in the original template in addition to the ANYONE group. Then add all these rights definition objects to the templates by using the  [Set-AadrmTemplateProperty](https://msdn.microsoft.com/en-us/library/azure/dn727076.aspx) cmdlet.
-
--   Use the [Export-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx) cmdlet to export the template to a .XML file that you can edit to add the "AllStaff" group and rights to the existing groups and rights, and then use the [Import-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx) cmdlet to import this change back into Azure RMS.
+-   Bruk av [Ny-AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx) PowerShell-cmdlet til å definere grupper av "AllStaff" og rettigheter som et objekt for definisjon av rettigheter, og kjøre denne kommandoen på nytt for å definere eksisterende grupper og rettigheter for malen. Legge til disse objektene for definisjon av rettigheter til malene ved hjelp av [Legg til AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727075.aspx) cmdleten.
 
 > [!NOTE]
-> This "AllStaff" equivalent group isn't exactly the same as the ANYONE group in AD RMS:  The "AllStaff" group includes all users in your Azure tenant, whereas the ANYONE group includes all authenticated users, who could be outside your organization.
+> Denne "AllStaff" tilsvarende gruppen er ikke nøyaktig det samme som gruppen ANYONE i AD RMS:  "AllStaff"-gruppen inneholder alle brukere i din Azure leier mens gruppen andre inneholder alle godkjente brukere som kan være utenfor organisasjonen.
 > 
-> Because of this difference between the two groups, you might need to also add external users in addition to the "AllStaff" group. External email addresses for groups are not currently supported.
+> På grunn av denne forskjellen mellom de to gruppene må du kanskje også legge til eksterne brukere i tillegg til "AllStaff"-gruppe. Ekstern e-postadresser for grupper støttes ikke.
 
-Templates that you import from AD RMS look and behave just like custom templates that you can create in the Azure classic portal. To change imported templates to be published so that users can see them and select them from applications, or to make other changes to the templates, see [Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
+Maler som du importerer fra AD RMS ser ut og fungerer på samme måte som egendefinerte maler som du kan opprette i Azure Management-portalen. Hvis du vil endre importerte maler kan publiseres slik at brukere kan se dem og velge dem fra programmer eller gjør andre endringer i malene, kan du se [Konfigurere egendefinerte maler for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
 
 > [!TIP]
-> For a more consistent experience for users during the migration process, do not make changes to the imported templates other than these two changes; and do not publish the two default templates that come with Azure RMS, or create new templates at this time. Instead, wait until the migration process is complete and you have decommissioned the AD RMS servers.
+> For en enhetlig opplevelse for brukere under overføringsprosessen, gjør du ikke gjøre endringer i de importerte malene enn disse to endringer; og ikke publisere to standardmalene som følger med Azure RMS, eller opprette nye maler på dette tidspunktet. I stedet må vente til overføringsprosessen er fullført og du har ikke tilgjengelig for AD RMS-serverne.
 
-#### <a name="BKMK_ScriptForANYONE"></a>Sample Windows PowerShell script to identify AD RMS templates that include the ANYONE group
-This section contains the sample script to help you identify AD RMS templates that have the ANYONE group defined, as described in the preceding section.
+### <a name="BKMK_Step5Migration"></a>Trinn 5. Konfigurere klienter til å bruke RMS Azure
+For Windows-klienter:
 
-***Disclaimer:** This sample script is not supported under any Microsoft standard support program or service. This sample script is provided AS IS without warranty of any kind.*
-
-```
-import-module adrmsadmin 
-
-New-PSDrive -Name MyRmsAdmin -PsProvider AdRmsAdmin -Root https://localhost -Force 
-
-$ListofTemplates=dir MyRmsAdmin:\RightsPolicyTemplate
-
-foreach($Template in $ListofTemplates) 
-{ 
-                $templateID=$Template.id
-
-                $rights = dir MyRmsAdmin:\RightsPolicyTemplate\$Templateid\userright
-
-     $templateName=$Template.DefaultDisplayName 
-
-        if ($rights.usergroupname -eq "anyone")
-
-                         {
-                           $templateName = $Template.defaultdisplayname
-
-                           write-host "Template " -NoNewline
-
-                           write-host -NoNewline $templateName -ForegroundColor Red
-
-                           write-host " contains rights for " -NoNewline
-
-                           write-host ANYONE  -ForegroundColor Red
-                         }
- } 
-Remove-PSDrive MyRmsAdmin -force
-```
-
-### <a name="BKMK_Step5Migration"></a>Step 5. Reconfigure clients to use Azure RMS
-For Windows clients:
-
-1.  [Download the migration scripts](http://go.microsoft.com/fwlink/?LinkId=524619):
+1.  [Last ned overføringsskriptene](http://go.microsoft.com/fwlink/?LinkId=524619):
 
     -   CleanUpRMS_RUN_Elevated.cmd
 
     -   Redirect_OnPrem.cmd
 
-    These scripts reset the configuration on Windows computers so that they will use the Azure RMS service rather than AD RMS.
+    Disse skriptene Tilbakestiller konfigurasjonen på datamaskiner med Windows, slik at de bruker Azure RMS-tjeneste i stedet for AD RMS.
 
-2.  Follow the instructions in the redirection script (Redirect_OnPrem.cmd) to modify the script to point to your new Azure RMS tenant.
+2.  Følg instruksjonene i skriptet omadressering (Redirect_OnPrem.cmd) til å endre skriptet slik at den peker til den nye Azure RMS leier.
 
-3.  On the Windows computers, run these scripts with elevated privileges in the user’s context.
+3.  På Windows-datamaskiner ved å kjøre disse skriptene med utvidede rettigheter i brukerens kontekst.
 
-For mobile device clients and Mac computers:
+For klienter for mobile enheter og Mac-datamaskiner:
 
--   Remove the DNS SRV records that you created when you deployed the [AD RMS mobile device extension](http://technet.microsoft.com/library/dn673574.aspx).
+-   Fjerne DNS SRV-oppføringene du opprettet da du distribuert av [AD RMS mobilenhet filtypen](http://technet.microsoft.com/library/dn673574.aspx).
 
-#### Changes made by the migration scripts
-This section documents the changes that the migration scripts make. You can use this information for reference purposes only, or for troubleshooting, or if you prefer to make these changes yourself.
+#### Endringer som er gjort ved hjelp av overføringsskriptene
+Denne delen dokumenter endringene gjør migrering-skript. Du kan bruke denne informasjonen for bare ment som referanse eller feilsøking, eller hvis du foretrekker å gjøre disse endrer deg selv.
 
 CleanUpRMS_RUN_Elevated.cmd:
 
--   Delete the contents of the %userprofile%\AppData\Local\Microsoft\DRM and %userprofile%\AppData\Local\Microsoft\MSIPC folders, including any subfolders and any files with long file names.
+-   Slett innholdet i mappene %userprofile%\AppData\Local\Microsoft\DRM og %userprofile%\AppData\Local\Microsoft\MSIPC, inkludert alle undermapper og filer med lange filnavn.
 
--   Delete the contents of the following registry keys:
+-   Slett innholdet i følgende registernøkler:
 
-    -   HKEY_LOCAL_MACHINE\Software\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM
+    -   HKEY_LOCAL_MACHINE\Software\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM
 
-    -   HKEY_CURRENT_USER\Software\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM
+    -   HKEY_CURRENT_USER\Software\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM
 
-    -   HKEY_LOCAL_MACHINE\Software\WoW6432Node\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM
+    -   HKEY_LOCAL_MACHINE\Software\WoW6432Node\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM
 
-    -   HKEY_CURRENT_USER\Software\WoW6432Node\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM
+    -   HKEY_CURRENT_USER\Software\WoW6432Node\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM
 
     -   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSIPC\ServiceLocation
 
@@ -390,7 +350,7 @@ CleanUpRMS_RUN_Elevated.cmd:
 
     -   HKEY_LOCAL_MACHINE\Software\Microsoft\MSDRM\ServiceLocation
 
--   Delete the following registry values:
+-   Slett følgende registerverdier:
 
     -   HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Common\DRM\DefaultServerURL
 
@@ -398,137 +358,137 @@ CleanUpRMS_RUN_Elevated.cmd:
 
 Redirect_OnPrem.cmd:
 
--   Create the following registry values for each URL supplied as a parameter under each of the following locations:
+-   Opprett følgende registerverdier for hver URL-adresse som er angitt som en parameter under hver av følgende plasseringer:
 
-    -   HKEY_CURRENT_USER\Software\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM\LicenseServerRedirection
+    -   HKEY_CURRENT_USER\Software\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM\LicenseServerRedirection
 
-    -   HKEY_CURRENT_USER\Software\WoW6432Node\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM\LicenseServerRedirection
+    -   HKEY_CURRENT_USER\Software\WoW6432Node\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM\LicenseServerRedirection
 
-    -   HKEY_LOCAL_MACHINE\Software\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM\LicenseServerRedirection
+    -   HKEY_LOCAL_MACHINE\Software\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM\LicenseServerRedirection
 
-    -   HKEY_LOCAL_MACHINE\Software\WoW6432Node\Microsoft\Office\(11.0|12.0|14.0)\Common\DRM\LicenseServerRedirection
+    -   HKEY_LOCAL_MACHINE\Software\WoW6432Node\Microsoft\Office\ (11.0|12.0|14.0) \Common\DRM\LicenseServerRedirection
 
     -   HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\LicensingRedirection
 
-    Each entry has a REG_SZ value of **https://OldRMSserverURL/_wmcs/licensing** with the data in the following format: **https://&lt;YourTenantURL&gt;/_wmcs/licensing**.
+    Hver post har en REG_SZ-verdi på **https://OldRMSserverURL/_wmcs/licensing** med dataene i følgende format: **https://&lt;YourTenantURL&gt;/_wmcs/licensing**.
 
     > [!NOTE]
-    > *&lt;YourTenantURL&gt;* has the following format: **{GUID}.rms.[Region].aadrm.com**.
+    > *&lt; YourTenantURL &gt;* har følgende format: **{GUID} av .rms. [Region].aadrm.com**.
     > 
-    > For example:  5c6bb73b-1038-4eec-863d-49bded473437.rms.na.aadrm.com
+    > For eksempel:  5c6bb73b-1038-4eec-863d-49bded473437.rms.na.aadrm.com
     > 
-    > You can find this value by identifying the **RightsManagementServiceId** value when you run the [Get-AadrmConfiguration](http://msdn.microsoft.com/library/windowsazure/dn629410.aspx) cmdlet for Azure RMS.
+    > Du kan finne denne verdien ved å identifisere den **RightsManagementServiceId** verdi når du kjører den [Get-AadrmConfiguration](http://msdn.microsoft.com/library/windowsazure/dn629410.aspx) cmdleten for Azure RMS.
 
-### <a name="BKMK_Step6Migration"></a>Step 6. Configure IRM integration for Exchange Online
-If you have previously imported your TDP from AD RMS to Exchange Online, you must remove this TDP to avoid conflicting templates and policies after you have migrated to Azure RMS. To do this, use the [Remove-RMSTrustedPublishingDomain](https://technet.microsoft.com/en-us/library/jj200720%28v=exchg.150%29.aspx) cmdlet from Exchange Online.
+### <a name="BKMK_Step6Migration"></a>Trinn 6. Konfigurere IRM-integrering for Exchange Online
+Hvis du tidligere har importert TDP fra AD RMS til Exchange Online, må du fjerne denne TDP for å unngå konflikt mellom maler og policyer når du har overført til Azure RMS. Hvis du vil gjøre dette, bruker du [Fjern-RMSTrustedPublishingDomain](https://technet.microsoft.com/en-us/library/jj200720%28v=exchg.150%29.aspx) cmdlet fra Exchange Online.
 
-If you chose an Azure RMS tenant key topology of **Microsoft managed**:
+Hvis du velger en Azure RMS for klientadministrasjon viktige topologien i **Microsoft administrert**:
 
--   See the [Exchange Online: IRM Configuration](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_ExchangeOnline) section in the [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) topic. This section includes typical commands to run that connects to the Exchange Online service, imports the tenant key from Azure RMS,  and enables IRM functionality for Exchange Online. After you complete these steps, you will have full RMS functionality with Exchange Online.
+-   Se den [Exchange Online: IRM-konfigurasjonen](../Topic/Configuring_Applications_for_Azure_Rights_Management.md#BKMK_ExchangeOnline) delen i den [Konfigurere programmer for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md) emnet. Denne delen inneholder vanlige kommandoer til å kjøre som kobler til Exchange Online-tjenesten, importerer nøkkelen leier fra Azure RMS og aktiverer IRM-funksjonalitet for Exchange Online. Når du har fullført disse trinnene, vil du ha full RMS-funksjonalitet med Exchange Online.
 
-If you chose an Azure RMS tenant key topology of **customer-managed (BYOK)**:
+Hvis du velger en Azure RMS for klientadministrasjon viktige topologien i **Kundeadministrerte (BYOK)**:
 
--   You will  have reduced RMS functionality with Exchange Online, as described in the [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) section in the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic.
+-   Du vil ha redusert RMS-funksjonalitet med Exchange Online, som beskrevet i den [BYOK pricing and restrictions](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_Pricing) delen i den [Planlegging og implementering av Azure Rights Management leier nøkkelen](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) emnet.
 
-### <a name="BKMK_Step7Migration"></a>Step 7. Deploy the RMS connector
-If you have used the Information Rights Management (IRM) functionality of Exchange Server or SharePoint Server with AD RMS, you must first disable IRM on these servers and remove AD RMS configuration. Then, deploy the Rights Management (RMS) connector, which acts as a communications interface (a relay) between the on-premises servers and Azure RMS.
+### <a name="BKMK_Step7Migration"></a>Trinn 7. Distribuere RMS-kobling
+Hvis du har brukt funksjonen (IRM-Information Rights Management) for Exchange Server eller SharePoint Server med AD RMS, må du først deaktivere IRM på disse serverne og fjerne AD RMS-konfigurasjonen. Deretter distribuere koblingen RMS (Rights Management), som fungerer som et grensesnitt med kommunikasjon (en relay) mellom den lokale servere og Azure RMS.
 
-Finally for this step, if you have imported multiple TPDs into Azure RMS that were used to protect email messages, you must manually edit the registry on the Exchange Server computers to redirect all TPDs URLs to the RMS connector.
+Til slutt for dette trinnet må Hvis du har importert flere TPDs til Azure RMS som ble brukt til å beskytte e-postmeldinger, du manuelt redigere registeret på Exchange Server-datamaskiner til å omadressere alle TPDs URL-adresser til RMS-koblingen.
 
 > [!NOTE]
-> Before you start, check the supported versions of the on-premises servers that the RMS connector supports in “On-premises servers that support Azure RMS” in the [Applications that support Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedApplications) section of the [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) topic.
+> Før du begynner, må du kontrollere de støttede versjonene av de lokale serverne som støtter RMS-koblingen i "lokale servere som støtter Azure RMS" den [Programmer som støtter Azure RMS](../Topic/Requirements_for_Azure_Rights_Management.md#BKMK_SupportedApplications) delen av den [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md) emnet.
 
-##### Disable IRM on Exchange Servers and remove AD RMS configuration
+##### Deaktivere IRM på Exchange-servere og fjerne AD RMS-konfigurasjon
 
-1.  On each Exchange server, locate the following folder and delete all the entries in that folder: \ProgramData\Microsoft\DRM\Server\S-1-5-18
+1.  Finn følgende mappe på hver Exchange server, og Slett alle oppføringer i denne mappen: \ProgramData\Microsoft\DRM\Server\S-1-5-18
 
-2.  From one of the Exchange servers, use the Exchange [Set_IRMConfiguration](http://technet.microsoft.com/library/dd979792.aspx) cmdlet to first disable IRM features for messages that are sent to internal recipients:
+2.  Blant Exchange-servere, kan du bruke utveksling [Set_IRMConfiguration](http://technet.microsoft.com/library/dd979792.aspx) cmdleten du først deaktivere IRM-funksjoner for meldinger som sendes til interne mottakere:
 
     ```
     Set-IRMConfiguration -InternalLicensingEnabled $false
     ```
 
-3.  Then use the same cmdlet to disable IRM features for messages that are sent to external recipients:
+3.  Deretter kan du bruke cmdleten samme for å deaktivere IRM-funksjonene for meldinger som sendes til eksterne mottakere:
 
     ```
     Set-IRMConfiguration -ExternalLicensingEnabled $false
     ```
 
-4.  Next, use the same cmdlet to disable IRM in Microsoft Office Outlook Web App and in Microsoft Exchange ActiveSync:
+4.  Deretter kan du bruke cmdleten samme for å deaktivere IRM i Microsoft Office Outlook Web App og Microsoft Exchange ActiveSync:
 
     ```
     Set-IRMConfiguration -ClientAccessServerEnabled $false
     ```
 
-5.  Finally, use the same cmdlet to clear any cached certificates:
+5.  Til slutt kan du bruke cmdleten samme for å fjerne alle hurtigbufrede sertifikater:
 
     ```
     Set-IRMConfiguration -RefreshServerCertificates
     ```
 
-6.  On each Exchange Server, now reset IIS, for example, by running a command prompt as an administrator and typing **iisreset**.
+6.  På hver Exchange Server nå tilbakestille IIS, for eksempel ved å kjøre en ledetekst som administrator og å skrive **iisreset**.
 
-##### Disable IRM on SharePoint Servers and remove AD RMS configuration
+##### Deaktivere IRM på SharePoint-serverne og fjerne AD RMS-konfigurasjon
 
-1.  Make sure that there are no documents checked out from RMS-protected libraries. If there are, they will be become inaccessible at the end of this procedure.
+1.  Kontroller at ingen dokumenter er sjekket ut fra RMS-beskyttet biblioteker. Hvis det er, vil de være utilgjengelige på slutten av denne fremgangsmåten.
 
-2.  On the SharePoint Central Administration Web site, in the **Quick Launch** section, click **Security**.
+2.  På SharePoint Sentraladministrasjon-området, i den **Hurtigstart** -delen, klikker du **Sikkerhet**.
 
-3.  On the **Security** page, in the **Information Policy** section, click **Configure information rights management**.
+3.  På den **Sikkerhet** side i den **opplysning Policy** -delen, klikker du **konfigurere IRM (information rights management)**.
 
-4.  On the **Information Rights Management** page, in the **Information Rights Management** section, select **Do not use IRM on this server**, then click **OK**.
+4.  På den **Information Rights Management** side i den **Information Rights Management** delen velger **ikke bruke IRM på denne serveren**, deretter **OK**.
 
-5.  On each of the SharePoint Server computers, delete the contents of the folder \ProgramData\Microsoft\MSIPC\Server\*&lt;SID of the account running SharePoint Server&gt;*.
+5.  På hver av SharePoint Server-datamaskiner, kan du slette innholdet i mappen-\ProgramData\Microsoft\MSIPC\Server\*&lt; SID for kontoen som kjører SharePoint Server &gt;*.
 
-##### Install and configure the RMS connector
+##### Installere og konfigurere RMS-kobling
 
--   Use the instructions in the [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md) topic.
+-   Bruk instruksjonene i den [Distribusjon av Azure Rights Management-kobling](../Topic/Deploying_the_Azure_Rights_Management_Connector.md) emnet.
 
-##### For Exchange only and multiple TPDs: Edit the registry
+##### For bare Exchange og flere TPDs: Redigere registret
 
--   On each Exchange Server, manually add the following registry keys for each additional TPD that you imported, to redirect the TPD URLs to the RMS connector. These registry entries are specific to migration and are not added by the server configuration tool for Microsoft RMS connector.
+-   På hver Exchange Server manuelt legge til følgende registernøkler for hver ekstra TPD som du har importert, vil omadressere TPD URL-adresser til RMS-koblingen. Disse registeroppføringene er spesifikke for migrering og ikke er lagt til av verktøy for konfigurasjon av server for Microsoft RMS-kobling.
 
-    When you make these registry edits, use the following instructions:
+    Når du gjør disse endringene i registret, kan du bruke følgende instruksjoner:
 
-    -   Replace *ConnectorFQDN* with the name that you defined in DNS for the connector. For example, **rmsconnector.contoso.com**.
+    -   Erstatte *ConnectorFQDN* med navnet du definerte i DNS for koblingen. For eksempel **rmsconnector.contoso.com**.
 
-    -   Use the HTTP or HTTPS prefix for the connector URL, depending on whether you have configured the connector to use HTTP or HTTPS to communicate with your on-premises servers.
+    -   Bruk HTTP eller HTTPS-prefikset for URL-kobling, avhengig av om du har konfigurert koblingen hvis du vil bruke HTTP- eller HTTPS til å kommunisere med de lokale serverne.
 
-    **For Exchange 2013:**
+    **For Exchange-2013:**
 
-    |Registry path|Type|Value|Data|
-    |-----------------|--------|---------|--------|
-    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v15\IRM\LicenseServerRedirection|Reg_SZ|https://&lt;AD RMS Intranet Licensing URL&gt;/_wmcs/licensing|One of the following, depending on whether you are using HTTP or HTTPS from your Exchange server to the RMS connector:<br /><br />http://&lt;connectorFQDN&gt;/_wmcs/licensing<br /><br />https://&lt;connectorName&gt;/_wmcs/licensing|
-    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v15\IRM\LicenseServerRedirection|Reg_SZ|https://&lt;AD RMS Extranet Licensing URL&gt;/_wmcs/licensing|One of the following, depending on whether you are using HTTP or HTTPS from your Exchange server to the RMS connector:<br /><br />http://&lt;connectorFQDN&gt;/_wmcs/licensing<br /><br />https://&lt;connectorFQDN&gt;/_wmcs/licensing|
+    |Registerbane|Type|Verdi|Data|
+    |----------------|--------|---------|--------|
+    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v15\IRM\LicenseServerRedirection|Reg_SZ|RMS intranett lisensiering URL-https://&lt;AD &gt;/_wmcs/lisensiering|Ett av følgende, avhengig av om du bruker HTTP- eller HTTPS fra Exchange-serveren i RMS-kobling:<br /><br />-   http://&lt;connectorFQDN&gt;/_wmcs/Licensing<br />-   https://&lt;connectorName&gt;/_wmcs/Licensing|
+    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v15\IRM\LicenseServerRedirection|Reg_SZ|RMS ekstranett Licensing-URL-https://&lt;AD &gt;/_wmcs/lisensiering|Ett av følgende, avhengig av om du bruker HTTP- eller HTTPS fra Exchange-serveren i RMS-kobling:<br /><br />-   http://&lt;connectorFQDN&gt;/_wmcs/Licensing<br />-   https://&lt;connectorFQDN&gt;/_wmcs/Licensing|
     **For Exchange Server 2010:**
 
-    |Registry path|Type|Value|Data|
-    |-----------------|--------|---------|--------|
-    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v14\IRM\LicenseServerRedirection|Reg_SZ|https://&lt;AD RMS Intranet Licensing URL&gt;/_wmcs/licensing|One of the following, depending on whether you are using HTTP or HTTPS from your Exchange server to the RMS connector:<br /><br />http://&lt;connectorName&gt;/_wmcs/licensing<br /><br />https://&lt;connectorName&gt;/_wmcs/licensing|
-    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v14\IRM\LicenseServerRedirection|Reg_SZ|https://&lt;AD RMS Extranet Licensing URL&gt;/_wmcs/licensing|One of the following, depending on whether you are using HTTP or HTTPS from your Exchange server to the RMS connector:<br /><br />http://&lt;connectorName&gt;/_wmcs/licensing<br /><br />https://&lt;connectorName&gt;/_wmcs/licensing|
+    |Registerbane|Type|Verdi|Data|
+    |----------------|--------|---------|--------|
+    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v14\IRM\LicenseServerRedirection|Reg_SZ|RMS intranett lisensiering URL-https://&lt;AD &gt;/_wmcs/lisensiering|Ett av følgende, avhengig av om du bruker HTTP- eller HTTPS fra Exchange-serveren i RMS-kobling:<br /><br />-   http://&lt;connectorName&gt;/_wmcs/Licensing<br />-   https://&lt;connectorName&gt;/_wmcs/Licensing|
+    |HKLM\SOFTWARE\Microsoft\ExchangeServer\v14\IRM\LicenseServerRedirection|Reg_SZ|RMS ekstranett Licensing-URL-https://&lt;AD &gt;/_wmcs/lisensiering|Ett av følgende, avhengig av om du bruker HTTP- eller HTTPS fra Exchange-serveren i RMS-kobling:<br /><br />-   http://&lt;connectorName&gt;/_wmcs/Licensing<br />-   https://&lt;connectorName&gt;/_wmcs/Licensing|
 
-After you have completed these procedures, be sure to read the **Next steps** section in the [Deploying the Azure Rights Management Connector](../Topic/Deploying_the_Azure_Rights_Management_Connector.md) topic.
+Når du har fullført denne fremgangsmåten, må du lese den **Neste trinn** i-delen i [Distribusjon av Azure Rights Management-kobling](../Topic/Deploying_the_Azure_Rights_Management_Connector.md) emnet.
 
-### <a name="BKMK_Step8Migration"></a>Step 8. Decommission AD RMS
-Optional: Remove the Service Connection Point (SCP) from Active Directory to prevent computers from discovering your on-premises Rights Management infrastructure. This is optional because of the redirection that you configured in the registry (for example, by running the migration script). To remove the Service Connection Point, use the AD SCP Register tool from the [Rights Management Services Administration Toolkit](http://www.microsoft.com/download/details.aspx?id=1479).
+### <a name="BKMK_Step8Migration"></a>Trinn 8. Dekommisjonering av AD RMS
+Valgfritt: Fjerne Service Connection Point (SCP) fra Active Directory til å hindre at datamaskiner bli kjent med din lokale Rights Management-infrastruktur. Dette er valgfritt på grunn av omadressering, som du har konfigurert i registret (for eksempel ved å kjøre skriptet overføring). Hvis du vil fjerne tilkoblingspunktet for tjeneste, kan du bruke verktøyet AD SCP journal fra den [Rights Management Services Administration Toolkit](http://www.microsoft.com/download/details.aspx?id=1479).
 
-Monitor your AD RMS servers for activity, for example, by checking the [requests in the System Health report](https://technet.microsoft.com/library/ee221012%28v=ws.10%29.aspx), the [ServiceRequest table](http://technet.microsoft.com/library/dd772686%28v=ws.10%29.aspx) or [auditing of user access to protected content](http://social.technet.microsoft.com/wiki/contents/articles/3440.ad-rms-frequently-asked-questions-faq.aspx). When you have confirmed that RMS clients are no longer communicating with these servers and that clients are successfully using Azure RMS, you can remove the AD RMS server role from these server. If you’re using dedicated servers, you might prefer the cautionary step of first shutting down the servers for a period of time to make sure that there are no reported problems that might require restarting these servers to ensure service continuity while you investigate why clients are not using Azure RMS.
+Overvåke AD RMS-servere for aktiviteten, for eksempel ved å kontrollere den [forespørsler i rapporten systemets tilstand](https://technet.microsoft.com/library/ee221012%28v=ws.10%29.aspx),  [ServiceRequest tabell](http://technet.microsoft.com/library/dd772686%28v=ws.10%29.aspx) eller [kontroll av brukertilgang til beskyttet innhold](http://social.technet.microsoft.com/wiki/contents/articles/3440.ad-rms-frequently-asked-questions-faq.aspx). Når du har bekreftet at RMS-klienter ikke lenger kommuniserer med disse serverne, og at klienter er fullført ved hjelp av Azure RMS, kan du fjerne rollen for AD RMS-serveren fra denne serveren. Hvis du bruker dedikerte servere, vil du kanskje foretrekke mer trinn av første slår av serverne for en viss tid for å være sikker på at det er ingen rapporterte problemer som kanskje krever omstart av disse serverne for å sikre kontinuitet i tjenesten selv om du undersøke hvorfor klienter ikke bruker Azure RMS.
 
-After decommissioning your AD RMS servers, you might want to take the opportunity to review your templates in the Azure classic portal and consolidate them so that users have fewer to choose between, or reconfigure them, or even add new templates. This would be also a good time to publish the default templates. For more information, see [Configuring Custom Templates for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
+Etter dekommisjonering AD RMS-servere, vil du kanskje ta muligheten til å se gjennom malene i Azure Management-portalen og konsolidere dem slik at brukerne har færre å velge mellom, konfigurere dem på nytt eller med å legge til nye maler. Dette vil også være lurt å publisere standardmalene. Hvis du vil ha mer informasjon, se [Konfigurere egendefinerte maler for Azure Rights Management](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md).
 
-### <a name="BKMK_Step9Migration"></a>Step 9. Re-key your Azure RMS tenant key
-This step is required when migration is complete if your AD RMS deployment was using RMS Cryptographic Mode 1, because re-keying creates a new tenant key that uses RMS Cryptographic Mode 2. Using Azure RMS with Cryptographic Mode 1 is supported only during the migration process.
+### <a name="BKMK_Step9Migration"></a>Trinn 9. Nye nøkler Azure RMS leier nøkkelen
+Dette trinnet er nødvendig når overføringen er fullført hvis AD RMS-distribusjonen ble bruker RMS kryptografiske modus 1, fordi ny inntasting oppretter en ny nøkkel for klientadministrasjon som bruker RMS kryptografiske modus 2. Ved hjelp av Azure RMS med kryptografiske modus 1 støttes bare under overføringsprosessen.
 
-This step is optional but recommended when migration is complete even if you were running in RMS Cryptographic Mode 2, because it helps to secure your Azure RMS tenant key from potential security breaches to your AD RMS key. When you re-key your Azure RMS tenant key (also known as “rolling your key”), a new key is created and the original key is archived. However, because moving from one key to another doesn’t happen immediately but over a few weeks, do not wait until you suspect a breach to your original key but re-key your RMS tenant key as soon as the migration is complete.
+Dette trinnet er valgfritt, men anbefales når overføringen er fullført, selv om du kjørte i RMS kryptografiske modus 2, fordi det bidrar til å sikre Azure RMS leier nøkkelen fra potensielle sikkerhetsovertredelser til AD RMS-nøkkelen. Når du på nytt tasten Azure RMS leier nøkkelen (også kjent som "rullende nøkkelen"), en ny nøkkel opprettes, og den opprinnelige nøkkelen er arkivert. Imidlertid flytte fra én tast til en annen ikke skje umiddelbart, men over et par uker, ikke Vent til du har mistanke om brudd på den opprinnelige tasten men tasten RMS leier nøkkelen på nytt så snart overføringen er fullført.
 
-To re-key your Azure RMS tenant key:
+Taste Azure RMS leier nøkkelen på nytt:
 
--   If your RMS tenant key is managed by Microsoft: Call Microsoft Customer Support Services (CSS) and prove that you are the RMS tenant administrator.
+-   Hvis produktnøkkelen RMS leier administreres av Microsoft: Hvis du vil ringe Microsofts kundestøttetjeneste (CSS) og bevise at du er leier RMS-administratoren.
 
--   If your RMS tenant key is managed by you (BYOK): Repeat the BYOK procedure to generate and create a new key over the Internet or in person.
+-   Hvis produktnøkkelen RMS leier administreres av deg (BYOK): Gjenta denne fremgangsmåten for BYOK for å generere og opprette en ny nøkkel via Internett eller personlig.
 
-For more information about managing your RMS tenant key, see [Operations for Your Azure Rights Management Tenant Key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md).
+Hvis du vil ha mer informasjon om administrasjon av RMS leier nøkkelen, se [Operasjoner leietakeradministrasjon nøkkelen Azure Rights Management](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md).
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Se også
+[Konfigurere Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
 

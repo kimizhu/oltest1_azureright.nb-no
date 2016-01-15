@@ -3,434 +3,295 @@ description: na
 keywords: na
 title: RMS Protection with Windows Server File Classification Infrastructure (FCI)
 search: na
-ms.date: 2015-10-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 9aa693db-9727-4284-9f64-867681e114c9
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# RMS Protection with Windows Server File Classification Infrastructure (FCI)
-Use this article for instructions and a script to use the Rights Management (RMS) client with the RMS Protection tool to configure File Server Resource Manager and file classification infrastructure (FCI).
+# RMS-beskyttelse med Windows Server-filen klassifisering infrastruktur (FCI)
+Bruk denne artikkelen for instruksjoner og et skript til å bruke RMS (Rights Management)-klienten med beskyttelse av RMS-verktøyet til å konfigurere File Server Resource Manager og filen klassifisering infrastruktur (FCI).
 
-This solutions lets you automatically protect all files in a folder on a file server running Windows Server, or automatically protect files that meet a specific criteria. For example, files that have been classified as containing confidential or sensitive information. This solution uses [Azure Rights Management](../Topic/Azure_Rights_Management.md) (Azure RMS) to protect the files, so you must have this technology deployed in your organization.
+Denne løsningen kan du beskytte automatisk alle filer i en mappe på en filserver som kjører Windows Server, eller beskytte automatisk filer som oppfyller bestemte kriterier. Hvis du for eksempel filer som er klassifisert som konfidensiell eller sensitiv informasjon. Denne løsningen bruker [Azure Rights Management](../Topic/Azure_Rights_Management.md) (Azure RMS) til å beskytte filer, så du må ha denne teknologien som er distribuert i organisasjonen.
 
 > [!NOTE]
-> Although Azure RMS includes a [connector](https://technet.microsoft.com/library/dn375964.aspx) that supports file classification infrastructure, that solution supports native protection only—for example, Office files.
+> Selv om Azure RMS inkluderer en [Kontakt](https://technet.microsoft.com/library/dn375964.aspx) som støtter arkiverer klassifisering infrastruktur, at løsningen støtter bare innebygd beskyttelse, for eksempel Office-filer.
 > 
-> To support all file types with file classification infrastructure, you must use the Windows PowerShell **RMS Protection** module, as documented in this article. The RMS Protection cmdlets, like the RMS sharing application, support generic protection as well as native protection, which means that all files can be protected. For more information about these different protection levels, see the [Levels of protection – native and generic](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_LevelsofProtection) section in the [Rights Management sharing application administrator guide](../Topic/Rights_Management_sharing_application_administrator_guide.md).
+> Du må bruke Windows PowerShell for å støtte alle filtyper med filen klassifisering infrastruktur, **RMS beskyttelse** -modulen, som beskrevet i denne artikkelen. Beskyttelse av RMS-cmdlets som RMS deling program, støtte for generell beskyttelse, i tillegg til innebygd beskyttelse, noe som betyr at alle filer kan være beskyttet. Hvis du vil ha mer informasjon om disse ulike beskyttelsesnivåene, se den [Beskyttelsesnivåer – opprinnelig og generisk](../Topic/Rights_Management_sharing_application_administrator_guide.md#BKMK_LevelsofProtection) delen i den [Rights Management deling program administratorhåndboken](../Topic/Rights_Management_sharing_application_administrator_guide.md).
 
-The instructions that follow are for Windows Server 2012 R2 or Windows Server 2012. If you run other supported versions of Windows, you might need to adapt some of the steps for differences between your operating system version and the one documented in this article.
+Instruksjonene nedenfor gjelder for Windows Server 2012 R2 eller Windows Server 2012. Hvis du kjører andre støttede versjoner av Windows, må du kanskje tilpasse noen av trinnene for forskjeller mellom operativsystemversjon og det som er dokumentert i denne artikkelen.
 
-## Prerequisites for Azure RMS protection with Windows Server FCI
-Prerequisites for these instructions:
+## Forutsetninger for Azure RMS-beskyttelse med Windows Server FCI
+Forutsetninger for disse instruksjonene:
 
--   On each file server where you will run File Resource Manager with file classification infrastructure:
+-   På hver filserver der du vil kjøre filen Resource Manager med filen klassifisering infrastruktur:
 
-    -   You have installed File Server Resource Manager as one of the role services for the File Services role.
+    -   Du har installert File Server Resource Manager som en av rolletjenester for File Services-rollen.
 
-    -   You have identified a local folder that contains files to protect with Rights Management. For example, C:\FileShare.
+    -   Du har angitt en lokal mappe som inneholder filene for å beskytte med Rights Management. For eksempel C:\FileShare.
 
-    -   You have installed the RMS Protection tool, including the prerequisites for the tool (such as the RMS client) and for Azure RMS (such as the service principal account). For more information, see [RMS Protection Cmdlets](https://msdn.microsoft.com/library/azure/mt433195.aspx).
+    -   Du har installert verktøyet RMS-beskyttelse, inkludert forutsetninger for verktøyet (for eksempel RMS-klienten) og Azure RMS (for eksempel hovedstolen tjenestekontoen). Hvis du vil ha mer informasjon, se [RMS beskyttelse Cmdlets](https://msdn.microsoft.com/library/azure/mt433195.aspx).
 
-    -   If you want to change the default level of RMS protection (native or generic) for specific file name extensions, you have edited the registry as described in the [File API configuration](https://msdn.microsoft.com/library/dn197834%28v=vs.85%29.aspx) page.
+    -   Hvis du vil endre det standard beskyttelsesnivået RMS (opprinnelig eller generisk) for bestemte filtyper, du har redigert registret slik det er beskrevet i den [fil-API-konfigurasjon](https://msdn.microsoft.com/library/dn197834%28v=vs.85%29.aspx) siden.
 
-    -   You have an Internet connection, with configured computer settings if required for a proxy server. For example: `netsh winhttp import proxy source=ie`
+    -   Du har en Internett-tilkobling med innstillinger som er konfigurert for en proxy-server hvis nødvendig. For eksempel: `netsh winhttp import proxy source=ie`
 
--   You have configured the additional prerequisites for your Azure Rights Management deployment, as described in [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx). Specifically, you have the following values to connect to Azure RMS by using a service principal:
+-   Du har konfigurert flere forutsetninger for distribusjonen av Azure Rights Management, som beskrevet i [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx). Spesielt, har følgende verdier til å koble til Azure RMS ved hjelp av en service principal:
 
     -   BposTenantId
 
     -   AppPrincipalId
 
-    -   Symmetric key
+    -   Symmetrisk nøkkel
 
--   You have synchronized your on-premises Active Directory user accounts with Azure Active Directory or Office 365, including their email address. This is required for all users that might need to access files after they are protected by FCI and Azure RMS. If you do not  do this step (for example, in a test environment), users might be blocked from accessing these files. If you need more information about this account configuration, see [Preparing for Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md).
+-   Du har synkronisert din lokale Active Directory-brukerkontoer med Azure Active Directory eller Office 365, inkludert e-postadressen. Dette er nødvendig for alle brukere som skal ha tilgang til filene etter at de er beskyttet av FCI og Azure RMS. Hvis du ikke gjør dette trinnet (for eksempel i et testmiljø), kan brukere være blokkert fra å få tilgang til disse filene. Hvis du vil ha mer informasjon om denne konfigurasjonen til tjenestekontoen, se [Forbereder Azure Rights Management](../Topic/Preparing_for_Azure_Rights_Management.md).
 
--   You have identified the Rights Management template to use, which will protect the files. Make sure that you know the ID for this template by using the [Get-RMSTemplate](https://msdn.microsoft.com/library/azure/mt433197.aspx) cmdlet.
+-   Du har identifisert Rights Management malen som skal brukes, som beskytter filene. Kontroller at du kjenner IDen for denne malen ved hjelp av den [Get-RMSTemplate](https://msdn.microsoft.com/library/azure/mt433197.aspx) cmdleten.
 
-## Instructions to configure File Server Resource Manager FCI for Azure RMS protection
-Follow these instructions to automatically protect all files in a folder, by using a Windows PowerShell script as a custom task. Do these procedures in this order:
+## Instruksjonene for å konfigurere File Server Resource Manager FCI Azure RMS-beskyttelse
+Følg disse instruksjonene for å beskytte automatisk alle filer i en mappe ved hjelp av et Windows PowerShell-skript som en egendefinert aktivitet. Gjør disse fremgangsmåtene i denne rekkefølgen:
 
-1.  Save the Windows PowerShell script
+1.  Lagre Windows PowerShell-skriptet
 
-2.  Create a classification property for Rights Management (RMS)
+2.  Opprette en klassifisering-egenskap for RMS (Rights Management)
 
-3.  Create a classification rule (Classify for RMS)
+3.  Opprette en regel for klassifisering (Classify for RMS)
 
-4.  Configure the classification schedule
+4.  Konfigurere planleggingen klassifisering
 
-5.  Create a custom file management task (Protect files with RMS)
+5.  Opprette en oppgave for egendefinert fil (Beskytt filer med RMS)
 
-6.  Test the configuration by manually running the rule and task
+6.  Teste konfigurasjonen ved å manuelt kjøre regelen og aktivitet
 
-At the end of these instructions, all files in your selected folder will be classified with the custom property of RMS, and these files will then be protected by Rights Management. For a more complex configuration that selectively protects some files and not others, you can then create or use a different classification property and rule, with a file management task that protects just those files.
+På slutten av disse instruksjonene, alle filene i den valgte mappen skal klassifiseres med den egendefinerte egenskapen for RMS, og disse filene vil deretter bli beskyttet av IRM. Du kan deretter opprette eller bruke en annen klassifisering egenskap og en regel med en oppgave i filen som beskytter bare de filene for en mer avansert konfigurasjon som beskytter selektivt noen filer og andre ikke.
 
-#### Save the Windows PowerShell script
+#### Lagre Windows PowerShell-skriptet
 
-1.  Expand the [Windows PowerShell Script for Azure RMS protection by using File Server Resource Manager FCI](#BKMK_RMSProtection_Script) section in this article, and copy its contents. Paste the contents of the script and  name the file **RMS-Protect-FCI.ps1** on your own computer.
+1.  Utvid den [Windows PowerShell-skript Azure RMS beskyttelse ved hjelp av File Server Resource Manager FCI](#BKMK_RMSProtection_Script) delen i denne artikkelen, og kopiere innholdet. Limer inn innholdet i skriptet, og gi filen navnet **RMS-Protect-FCI.ps1** på din egen datamaskin.
 
-2.  Review the script and make the following changes:
+2.  Se gjennom skriptet og gjøre følgende endringer:
 
-    -   Search for the following string and replace it with your own AppPrincipalId that you use with the [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet to connect to Azure RMS:
+    -   Søk etter følgende streng og erstatte den med din egen AppPrincipalId som brukes med den [Sett RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet til å koble til Azure RMS:
 
         ```
         <enter your AppPrincipalId here>
         ```
-        For example, the script might look like this:
+        Skriptet kan for eksempel se slik ut:
 
         `[Parameter(Mandatory = $false)]`
 
-        `[Parameter(Mandatory = $false)]             [string]$AppPrincipalId = "b5e3f76a-b5c2-4c96-a594-a0807f65bba4",`
+        `[Parameter(Mandatory = $false)] [string]$AppPrincipalId = "b5e3f76a-b5c2-4c96-a594-a0807f65bba4",`
 
-    -   Search for the following string and replace it with your own symmetric key that you use with the [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet to connect to Azure RMS:
+    -   Søk etter følgende streng og erstatte den med din egen symmetriske nøkkelen som brukes med den [Sett RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet til å koble til Azure RMS:
 
         ```
         <enter your key here>
         ```
-        For example, the script might look like this:
+        Skriptet kan for eksempel se slik ut:
 
         `[Parameter(Mandatory = $false)]`
 
         `[string]$SymmetricKey = "zIeMu8zNJ6U377CLtppkhkbl4gjodmYSXUVwAO5ycgA="`
 
-    -   Search for the following string and replace it with your own BposTenantId (tenant ID) that you use with the [Set-RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet to connect to Azure RMS:
+    -   Søk etter følgende streng og erstatte den med din egen BposTenantId (leier ID) som brukes med den [Sett RMSServerAuthentication](https://msdn.microsoft.com/library/mt433199.aspx) cmdlet til å koble til Azure RMS:
 
         ```
         <enter your BposTenantId here>
         ```
-        For example, the script might look like this:
+        Skriptet kan for eksempel se slik ut:
 
         `[Parameter(Mandatory = $false)]`
 
         `[string]$BposTenantId = "23976bc6-dcd4-4173-9d96-dad1f48efd42",`
 
-    -   If your server is running Windows Server 2012, you might have to manually load the RMSProtection module at the beginning of the script. Add the following command (or equivalent if  the "Program Files"  folder is  on a drive other than the  C: drive :
+    -   Hvis serveren kjører Windows Server 2012, må du kanskje laste inn modulen RMSProtection i begynnelsen av skriptet manuelt. Legg til følgende kommando (eller tilsvarende i mappen "Programfiler" er på en annen stasjon enn på C:-stasjonen:
 
         ```
         Import-Module "C:\Program Files\WindowsPowerShell\Modules\RMSProtection\RMSProtection.dll"
         ```
 
-3.  Sign the script. If you do not sign the script (more secure), you must configure Windows PowerShell on the servers that run it. For example, run a Windows PowerShell session with the **Run as Administrator** option, and type: **Set-ExecutionPolicy Unrestricted**. However, this configuration lets all unsigned scripts run (less secure).
+3.  Signere skriptet. Hvis du ikke logger skriptet (sikrere), må du konfigurere Windows PowerShell på servere som kjører den. For eksempel kjører et Windows PowerShell-økten med den **Kjør som Administrator** alternativet, og skriver inn: **Set-ExecutionPolicy Unrestricted**. Denne konfigurasjonen kan imidlertid alle usignerte skript kjøre (mindre sikkert).
 
-    For more information about signing Windows PowerShell scripts, see [about_Signing](https://technet.microsoft.com/library/hh847874.aspx) in the PowerShell documentation library.
+    Hvis du vil ha mer informasjon om signering av Windows PowerShell-skript, se [about_Signing](https://technet.microsoft.com/library/hh847874.aspx) i PowerShell dokumentasjonsbibliotek.
 
-4.  Save the file locally on each file server that will run File Resource Manager with file classification infrastructure. For example, save the file in **C:\RMS-Protection**. Secure this file by using NTFS permissions so that unauthorized users cannot modify it.
+4.  Lagre filen lokalt på hver server som filen som skal kjøre filen Resource Manager med filen klassifisering infrastruktur. Lagre for eksempel filen i **C:\RMS-Protection**. Sikker denne filen ved hjelp av NTFS-tillatelser, slik at uautoriserte brukere ikke kan endre den.
 
-You're now ready to start configuring File Server Resource Manager.
+Du er nå klar til å begynne å konfigurere File Server Resource Manager.
 
-#### Create a classification property for Rights Management (RMS)
+#### Opprette en klassifisering-egenskap for RMS (Rights Management)
 
--   In File Server Resource Manager, Classification Management, create a new local property:
+-   I File Server Resource Manager, klassifisering Management, opprette en ny lokal egenskap:
 
     -   **Name**: Type **RMS**
 
-    -   **Description**:   Type **Rights Management protection**
+    -   **Beskrivelse**:   Type **Rights Management protection**
 
-    -   **Property Type**: Select **Yes/No**
+    -   **Egenskapstypen**: Velg **Ja/Nei**
 
-    -   **Value**: Select **Yes**
+    -   **Value**: Velg **Ja**
 
-We can now create a classification rule that uses this property.
+Vi kan nå opprette en regel for klassifisering som bruker denne egenskapen.
 
-#### Create a classification rule (Classify for RMS)
+#### Opprette en regel for klassifisering (Classify for RMS)
 
--   Create a new classification rule:
+-   Opprett en ny regel for klassifisering:
 
-    -   On the **General** tab:
+    -   På den **Generelt** i kategorien:
 
         -   **Name**: Type **Classify for RMS**
 
-        -   **Enabled**: Keep the default, which is that this checkbox is selected.
+        -   **Aktivert**: Holde standarden, som er at det er merket av for dette alternativet.
 
-        -   **Description**: Type **Classify all files in the &lt;folder name&gt; folder for Rights Management**.
+        -   **Beskrivelse**: Type **Classify all files in the &lt;folder name&gt; folder for Rights Management**.
 
-            Replace *&lt;folder name&gt;* with your chosen folder name. For example, **Classify all files in the C:\FileShare folder for Rights Management**
+            Erstatte *&lt; mappenavn &gt;* med det valgte mappenavnet. For eksempel **klassifisere alle filene i mappen C:\FileShare for rettighetsadministrasjon**
 
-        -   **Scope**: Add your chosen folder. For example, **C:\FileShare**.
+        -   **Scope**: Legg til den valgte mappen. For eksempel **C:\FileShare**.
 
-            Do not select the checkboxes.
+            Ikke Merk av for.
 
-    -   On the **Classification** tab:
+    -   På den **klassifisering** i kategorien:
 
-    -   **Classification method**: Select **Folder Classifier**
+    -   **Klassifiseringsmåte**: Velg **mappen klassifiserer**
 
-    -   **Property** name: Select **RMS**
+    -   **Egenskapen** navn: Velg **RMS**
 
-    -   Property **value**: Select **Yes**
+    -   Egenskapen **verdien**: Velg **Ja**
 
-Although you can run the classification rules manually, for ongoing operations, you will want this rule to run on a schedule so that new files will be classified with the RMS property.
+Selv om du kan kjøre manuelt, klassifisering reglene for pågående operasjoner, vil denne regelen skal kjøres på en plan, slik at nye filer blir klassifisert med RMS-egenskapen.
 
-#### Configure the classification schedule
+#### Konfigurere planleggingen klassifisering
 
--   On the **Automatic Classification** tab:
+-   På den **automatiske klassifiseringen** i kategorien:
 
-    -   **Enable fixed schedule**: Select this checkbox.
+    -   **Aktivere fast tidsplan**: Merk av for.
 
-    -   Configure the schedule for all classification rules to run, which includes our new rule to classify files with the RMS property.
+    -   Konfigurere tidsplanen for alle klassifisering regler du vil kjøre, som inkluderer våre nye regelen til å klassifisere filer med RMS-egenskapen.
 
-    -   **Allow continuous classification for new files**: Select this checkbox so that new files will be classified.
+    -   **Tillat kontinuerlig klassifisering for nye filer**: Merk av for slik at nye filer skal klassifiseres.
 
-    -   Optional: Make any other changes that you want, such as configuring options for reports and notifications.
+    -   Valgfritt: Gjør eventuelle endringer du ønsker, for eksempel hvordan du konfigurerer alternativer for rapporter og varsler.
 
-Now you've completed the classification configuration, you're ready to configure a management task to apply the RMS protection to the files.
+Nå du har fullført konfigurasjonen klassifisering, er du klar til å konfigurere en oppgave for å bruke RMS-beskyttelse på filene.
 
-#### Create a custom file management task (Protect files with RMS)
+#### Opprette en oppgave for egendefinert fil (Beskytt filer med RMS)
 
--   In **File Management Tasks**, create a new file management task:
+-   I **oppgavene for filen**, opprette en ny oppgave i filen:
 
-    -   On the **General** tab:
+    -   På den **Generelt** i kategorien:
 
-        -   **Task name**: Type **Protect files with RMS**
+        -   **Aktivitetsnavn**: Type **Protect files with RMS**
 
-        -   Keep the **Enable** checkbox selected.
+        -   Behold den **aktiverer** avmerkingsboks valgt.
 
-        -   **Description**: Type **Protect files in &lt;folder name&gt; with Rights Management and a template by using a Windows PowerShell script.**
+        -   **Beskrivelse**: Type **Protect files in &lt;folder name&gt; with Rights Management and a template by using a Windows PowerShell script.**
 
-            Replace *&lt;folder name&gt;* with your chosen folder name. For example, **Protect files in C:\FileShare with Rights Management and a template by using a Windows PowerShell script**
+            Erstatte *&lt; mappenavn &gt;* med det valgte mappenavnet. For eksempel **beskytter filene i C:\FileShare med Rights Management og en mal ved hjelp av et Windows PowerShell-skriptet**
 
-        -   **Scope**: Select your chosen folder. For example, **C:\FileShare**.
+        -   **Scope**: Velg den valgte mappen. For eksempel **C:\FileShare**.
 
-            Do not select the checkboxes.
+            Ikke Merk av for.
 
-    -   On the **Action** tab:
+    -   På den **handlingen** i kategorien:
 
-        -   **Type**: Select **Custom**
+        -   **Type**: Velg **egendefinert**
 
-        -   **Executable**: Specify the following:
+        -   **Kjørbar fil**: Angi følgende:
 
             ```
             C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
             ```
-            If Windows is not on your C: drive, modify this path or browse to this file.
+            Hvis Windows ikke er på stasjon C:, endre denne banen, eller Bla gjennom til denne filen.
 
-        -   **Argument**: Specify the following, supplying your own values for &lt;path&gt; and &lt;template ID&gt;:
+        -   **Argumentet**: Angi følgende ved å angi dine egne verdier for &lt; bane &gt; og &lt; ID for malen &gt;:
 
             ```
             -Noprofile -Command "<path>\RMS-Protect-FCI.ps1 -File '[Source File Path]' -TemplateID <template GUID> -OwnerMail [Source File Owner Email]"
             ```
-            For example, if you copied the script to C:\RMS-Protection and the template ID you identified from the prerequisites is e6ee2481-26b9-45e5-b34a-f744eacd53b0, specify the following:
+            Hvis du kopierte skriptet til C:\RMS-Protection og mal-IDen du har identifisert fra forutsetningene er e6ee2481-26b9-45e5-b34a-f744eacd53b0, kan du for eksempel angi følgende:
 
             `-Noprofile -Command "C:\RMS-Protection\RMS-Protect-FCI.ps1 -File '[Source File Path]' -TemplateID e6ee2481-26b9-45e5-b34a-f744eacd53b0 -OwnerMail [Source File Owner Email]"`
 
-            In this command, **[Source File Path]** and **[Source File Owner Email]** are both FCI-specific variables, so type these exactly as they appear in the command above. The first one is used by FCI to automatically specify the identified file in the folder, and the second is for FCI to automatically retrieve the email address of the named Owner of the identified file. This command is repeated for each file in the folder, which in our example, is each file in the C:\FileShare folder that additionally, has RMS as a file classification property.
+            I denne kommandoen er **[kildebane]** og **[kilde fil eier e-post]** er begge FCI-spesifikke variabler skriver disse så nøyaktig som de vises i kommandoen ovenfor. Den første som brukes av FCI for å angi den identifiserte filen i mappen automatisk, og andre er for FCI til automatisk å hente e-postadressen for navngitte eieren av den identifiserte filen. Denne kommandoen gjentas for hver fil i mappen, som i vårt eksempel er hver fil i mappen C:\FileShare, som i tillegg har RMS som en filegenskap klassifisering.
 
             > [!NOTE]
-            > The **-OwnerMail [Source File Owner Email]** parameter and value ensures that the original owner of the file is granted the Rights Management owner of the file after it is protected. This ensures that the original file owner has all Rights Management rights to their own files. When files are created by a domain user, the email address is  automatically retrieved from Active Directory by using the user account name in the file's Owner property. To do this, the file server must be in the same domain or trusted domain as the user.
+            > Det **-OwnerMail [Source File Owner Email]** parameter og verdi, sikrer du at den opprinnelige eieren av filen er gitt Rights Management-eieren av filen etter at den er beskyttet. Dette sikrer at den opprinnelige eieren av filen har alle Rights Management-rettigheter til sine egne filer. Når filene er opprettet av en domenebruker, hentes e-postadressen automatisk fra Active Directory ved hjelp av brukerkontonavnet i filens eier-egenskapen. Filserveren må være i det samme domenet eller klarerte domenet som brukeren for å gjøre dette.
             > 
-            > Whenever possible, assign the original owners to protected documents, to ensure that these users continue to have full control over the files that they created. However, if you use the [Source File Owner Email] variable as above, and a file does not have a domain user defined as the owner (for example, a local account was used to create the file, so the owner displays SYSTEM), the script will fail.
+            > Når det er mulig, kan du tilordne de opprinnelige eierne til beskyttede dokumenter, for å sikre at disse brukerne fortsette å ha full kontroll over filene som de opprettet. Hvis du bruker variabelen [kilde fil eier e-post] som ovenfor og en fil ikke har imidlertid en domenebruker definert som eier (for eksempel en lokal konto ble brukt til å opprette filen, slik at eieren viser systemet,) skriptet mislykkes.
             > 
-            > For files that do not have a domain user as owner, you can either copy and save these files yourself as a domain user, so that you become the owner for just these files. Or, if you have permissions, you can manually change the owner.  Or alternatively, you can supply a specific email address (such as your own or a group address for the IT department) instead of the [Source File Owner Email] variable, which means that all files you protect by using this script will use this email address to define the new owner.
+            > For filer som ikke har en domenebruker som eieren, kan du kopiere og lagre disse filene selv som en domenebruker, slik at blir du eier for bare disse filene. Eller, hvis du har tillatelser, kan du manuelt endre eieren.  Eller du kan også angi en bestemt e-postadresse (for eksempel ditt eget eller en gruppeadresse for IT-avdelingen) i stedet for [kilde fil eier e-post]-variabel, noe som betyr at alle filene du beskytte ved hjelp av dette skriptet bruker denne e-postadressen til å definere den nye eieren.
 
-    -   **Run the command as**: Select **Local System**
+    -   **Kjører kommandoen som**: Velg **lokalt System**
 
-    -   On the **Condition** tab:
+    -   På den **betingelse** i kategorien:
 
-        -   **Property**: Select **RMS**
+        -   **Egenskapen**: Velg **RMS**
 
-        -   **Operator**: Select **Equal**
+        -   **Operatør**: Velg **like**
 
-        -   **Value**: Select **Yes**
+        -   **Value**: Velg **Ja**
 
-    -   On the **Schedule** tab:
+    -   På den **tidsplan** i kategorien:
 
-        -   **Run at**: Configure your preferred schedule.
+        -   **Run at**: Konfigurere foretrukne planen.
 
-            Allow plenty of time for the script to complete. Although this solution  protects all files in the folder, the script runs once for each file, each time. Although this takes longer than protecting all the files at the same time, which the RMS Protection tool supports, this file-by-file configuration for FCI is more powerful. For example, the protected files can have different owners (retain the original owner) when you use the   [Source File Owner Email] variable, and this file-by-file action will be required if you later change the configuration to selectively protect files rather than all files in a folder.
+            Gi god tid for at skriptet skal fullføre. Selv om denne løsningen beskytter alle filene i mappen, kjøres skriptet én gang for hver fil hver gang. Selv om det tar lenger tid enn å beskytte alle filene på samme tid, som har støtte for beskyttelse av RMS-verktøyet, er denne fil av konfigurasjonen for FCI kraftigere. Beskyttede filer kan for eksempel ha forskjellige eiere (beholde den opprinnelige eieren) når du bruker variabelen [kilde fil eier e-post], og denne handlingen ved fil vil være nødvendig hvis du senere endrer konfigurasjonen for å selektivt beskytte filer i stedet for alle filene i en mappe.
 
-        -   **Run continuously on new files**: Select this checkbox.
+        -   **Kjører hele tiden på nye filer**: Merk av for.
 
-#### Test the configuration by manually running the rule and task
+#### Teste konfigurasjonen ved å manuelt kjøre regelen og aktivitet
 
-1.  Run the classification rule:
+1.  Kjør regelen klassifisering:
 
-    1.  Click **Classification Rules** &gt; **Run Classification With All Rules Now**
+    1.  Klikk **klassifisering regler** &gt; **kjører klassifiseringen med alle regler nå**
 
-    2.  Click **Wait for classification to complete**, and then click **OK**.
+    2.  Klikk **venter klassifisering for å fullføre**, og klikk deretter **OK**.
 
-2.  Wait for the **Running Classification** dialog box to close and then view the results in the automatically displayed report. You should see **1** for the **Properties** field and the number of files in your folder. Confirm by using File Explorer and checking the properties of files in your chosen folder. On the **Classification** tab, you should see **RMS** as a property name and **Yes** for its **Value**.
+2.  Vent til den **kjører klassifisering** Hvis du vil lukke, og deretter vise resultatene i rapporten vises automatisk. Vil du se **1** for den **Egenskaper** -feltet og antall filer i mappen. Bekreft ved å bruke File Explorer og kontrollere egenskapene til filer i den valgte mappen. På den **klassifisering** tab, bør du se **RMS** som navnet på en egenskap og **Ja** for sin **verdien**.
 
-3.  Run the file management task:
+3.  Kjør filen management-oppgaven:
 
-    1.  Click **File Management Tasks** &gt; **Protect files with RMS** &gt; **Run File Management Task Now**
+    1.  Klikk **oppgavene for filen** &gt; **beskytte filene med RMS** &gt; **kjører filen Management aktivitet nå**
 
-    2.  Click **Wait for the task to complete**, and then click **OK**.
+    2.  Klikk **venter aktiviteten for å fullføre**, og klikk deretter **OK**.
 
-4.  Wait for the **Running File Management Task** dialog box to close and then view the results in the automatically displayed report. You should see the number of files that are in your chosen folder in the **Files** field. Confirm that the files in your chosen folder are now protected by RMS. For example, if your chosen folder is C:\FileShare, type the following in a Windows PowerShell session and confirm that no files have a status of **UnProtected**:
+4.  Vent til den **oppgave kjører filen** Hvis du vil lukke, og deretter vise resultatene i rapporten vises automatisk. Du skal se hvor mange filer som finnes i den valgte mappen i den **filer** feltet. Bekreft at filene i den valgte mappen blir nå beskyttet av RMS. For eksempel hvis den valgte mappen er C:\FileShare, skriver du inn følgende i et Windows PowerShell-økten, og Bekreft at noen filer har statusen **UnProtected**:
 
     ```
     foreach ($file in (Get-ChildItem -Path C:\FileShare -Force | where {!$_.PSIsContainer})) {Get-RMSFileStatus -f $file.PSPath}
     ```
     > [!TIP]
-    > Some troubleshooting tips:
+    > Feilsøkingstips:
     > 
-    > -   If you see **0** in the report, instead of the number of files in your folder, this indicates that the script did not run. First, check the script itself by loading it in Windows PowerShell ISE to validate the script contents and try running it to see if any errors are displayed. With no arguments specified, the script will try to connect and authenticate to Azure RMS.
+    > -   Hvis du ser **0** i rapporten, i stedet for antall filer i mappen, angir dette skriptet ikke ble kjørt. Først, sjekke selve skriptet ved å laste den inn i Windows PowerShell ISE til å validere skriptinnholdet, og prøv å kjøre den for å se om eventuelle feil, vises. Uten argumenter er angitt, vil skriptet prøver å koble til og godkjenne på RMS Azure.
     > 
-    >     -   If the script reports that it couldn't connect to Azure RMS, check the values it displays for the service principal account, which you specified in the script.  For more information about how to create this service principal account, see the second prerequisite in [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx)
-    >     -   If the script reports that it could connect to Azure RMS and your Azure region is outside North America, check that you have edited the registry correctly for this configuration. A good test for this is to run Get-RMSTemplate directly from Windows PowerShell on the server. For more information about the registry edits, see the third prerequisite in [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx).
-    > -   If the script by itself runs in Windows PowerShell ISE without errors, try running it as follows from a  PowerShell session, specifying a file name to protect and without the -OwnerEmail parameter:
+    >     -   Hvis skriptet rapporterer at den ikke kan koble til Azure RMS, må du kontrollere verdiene som vises for service principal kontoen, som er angitt i skriptet.  Hvis du vil ha mer informasjon om hvordan du oppretter denne service principal-kontoen, kan du se andre forutsetningen i [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx)
+    >     -   Hvis skriptet rapporterer at det ikke kunne koble til Azure RMS og Azure regionen er utenfor Nord-Amerika, må du kontrollere at du har redigert registret på riktig måte for denne konfigurasjonen. Det er en god test av dette å kjøre Get-RMSTemplate direkte fra Windows PowerShell på serveren. Hvis du vil ha mer informasjon om redigering av registret, kan du se tredje forutsetningen i [about_RMSProtection_AzureRMS](https://msdn.microsoft.com/library/mt433202.aspx).
+    > -   Hvis skriptet alene kjører i Windows PowerShell ISE uten feil, kan du prøve å kjøre den som følger fra en PowerShell-økt, angir et filnavn til å beskytte og uten parameteren - OwnerEmail:
     > 
     >     ```
     >     powershell.exe -Noprofile -Command "<path>\RMS-Protect-FCI.ps1 -File <full path and name of a file>' -TemplateID <template GUID>"
     >     ```
-    >     -   If the script runs successfully in this Windows PowerShell session, check  your entries for **Executive** and **Argument** in the file management task action.  If you have specified **-OwnerEmail [Source File Owner Email]**, try removing this parameter.
+    >     -   Hvis skriptet kjøres i denne Windows PowerShell-økten, må du kontrollere oppføringene for **Executive** og **argumentet** i filen management oppgavehandling.  Hvis du har angitt **- OwnerEmail [kilde fil eier e-post]**, prøve å fjerne denne parameteren.
     > 
-    >         If the file management task works successfully without  **-OwnerEmail [Source File Owner Email]**, check that the unprotected files have a domain user listed as the file owner, rather than **SYSTEM**.  To do this, use the **Security** tab for the file's properties, and then click **Advanced**. The **Owner** value is displayed immediately after the file **Name**. Also, verify that the file server is in the same domain or a trusted domain to lookup the user's email address from Active Directory Domain Services.
-    > -   If you see the correct number of files in the report but the files are not protected, try protecting the files manually by using the [Protect-RMSFile](https://msdn.microsoft.com/library/azure/mt433201.aspx) cmdlet, to see if any errors are displayed.
+    >         Hvis filen management oppgaven fungerer riktig uten  **- OwnerEmail [kilde fil eier e-post]**, kontroller at ubeskyttede filer har en domenebruker oppført som eieren av filen stedet **SYSTEM**.  Hvis du vil gjøre dette, kan du bruke den **Sikkerhet** for egenskapene for filen, og velg deretter **Avansert**. Den **eier** verdien vises umiddelbart etter filen **navn**. Kontroller også at filserveren er i samme domene eller et klarert domene til å slå opp brukerens e-postadresse fra Active Directory Domain Services.
+    > -   Hvis du vil se riktig antall filer i rapporten, men filene er ikke beskyttet, kan du prøve å beskytte filene manuelt ved hjelp av den [Beskytt RMSFile](https://msdn.microsoft.com/library/azure/mt433201.aspx) cmdleten for å se om eventuelle feil, vises.
 
-When you have confirmed that these tasks run successfully, you can close File Resource Manager. New files will be automatically protected and all files will be protected again when the schedules run. Re-protecting files ensures that any changes to the template are applied to the files.
+Når du har bekreftet at disse oppgavene kan kjøres, kan du lukke filen Resource Manager. Nye filer blir automatisk beskyttet, og alle filer som beskyttes på nytt når du planlegger kjører. Beskytte filer på nytt, sikrer du at eventuelle endringer i malen gjelder for filene.
 
-### <a name="BKMK_RMSProtection_Script"></a>Windows PowerShell Script for Azure RMS protection by using File Server Resource Manager FCI
-This section contains the sample script to copy and edit, as described in the preceding section.
+### <a name="BKMK_RMSProtection_Script"></a>Windows PowerShell-skript Azure RMS beskyttelse ved hjelp av File Server Resource Manager FCI
+Denne delen inneholder eksempelskript for å kopiere og redigere, som beskrevet i den foregående inndelingen.
 
-*&#42;&#42;Disclaimer&#42;&#42;: This sample script is not supported under any Microsoft standard support program or service. This sample*
-*script is provided AS IS without warranty of any kind.*
+*&#42;&#42;Ansvarsfraskrivelse&#42;&#42;: Dette eksempelskriptet støttes ikke under et standard kundestøtte for Microsoft-program eller en tjeneste. Dette eksempelskriptet leveres som den er uten garanti av noe slag.*
 
 ```
-<#
-.SYNOPSIS 
-     Helper script to protect all file types with Azure RMS and FCI.
-.DESCRIPTION
-     Protect files with Azure RMS and Windows Server FCI, using an RMS template ID.   
-#>
-param(
-            [Parameter(Mandatory = $false)]
-            [ValidateScript({ If($_ -eq "") {$true} else { if (Test-Path -Path $_ -PathType Leaf) {$true} else {throw "Can't find file specified"} } })]
-            [string]$File,
-
-            [Parameter(Mandatory = $false)]
-            [string]$TemplateID,
-
-            [Parameter(Mandatory = $false)]
-            [string]$OwnerMail,
-
-            [Parameter(Mandatory = $false)]
-            [string]$AppPrincipalId = "<enter your AppPrincipalId here>",
-
-            [Parameter(Mandatory = $false)]
-            [string]$SymmetricKey = "<enter your key here>",
-
-            [Parameter(Mandatory = $false)]
-            [string]$BposTenantId = "<enter your BposTenantId here>"
-) 
-
-# script information
-[String] $Script:Version = 'version 1.0' 
-[String] $Script:Name = "RMS-Protect-FCI.ps1"
-
-#global working variables
-[switch] $Script:isScriptProcess = $False # Controls the script process. If false, the script gracefully stops running.
-
-#**Functions (general helper)***************************************
-function Get-ScriptName(){ 
-
-	return $MyInvocation.ScriptName.Substring($MyInvocation.ScriptName.LastIndexOf('\') + 1, $MyInvocation.ScriptName.LastIndexOf('.') - $MyInvocation.ScriptName.LastIndexOf('\') - 1)
-}
-
-#**Functions (script specific)**************************************
-
-function Check-Module{
-
-	param ([String]$Module = $(Throw "Module name not specified"))
-
-	[bool]$isResult = $False
-
-	#try to load the module
-	if (get-module -list -name $Module) {
-		import-module $Module
-
-		if (get-module -name $Module ) {
-
-			$isResult = $True
-		} else {
-			$isResult = $False
-		} 
-
-	} else {
-			$isResult = $False
-	}
-	return $isResult
-}
-
-function Protect-File ($ffile, $ftemplateId, $fownermail) {
-
-    [bool] $returnValue = $false
-    try {
-        If ($OwnerMail -eq $null -or $OwnerMail -eq "") {
-            $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId
-            $returnValue = $true
-            Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId")
-        } else {
-            $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId -OwnerEmail $fownermail
-            $returnValue = $true
-            Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId, set Owner: $fownermail")
-        }
-    } catch {
-        Write-Host ( "ERROR" + "During protection of file: $ffile with Template: $ftemplateId")
-            }
-    return $returnValue
-}
-
-function Set-RMSConnection ($fappId, $fkey, $fbposId) {
-
-	[bool] $returnValue = $false
-    try {
-               Set-RMSServerAuthentication -AppPrincipalId $fappId -Key $fkey -BposTenantId $fbposId
-        Write-Host ("Information: " + "Connected to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId")
-        $returnValue = $true
-    } catch {
-        Write-Host ("ERROR" + "During connection to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId")
-
-    }
-    return $returnValue
-}
-
-#**Main Script (Script)*********************************************
-Write-Host ("-== " + $Script:Name + " " + $Version + " ==-")
-
-$Script:isScriptProcess = $True
-
-# Validate Azure RMS connection by checking the module and then connection
-if ($Script:isScriptProcess) {
- 		if (Check-Module -Module RMSProtection){
-    	$Script:isScriptProcess = $True
-	} else {
-
-		Write-Host ("The RMSProtection module is not loaded") -foregroundcolor "yellow" -backgroundcolor "black"	        
-		$Script:isScriptProcess = $False
-	}
-}
-
-if ($Script:isScriptProcess) {
-	#Write-Host ("Try to connect to Azure RMS with AppId: $AppPrincipalId and BPOSID: $BposTenantId" )	
-    if (Set-RMSConnection $AppPrincipalId $SymmetricKey $BposTenantId) {
-	    Write-Host ("Connected to Azure RMS")
-
-    } else {
-		Write-Host ("Couldn't connect to Azure RMS") -foregroundcolor "yellow" -backgroundcolor "black"
-		$Script:isScriptProcess = $False
-	}
-}
-
-#  Start working loop
-if ($Script:isScriptProcess) {
-    if ( !(($File -eq $null) -or ($File -eq "")) ) {
-        if (!(Protect-File -ffile $File -ftemplateId $TemplateID -fownermail $OwnerMail)) {
-            $Script:isScriptProcess = $False           
-        }
-    }
-}
-
-# Closing
-if (!$Script:isScriptProcess) { Write-Host "ERROR occurred during script process" -foregroundcolor "red" -backgroundcolor "black"}
-write-host ("-== " + $Script:Name + " " + $Version + "  ==-")
-if (!$Script:isScriptProcess) { exit(-1) } else {exit(0)}
+<# .SYNOPSIS Helper script to protect all file types with Azure RMS and FCI. .DESCRIPTION Protect files with Azure RMS and Windows Server FCI, using an RMS template ID. #> param( [Parameter(Mandatory = $false)] [ValidateScript({ If($_ -eq "") {$true} else { if (Test-Path -Path $_ -PathType Leaf) {$true} else {throw "Can't find file specified"} } })] [string]$File, [Parameter(Mandatory = $false)] [string]$TemplateID, [Parameter(Mandatory = $false)] [string]$OwnerMail, [Parameter(Mandatory = $false)] [string]$AppPrincipalId = "<enter your AppPrincipalId here>", [Parameter(Mandatory = $false)] [string]$SymmetricKey = "<enter your key here>", [Parameter(Mandatory = $false)] [string]$BposTenantId = "<enter your BposTenantId here>" ) # script information [String] $Script:Version = 'version 1.0' [String] $Script:Name = "RMS-Protect-FCI.ps1" #global working variables [switch] $Script:isScriptProcess = $False # Controls the script process. If false, the script gracefully stops running. #**Functions (general helper)*************************************** function Get-ScriptName(){ return $MyInvocation.ScriptName.Substring($MyInvocation.ScriptName.LastIndexOf('\') + 1, $MyInvocation.ScriptName.LastIndexOf('.') - $MyInvocation.ScriptName.LastIndexOf('\') - 1) } #**Functions (script specific)************************************** function Check-Module{ param ([String]$Module = $(Throw "Module name not specified")) [bool]$isResult = $False #try to load the module if (get-module -list -name $Module) { import-module $Module if (get-module -name $Module ) { $isResult = $True } else { $isResult = $False } } else { $isResult = $False } return $isResult } function Protect-File ($ffile, $ftemplateId, $fownermail) { [bool] $returnValue = $false try { If ($OwnerMail -eq $null -or $OwnerMail -eq "") { $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId $returnValue = $true Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId") } else { $protectReturn = Protect-RMSFile -File $ffile -TemplateID $ftemplateId -OwnerEmail $fownermail $returnValue = $true Write-Host ( "Information: " + "Protected File: $ffile with Template: $ftemplateId, set Owner: $fownermail") } } catch { Write-Host ( "ERROR" + "During protection of file: $ffile with Template: $ftemplateId") } return $returnValue } function Set-RMSConnection ($fappId, $fkey, $fbposId) { [bool] $returnValue = $false try { Set-RMSServerAuthentication -AppPrincipalId $fappId -Key $fkey -BposTenantId $fbposId Write-Host ("Information: " + "Connected to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId") $returnValue = $true } catch { Write-Host ("ERROR" + "During connection to Azure RMS Service with BposTenantId: $fbposId using AppPrincipalId: $fappId") } return $returnValue } #**Main Script (Script)********************************************* Write-Host ("-== " + $Script:Name + " " + $Version + " ==-") $Script:isScriptProcess = $True # Validate Azure RMS connection by checking the module and then connection if ($Script:isScriptProcess) { if (Check-Module -Module RMSProtection){ $Script:isScriptProcess = $True } else { Write-Host ("The RMSProtection module is not loaded") -foregroundcolor "yellow" -backgroundcolor "black" $Script:isScriptProcess = $False } } if ($Script:isScriptProcess) { #Write-Host ("Try to connect to Azure RMS with AppId: $AppPrincipalId and BPOSID: $BposTenantId" ) if (Set-RMSConnection $AppPrincipalId $SymmetricKey $BposTenantId) { Write-Host ("Connected to Azure RMS") } else { Write-Host ("Couldn't connect to Azure RMS") -foregroundcolor "yellow" -backgroundcolor "black" $Script:isScriptProcess = $False } } #  Start working loop if ($Script:isScriptProcess) { if ( !(($File -eq $null) -or ($File -eq "")) ) { if (!(Protect-File -ffile $File -ftemplateId $TemplateID -fownermail $OwnerMail)) { $Script:isScriptProcess = $False } } } # Closing if (!$Script:isScriptProcess) { Write-Host "ERROR occurred during script process" -foregroundcolor "red" -backgroundcolor "black"} write-host ("-== " + $Script:Name + " " + $Version + "  ==-") if (!$Script:isScriptProcess) { exit(-1) } else {exit(0)}
 ```
 
-## Modifying the instructions to selectively protect files
-When you have the preceding instructions working, it's then very easy to modify them for a more sophisticated configuration. For example, protect files by using the same script but only for files that contain personal identifiable information, and perhaps select a template that has more restrictive rights.
+## Endre instruksjonene for å selektivt beskytte filer
+Når du har instruksjonene for foregående jobber, er det deretter veldig enkelt å endre dem for en mer avansert konfigurasjon. Hvis du for eksempel beskytte filer ved hjelp av det samme skriptet, men bare etter filer som inneholder personlige opplysninger, og kanskje velge en mal som er mer restriktiv rettigheter.
 
-To do this, use one of the built-in classification properties (for example, **Personally Identifiable Information**) or create your own new property. Then create a new rule that uses this property. For example, you might select the **Content Classifier**, choose the **Personally Identifiable Information** property with a value of **High**, and configure the string or expression pattern that identifies the file to be configured for this property (such as the  string "**Date of Birth**").
+Hvis du vil gjøre dette, bruker du en av egenskapene for innebygde klassifisering (for eksempel **personlig identifiserbar informasjon**) eller opprette en ny egenskap. Deretter kan du opprette en ny regel som bruker denne egenskapen. Du kan for eksempel velge den **innhold klassifiserer**, velger du **personlig identifiserbar informasjon** egenskap med en verdi på **Høy**, og konfigurere mønster streng eller et uttrykk som identifiserer filen som skal konfigureres for denne egenskapen (for eksempel strengen "**Fødselsdato**").
 
-Now all you need to do is create a new file management task that uses the same script but perhaps with a different template, and configure the condition for the classification property that you have just configured. For example, instead of the condition that we configured previously (**RMS** property, **Equal**, **Yes**), select the **Personally Identifiable Information** property with the **Operator** value set to **Equal** and the **Value** of **High**.
+Nå alt du trenger å gjøre er å opprette en ny fil oppgave som bruker den samme skript men muligens med en annen mal, og Konfigurer betingelsen for egenskapen klassifisering som du nettopp har konfigurert. For eksempel i stedet for betingelsen som vi tidligere har konfigurert (**RMS** -egenskapen, **like**, **Ja**), velger den **personlig identifiserbar informasjon** egenskapen med den **Operator** satt til **lik** og **verdien** av **Høy**.
 

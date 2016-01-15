@@ -3,240 +3,233 @@ description: na
 keywords: na
 title: Configuring Custom Templates for Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 1775d8d0-9a59-42c8-914f-ce285b71ac1c
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Configuring Custom Templates for Azure Rights Management
-After you have activated Azure Rights Management (Azure RMS), users are automatically able to use two default templates that make it easy for them to apply policies to sensitive files that restrict access to authorized users in your organization. These two templates have the following rights policy restrictions:
+# Konfigurere egendefinerte maler for Azure Rights Management
+Etter at du har aktivert Azure Rights Management (Azure RMS), er brukere automatisk kunne bruke to standardmaler som gjør det enkelt for dem å bruke policyer på sensitive filer som begrenser tilgangen til autoriserte brukere i organisasjonen. Disse to maler har begrensninger for policyen følgende rettigheter:
 
--   Read-only viewing for the protected content
+-   Skrivebeskyttet visning for beskyttet innhold
 
-    -   Display name: **&lt;organization name&gt; - Confidential View Only**
+    -   Navn: **&lt; navn &gt; organisasjon - konfidensiell Vis bare**
 
-    -   Specific permission: View Content
+    -   Bestemt tillatelse: Vis innhold
 
--   Read or Modify permissions for the protected content
+-   Lese eller endre tillatelser for beskyttet innhold
 
-    -   Display name: **&lt;organization name&gt; - Confidential**
+    -   Navn: **&lt; navn &gt; organisasjon - konfidensiell**
 
-    -   Specific permissions: View Content, Save File, Edit Content, View Assigned Rights, Allow Macros, Forward, Reply, Reply All
+    -   Bestemte tillatelser: Vise innhold, lagre filen, redigere innhold, vise tildelte rettigheter, tillate makroer, Forward, svar, svar til alle
 
-In addition, the [RMS sharing application](http://technet.microsoft.com/library/dn339006.aspx) lets users define their own set of permissions. And, for the Outlook client and Outlook Web Access, users can select the **Do Not Forward** option for email messages.
+I tillegg til [RMS deling program](http://technet.microsoft.com/library/dn339006.aspx) lar brukere definere sitt eget sett med tillatelser. Og for Outlook-klienten og Outlook Web Access, kan brukere velge den **ikke Videresend** alternativ for e-postmeldinger.
 
-For many organizations, the default templates might be sufficient. But if you want to create your own custom rights policy templates, you can do so. Reasons for creating a custom template include the following:
+Standardmalene kan være tilstrekkelig for mange organisasjoner. Men hvis du vil opprette dine egne egendefinerte policymaler for rettigheter, kan du gjøre dette. Grunnene for å opprette en egendefinert mal, omfatter følgende:
 
--   You want a template to grant rights to a subset of users in the organization rather than all users.
+-   Du vil bruke en mal for å gi rettigheter til et delsett av brukerne i organisasjonen i stedet for alle brukere.
 
--   You want only a subset of users to be able to see and select a template (departmental template) from applications, rather than all users in the organization see and can select the template.
+-   Du vil bare et delsett av brukerne skal kunne se og velge en mal (mal avdelinger) fra programmer i stedet for alle brukere i organisasjonen-se, og du kan velge malen.
 
--   You want to define a custom right for a template, such as View and Edit, but not Copy and Print.
+-   Du vil definere en egendefinert høyre for en mal, for eksempel Vis og Rediger, men ikke kopiere og skrive ut.
 
--   You want to configure additional options in a template that include an expiration date and whether the content can be accessed without an Internet connection.
+-   Du vil konfigurere flere alternativer i en mal som inneholder en utløpsdato, og om innholdet kan åpnes uten en Internett-tilkobling.
 
-For users to be able to select a custom template that contains settings such as these, you must first create a custom template, configure it, and then publish it.
+Hvis brukerne skal kunne velge en egendefinert mal som inneholder innstillinger som disse, må du først opprette en egendefinert mal, konfigureres og deretter publisere den.
 
-Use the following sections to help you configure and use custom templates:
+Bruk de følgende delene for å konfigurere og bruke egendefinerte maler:
 
--   [How to create, configure, and publish a custom template](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToConfigureCustomTemplates)
+-   [Hvordan du kan opprette, konfigurere og publisere en egendefinert mal](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToConfigureCustomTemplates)
 
--   [How to copy a template](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToCopyTemplates)
+-   [Slik kopierer du en mal](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToCopyTemplates)
 
--   [How to remove (archive) templates](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToArchiveTemplates)
+-   [Slik fjerner du maler (arkiv)](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToArchiveTemplates)
 
--   [Refreshing templates for users](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_RefreshingTemplates)
+-   [Oppdatering av maler for brukerne](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_RefreshingTemplates)
 
--   [Windows PowerShell reference](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_PowerShellTemplates)
+-   [Windows PowerShell-referanse](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_PowerShellTemplates)
 
-## <a name="BKMK_HowToConfigureCustomTemplates"></a>How to create, configure, and publish a custom template
-You create and manage custom templates in the Azure classic portal. You can do this directly from the Azure classic portal, or you can sign in to the Office 365 admin center, and choose the **advanced features** for Rights Management, which then redirects you to the Azure classic portal.
+## <a name="BKMK_HowToConfigureCustomTemplates"></a>Hvordan du kan opprette, konfigurere og publisere en egendefinert mal
+Du kan opprette og behandle egendefinerte maler i Azure Management-portalen. Du kan gjøre dette direkte fra Azure Management-portalen, eller du kan logge på administrasjonssenteret Office 365, og velg den **Avanserte funksjoner for** for Rights Management, som sender deg til Azure Management-portalen.
 
-Use the following procedures to create, configure, and publish custom templates for Rights Management.
+Bruk følgende fremgangsmåter til å opprette, konfigurere og publisere egendefinerte maler for Rights Management.
 
-#### To create a custom template
+#### Opprette en egendefinert mal
 
-1.  Depending on whether you sign in to the Office 365 admin center, or the Azure classic portal, do one of the following:
+1.  Avhengig av om du logge på Office 365 administrasjonssenteret, eller Azure-Portal, gjør du ett av følgende:
 
-    -   From the [Office 365 admin center](https://portal.office.com/):
+    -   Fra den [Office 365 administrasjonssenteret](https://portal.office.com/):
 
-        1.  In the left pane, click **service settings**.
+        1.  I den venstre ruten klikker du **tjenesteinnstillinger**.
 
-        2.  From the **service settings** page, click **rights management**.
+        2.  Fra den **tjenesteinnstillinger** klikker du **rights management**.
 
-        3.  In the **Protect your information** section, click **Manage**.
+        3.  I den **beskytte informasjon** -delen, klikker du **Behandle**.
 
-        4.  In the **rights management** section, click **advanced features**.
+        4.  I den **rights management** -delen, klikker du **Avanserte funksjoner for**.
 
             > [!NOTE]
-            > If you haven’t activated Rights Management, first click **activate** and confirm your action. For more information, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
+            > Hvis du ikke har aktivert Rights Management, klikker du først **aktivere** og bekrefte handlingen. Hvis du vil ha mer informasjon, se [Aktivering av Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
             > 
-            > If you haven’t clicked **advanced features** before, after Rights Management is activated, follow the on-screen instructions to get a free Azure subscription that’s required to access the Azure classic portal.
+            > Hvis du ikke har klikket **Avanserte funksjoner** før, når IRM er aktivert, følger du den på skjermen instruksjonene for å få en gratis Azure abonnement som er nødvendige for å få tilgang til portalen Azure.
 
-            Clicking **advanced features** loads the Azure classic portal, where you can manage **RIGHTS MANAGEMENT** for your organization's Azure Active Directory.
+            Velge **Avanserte funksjoner** laster Azure portalen, der du kan administrere **RIGHTS MANAGEMENT** for organisasjonens Azure Active Directory.
 
-    -   From the [Azure classic portal](http://go.microsoft.com/fwlink/p/?LinkID=275081):
+    -   Fra den [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=275081):
 
-        1.  In the left pane, click **ACTIVE DIRECTORY**.
+        1.  I den venstre ruten klikker du **ACTIVE DIRECTORY**.
 
-        2.  From the **active directory** page, click **RIGHTS MANAGEMENT**.
+        2.  Fra den **active directory** klikker du **RIGHTS MANAGEMENT**.
 
-        3.  Select the directory to manage for Rights Management.
+        3.  Velg mappen som skal behandle for Rights Management.
 
-        4.  If you have not already activated Rights Management, click **ACTIVATE** and confirm your action.
+        4.  Hvis du ikke har aktivert Rights Management, klikker du **Aktiver** og bekrefte handlingen.
 
             > [!NOTE]
-            > For more information, see [Activating Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
+            > Hvis du vil ha mer informasjon, se [Aktivering av Azure Rights Management](../Topic/Activating_Azure_Rights_Management.md).
 
-2.  Create a new template:
+2.  Opprette en ny mal:
 
-    -   In the Azure classic portal, from the **Get started with Rights Management** quick start page, click **Create a new rights policy template**.
+    -   I Azure portal fra den **Komme i gang med Rights Management** Hurtigsøk startside, klikker du **opprette en ny policy rettighetsmal**.
 
-        If you do not immediately see this page after following the instructions for Office 365, use the navigation instructions, above,  for the Azure classic portal.
+        Hvis du ikke ser denne siden umiddelbart når du har fulgt instruksjonene for Office 365, kan du bruke navigation-instruksjonene ovenfor, for Azure portal.
 
-3.  On the **Add a new rights policy template** page, choose a language in which you will type the template name and description that users will see (you can add more languages later). Then type a unique name and a description, and click the Complete button.
+3.  På de **legger til en ny policy rettighetsmal** side, velger du et språk som du skal skrive inn malen navnet og beskrivelsen som brukere vil se (du kan legge til flere språk for senere). Deretter skriver du inn et unikt navn og en beskrivelse, og klikk på fullført-knappen.
 
-From the **Get started with Rights Management** quick start page, now click **Manage your rights policy templates**. You will see your newly created template added to the list of templates, with a status of **Archived**. At this stage, the template is created but not configured, and is not visible to users.
+Fra den **Komme i gang med Rights Management** Hurtigsøk startside, klikk **administrere din policymaler for rettigheter**. Vil du se den nylig opprettede malen legges til i listen over skjemamaler med statusen **arkivert**. På dette stadiet, malen er opprettet, men ikke konfigurert, og er ikke synlige for brukerne.
 
-#### To configure and publish a custom template
+#### Konfigurere og publisere en egendefinert mal
 
-1.  Select your newly created template from the **TEMPLATES** page in the Azure classic portal.
+1.  Velg den nylig opprettede malen fra den **maler** side i Azure Management-portalen.
 
-2.  From the **Your template has been added** quick start page, click **Get started** from step 1, **Configure rights for users and groups,** then click **GET STARTED NOW** or **ADD**, and then select the users and groups who will have rights to use the content that is protected by the new template.
-
-    > [!NOTE]
-    > The users or groups that you select must have an email address. In a production environment, this will nearly always be the case but in a simple testing environment, you might need to add email addresses to user accounts or groups.
-
-    As a best practice, use groups rather than users, which simplifies management of the templates. If you have Active Directory on-premises and are synchronizing to Azure AD, you can use mail-enabled groups that are either security groups or distribution groups. However, if you want to grant rights to all users in the organization, it will be more efficient to copy one of the default templates rather than specify multiple groups. For more information, see the [How to copy a template](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToCopyTemplates) section in this topic.
-
-    > [!TIP]
-    > You can later add users from outside your organization to the template by using the [Windows PowerShell module for Azure Rights Management](https://technet.microsoft.com/library/jj585012.aspx) and using one of the following methods:
-    > 
-    > -   **Use a rights definition object to update a template**:    Specify the external email addresses and their rights in a rights definition object, which you then use to update your template. You specify the rights definition object by using the [New-AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx) cmdlet to create a variable and then supply this variable to the  -RightsDefinition parameter with the [Set-AadrmTemplateProperty](https://msdn.microsoft.com/library/azure/dn727076.aspx) cmdlet to modify an existing template. However, if you're adding these users to an existing template, you will also need to define rights definition objects for the existing groups in the templates and not just the new, external users.
-    > -   **Export, edit, and import the updated template**:Use the [Export-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx) cmdlet to export the template to a file that you can edit to add the external email addresses of these users and their rights to the existing groups and rights. Then use the [Import-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx) cmdlet to import this change back into Azure RMS.
-
-3.  Click the Next button, and then assign one of the listed rights to your selected users and groups.
-
-    Use the displayed description for more information about each right (and for custom rights). More detailed  information is also available in [Configuring Usage Rights for Azure Rights Management](../Topic/Configuring_Usage_Rights_for_Azure_Rights_Management.md). However, applications that support RMS might vary in how they implement these rights. Consult their documentation and do your own testing with the applications that users use to check the behavior before you deploy the template for users. To make this template visible to only administrators for this testing, make this template a departmental template (step 6).
-
-4.  If you selected **Custom**, click the Next button, and then select those custom rights.
-
-    Although you can use any combination of the individual rights available, in some applications, some rights might have dependencies on other individual rights. When this is the case, the dependent rights are automatically selected for you.
-
-    > [!TIP]
-    > Consider adding the **Copy and Extract Content** right and grant this to selected administrators or personnel in other roles that have responsibilities for information recovery. Granting this right lets them remove protection if needed, from files and emails that will be protected by using this template. This ability to remove protection at the template level provides more fine-grained control than using the super user feature.
-
-5.  Click the Complete button.
-
-6.  If you want the template to be visible to only a subset of users when they see a list of templates in applications: Click **SCOPE** to configure this as a departmental template, and click **GET STARTED NOW**. Otherwise, go to step 9.
-
-    More information about departmental templates: By default, all users in your Azure directory see all the published templates and they can then select them from applications when they want to protect content. If you want specific users only to see some of the published templates, you must scope the templates to these users. Then, only these users will be able to select these templates. Other users that you do not specify will not see the templates and therefore, cannot select them. This technique can make choosing the correct template easier for users, especially when you create templates that are designed to be used by specific groups or departments. Users then see only the templates that are designed for them.
-
-    For example, you’ve created a template for the Human Resources department that applies the Read-only permission to members of the Finance department. So that only members of the Human Resources department can apply this template when they use the Rights Management sharing application, you scope the template to the email-enabled group named HumanResources. Then, only members of this group see and can apply this template.
-
-7.  On the **TEMPLATE VISIBILITY** page, select the users and groups who will be able to see and select the template from the RMS-enlightened applications. As before, as a best practice, use groups rather than users, and the groups or users you select must have an email address.
-
-8.  Click the Next button, and decide whether you need to configure application compatibility for your departmental template. If you do, click **APPLICATION COMPATIBILITY**, select the check box, and click **Complete**.
-
-    Why might you need to configure application compatibility? Not all applications can support departmental templates. To do so, the application must first authenticate with the RMS service before downloading the templates. If the authentication process does not occur, by default, none of the departmental templates are downloaded. You can override this behavior by specifying that all the departmental templates should download, by configuring application compatibility and selecting the **Show this template to all users when the applications do not support user identity** check box.
-
-    For example, if you do not configure application compatibility for the departmental template in our Human Resources example, only users in the Human Resources department see the departmental template when they use the RMS sharing application, but no users see the departmental template when they use Outlook Web Access (OWA) from Exchange Server 2013 because Exchange OWA and Exchange ActiveSync do not currently support departmental templates. If you override this default behavior by configuring application compatibility, only users in the Human Resources department see the departmental template when they use the RMS sharing application, but all users see the departmental template when they use Outlook Web Access (OWA). If users use OWA or Exchange ActiveSync from Exchange Online, either all users will see the departmental templates or no users will see the department templates, based on the template status (archival or published) in Exchange Online.
-
-    Office 2016 natively supports departmental templates, and so does Office 2013 with the latest  Office updates ([KB 3054853](https://support.microsoft.com/kb/3054853)).
+2.  Fra den **malen har blitt lagt til** Hurtigsøk startside, klikker du **Komme i gang** fra trinn 1, **konfigurere rettigheter for brukere og grupper,** deretter **Kom i gang nå** eller **legge til**, og deretter velger du brukere og grupper som har rettigheter til å bruke innhold som er beskyttet av den nye malen.
 
     > [!NOTE]
-    > If you have applications that don’t yet natively support departmental templates, you can use a custom RMS template download script or other tools to deploy these templates to the local RMS client folder. Then, these applications will correctly display the departmental templates to only the users and groups that you selected for the template scope:
+    > Brukerne eller gruppene som du velger, må ha en e-postadresse. Dette vil nesten alltid være tilfellet i et produksjonsmiljø, men i et enkelt testing miljø, må du kanskje legge til e-postadresser til brukerkontoer eller grupper.
+
+    Som beste praksis, kan du bruke grupper i stedet for brukere, noe som forenkler administrasjonen av malene. Hvis du har Active Directory på lokaler og synkroniserer til Azure AD, kan du bruke e-post-grupper som er enten sikkerhetsgrupper eller distribusjonsgrupper. Hvis du vil gi tilgang til alle brukere i organisasjonen, vil det være mer effektivt å kopiere en av standardmalene som i stedet for å angi flere grupper. Hvis du vil ha mer informasjon, se den [Slik kopierer du en mal](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_HowToCopyTemplates) delen i dette emnet.
+
+    > [!TIP]
+    > Du kan senere legge til brukere fra utenfor organisasjonen til malen ved hjelp av den [Windows PowerShell-modul for Azure Rights Management](https://technet.microsoft.com/library/jj585012.aspx) og ved å bruke én av følgende metoder:
     > 
-    > -   For Office 2010, the client folder is **%localappdata%\Microsoft\DRM\Templates**.
-    > -   From a client computer that has downloaded all the templates, you can copy and then paste the template files to other computers.
+    > -   **Eksport, Rediger og Importer den oppdaterte malen**:  Dette er den enkleste metoden for å legge til eksterne brukere i en eksisterende mal som inneholder andre grupper. Bruk av [eksport-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx) cmdlet til å eksportere malen til en. CSV-fil som du kan redigere for å legge til de eksterne e-postadressene for disse brukerne og deres rettigheter til eksisterende grupper og rettigheter. Deretter bruker du [Import-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx) cmdlet til å importere denne endringen tilbake til Azure RMS.
+    > -   **Bruker et objekt for definisjon av rettigheter til å oppdatere en mal**:    Angi eksterne e-postadressene og deres rettigheter i en rettigheter definisjon-objektet, som du deretter kan bruke til å oppdatere malen. Du angi rettigheter definisjon objektet ved hjelp av den [Ny-AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx) cmdlet til å opprette en variabel, og deretter angir du denne variabelen til parameteren - RightsDefinition med de [Sett AadrmTemplateProperty](https://msdn.microsoft.com/library/azure/dn727076.aspx) cmdlet til å endre en eksisterende mal. Men hvis du legger til disse brukerne til en eksisterende mal, må du også definere rettigheter definisjon objekter for eksisterende grupper i malene og ikke bare de nye, eksterne brukerne.
+
+3.  Klikk Neste, og Tildel deretter én av de oppførte rettighetene til valgte brukere og grupper.
+
+    Bruk beskrivelsen vises for mer informasjon om hver rettighet (og egendefinerte rettigheter). Mer informasjon er også tilgjengelig i [Konfigurere bruksrettigheter for Azure Rights Management](../Topic/Configuring_Usage_Rights_for_Azure_Rights_Management.md). Programmer som støtter RMS kan imidlertid variere i hvordan de implementere disse rettighetene. Se dokumentasjonen for sine og gjøre dine egne tester med programmer som brukerne bruker til å kontrollere virkemåten før du distribuerer malen for brukere. Hvis du vil vise denne malen til bare administratorer for denne testingen, gjøre denne malen et avdelinger (trinn 6).
+
+4.  Hvis du valgte **egendefinerte**, klikk Neste-knappen, og velg deretter de egendefinerte rettighetene.
+
+    Men du kan bruke en hvilken som helst kombinasjon av rettighetene som er tilgjengelige i enkelte programmer, kanskje noen rettigheter har avhengigheter på andre individuelle rettigheter. Når dette er tilfellet, er avhengige rettigheter automatisk valgt.
+
+    > [!TIP]
+    > Vurder å legge til den **Kopier og trekke ut innhold** høyre og gi dette til valgte administratorer eller personell i andre roller som har ansvar for datagjenoppretting. Gi denne rettigheten, lar dem fjerne beskyttelsen ved behov, fra filer og e-postmeldinger som skal beskyttes ved hjelp av denne malen. Denne muligheten til å fjerne beskyttelsen på mal-nivået gir mer nyansert kontroll enn når du bruker funksjonen superbruker.
+
+5.  Klikk fullført.
+
+6.  Hvis du vil at malen skal vises for en undergruppe av brukere når de ser en liste over maler i programmer: Klikk **OMFANG** til å konfigurere dette som en mal for avdelinger, og klikk **Kom i gang nå**. Hvis ikke, går du til trinn 9.
+
+    Mer informasjon om avdelinger maler: Som standard ser alle malene som er publisert for alle brukerne i Azure-katalogen og de kan deretter velge dem fra programmer når de ønsker å beskytte innhold. Hvis du vil at bestemte brukere bare se noen av de publiserte malene, må du begrense maler for disse brukerne. Deretter bare disse brukerne skal kunne velge disse malene. Andre brukere som du ikke angir ser ikke malene, og derfor kan ikke velges. Denne teknikken kan gjøre for å velge riktig mal enklere for brukerne, særlig når du oppretter maler som er utformet for å brukes av spesifikke grupper eller avdelinger. Brukerne ser bare maler som er utformet for dem deretter.
+
+    Du har for eksempel opprettet en mal for personalavdelingen som gjelder skrivebeskyttet tillatelse for medlemmer i økonomiavdelingen. Slik at bare medlemmer i personalavdelingen kan bruke denne malen når de bruker rettighetsadministrasjon deling program, kalt omfang malen for e-post-aktiverte gruppen HumanResources. Deretter, bare medlemmer av denne gruppen se og kan bruke denne malen.
+
+7.  På den **mal SYNLIGHET** velger brukere og grupper som kan se og velge malen fra RMS-enlightened-programmer. Som må før, som beste praksis, Bruk grupper i stedet for brukere, og brukerne eller gruppene du velger ha en e-postadresse.
+
+8.  Klikk Neste, og avgjør om du trenger å konfigurere programkompatibilitet for malen for avdelinger. Hvis du gjør dette, klikker du **APPLICATION COMPATIBILITY**, merker du den, og klikk **fullført**.
+
+    Hvorfor du må kanskje konfigurere programkompatibilitet? Ikke alle programmer kan støtte avdelinger maler. Hvis du vil gjøre dette, må det først godkjenne programmet med RMS-tjenesten før du laster ned maler. Hvis godkjenningsprosessen ikke oppstår, som standard, ingen av avdelinger malene lastes ned. Du kan overstyre denne virkemåten ved å angi at alle avdelinger malene skal laste ned, ved å konfigurere programkompatibilitet og velge den **Vis denne malen for alle brukere når programmene ikke støtter brukeridentiteten** merket.
+
+    For eksempel, hvis du ikke konfigurerer programkompatibilitet for malen avdelinger i eksemplet vårt personale, se bare brukere i personalavdelingen malen avdelinger når de bruker RMS deling programmet, men ingen brukere se malen avdelinger når de bruker Outlook Web Access (OWA) fra Exchange Server-2013 Exchange OWA og Exchange ActiveSync for øyeblikket støtter ikke maler for avdelinger. Hvis du vil overstyre denne standardvirkemåten ved å konfigurere programkompatibilitet, ser bare brukere i personalavdelingen avdelingsnivå malen når de bruker RMS deling av programmet, men alle brukere se malen avdelinger når de bruker Outlook Web Access (OWA). Hvis brukerne bruker OWA eller Exchange ActiveSync fra Exchange Online, alle brukere vil se malene avdelinger eller ingen brukere vil se malene avdeling, basert på mal-status (arkivering eller publiserte) i Exchange Online.
+
+    > [!NOTE]
+    > Hvis du har programmer som ennå ikke støtter avdelingsnivå maler, kan du bruke en [Egendefinert RMS-malen nedlasting skript](http://go.microsoft.com/fwlink/?LinkId=524506) eller andre verktøy til å distribuere disse malene i mappen lokale RMS-klienten. Disse programmene vises deretter riktig avdelingsnivå malene til bare de brukerne og gruppene som du valgte for mal-området:
     > 
-    > You can [download the custom RMS template script from the Microsoft Connect site](http://go.microsoft.com/fwlink/?LinkId=524506). If you see an error when you click this link, you probably haven't registered on Microsoft Connect.   To register:
+    > -   Office 2010, klient-mappen er **%localappdata%\Microsoft\DRM\Templates**.
+    > -   Du kan kopiere og lime malfilene til andre datamaskiner fra en klientdatamaskin som er lastet ned alle malene.
     > 
-    > 1.  Go to the [Microsoft Connect site](http://www.connect.microsoft.com) and sign in with your Microsoft Account.
-    > 2.  Click **Directory**, and select the **View Connect products currently not accepting feedback** category.
-    > 3.  Search for **Rights Management Services**, and for the **Microsoft RMS Enterprise Features** program, click **Join**.
+    > Office-2016 støtter maler for avdelinger, og så støtter Office-2013 har de siste oppdateringene for Office ([KB 3054853](https://support.microsoft.com/kb/3054853)).
 
-9. Click **CONFIGURE** and add additional languages that users use, together with the name and description of this template in that language. When you have multi-language users, it’s important to add each language that they use, and supply a name and description in that language. Users will then see the name and description of the template in the same language as their client operating system, which ensures they understand the policy applied to a document or email message. If there is no match with their client operating system, the name and description that they see falls back to the language and description that you defined when you first created the template.
+9. Klikk **Konfigurer** og legge til flere språk som brukerne bruker, sammen med navnet på og beskrivelsen av denne malen på dette språket. Når du har brukere med flere språk, er det viktig å legge til hvert språk de bruker, og angi et navn og en beskrivelse i dette språket. Brukerne ser deretter navnet på og beskrivelsen av malen på samme språk som sin klient-operativsystem, som sikrer at de forstår policyen som gjelder for et dokument eller en e-postmelding. Hvis det ikke samsvarer ikke med sine klientoperativsystem, går navnet og beskrivelsen som ser de tilbake til språket og beskrivelsen du definerte da du først opprettet malen.
 
-    Then check whether you want to make any changes to the following settings:
+    Deretter sjekker du om du vil gjøre endringer i følgende innstillinger:
 
-    |Setting|More information|
-    |-----------|--------------------|
-    |**content expiration**|Define a date or number of days for this template when files that are protected by the template should not open. You can specify a date or specify a number of days starting from the time that the protection is applied to the file.<br /><br />When you specify a date, it is effective midnight, in your current time zone.|
-    |**offline access**|Use this setting to balance any security requirements that you have against the requirement that users must be able to open protected files when they don’t have an Internet connection.<br /><br />If you specify that content is not available without an Internet connection or that content is only available for a specified number of days, when that threshold is reached, users must be re-authenticated and their access is logged. When this happens, if their credentials are not cached, users are prompted to sign in before they can open the file.<br /><br />In addition to re-authentication, the policy and the user group membership is re-evaluated. This means that users could experience different access results for the same file if there are changes in the policy or group membership from when they last accessed the file.|
+    |Innstillingen|Hvis du vil ha mer informasjon|
+    |-----------------|----------------------------------|
+    |**utløpsdato for innhold**|Angi en dato eller et antall dager for denne malen når filer som er beskyttet av malen ikke åpnes. Du kan angi en dato eller et antall dager fra tidspunktet for beskyttelse brukes for filen.<br /><br />Når du angir en dato, er det effektive midnatt i gjeldende tidssone.|
+    |**frakoblet tilgang**|Bruk denne innstillingen til å balansere noen sikkerhetskrav at du har mot behovene som brukerne må være i stand til å åpne beskyttede filer når de ikke har en Internett-tilkobling.<br /><br />Hvis du angir at innholdet er ikke tilgjengelig uten en Internett-tilkobling eller innholdet er bare tilgjengelig for et angitt antall dager, når denne terskelen er nådd, brukere må være godkjent på nytt og deres tilgang er logget. Når dette skjer, hvis legitimasjonen ikke blir bufret, blir brukere bedt om å logge på før de kan åpne filen.<br /><br />I tillegg til godkjenning på nytt er policyen og gruppemedlemskap for brukeren på nytt evaluert. Dette betyr at brukerne får forskjellige tilgangsresultater for den samme filen hvis det er endringer i medlemskapet policy eller en gruppe fra når de sist åpnet filen.|
 
-10. When you are confident that the template is configured appropriately for your users, click **PUBLISH** to make the template visible for users, and then click **SAVE**.
+10. Når du er sikker på at malen er konfigurert på riktig måte for brukere, klikker du **Publiser** å gjøre malen synlig for brukere, og klikk deretter **Lagre**.
 
-11. Click the Back button in the classic portal to return to the **TEMPLATES** page, where your template now has an updated status of **Published**.
+11. Klikk Tilbake-knappen i Management-portalen for å gå tilbake til den **maler** -siden der malen nå har en oppdatert status på **publisert**.
 
-To make any changes to your template, select it, and then use the quick start steps again. Or, select one of the following options:
+Hvis du vil gjøre endringer i malen, merker du den og deretter bruke Hurtigstart-trinn. Eller velg ett av følgende alternativer:
 
--   To add more users and groups, and define the rights for those users and groups: Click **RIGHTS**, then click **ADD**.
+-   Du legger til flere brukere og grupper, og definerer rettighetene for disse brukerne og gruppene: Klikk **rettigheter**, deretter **legge til**.
 
--   To remove users or groups that you previously selected: Click **RIGHTS**, select the user or group from the list, and then click **DELETE**.
+-   Slik fjerner du brukere eller grupper som du tidligere har valgt: Klikk **rettigheter**, merker du brukeren eller gruppen fra listen, og klikk deretter **SLETTER**.
 
--   To change which users can see the templates to select them from applications: Click **SCOPE**, then click **ADD** or **DELETE**, or **APPLICATION COMPATIBILITY**.
+-   Slik endrer du hvilke brukere som kan se maler å velge dem fra programmer: Klikk **OMFANG**, deretter **legge til** eller **SLETTER**, eller **APPLICATION COMPATIBILITY**.
 
--   To make the template no longer visible to all users: Click **CONFIGURE**, click **ARCHIVE**, and then click **SAVE**.
+-   Du kan bruke malen ikke lenger synlig for alle brukere: Klikk **Konfigurer**, klikker du **ARKIV**, og klikk deretter **Lagre**.
 
--   To make other configuration changes: Click **CONFIGURE**, make your changes, and then click **SAVE**.
+-   Foreta andre konfigurasjonsendringer: Klikk **Konfigurer**, foreta endringene, og klikk deretter **Lagre**.
 
 > [!WARNING]
-> When you make changes to a template that was previously saved, clients will not see those changes to the template until templates are refreshed on their computers. For more information, see the [Refreshing templates for users](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_RefreshingTemplates) section in this topic.
+> Når du gjør endringer i en mal som ble lagret tidligere, se klienter ikke disse endringene i malen til maler er oppdatert på sine datamaskiner. Hvis du vil ha mer informasjon, se den [Oppdatering av maler for brukerne](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_RefreshingTemplates) delen i dette emnet.
 
-## <a name="BKMK_HowToCopyTemplates"></a>How to copy a template
-If you want to create a new template that has very similar settings to an existing template, select the original template on the **TEMPLATES** page, click **COPY**, specify a unique name, and make the changes that you need.
+## <a name="BKMK_HowToCopyTemplates"></a>Slik kopierer du en mal
+Hvis du vil opprette en ny mal som er veldig like innstillinger til en eksisterende mal, velger du den opprinnelige malen på den **maler** klikker du **Kopier**, angi et unikt navn og gjør endringene du trenger.
 
 > [!IMPORTANT]
-> When you copy a template, the **Published** or **Archived** status is also copied. So if you copy a published template, its immediate status will be published, unless you change it.
+> Når du kopierer en mal, den **publisert** eller **arkivert** status kopieres også. Så hvis du kopierer et publisert mal, umiddelbar statusen vil være publisert, med mindre du endrer den.
 
-You can copy custom templates and the default templates. As a best practice, copy one of the default templates instead of creating a new custom template if you want the template to grant rights to all users in your organization. This method means that you don’t have to create or select multiple groups to specify all users. In this scenario however, be sure to specify a new name and description for the copied template for additional languages.
+Du kan kopiere egendefinerte maler og standardmalene. Som beste praksis, kan du kopiere en av standardmalene som i stedet for å opprette en ny egendefinert mal hvis du vil at malen skal gi rettigheter til alle brukerne i organisasjonen. Denne metoden betyr at du ikke trenger å opprette eller velge flere grupper til å angi alle brukere. I dette scenariet, må du angi et nytt navn og beskrivelse for den kopierte malen for flere språk.
 
-## <a name="BKMK_HowToArchiveTemplates"></a>How to remove (archive) templates
-The default templates cannot be deleted, but they can be archived so that users do not see them.
+## <a name="BKMK_HowToArchiveTemplates"></a>Slik fjerner du maler (arkiv)
+Standardmaler kan ikke slettes, men de kan arkiveres slik at brukerne ikke ser dem.
 
-Similarly, if you have published a custom template and no longer want users to be able to see it, you can edit the template and choose **ARCHIVE** and **SAVE** from the **CONFIGURE** page. Or, you can select it from the **TEMPLATES** page and select **ARCHIVE**.
+På samme måte, hvis du har publisert en egendefinert mal og ikke lenger vil at brukere skal kunne se det, du kan redigere malen og velger **ARKIV** og **Lagre** fra den **Konfigurer** siden. Du kan velge den fra den **maler** siden og velg **ARKIV**.
 
-Because you cannot edit the default templates, to archive these templates, you must use the **ARCHIVE** option from the **TEMPLATES** page. You cannot archive the Outlook **Do Not Forward** option.
+Fordi du ikke kan redigere standardmalene, hvis du vil arkivere disse malene må du bruke det **ARKIV** alternativ fra den **maler** siden. Du kan arkivere Outlook **ikke Videresend** alternativet.
 
-#### To remove a default template
+#### Slik fjerner du en standardmal
 
--   From the **TEMPLATES** page, select the default template, and click **ARCHIVE**.
+-   Fra den **maler** velger du standardmalen, og klikk **ARKIV**.
 
-The status changes from **Published** to **Archived**. If you change your mind, select the template and click **PUBLISH**.
+Statusen endres fra **publisert** til **arkivert**. Hvis du ombestemmer deg, velger du malen og velger **Publiser**.
 
-## <a name="BKMK_RefreshingTemplates"></a>Refreshing templates for users
-When you use Azure RMS, templates are automatically downloaded to client computers so that users can select them from their applications. However, you might need to take additional steps if you make changes to the templates:
+## <a name="BKMK_RefreshingTemplates"></a>Oppdatering av maler for brukerne
+Når du bruker Azure RMS, ned maler automatisk til klientmaskiner slik at brukere kan velge dem fra sine programmer. Du må imidlertid ta forholdsregler Hvis du gjør endringer i listen over maler:
 
-|Application or service|How templates are refreshed after changes|
-|--------------------------|---------------------------------------------|
-|Exchange Online|Manual configuration required to refresh templates.<br /><br />For the configuration steps, expand the following section, [Exchange Online only: How to configure Exchange to download changed custom templates](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_ExchangeOnlineTemplatesUpdate).|
-|Office 365|Automatically refreshed  – no additional steps required.|
-|Office 2016 and Office 2013<br /><br />RMS sharing application for Windows|Automatically refreshed – on a schedule:<br /><br />For these later versions of Office: The default refresh interval  is every 7 days.<br /><br />For the RMS sharing application for Windows: Starting with version 1.0.1784.0, the default refresh interval is every 1 day. Prior versions have a default refresh interval of every 7 days.<br /><br />To force a refresh sooner than this schedule, expand the following section, [Office 2016, Office 2013, and RMS sharing application for Windows: How to force a refresh for a changed custom template](#BKMK_Office2013ForceUpdate).|
-|Office 2010|Refreshed when users log on.<br /><br />To force a refresh, ask or force users to log off and log back on again. Or, see the following section, [Office 2010 only: How to force a refresh for a changed custom template](#BKMK_Office2010ForceUpdate).|
-For mobile devices that use the RMS sharing application, templates are automatically downloaded (and refreshed if necessary) without additional configuration required.
+|Program eller tjeneste|Hvordan maler er oppdatert etter endringer|
+|--------------------------|----------------------------------------------|
+|Exchange Online|Manuell konfigurasjon kreves for å oppdatere maler.<br /><br />For at konfigurasjonstrinnene, utvider du delen nedenfor [Exchange Online bare: Slik konfigurerer du Exchange for å laste ned endret egendefinerte maler](../Topic/Configuring_Custom_Templates_for_Azure_Rights_Management.md#BKMK_ExchangeOnlineTemplatesUpdate).|
+|Office 365|Automatisk oppdatert – ingen flere trinn kreves.|
+|2016 for Office og Office-2013<br /><br />Deling av programmer for Windows RMS|Automatisk oppdatert – en tidsplan:<br /><br />-   For disse senere versjoner av Office: Standard oppdateringsintervall er hver 7 dager.<br />-   For RMS deling av programmer for Windows: Fra og med versjon 1.0.1784.0, er standard oppdateringsintervall hver 1 dag. Tidligere versjoner har en standard Oppdateringsintervall for hver 7 dager.<br /><br />Utvid delen nedenfor for å fremtvinge en oppdatering tidligere enn denne tidsplanen [2016 for Office, Office-2013 og RMS deling av programmer for Windows: Slik tvinger du en oppdatering for et endret egendefinert mal](#BKMK_Office2013ForceUpdate).|
+|Office 2010|Oppdatert når brukere logger seg.<br /><br />Hvis du vil fremtvinge en oppdatering, kan du be eller tvinge brukere til å logge av, og Logg på igjen på nytt. Eller, kan du se delen nedenfor [Office 2010: Slik tvinger du en oppdatering for et endret egendefinert mal](#BKMK_Office2010ForceUpdate).|
+For mobile enheter som bruker RMS deler programmet, maler automatisk nedlasting (og oppdatert om nødvendig) uten ytterligere konfigurasjon er nødvendig.
 
-### <a name="BKMK_ExchangeOnlineTemplatesUpdate"></a>Exchange Online only: How to configure Exchange to download changed custom templates
-If you have already configured Information Rights Management (IRM) for Exchange Online, custom templates will not download for users until you make the following changes by using Windows PowerShell in Exchange Online.
+### <a name="BKMK_ExchangeOnlineTemplatesUpdate"></a>Exchange Online bare: Slik konfigurerer du Exchange for å laste ned endret egendefinerte maler
+Hvis du allerede har konfigurert (IRM-Information Rights Management) for Exchange Online, ned egendefinerte maler ikke for brukere, før du gjør følgende endringer ved hjelp av Windows PowerShell i Exchange Online.
 
 > [!NOTE]
-> For more information about how to use Windows PowerShell in Exchange Online, see [Using PowerShell with Exchange Online](https://technet.microsoft.com/library/jj200677%28v=exchg.160%29.aspx).
+> Hvis du vil ha mer informasjon om hvordan du bruker Windows PowerShell i Exchange Online, kan du se [ved hjelp av PowerShell med Exchange Online](https://technet.microsoft.com/library/jj200677%28v=exchg.160%29.aspx).
 
-You must do this procedure each time you change a template.
+Du må gjøre dette hver gang du endrer en mal.
 
-##### To update templates for Exchange Online
+##### Oppdatere maler for Exchange Online
 
-1.  Using Windows PowerShell in Exchange Online, connect to the service:
+1.  Hvis du bruker Windows PowerShell i Exchange Online, koble til tjenesten:
 
-    1.  Supply your Office 365 user name and password:
+    1.  Oppgi Office 365-brukernavn og passord:
 
         ```
         $Cred = Get-Credential
         ```
 
-    2.  Connect to the Exchange Online service by running the following two commands:
+    2.  Koble til Exchange Online-tjenesten ved å kjøre følgende to kommandoer:
 
         ```
         $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.outlook.com/powershell/ -Credential $Cred -Authentication Basic –AllowRedirection
@@ -246,148 +239,148 @@ You must do this procedure each time you change a template.
         Import-PSSession $Session
         ```
 
-2.  Use the [Import-RMSTrustedPublishingDomain](http://technet.microsoft.com/library/jj200724%28v=exchg.160%29.aspx) cmdlet to re-import your trusted publishing domain (TPD) from Azure RMS:
+2.  Bruk av [Import-RMSTrustedPublishingDomain](http://technet.microsoft.com/library/jj200724%28v=exchg.160%29.aspx) cmdlet å importere på nytt klarerte publisering domenet (TPD) fra Azure RMS:
 
     ```
     Import-RMSTrustedPublishingDomain -Name "<TPD name>" -RefreshTemplates -RMSOnline
     ```
-    For example, if your TPD name is **RMS Online - 1** (a typical name for many organizations), enter: **Import-RMSTrustedPublishingDomain -Name "RMS Online - 1" -RefreshTemplates -RMSOnline**
+    Hvis navnet på TPD er for eksempel **RMS Online - 1** (et vanlig navn for mange organisasjoner), skriver du inn: **Import-RMSTrustedPublishingDomain -Name "RMS Online - 1" -RefreshTemplates -RMSOnline**
 
     > [!NOTE]
-    > To verify your TPD name, you can use the [Get-RMSTrustedPublishingDomain](http://technet.microsoft.com/library/jj200707%28v=exchg.160%29.aspx) cmdlet.
+    > Hvis du vil kontrollere navnet ditt TPD, kan du bruke den [Get-RMSTrustedPublishingDomain](http://technet.microsoft.com/library/jj200707%28v=exchg.160%29.aspx) cmdleten.
 
-3.  To confirm that the templates have imported successfully, wait a few minutes and then run the [Get-RMSTemplate](http://technet.microsoft.com/library/dd297960%28v=exchg.160%29.aspx) cmdlet and set the Type to All. For example:
+3.  Vent noen minutter for å bekrefte at malene er importert, og deretter kjøre den [Get-RMSTemplate](http://technet.microsoft.com/library/dd297960%28v=exchg.160%29.aspx) cmdlet og angi Type for alle. For eksempel:
 
     ```
     Get-RMSTemplate -TrustedPublishingDomain "RMS Online - 1" -Type All
     ```
     > [!TIP]
-    > It's useful to keep a copy of the output so that you can easily copy the template names or GUIDs if you later archive a template.
+    > Det er nyttig å beholde en kopi av utdata, slik at du kan enkelt kopiere navn eller GUIDer Hvis du arkiverer en mal senere.
 
-4.  For each imported template that you want to be available in the Outlook Web App, you must use the [Set-RMSTemplate](http://technet.microsoft.com/library/hh529923%28v=exchg.160%29.aspx) cmdlet and set the Type to Distributed:
+4.  For hver importerte malen som du vil skal være tilgjengelige i Outlook Web App, må du bruke den [Sett RMSTemplate](http://technet.microsoft.com/library/hh529923%28v=exchg.160%29.aspx) cmdlet og angi typen til distribuert:
 
     ```
     Set-RMSTemplate -Identity "<name  or GUID of the template>" -Type Distributed
     ```
-    Because Outlook Web Access caches the UI for 24 hours, users might not see the new template for up to a day.
+    Fordi Outlook Web Access bufrer Brukergrensesnittet i 24 timer, kan ikke brukerne se den nye malen for opp til en dag.
 
-In addition, if you archive a template (custom or default) and use Exchange Online with Office 365, users will continue to see the archived templates if they use the Outlook Web App or mobile devices that use the Exchange ActiveSync Protocol.
+Hvis du arkiverer en mal (egendefinert eller standard) og bruke Exchange Online med Office 365 brukere vil se arkiverte maler hvis de bruker Outlook Web App eller mobile enheter som bruker Exchange ActiveSync-protokollen.
 
-So that users no longer see these templates, connect to the service by using Windows PowerShell in Exchange Online, and then use the [Set-RMSTemplate](http://technet.microsoft.com/library/hh529923%28v=exchg.160%29.aspx) cmdlet by running the following command:
+Slik at brukere kan ikke lenger se disse malene, koble til tjenesten ved hjelp av Windows PowerShell i Exchange Online, og bruk deretter den [Sett RMSTemplate](http://technet.microsoft.com/library/hh529923%28v=exchg.160%29.aspx) cmdlet ved å kjøre følgende kommando:
 
 ```
 Set-RMSTemplate -Identity "<name or GUID of the template>" -Type Archived
 ```
 
-### <a name="BKMK_Office2013ForceUpdate"></a>Office 2016,  Office 2013, and RMS sharing application for Windows: How to force a refresh for a changed custom template
-By editing the registry on the computers running Office 2016, Office 2013, or the Rights Management (RMS) sharing application for Windows, you can change the automatic schedule so that changed templates are refreshed on computers more frequently than their default value. You can also force an immediate refresh by deleting the existing data in a registry value.
+### <a name="BKMK_Office2013ForceUpdate"></a>2016 for Office, Office-2013 og RMS deling av programmer for Windows: Slik tvinger du en oppdatering for et endret egendefinert mal
+Du kan endre automatiske tidsplanen ved å redigere registret på datamaskinene som kjører Office-2016, Office 2013 eller RMS (Rights Management) deling av programmer for Windows, slik at endrede maler oppdateres oftere enn standardverdien på datamaskiner. Du kan også tvinge en umiddelbar oppdatering ved å slette de eksisterende data i en registerverdi.
 
 > [!WARNING]
-> If you use the Registry Editor incorrectly, you might cause serious problems that might require you to reinstall the operating system. Microsoft cannot guarantee that you can solve problems that result from using the Registry Editor incorrectly. Use the Registry Editor at your own risk.
+> Hvis du bruker Registerredigering på feil måte, kan du forårsake alvorlige problemer som krever at du installerer operativsystemet på nytt. Microsoft kan ikke garantere at du kan løse problemer som er forårsaket av feil bruk av Registerredigering. Bruk Registerredigering på egen risiko.
 
-##### To change the automatic schedule
+##### Å endre tidsplanen for automatisk
 
-1.  Using a registry editor, create and set one of the following registry values:
+1.  Registerredigering, opprette og angi en av følgende registerverdier:
 
-    -   To set an update frequency in days (minimum of 1 day):  Create a new registry value named **TemplateUpdateFrequency** and define an integer value for the data, which specifies the frequency in days to download any changes to a downloaded template. Use the following table to locate the registry path to create this new registry value.
+    -   Angi en oppdateringsfrekvens i dager (minimum 1 dag):  Opprett en ny registerverdi kalt **TemplateUpdateFrequency** og definere en heltallsverdi for data, som angir frekvensen i dager for å laste ned eventuelle endringer til nedlastede malen. Bruk tabellen nedenfor til å finne registerbane for å opprette denne nye registerverdien.
 
-        |Registry path|Type|Value|
-        |-----------------|--------|---------|
+        |Registerbane|Type|Verdi|
+        |----------------|--------|---------|
         |HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC|REG_DWORD|TemplateUpdateFrequency|
 
-    -   To set an update frequency in seconds (minimum of 1 second):  Create a new registry value named **TemplateUpdateFrequencyInSeconds** and define an integer value for the data, which specifies the frequency in seconds to download any changes to a downloaded template. Use the following table to locate the registry path to create this new registry value.
+    -   Angi en oppdateringsfrekvens i sekunder (minimum 1 sekund):  Opprett en ny registerverdi kalt **TemplateUpdateFrequencyInSeconds** og definere en heltallsverdi for data, som angir frekvensen i sekunder å laste ned eventuelle endringer til nedlastede malen. Bruk tabellen nedenfor til å finne registerbane for å opprette denne nye registerverdien.
 
-        |Registry path|Type|Value|
-        |-----------------|--------|---------|
+        |Registerbane|Type|Verdi|
+        |----------------|--------|---------|
         |HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC|REG_DWORD|TemplateUpdateFrequencyInSeconds|
 
-    Make sure that you create and set one of these registry values, not both. If both are present, **TemplateUpdateFrequency** is ignored.
+    Kontroller at du oppretter og sette inn én av disse registerverdiene ikke begge deler. Hvis begge er til stede, **TemplateUpdateFrequency** ignoreres.
 
-2.  If you want to force an immediate refresh of the templates, go to the next procedure. Otherwise, restart your Office applications and instances of File Explorer now.
+2.  Hvis du vil tvinge en umiddelbar oppdatering av malene, kan du gå til neste prosedyre. Hvis ikke, Start Office-programmer og forekomster av File Explorer nå.
 
-##### To force an immediate refresh
+##### Hvis du vil tvinge en umiddelbar oppdatering
 
-1.  Using a registry editor, delete the data for the **LastUpdatedTime** value. For example, the data might display **2015-04-20T15:52**; delete 2015-04-20T15:52 so that no data is displayed. Use the following table to locate the registry path to delete this registry value data.
+1.  Bruk av Registerredigering, slette data for det **LastUpdatedTime** verdi. Dataene kan for eksempel vise **2015-04-20T15:52**; slette 2015-04-20T15:52 slik at ingen data vises. Bruk tabellen nedenfor til å finne registerbane Hvis du vil slette denne verdien registerdata.
 
-    |Registry path|Type|Value|
-    |-----------------|--------|---------|
-    |HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\&lt;MicrosoftRMS_FQDN&gt;\Template|REG_SZ|LastUpdatedTime|
+    |Registerbane|Type|Verdi|
+    |----------------|--------|---------|
+    |HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\MSIPC\ &lt; MicrosoftRMS_FQDN &gt; \Template|REG_SZ|LastUpdatedTime|
     > [!TIP]
-    > In the registry path, *&lt;MicrosoftRMS_FQDN&gt;* refers to your Microsoft RMS service FQDN. If you want to verify this value:
+    > I registerbane, *&lt; MicrosoftRMS_FQDN &gt;* refererer til Microsoft RMS-tjenesten FQDN. Hvis du vil kontrollere denne verdien:
     > 
-    > 1.  Run the [Get-AadrmConfiguration](https://msdn.microsoft.com/library/windowsazure/dn629410.aspx) cmdlet for Azure RMS. If you haven’t already installed the Windows PowerShell module for Azure RMS, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
-    > 2.  From the output, identify the **LicensingIntranetDistributionPointUrl** value.
+    > 1.  Kjøre den [Get-AadrmConfiguration](https://msdn.microsoft.com/library/windowsazure/dn629410.aspx) cmdleten for Azure RMS. Hvis du ikke allerede har installert Windows PowerShell-modul for Azure RMS, se [Installere Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+    > 2.  Fra utdataene, kan du identifisere den **LicensingIntranetDistributionPointUrl** verdi.
     > 
-    >     For example: **LicensingIntranetDistributionPointUrl   : https://5c6bb73b-1038-4eec-863d-49bded473437.rms.na.aadrm.com/_wmcs/licensing**
-    > 3.  From the value, remove **https://** and **/_wmcs/licensing** from this string. The remaining value is your Microsoft RMS service FQDN. In our example, the Microsoft RMS service FQDN would be the following value:
+    >     For eksempel: **LicensingIntranetDistributionPointUrl: https://5c6bb73b-1038-4eec-863d-49bded473437.rms.na.aadrm.com/_wmcs/licensing**
+    > 3.  Fra-verdien, kan du fjerne **https://** og **/_wmcs/lisensiering** fra denne strengen. Den gjenværende verdien er tjenesten Microsoft RMS FQDN. I vårt eksempel være tjenesten Microsoft RMS FQDN følgende verdi:
     > 
     >     **5c6bb73b-1038-4eec-863d-49bded473437.rms.na.aadrm.com**
 
-2.  Delete the following folder and all files it contains: **%localappdata%\Microsoft\MSIPC\Templates**
+2.  Slette følgende mappe og alle filer den inneholder: **%localappdata%\Microsoft\MSIPC\Templates**
 
-3.  Restart your Office applications and instances of File Explorer.
+3.  Start Office-programmer og forekomster av File Explorer på nytt.
 
-### <a name="BKMK_Office2010ForceUpdate"></a>Office 2010 only: How to force a refresh for a changed custom template
-By editing the registry on the computers running Office 2010, you can set a value so that changed templates are refreshed on computers without waiting for users to log off and back on. You can also force an immediate refresh by deleting the existing data in a registry value.
+### <a name="BKMK_Office2010ForceUpdate"></a>Office 2010: Slik tvinger du en oppdatering for et endret egendefinert mal
+Du kan angi en verdi ved å redigere registret på datamaskinene som kjører Office 2010, slik at endrede maler er oppdatert på datamaskiner uten å vente for brukere å logge av og på igjen. Du kan også tvinge en umiddelbar oppdatering ved å slette de eksisterende data i en registerverdi.
 
 > [!WARNING]
-> If you use the Registry Editor incorrectly, you might cause serious problems that might require you to reinstall the operating system. Microsoft cannot guarantee that you can solve problems that result from using the Registry Editor incorrectly. Use the Registry Editor at your own risk.
+> Hvis du bruker Registerredigering på feil måte, kan du forårsake alvorlige problemer som krever at du installerer operativsystemet på nytt. Microsoft kan ikke garantere at du kan løse problemer som er forårsaket av feil bruk av Registerredigering. Bruk Registerredigering på egen risiko.
 
-##### To change the update frequency
+##### Slik endrer du oppdateringsfrekvensen
 
-1.  Using a registry editor, create a new registry value named **UpdateFrequency** and define an integer value for the data, which specifies the frequency in days to download any changes to a downloaded template. Use the following table to locate the registry path to create this new registry value.
+1.  Ved hjelp av Registerredigering, opprette en ny registerverdi kalt **UpdateFrequency** og definere en heltallsverdi for data, som angir frekvensen i dager for å laste ned eventuelle endringer til nedlastede malen. Bruk tabellen nedenfor til å finne registerbane for å opprette denne nye registerverdien.
 
-    |Registry path|Type|Value|
-    |-----------------|--------|---------|
+    |Registerbane|Type|Verdi|
+    |----------------|--------|---------|
     |HKEY_CURRENT_USER\Software\Microsoft\MSDRM\TemplateManagement|REG_DWORD|UpdateFrequency|
 
-2.  If you want to force an immediate refresh of the templates, go to the next procedure. Otherwise, restart your Office applications now.
+2.  Hvis du vil tvinge en umiddelbar oppdatering av malene, kan du gå til neste prosedyre. Hvis ikke, Start Office-programmene nå.
 
-##### To force an immediate refresh
+##### Hvis du vil tvinge en umiddelbar oppdatering
 
-1.  Using a registry editor, delete the data for the **LastUpdatedTime** value. For example, the data might display **2015-04-20T15:52**; delete 2015-04-20T15:52 so that no data is displayed. Use the following table to locate the registry path to delete this registry value data.
+1.  Bruk av Registerredigering, slette data for det **LastUpdatedTime** verdi. Dataene kan for eksempel vise **2015-04-20T15:52**; slette 2015-04-20T15:52 slik at ingen data vises. Bruk tabellen nedenfor til å finne registerbane Hvis du vil slette denne verdien registerdata.
 
-    |Registry path|Type|Value|
-    |-----------------|--------|---------|
+    |Registerbane|Type|Verdi|
+    |----------------|--------|---------|
     |HKEY_CURRENT_USER\Software\Microsoft\MSDRM\TemplateManagement|REG_SZ|lastUpdatedTime|
 
-2.  Delete the following folder and all files it contains: **%localappdata%\Microsoft\MSIPC\Templates**
+2.  Slette følgende mappe og alle filer den inneholder: **%localappdata%\Microsoft\MSIPC\Templates**
 
-3.  Restart your Office applications.
+3.  Start Office-programmene.
 
-## <a name="BKMK_PowerShellTemplates"></a>Windows PowerShell reference
-Everything that you can do in the Azure classic portal to create and manage templates, you can do from the command line, by using Windows PowerShell. In addition, you can export and import templates, so that you can copy templates between tenants or perform bulk edits of complex properties in templates, such as multilingual names and descriptions.
+## <a name="BKMK_PowerShellTemplates"></a>Windows PowerShell-referanse
+Alt du kan gjøre i Azure Management Portal til å opprette og behandle maler, kan du gjøre fra kommandolinjen ved hjelp av Windows PowerShell. I tillegg kan du eksportere og importere maler, slik at du kan kopiere malene mellom leiere eller utføre bulk redigeringer av komplekse egenskaper i maler, for eksempel flerspråklige navn og beskrivelser.
 
-You can also use export and import to back up and restore your custom templates, As a best practice, regularly back up your custom templates, so that if you make a change that was not intended, you can easily revert to a previous version.
+Du kan også bruke eksport og import for å sikkerhetskopiere og gjenopprette de egendefinerte malene som beste praksis, jevnlig sikkerhetskopiere egendefinerte maler, slik at hvis du gjør en endring som ikke er beregnet, kan du enkelt gå tilbake til en tidligere versjon.
 
 > [!IMPORTANT]
-> To use Windows PowerShell to create and manage Azure RMS rights policy templates, you must have at least version 2.0.0.0 of the [Windows PowerShell module for Azure RMS](http://go.microsoft.com/fwlink/?LinkId=257721).
+> Hvis du vil bruke Windows PowerShell til å opprette og administrere Azure RMS policymaler for rettigheter, må du ha minst versjon 2.0.0.0 av den [Windows PowerShell-modul for Azure RMS](http://go.microsoft.com/fwlink/?LinkId=257721).
 > 
-> If you have previously installed this Windows PowerShell module, run the following command in a PowerShell window to check the version number: `(Get-Module aadrm -ListAvailable).Version`
+> Hvis du tidligere har installert denne Windows PowerShell-modulen, kjører du følgende kommando i en PowerShell-vinduet for å kontrollere versjonsnummeret: `(Get-Module aadrm -ListAvailable).Version`
 
-For installation instructions, see [Installing Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
+For å lese installasjonsinstrukser, kan du se [Installere Windows PowerShell for Azure Rights Management](../Topic/Installing_Windows_PowerShell_for_Azure_Rights_Management.md).
 
-The cmdlets that support creating and managing templates:
+Cmdlets som støtter å opprette og administrere maler:
 
--   [Add-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727075.aspx)
+-   [Legge til AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727075.aspx)
 
--   [Export-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx)
+-   [Eksport av AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727078.aspx)
 
 -   [Get-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727079.aspx)
 
 -   [Get-AadrmTemplateProperty](https://msdn.microsoft.com/library/azure/dn727081.aspx)
 
--   [Import-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx)
+-   [Importer AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727077.aspx)
 
--   [New-AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx)
+-   [Nye AadrmRightsDefinition](https://msdn.microsoft.com/library/azure/dn727080.aspx)
 
--   [Remove-AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727082.aspx)
+-   [Fjern AadrmTemplate](https://msdn.microsoft.com/library/azure/dn727082.aspx)
 
--   [Set-AadrmTemplateProperty](https://msdn.microsoft.com/library/azure/dn727076.aspx)
+-   [Sett AadrmTemplateProperty](https://msdn.microsoft.com/library/azure/dn727076.aspx)
 
-## Next steps
-After you’ve configured custom templates for Azure Rights Management, use the [Azure Rights Management Deployment Roadmap](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) to check whether there are other configuration steps that you might want to do before you roll out [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] to users and administrators. If there are no other configuration steps that you need to do, see [Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md) for operational guidance to support a successful deployment for your organization.
+## Neste trinn
+Når du har konfigurert egendefinerte maler for Azure Rights Management, bruker du [Veikart for Azure Rights Management-distribusjon](../Topic/Azure_Rights_Management_Deployment_Roadmap.md) til å kontrollere om det finnes andre konfigurasjonstrinn som du vil gjøre før du ruller [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] for brukere og administratorer. Hvis det ikke er noen andre konfigurasjonstrinn du trenger å gjøre, se [Ved hjelp av Azure Rights Management](../Topic/Using_Azure_Rights_Management.md) for operative veiledning til å støtte en vellykket distribusjon for organisasjonen.
 
-## See Also
-[Configuring Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
+## Se også
+[Konfigurere Azure Rights Management](../Topic/Configuring_Azure_Rights_Management.md)
 

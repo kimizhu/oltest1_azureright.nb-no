@@ -3,160 +3,159 @@ description: na
 keywords: na
 title: Operations for Your Azure Rights Management Tenant Key
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 1284d0ee-0a72-45ba-a64c-3dcb25846c3d
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Operations for Your Azure Rights Management Tenant Key
-Depending on your tenant key topology (Microsoft-managed or customer-managed), you have different levels of control and responsibility for your Microsoft Azure Rights Management (Azure RMS) tenant key after it is implemented.
+# Operasjoner leietakeradministrasjon n&#248;kkelen Azure Rights Management
+Avhengig av leier viktige topologien (administreres av Microsoft eller kunde-administrert) har du ulike nivåer av kontroll og ansvar for Microsoft Azure Rights Management (Azure RMS) leier-tasten etter at den er implementert.
 
-When you manage your own tenant key, this is often referred to as bring your own key (BYOK). For more information about this scenario and how to choose between the two tenant key topologies, see [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md).
+Dette kalles ofte for å bringe din egen nøkkel (BYOK) som når du administrerer din egen leier nøkkel. Hvis du vil ha mer informasjon om dette scenariet, og hvordan du kan velge mellom de to leier viktige topologi, se [Planlegging og implementering av Azure Rights Management leier nøkkelen](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md).
 
-The following table identifies which operations you can do, depending on the topology that you’ve chosen for your Azure RMS tenant key.
+Tabellen nedenfor viser hvilke operasjoner som du kan gjøre, avhengig av topologi som du har valgt for Azure RMS leier-tasten.
 
-|Lifecycle operation|Microsoft-managed (default)|Customer-managed (BYOK)|
-|-----------------------|-------------------------------|---------------------------|
-|Revoke your tenant key|No (automatic)|No (automatic)|
-|Re-key your tenant key|Yes|Yes|
-|Backup and recover your tenant key|No|Yes|
-|Export your tenant key|Yes|No|
-|Respond to a breach|Yes|Yes|
-After you have identified which topology you have implemented, use one of the following sections for more information about these operations for your Azure RMS tenant key.
+|Lifecycle operasjon|Microsoft-administrerte (standard)|Kunde-administrerte (BYOK)|
+|-----------------------|--------------------------------------|------------------------------|
+|Oppheve leier-nøkkel|Ingen (automatisk)|Ingen (automatisk)|
+|Nye nøkler leier-nøkkel|Ja|Ja|
+|Sikkerhetskopiere og gjenopprette leier-nøkkel|Nei|Ja|
+|Leier-nøkkelen for dataeksport|Ja|Nei|
+|Svare på et brudd|Ja|Ja|
+Når du har identifisert hvilke topologien du har implementert, kan du bruke en av følgende deler for mer informasjon om disse operasjonene for Azure RMS leier-tasten.
 
-## <a name="BKMK_MSManagedOperations"></a>Microsoft-managed: Tenant key lifecycle operations
-If Microsoft manages your tenant key for Azure Rights Management (the default), use the following sections for more information about the lifecycle operations that are relevant to this topology:
+## <a name="BKMK_MSManagedOperations"></a>Styrt av Microsoft: Leier viktige levetid drift
+Hvis Microsoft behandler leier nøkkelen for Azure Rights Management (standard), kan du bruke følgende deler for mer informasjon om kundestøttesyklus operasjonene som er relevante for denne topologien:
 
--   [Revoke your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRevoke)
+-   [Oppheve leier-nøkkel](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRevoke)
 
--   [Re-key your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRekey)
+-   [Nye nøkler leier-nøkkel](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRekey)
 
--   [Backup and recover your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSBackup)
+-   [Sikkerhetskopiere og gjenopprette leier-nøkkel](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSBackup)
 
--   [Export your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSExport)
+-   [Leier-nøkkelen for dataeksport](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSExport)
 
--   [Respond to a breach](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSBreach)
+-   [Svare på et brudd](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSBreach)
 
-### <a name="BKMK_MSRevoke"></a>Revoke your tenant key
-When you unsubscribe from Azure RMS, Azure RMS stops using your tenant key and no action is needed from you.
+### <a name="BKMK_MSRevoke"></a>Oppheve leier-nøkkel
+Når du stoppe abonnementet på Azure RMS, Azure RMS stopper ved hjelp av nøkkelen leier og ingen handling er nødvendig fra deg.
 
-### <a name="BKMK_MSRekey"></a>Re-key your tenant key
-Re-keying is also known as rolling your key. Do not re-key your tenant key unless it’s really necessary. Older clients, such as Office 2010, were not designed to handle key changes gracefully. In this scenario, you must clear the RMS state on computers by using Group Policy or an equivalent mechanism. However, there are some legitimate events that may force you to re-key your tenant key. For example:
+### <a name="BKMK_MSRekey"></a>Nye nøkler leier-nøkkel
+Ny inntasting av er også kjent som ruller inn nøkkelen. Ikke nye nøkler leier-nøkkel med mindre det er helt nødvendig. Eldre klienter, for eksempel Office 2010 er ikke laget for å håndtere endringer elegant. I dette scenariet må du fjerne RMS-tilstand på datamaskiner ved hjelp av gruppepolicy eller en tilsvarende mekanisme. Det er imidlertid enkelte legitime hendelser som kan tvinge deg til å taste leier-nøkkelen på nytt. For eksempel:
 
--   Your company has split into two or more companies. When you re-key your tenant key, the new company will not have access to new content that your employees publish. They can access the old content if they have a copy of the old tenant key.
+-   Firmaet ditt er delt inn i to eller flere firmaer. Når nye nøkler du leier-tasten, får ikke tilgang til nytt innhold som publiserer ansatte i det nye firmaet. De får tilgang til det gamle innholdet hvis de har en kopi av den gamle leier-nøkkelen.
 
--   You believe the master copy of your tenant key (the copy in your possession) was compromised.
+-   Du tror hovedkopien av leier nøkkelen (kopi i din besittelse) ble skadet.
 
-You can re-key your tenant key by calling Microsoft Customer Support Services (CSS) and proving that you are the tenant administrator.
+Du kan tasten leier-nøkkelen på nytt ved å kalle Microsofts kundestøttetjeneste (CSS) og bevise at du er administrator for leieradministrasjon.
 
-When you re-key your tenant key, new content is protected by using the new tenant key. This happens in a phased manner, so for a period of time, some new content will continue to be protected with the old tenant key. Previously protected content stays protected to your old tenant key. To support this scenario, Azure RMS retains your old tenant key so that it can issue licenses for old content.
+Når nye nøkler du leier-nøkkelen, er nye innholdet beskyttet ved hjelp av den nye nøkkelen for leietakeradministrasjon. Dette skjer på en tretrinns måte, slik at for en bestemt tidsperiode, noe nytt innhold vil fortsette å være beskyttet med nøkkelen gamle leier. Tidligere forblir beskyttet innhold beskyttet til den gamle for leietakeradministrasjon. Hvis du vil støtte dette scenarioet, beholder Azure RMS gamle leier nøkkelen slik at den kan utstede lisenser for gammelt innhold.
 
-### <a name="BKMK_MSBackup"></a>Backup and recover your tenant key
-Microsoft is responsible for backing up your tenant key and no action is required from you.
+### <a name="BKMK_MSBackup"></a>Sikkerhetskopiere og gjenopprette leier-nøkkel
+Microsoft er ansvarlig for å sikkerhetskopiere leier-nøkkelen, og det kreves ingen handling fra deg.
 
-### <a name="BKMK_MSExport"></a>Export your tenant key
-You can export your Azure RMS configuration and tenant key by following the instructions in these three steps:
+### <a name="BKMK_MSExport"></a>Leier-nøkkelen for dataeksport
+Du kan eksportere Azure RMS-konfigurasjonen og leier nøkkelen ved å følge instruksjonene i tre trinn:
 
-##### Step 1: Initiate export
+##### Trinn 1: Starte eksport
 
--   To do this, contact Microsoft Customer Service Support (CSS). You must prove you are an administrator for your Azure RMS tenant.
+-   Hvis du vil gjøre dette, kan du kontakte Microsofts kundestøttetjeneste Service (CSS). Du må bevise at du er administrator for Azure RMS-leier.
 
-##### Step 2: Wait for verification
+##### Trinn 2: Vente på bekreftelse
 
--   Microsoft verifies that your request to release your RMS tenant key is legitimate. This process can take up to 3 weeks.
+-   Microsoft bekrefter at din forespørsel om å frigi RMS leier nøkkelen er ekte. Denne prosessen kan ta opptil 3 uker.
 
-##### Step 3: Receive key instructions from CSS
+##### Trinn 3: Motta viktige instruksjoner fra CSS
 
--   Microsoft Customer Support Services (CSS) will send you your Azure RMS configuration and tenant key as encrypted in a password-protected file that has a .tpd file name extension. To do this, CSS first sends you (as the person who initiated the export) a tool by email. You must run the tool from a command prompt as follows:
+-   Microsofts kundestøttetjeneste (CSS) sender deg Azure RMS-konfigurasjonen og leier nøkkelen som krypterte i en passordbeskyttet fil som har filtypen .tpd. Hvis du vil gjøre dette, sender CSS først deg (som personen som startet eksport) et verktøy på e-post. Du må kjøre verktøyet fra en ledetekst som følger:
 
     ```
     AadrmTpd.exe -createkey
     ```
-    This generates an RSA key pair and saves the public and private halves as files in the current folder. For example: **PublicKey-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt** and **PrivateKey-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt**.
+    Dette genererer et RSA-nøkkelpar og lagrer de offentlige og private halvdeler som filer i gjeldende mappe. For eksempel: **PublicKey-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt** og **PrivateKey-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt**.
 
-    Respond to the email from CSS, attaching the file that has a name that starts with **PublicKey**. CSS will next send you a TPD file as an .xml file that is encrypted with your RSA key. Copy this file to the same folder as you ran the AadrmTpd tool originally, and run the tool again, using your file that starts with **PrivateKey** and the file from CSS. For example:
+    Svare på e-postmeldingen fra CSS, legge ved fil som har et navn som starter med **PublicKey**. CSS neste sender deg en TPD-fil som en XML-fil som er kryptert med RSA-nøkkel. Kopier denne filen til samme mappe som du opprinnelig kjørte verktøyet AadrmTpd og kjøre verktøyet på nytt, ved hjelp av filen som starter med **PrivateKey** og fra CSS-filen. For eksempel:
 
     ```
     AadrmTpd.exe -key PrivateKey-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt -target TPD-77172C7B-8E21-48B7-9854-7A4CEAC474D0.xml
     ```
-    The output of this command should be two files: One contains the plaintext password for the password-protected TPD, and the other is the password-protected TPD itself. For cross-referencing purposes, both should have the same GUID as the public and private key files from when you ran the AadrmTpd.exe -createkey command:
+    Utdataene fra denne kommandoen skal være to filer: En inneholder passord i ren tekst for den passordbeskyttede TPD, og den andre er passordbeskyttet TPD seg selv. For å kunne kryssreferere formål, må begge ha samme GUID som fellesnøkler og private nøkler filene fra da du kjørte AadrmTpd.exe createkey - kommandoen:
 
     -   Password-FA29D0FE-5049-4C8E-931B-96C6152B0441.txt
 
     -   ExportedTPD-FA29D0FE-5049-4C8E-931B-96C6152B0441.xml
 
-    Backup these files and store them safely to ensure that you can continue to decrypt content that is protected with this tenant key. In addition, if you are migrating to AD RMS, you can import this TPD file (the file that starts with **ExportedTDP**) to your AD RMS server.
+    Ta sikkerhetskopi av filene, og lagre dem trygt for å sikre at du kan fortsette å dekryptere innhold som er beskyttet med denne nøkkelen for leietakeradministrasjon. I tillegg, hvis du overfører til AD RMS, du kan importere TPD filen (filen som starter med **ExportedTDP**) til AD RMS-serveren.
 
-##### Step 4: Ongoing: Protect your tenant key
+##### Trinn 4: Kontinuerlig: Beskytte leier-nøkkel
 
--   After you receive your tenant key, keep it well-guarded, because if somebody gets access to it, they can decrypt all documents that are protected by using that key.
+-   Når du mottar leier-nøkkelen, holde det godt vernet, fordi Hvis noen får tilgang til den, de kan dekryptere alle dokumenter som er beskyttet ved hjelp av nøkkelen.
 
-    If the reason for exporting your tenant key is because you no longer want to use Azure RMS, as a best practice, now deactivate your RMS tenant. Do not delay doing this after you receive your tenant key because this precaution will help to minimize the consequences if your tenant key is accessed by somebody who should not have it. For instructions, see [Decommissioning and Deactivating Azure Rights Management](../Topic/Decommissioning_and_Deactivating_Azure_Rights_Management.md).
+    Hvis årsaken til å eksportere nøkkelen leier er fordi du ikke lenger vil bruke Azure RMS som beste praksis, deaktiverer du nå RMS-leier. Forsinke ikke å gjøre dette etter at du får leier nøkkelen fordi denne forholdsregelen bidrar til å minimere konsekvensene Hvis leier nøkkelen brukes av noen som ikke skal ha den. For instruksjoner, se [Dekommisjonering og deaktivere Azure Rights Management](../Topic/Decommissioning_and_Deactivating_Azure_Rights_Management.md).
 
-### <a name="BKMK_MSBreach"></a>Respond to a breach
-No security system, no matter how strong, is complete without a breach response process. Your tenant key might be compromised or stolen. Even when it’s well protected well, vulnerabilities might be found in current generation HSM technology or current key lengths and algorithms.
+### <a name="BKMK_MSBreach"></a>Svare på et brudd
+Ingen sikkerhetssystem, uansett hvor sterkt er fullstendig uten en brudd svar prosess. Leier nøkkelen kan bli videresendt eller stjålet. Selv om det er godt beskyttet godt, kan sikkerhetsproblemene finnes i gjeldende generasjon HSM-teknologi eller gjeldende nøkler og algoritmer.
 
-Microsoft has a dedicated team to respond to security incidents in its products and services. As soon as there is a credible report of an incident, this team engages to investigate the scope, root cause, and mitigations. If this incident affects your assets, then Microsoft will notify your Azure RMS tenant administrators by email by using the address that you supplied when you subscribed.
+Microsoft har et dedikert team til å svare på sikkerhetshendelser i sine produkter og tjenester. Så snart det er troverdige rapporter av en hendelse, engasjerer dette teamet til å undersøke omfanget, årsaken og begrensninger. Hvis denne hendelsen gjelder for dine aktiva, vil deretter Microsoft varsle din Azure RMS-Leieradministratorer via e-post ved å bruke adressen du oppgir når du abonnerer på.
 
-If you have a breach, the best action that you or Microsoft can take depends on the scope of the breach; Microsoft will work with you through this process. The following table shows some typical situations and the likely response, although the exact response will depend on all the information that is revealed during the investigation.
+Hvis du har et brudd, avhenger beste handlingen som du eller Microsoft kan utføre av omfanget av mislighold; Microsoft vil samarbeide med deg gjennom denne prosessen. Tabellen nedenfor viser noen vanlige situasjoner og sannsynlige svaret, selv om det nøyaktige svaret avhenger av all informasjon som vises under undersøkelsen.
 
-|Incident description|Likely response|
+|Hendelse beskrivelse|Sannsynlig svar|
 |------------------------|-------------------|
-|Your tenant key is leaked.|Re-key your tenant key. See the [Re-key your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRekey) section in this topic.|
-|An unauthorized individual or malware got rights to use your tenant key but the key itself did not leak.|Re-keying your tenant key does not help here and requires root-cause analysis. If a process or software bug was responsible for the unauthorized individual to get access, that situation must be resolved.|
-|Vulnerability discovered in the RSA algorithm, or key length, or brute-force attacks become computationally feasible.|Microsoft must update the Azure RMS to support new algorithms and longer key lengths that are resilient, and instruct all customers to renew their tenant keys.|
+|Leier-nøkkelen er lekket.|-Tasten leier-nøkkelen på nytt. Se den [Nye nøkler leier-nøkkel](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_MSRekey) delen i dette emnet.|
+|En uautorisert person eller skadelig programvare har rettigheter til å bruke leier-nøkkelen, men selve nøkkelen lekker ikke.|Ny inntasting leier nøkkelen ikke hjelper her, og krever analyse av opprinnelig årsak. Hvis en prosess- eller feil var ansvarlig for uautorisert person til å få tilgang, kan denne situasjonen må løses.|
+|Sikkerhetsproblemet som ble oppdaget i RSA-algoritmen, eller nøkkellengde eller brute force angrep blir beregningsmessig gjennomførbar.|Microsoft må oppdatere Azure RMS for å støtte nye algoritmer og lengre nøkler som er fleksibel og be alle kunder til å fornye sine leier nøkler.|
 
-## <a name="BKMK_BYOKManagedOperations"></a>Customer-managed: Tenant key lifecycle operations
-If you manage your tenant key for Azure Rights Management (the bring your own key, or BYOK, scenario), use the following sections for more information about the lifecycle operations that are relevant to this topology:
+## <a name="BKMK_BYOKManagedOperations"></a>Administrert av kunden: Leier viktige levetid drift
+Hvis du administrerer leier nøkkelen for Azure Rights Management (ta din egen nøkkel eller BYOK, scenario), Bruk følgende deler for mer informasjon om kundestøttesyklus operasjonene som er relevante for denne topologien:
 
--   [Revoke your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRevoke)
+-   [Oppheve leier-nøkkel](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRevoke)
 
--   [Re-key your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRekey)
+-   [Nye nøkler leier-nøkkel](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRekey)
 
--   [Backup and recover your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKBackup)
+-   [Sikkerhetskopiere og gjenopprette leier-nøkkel](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKBackup)
 
--   [Export your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKExport)
+-   [Leier-nøkkelen for dataeksport](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKExport)
 
--   [Respond to a breach](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKBreach)
+-   [Svare på et brudd](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKBreach)
 
-### <a name="BKMK_BYOKRevoke"></a>Revoke your tenant key
-When you unsubscribe from Azure RMS, Azure RMS stops using your tenant key and no action is needed from you.
+### <a name="BKMK_BYOKRevoke"></a>Oppheve leier-nøkkel
+Når du stoppe abonnementet på Azure RMS, Azure RMS stopper ved hjelp av nøkkelen leier og ingen handling er nødvendig fra deg.
 
-### <a name="BKMK_BYOKRekey"></a>Re-key your tenant key
-Re-keying is also known as rolling your key. Do not re-key your tenant key unless it’s really necessary. Older clients, such as Office 2010, were not designed to handle key changes gracefully. In this scenario, you must clear the RMS state on computers by using Group Policy or an equivalent mechanism. However, there are some legitimate events that may force you to re-key your tenant key. For example:
+### <a name="BKMK_BYOKRekey"></a>Nye nøkler leier-nøkkel
+Ny inntasting av er også kjent som ruller inn nøkkelen. Ikke nye nøkler leier-nøkkel med mindre det er helt nødvendig. Eldre klienter, for eksempel Office 2010 er ikke laget for å håndtere endringer elegant. I dette scenariet må du fjerne RMS-tilstand på datamaskiner ved hjelp av gruppepolicy eller en tilsvarende mekanisme. Det er imidlertid enkelte legitime hendelser som kan tvinge deg til å taste leier-nøkkelen på nytt. For eksempel:
 
--   Your company has split into two or more companies. When you re-key your tenant key, the new company will not have access to new content that your employees publish. They can access the old content if they have a copy of the old tenant key.
+-   Firmaet ditt er delt inn i to eller flere firmaer. Når nye nøkler du leier-tasten, får ikke tilgang til nytt innhold som publiserer ansatte i det nye firmaet. De får tilgang til det gamle innholdet hvis de har en kopi av den gamle leier-nøkkelen.
 
--   You believe the master copy of your tenant key (the copy in your possession) was compromised.
+-   Du tror hovedkopien av leier nøkkelen (kopi i din besittelse) ble skadet.
 
-When you re-key your tenant key, new content is protected by using the new tenant key. This happens in a phased manner, so for a period of time, some new content will continue to be protected with the old tenant key. Previously protected content stays protected to your old tenant key. To support this scenario, Azure RMS retains your old tenant key so that it can issue licenses for old content.
+Når nye nøkler du leier-nøkkelen, er nye innholdet beskyttet ved hjelp av den nye nøkkelen for leietakeradministrasjon. Dette skjer på en tretrinns måte, slik at for en bestemt tidsperiode, noe nytt innhold vil fortsette å være beskyttet med nøkkelen gamle leier. Tidligere forblir beskyttet innhold beskyttet til den gamle for leietakeradministrasjon. Hvis du vil støtte dette scenarioet, beholder Azure RMS gamle leier nøkkelen slik at den kan utstede lisenser for gammelt innhold.
 
-To re-key your tenant key, generate and create a new key over the Internet or in person, by using the procedures in the [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) section from the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic.
+Generere til nøkkelen leier-nøkkelen på nytt, og opprette en ny nøkkel via Internett eller personlig, ved å følge fremgangsmåten i den [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) delen fra den [Planlegging og implementering av Azure Rights Management leier nøkkelen](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) emnet.
 
-### <a name="BKMK_BYOKBackup"></a>Backup and recover your tenant key
-You are responsible for backing up your tenant key. If you generated your tenant key in a Thales HSM, to back up the key, just back up the Tokenized Key file, the World file, and the Administrator Cards.
+### <a name="BKMK_BYOKBackup"></a>Sikkerhetskopiere og gjenopprette leier-nøkkel
+Du er ansvarlig for sikkerhetskopiering av leier-tasten. Hvis du genererte leier-nøkkelen i en Thales HSM, hvis du vil sikkerhetskopiere nøkkelen bare sikkerhetskopiere Tokenized nøkkel-fil, filen verden og administratoren kort.
 
-If you transferred your key by following the procedures in the [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) section from the [Planning and Implementing Your Azure Rights Management Tenant Key](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) topic, Azure RMS will persist the Tokenized Key File, to protect against failure of any Azure RMS nodes. However, do not consider this to be a full backup. For example, if you ever need a plaintext copy of your key to use outside a Thales HSM, Azure RMS will not be able to retrieve it for you because it only has a non-recoverable copy.
+Hvis du har overført nøkkelen ved å følge fremgangsmåtene i den [Implementing bring your own key (BYOK)](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_ImplementBYOK) delen fra den [Planlegging og implementering av Azure Rights Management leier nøkkelen](../Topic/Planning_and_Implementing_Your_Azure_Rights_Management_Tenant_Key.md) emnet, Azure RMS vedvarer Tokenized nøkkel filen, beskytter mot feil i noen Azure RMS-noder. Imidlertid ikke anser dette som en fullstendig sikkerhetskopi. For eksempel hvis du trenger en ren tekst-kopi av nøkkelen til å bruke utenfor en Thales HSM vil Azure RMS ikke kunne hente den for deg, fordi den bare har en ikke-reverserbar kopi.
 
-### <a name="BKMK_BYOKExport"></a>Export your tenant key
-If you use BYOK, you cannot export your tenant key from Azure RMS. The copy in Azure RMS is non-recoverable. If you want to delete this key so it can no longer be used, contact Microsoft Customer Service Support (CSS).
+### <a name="BKMK_BYOKExport"></a>Leier-nøkkelen for dataeksport
+Hvis du bruker BYOK, kan du eksportere nøkkelen leier fra Azure RMS. Kopien i Azure RMS er ikke-gjenopprettelige. Hvis du vil slette denne nøkkelen slik at den ikke lenger kan brukes, kan du kontakte Microsofts kundestøttetjeneste Service (CSS).
 
-### <a name="BKMK_BYOKBreach"></a>Respond to a breach
-No security system, no matter how strong, is complete without a breach response process. Your tenant key might be compromised or stolen. Even when it’s well protected well, vulnerabilities might be found in current generation HSM technology or current key lengths and algorithms.
+### <a name="BKMK_BYOKBreach"></a>Svare på et brudd
+Ingen sikkerhetssystem, uansett hvor sterkt er fullstendig uten en brudd svar prosess. Leier nøkkelen kan bli videresendt eller stjålet. Selv om det er godt beskyttet godt, kan sikkerhetsproblemene finnes i gjeldende generasjon HSM-teknologi eller gjeldende nøkler og algoritmer.
 
-Microsoft has a dedicated team to respond to security incidents in its products and services. As soon as there is a credible report of an incident, this team engages to investigate the scope, root cause, and mitigations. If this incident affects your assets, then Microsoft will notify your Azure RMS tenant administrators by email by using the address that you supplied when you subscribed.
+Microsoft har et dedikert team til å svare på sikkerhetshendelser i sine produkter og tjenester. Så snart det er troverdige rapporter av en hendelse, engasjerer dette teamet til å undersøke omfanget, årsaken og begrensninger. Hvis denne hendelsen gjelder for dine aktiva, vil deretter Microsoft varsle din Azure RMS-Leieradministratorer via e-post ved å bruke adressen du oppgir når du abonnerer på.
 
-If you have a breach, the best action that you or Microsoft can take  depends on the scope of the breach; Microsoft will work with you through this process. The following table shows some typical situations and the likely response, although the exact response will depend on all the information that is revealed during the investigation.
+Hvis du har et brudd, avhenger beste handlingen som du eller Microsoft kan utføre av omfanget av mislighold; Microsoft vil samarbeide med deg gjennom denne prosessen. Tabellen nedenfor viser noen vanlige situasjoner og sannsynlige svaret, selv om det nøyaktige svaret avhenger av all informasjon som vises under undersøkelsen.
 
-|Incident description|Likely response|
+|Hendelse beskrivelse|Sannsynlig svar|
 |------------------------|-------------------|
-|Your tenant key is leaked.|Re-key your tenant key. See the [Re-key your tenant key](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRekey) section in this topic.|
-|An unauthorized individual or malware got rights to use your tenant key but the key itself did not leak.|Re-keying your tenant key does not help here and requires root-cause analysis. If a process or software bug was responsible for the unauthorized individual to get access, that situation must be resolved.|
-|Vulnerability discovered in the current-generation HSM technology.|Microsoft must update the HSMs. If there is reason to believe that the vulnerability exposed keys, then Microsoft will instruct all customers to renew their tenant keys.|
-|Vulnerability discovered in the RSA algorithm, or key length, or brute-force attacks become computationally feasible.|Microsoft must update the Azure RMS to support new algorithms and longer key lengths that are resilient, and instruct all customers to renew their tenant keys.|
+|Leier-nøkkelen er lekket.|-Tasten leier-nøkkelen på nytt. Se den [Nye nøkler leier-nøkkel](../Topic/Operations_for_Your_Azure_Rights_Management_Tenant_Key.md#BKMK_BYOKRekey) delen i dette emnet.|
+|En uautorisert person eller skadelig programvare har rettigheter til å bruke leier-nøkkelen, men selve nøkkelen lekker ikke.|Ny inntasting leier nøkkelen ikke hjelper her, og krever analyse av opprinnelig årsak. Hvis en prosess- eller feil var ansvarlig for uautorisert person til å få tilgang, kan denne situasjonen må løses.|
+|Sikkerhetsproblem som ble oppdaget i denne generasjonen HSM-teknologi.|Microsoft må oppdatere HSMs. Hvis det er grunn til å tro at dette sikkerhetsproblemet eksponeres nøkler, vil Microsoft be alle kunder til å fornye sine leier nøkler.|
+|Sikkerhetsproblemet som ble oppdaget i RSA-algoritmen, eller nøkkellengde eller brute force angrep blir beregningsmessig gjennomførbar.|Microsoft må oppdatere Azure RMS for å støtte nye algoritmer og lengre nøkler som er fleksibel og be alle kunder til å fornye sine leier nøkler.|
 
-## See Also
-[Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md)
+## Se også
+[Ved hjelp av Azure Rights Management](../Topic/Using_Azure_Rights_Management.md)
 

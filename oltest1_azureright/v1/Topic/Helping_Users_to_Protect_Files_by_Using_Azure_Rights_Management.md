@@ -3,103 +3,102 @@ description: na
 keywords: na
 title: Helping Users to Protect Files by Using Azure Rights Management
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 58f9a6ff-4121-4c8c-9865-1bb290604ad2
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Helping Users to Protect Files by Using Azure Rights Management
-After you have deployed and configured Azure Rights Management (Azure RMS) for your organization, provide help and guidance for users, administrators, and your help desk:
+# Hjelpe brukere til &#229; beskytte filer ved hjelp av Azure Rights Management
+Etter at du har distribuert og konfigurert Azure Rights Management (Azure RMS) for din organisasjon, kan du få hjelp og veiledning for brukere, administratorer og brukerstøtteavdelingen:
 
--   **End-user information:**
+-   **Sluttbruker-informasjon:**
 
-    Let users know how and when to protect documents and emails that contain sensitive information. Whenever possible, provide this information for  their existing work flows so that they can incorporate the additional steps to an already-familiar process rather than introducing completely new processes . Be sure to let them know the benefits (and the risks) that are specific to your business, as well as providing guidance for when they should protect files and emails. If you have configured [custom templates](http://technet.microsoft.com/library/dn642472.aspx), provide instructions about which one to select if the template name and description is not sufficient for them to choose the correct one.
+    La brukere vite når og hvordan du beskytter dokumenter og e-postmeldinger som inneholder sensitiv informasjon. Når det er mulig, må du oppgi denne informasjonen for sine eksisterende arbeidsflyter slik at de kan ta forholdsregler for å en allerede kjent prosess i stedet for å introdusere helt nye prosesser. Husk å fortelle dem fordelene (og risikoer) som er spesifikke for virksomheten din, i tillegg til å gi retningslinjer for når de skal beskytte filer og epost. Hvis du har konfigurert [egendefinerte maler](http://technet.microsoft.com/library/dn642472.aspx), gi instruksjoner om hvilke av å velge hvis malen navnet og beskrivelsen ikke er nok for dem å velge riktig.
 
     > [!TIP]
-    > Example videos for end users:
+    > Eksempel videoer for sluttbrukere:
     > 
-    > -   [Azure RMS user experience](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-user-experience)
-    > -   [Azure RMS Document Tracking and Revocation](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)
+    > -   [Azure RMS-brukeropplevelsen](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-user-experience)
+    > -   [Azure RMS-dokumentet sporing og opphevelse](http://channel9.msdn.com/Series/Information-Protection/Azure-RMS-Document-Tracking-and-Revocation)
 
--   **Administrator information:**
+-   **Administratorinformasjon:**
 
-    Some applications automatically apply information protection, by using policies and settings that administrators configure. For these applications, you might need to provide instructions for other administrators who manage these applications and services. For more information, see [How Applications Support Azure Rights Management](../Topic/How_Applications_Support_Azure_Rights_Management.md) and [Configuring Applications for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
+    Noen programmer bruker automatisk informasjonsbeskyttelse av ved hjelp av policyer og innstillinger som administratorer konfigurerer. For disse programmene må du kanskje gi instruksjoner for andre administratorer som administrerer disse programmene og tjenestene. Hvis du vil ha mer informasjon, se [Hvordan programmer støtter Azure rettighetsbehandling](../Topic/How_Applications_Support_Azure_Rights_Management.md) og [Konfigurere programmer for Azure Rights Management](../Topic/Configuring_Applications_for_Azure_Rights_Management.md).
 
--   **Help desk information:**
+-   **Hjelpeinformasjon for skrivebord:**
 
-    One of the most useful tools for the help desk is the [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437).   Help desk operators can run it with the Azure RMS administrator option, and they can ask users to run it with the Azure RMS user option. This tool can not only help identify problems, but also fix problems that it finds, and if still not fixed, record trace logs.
+    En av de mest nyttige verktøyene for brukerstøtteavdelingen er den [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437).   Hjelp desk operatorer kan kjøres med alternativet Azure RMS-administratoren, og de kan be brukerne å kjøre den med alternativet Azure RMS-bruker. Dette verktøyet kan ikke bare bidra til å identifisere problemer, men også løse problemer som oppdages, og hvis fortsatt ikke løst, registrere sporingslogger.
 
-    If there are legitimate requests to have full rights access to protected documents, for example a request by the legal department or a manager after an employee has left the organization, make sure the help desk has processes to request this by using the Azure RMS [super user feature](https://technet.microsoft.com/en-us/library/mt147272.aspx).
+    Hvis det finnes lovlige forespørsler har fulle rettigheter for tilgang til beskyttede dokumenter, for eksempel en forespørsel fra den juridiske avdelingen eller prosjektleder når en ansatt har forlatt organisasjonen, kontrollerer brukerstøtteavdelingen har prosesser for å be om dette ved å bruke RMS Azure [super bruker funksjonen](https://technet.microsoft.com/en-us/library/mt147272.aspx).
 
-    In  addition, these are some of the typical problems that users might report:
+    Dette er dessuten noen av de vanlige problemene som brukere kan rapportere:
 
-    -   **Sign in help:**
+    -   **Logg i Hjelp:**
 
-        Users might be prompted for credentials when Azure RMS needs to authenticate a user and cannot use cached credentials. This will be the user’s work or school account and password that is associated with your Office 365 tenant or Azure Active Directory tenant. It will not be a Microsoft account (formerly Microsoft Live ID) or their personal email account, because these are not currently supported by Azure RMS. Provide users and your help desk with instructions about which account to use when users are prompted for credentials when they use these applications with Azure RMS.
+        Brukere kan bli bedt om påloggingsinformasjon når Azure RMS trenger for å godkjenne en bruker og ikke bruker bufret legitimasjon. Dette blir brukerens arbeid eller skole konto og passord som er knyttet til Office 365 leier eller leier Azure Active Directory. Det vil ikke være en Microsoft-konto (tidligere Microsoft Live ID) eller deres personlige e-postkonto, fordi disse ikke støttes av Azure RMS. Gi brukere og brukerstøtteavdelingen instrukser om hvilken konto som skal brukes når brukerne blir bedt om legitimasjon når de bruker disse programmene med Azure RMS.
 
-    -   **Problems protecting or consuming content:**
+    -   **Problemer med å beskytte eller bruker innholdstyper:**
 
-        Make sure that users have the appropriate instructions for the applications that they use, and are using applications and devices that are supported by Azure RMS. For more information about supported applications and devices, see [Requirements for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).
+        Kontroller at brukerne har de riktige instruksjonene for programmene de bruker, og bruker programmer og enheter som støttes av Azure RMS. Hvis du vil ha mer informasjon om støttede programmer og enheter, se [Krav for Azure Rights Management](../Topic/Requirements_for_Azure_Rights_Management.md).
 
-        If users see an error when trying to protect or consume content, ask them to run the [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437) as an Azure RMS user.
+        Hvis brukere får en feilmelding når du prøver å beskytte eller forbruker innhold, be dem om å kjøre den [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437) som bruker RMS Azure.
 
-        If users report that they can open protected content but don't have the rights that they need, ask them to run the [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437) as an Azure RMS user and download and view the templates. This will confirm that they have successfully downloaded the templates and what rights the templates provide. The problem might be that the user is not in the correct group that's configured for the template, or that the template needs reconfiguring for the user.
+        Hvis brukere rapporterer at de kan åpne beskyttet innhold, men ikke har rettighetene de trenger, be dem om å kjøre den [RMS Analyzer](https://www.microsoft.com/en-us/download/details.aspx?id=46437) som bruker RMS Azure og laste ned og vise malene. Dette bekrefter at de har fullført lastet ned malene og hvilke rettigheter malene inneholder. Problemet kan være at brukeren ikke er i riktig gruppe som er konfigurert for malen, eller malen må rekonfigurere for brukeren.
 
-Use the following sections for application-specific information to help users protect sensitive documents and emails.
+Bruk følgende deler for programspesifikk informasjon til å hjelpe brukere med å beskytte sensitive dokumenter og e-post.
 
-## Using information protection with the Rights Management sharing application
-The Rights Management (RMS) sharing application is required for users to protect and consume protected content if they use Office 2010, but also recommended for all computers and mobile devices that support Azure RMS.
+## Ved hjelp av informasjon om beskyttelse med deling Rights Management-programmet
+Av RMS (Rights Management) deler av programmet er nødvendig å beskytte og forbruker beskyttet innhold hvis de bruker Office 2010-brukere, men også anbefalt for alle datamaskiner og mobile enheter som støtter Azure RMS.
 
-In addition to making it easier for users to protect important documents, the RMS sharing application lets users track the documents that they have protected, and if necessary, revoke access to them.
+I tillegg til å gjøre det enklere for brukerne å beskytte viktige dokumenter, kan RMS deling program brukere spore dokumenter som de er beskyttet og oppheve tilgang til dem hvis det er nødvendig.
 
-For instructions to use this application for Windows computers, see the [Rights Management sharing application user guide](http://technet.microsoft.com/library/dn339006.aspx).
+For instruksjoner for å bruke dette programmet for Windows-datamaskiner, kan du se den [Rights Management deling Brukerhåndbok for programmet](http://technet.microsoft.com/library/dn339006.aspx).
 
-For mobile devices, see the [FAQ for Microsoft Rights Management Sharing Application for Mobile Platforms](http://technet.microsoft.com/dn451248).
-
-> [!TIP]
-> For a high-level example scenario with screenshots, see the [Users safely share attachments with mobile users](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharingApp) section in the [What is Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) topic.
-
-## Using information protection with Office 365, Office 2016, or Office 2013
-If you are using Azure RMS and have not installed the Rights Management sharing application, users will not see the **Share Protected** button on the ribbon or **Protect in-place** from File Explorer that makes it easier for them to protect files. For these users, they must follow instructions similar to these.
+For mobile enheter, kan du se den [Vanlige spørsmål om Microsoft Rights Management program for deling for Mobile plattformer](http://technet.microsoft.com/dn451248).
 
 > [!TIP]
-> To find application-specific help and instructions for using information protection with these applications, search for **IRM** and the application name and version.
+> For et høyt nivå eksempelscenario med skjermbilder, kan du se den [Brukere dele trygt vedlegg med mobile brukere](../Topic/What_is_Azure_Rights_Management_.md#BKMK_Example_SharingApp) delen i den [Hva er Azure Rights Management?](../Topic/What_is_Azure_Rights_Management_.md) emnet.
 
-#### To protect a document in Word 2013
+## Ved hjelp av informasjon om beskyttelse med Office 365, 2016 for Office eller Office-2013
+Hvis du bruker Azure RMS og ikke har installert rettighetsadministrasjon deling av programmet, vil ikke brukerne se det **del beskyttet** -knappen på båndet eller **beskytte på stedet** fra File Explorer som gjør det enklere for dem å beskytte filene. Disse brukerne må de følge instruksjonene som er lik disse.
 
-1.  Within Microsoft Word, create a new document.
+> [!TIP]
+> Hvis du vil finne programspesifikk hjelp og instruksjoner for bruk av informasjon om beskyttelse med disse programmene, kan du søke etter **IRM** og application navn og versjon.
 
-2.  From the **File** menu, click **Info**, click **Protect Document**, click **Restrict Access**, and then choose a template to quickly apply the appropriate usage rights, or select **Restrict Access** and select the usage rights yourself.
+#### Du beskytter et dokument i Word 2013
+
+1.  I Microsoft Word, kan du opprette et nytt dokument.
+
+2.  Fra den **Fil** -menyen klikker du **Info**, klikker du **Beskytt dokument**, klikker du **begrense tilgang**, og deretter velger du en mal for å raskt bruke riktige bruksrettigheter, eller velg **begrense tilgang** og velg bruksrettighetene selv.
 
     > [!NOTE]
-    > If this is the first time that you have used Rights Management, you will contact the [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] service and will be prompted for credentials to configure the Office IRM client.
+    > Hvis dette er første gang du bruker Rights Management, skal du kontakte den [!INCLUDE[aad_rightsmanagement_1](../Token/aad_rightsmanagement_1_md.md)] service og vil bli bedt om påloggingsinformasjon for å konfigurere IRM i Office-klient.
 
-3.  Save the document.
+3.  Lagre dokumentet.
 
-When others open the document, they are first authenticated. If they are not authorized to open the document, the document does not open. If they are authorized to open the document, it opens with the restricted usage rights that were specified for that user. For example, a usage right of View-only does not allow the user to edit or save the document, even if it is first copied to another location. The usage rights are displayed at the top of the document by using a restriction banner. The banner might display the permissions that are applied to the document, or it might provide a link to display them.
+Når andre åpner dokumentet, godkjente de først. Hvis de ikke har tillatelse til å åpne dokumentet, åpnes ikke dokumentet. Hvis de er autorisert til å åpne dokumentet, åpnes det med de begrensede bruksrettighetene som ble angitt for denne brukeren. En Bruk høyre for bare tillater for eksempel ikke til å redigere eller lagre dokumentet, selv om det først er overført til en annen plassering. Bruksrettighetene vises øverst i dokumentet ved å bruke et banner for begrensningen. Banneret kan vise tillatelsene som er brukt i dokumentet, eller det kan inneholde en kobling for å vise dem.
 
-#### To protect an email message using Outlook 2013 and Exchange Online
+#### Beskytte en e-postmelding ved hjelp av Outlook 2013 og Exchange Online
 
-1.  Within Outlook, create a new mail message addressed to a recipient within your organization.
+1.  I Outlook, kan du opprette en ny e-postmelding som er adressert til en mottaker i din organisasjon.
 
-2.  From the **OPTIONS** tab,  click **Permission**, and then select an option. For example: **Do Not Forward**, **&lt;Company Name&gt; - Confidential** or **&lt;Company Name&gt; - Confidential View Only**.
+2.  Fra den **Alternativer** klikk **tillatelse**, og velg deretter et alternativ. For eksempel: **Ikke videresender**, **&lt; firmanavn &gt; - konfidensiell** eller **&lt; firmanavn &gt; - konfidensiell Vis bare**.
 
-3.  Send the message.
+3.  Send meldingen.
 
-Similarly to viewing a protected document, when the recipients receive the email message, they are first authenticated. If they are authorized to see the email message, it opens with the restricted usage rights that were specified for that user. For example, if you selected **Do Not Forward**, the Forward button on the ribbon is not available.
+På samme måte til å vise et beskyttet dokument, godkjennes når mottakerne mottar i e-postmeldingen de først. Hvis de er autorisert til å vise e-postmeldingen, åpnes med begrensede bruksrettighetene som ble angitt for denne brukeren. Hvis du valgte for eksempel **ikke Videresend**, frem-knappen på båndet er ikke tilgjengelig.
 
-#### To protect an email message using the Outlook Web App
+#### Beskytte en e-postmelding ved hjelp av Outlook Web App
 
-1.  Within the Outlook Web App, create a new mail message addressed to a recipient within your organization.
+1.  I Outlook Web App, kan du opprette en ny e-postmelding som er adressert til en mottaker i din organisasjon.
 
-2.  Click  **…**,  click **set permission**, and then select an option. For example: **Do Not Forward**, **Do Not Reply All**, **&lt;Company Name&gt; - Confidential** or **&lt;Company Name&gt; - Confidential View Only**.
+2.  Klikk  **...**,  klikker du **Angi tillatelse**, og velg deretter et alternativ. For eksempel: **Ikke videresender**, **ikke svar til alle**, **&lt; firmanavn &gt; - konfidensiell** eller **&lt; firmanavn &gt; - konfidensiell Vis bare**.
 
-3.  Send the message.
+3.  Send meldingen.
 
-Similarly to viewing a protected document, when the recipients receive the email message, they are first authenticated. If they are authorized to see the email message, it opens with the restricted usage rights that were specified for that user. For example, if you selected **Do Not Reply All**, the **REPLY ALL** option in the message window is not available.
+På samme måte til å vise et beskyttet dokument, godkjennes når mottakerne mottar i e-postmeldingen de først. Hvis de er autorisert til å vise e-postmeldingen, åpnes med begrensede bruksrettighetene som ble angitt for denne brukeren. Hvis du valgte for eksempel **gjør ikke svar til alle**,  **Svar til alle** alternativet i meldingsvinduet er ikke tilgjengelig.
 
-## See Also
-[Using Azure Rights Management](../Topic/Using_Azure_Rights_Management.md)
+## Se også
+[Ved hjelp av Azure Rights Management](../Topic/Using_Azure_Rights_Management.md)
 

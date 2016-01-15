@@ -3,79 +3,78 @@ description: na
 keywords: na
 title: Protect a file that you share by email by using the Rights Management sharing application
 search: na
-ms.date: 2015-12-01
+ms.date: na
 ms.service: rights-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.assetid: 4c1cd1d3-78dd-4f90-8b37-dcc9205a6736
-ms.author: e8f708ba3bce4153b61467184c747c7f
 ---
-# Protect a file that you share by email by using the Rights Management sharing application
-When you protect a file that you share by email, it creates a new version of the original file. The original file remains unprotected and the new version is protected and automatically attached to an email that you then send.
+# Beskytte en fil du deler via e-post ved hjelp av rettighetsadministrasjon deling av program
+Når du beskytter en fil du deler via e-post, opprettes det en ny versjon av den opprinnelige filen. Den opprinnelige filen forblir ubeskyttet og den nye versjonen er beskyttet og automatisk knyttet til en e-postmelding som du sender.
 
-In some cases (for files that are created by Microsoft Word, Excel, and PowerPoint), the RMS sharing application creates two versions of the file that it attaches to the email message. The second version of the file has a **.ppdf** file name extension and it is a PDF shadow copy of the file. This version of the file ensures that recipients can always read the file, even if they don’t have the same application installed that you used to create it. This is often the case when people read their email on mobile devices, and want to view their email attachments. All they need to open the file, is the RMS sharing application. Then, they can read the attached file, but they won’t be able to change it until they open the other version of the file by using an application that supports RMS.
+I noen tilfeller (for filer som er opprettet av Microsoft Word, Excel og PowerPoint), oppretter RMS deling program to versjoner av filen som den kobles til e-postmeldingen. Den andre versjonen av filen har en **.ppdf** filtypen, og det er en PDF-skyggekopi av filen. Denne versjonen av filen sikrer at mottakerne kan lese filen alltid, selv om de ikke har installert det samme programmet som du brukte for å opprette den. Dette er ofte tilfellet når personer leser e-posten på mobile enheter, og ønsker å se deres e-postvedlegg. Alt de trenger for å åpne filen, er RMS deling av programmet. Deretter, de kan lese den vedlagte filen, men de kan ikke endre det før de åpner den andre versjonen av filen ved å bruke et program som støtter RMS.
 
-If your organization uses Azure RMS, you can keep track of the files that you protect by sharing:
+Hvis organisasjonen bruker Azure RMS, du kan holde oversikt over filene som du beskytter ved å dele:
 
--   Select an option to receive emails when somebody tries to open these protected attachments. Each time the file is accessed, you will be notified who tried to open the file and when, and whether they were successful (they were successfully authenticated) or not.
+-   Velg et alternativ for å motta e-post når noen prøver å åpne disse vedleggene som er beskyttet. Hver gang filen åpnes, får du beskjed som prøvde å åpne filen, og når og om de var vellykket (de ble godkjent) eller ikke.
 
--   Use the documentation tracking site. You can even stop sharing the file, by revoking access to it in the document tracking site. For more information, see [Track and revoke your documents when you use the RMS sharing application](../Topic/Track_and_revoke_your_documents_when_you_use_the_RMS_sharing_application.md).
+-   Bruke dokumentasjonen for sporingsområdet. Du kan selv avslutte deling av filen, ved å oppheve tilgang til den i dokumentet sporingsområdet. Hvis du vil ha mer informasjon, se [Spore og oppheve dokumentene når du bruker RMS deling av program](../Topic/Track_and_revoke_your_documents_when_you_use_the_RMS_sharing_application.md).
 
-## Using Outlook: To protect a file that you share by email
+## Ved hjelp av Outlook: Beskytte en fil du deler via e-post
 
-1.  Create your email message and attach the file. Then, on the **Message** tab, in the **RMS** group, click **Share Protected** and then click **Share Protected** again:
+1.  Opprette e-postmeldingen og legge ved filen. På den **meldingen** -kategorien i den **RMS** gruppen, klikker du **del beskyttet** og deretter **del beskyttet** på nytt:
 
     ![](../Image/ADRMS_MSRMSApp_SP_OutlookToolbar.png)
 
-    If you do not see this button, it’s likely that either the RMS sharing application is not installed on your computer, the latest version isn’t installed, or your computer must be restarted to complete the installation. For more information about how to install the sharing application, see [Download and install the Rights Management sharing application](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
+    Hvis du ikke ser denne knappen, er det sannsynlig at enten RMS deling program ikke er installert på datamaskinen, den nyeste versjonen er ikke installert, eller datamaskinen må startes på nytt for å fullføre installasjonen. Hvis du vil ha mer informasjon om hvordan du installerer programmet deling, se [Last ned og installer rettighetsadministrasjon deling av program](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
 
-2.  Specify the options that you want for this file in the [share protected dialog box](http://technet.microsoft.com/library/dn574738.aspx), and then click **Send Now**.
+2.  Angi alternativene du vil bruke for denne filen i den [dele beskyttet dialogboksen](http://technet.microsoft.com/library/dn574738.aspx), og klikk deretter **Send nå**.
 
-### Other ways to protect a file that you share by email
-In addition to sharing a protected file by using Outlook, you can also use these alternatives:
+### Andre måter å beskytte en fil du deler via e-post
+I tillegg til å dele en beskyttet fil ved hjelp av Outlook, kan du også bruke disse alternativene:
 
--   From File Explorer: This method works for all files.
+-   Fra File Explorer: Denne metoden fungerer for alle filer.
 
--   From an Office application: This method works for applications that the RMS sharing application supports by using the Office add-in so that you see the **RMS** group on the ribbon.
+-   Fra et Office-program: Denne metoden fungerer for programmer som støtter RMS deling av programmer ved hjelp av Office-tillegget, slik at du kan se den **RMS** gruppen på båndet.
 
-##### Using File Explorer or an Office application: To protect a file that you share by email
+##### Ved hjelp av File Explorer eller et Office-program: Beskytte en fil du deler via e-post
 
-1.  Use one of the following options:
+1.  Bruk en av følgende alternativer:
 
-    -   For File Explorer: Right-click the file, select **Protect with RMS**, and then select **Share Protected**:
+    -   For File Explorer: Høyreklikk filen, velger du **Beskytt med RMS**, og velg deretter **del beskyttet**:
 
         ![](../Image/ADRMS_MSRMSApp_ShareProtectedMenu.png)
 
-    -   For the Office applications, Word, Excel, and PowerPoint: Make sure that you have saved the file first. Then, on the **Home** tab, in the **RMS** group, click **Share Protected** and then click **Share Protected** again:
+    -   For den Office-programmer, Word, Excel og PowerPoint: Kontroller at du har lagret filen først. På den **Hjem** -kategorien i den **RMS** gruppen, klikker du **del beskyttet** og deretter **del beskyttet** på nytt:
 
         ![](../Image/ADRMS_MSRMSApp_SP_OfficeToolbar.png)
 
-    If you do not see these options for protection, it’s likely that either the RMS sharing application is not installed on your computer, the latest version isn’t installed, or your computer must be restarted to complete the installation. For more information about how to install the sharing application, see [Download and install the Rights Management sharing application](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
+    Hvis du ikke ser disse alternativene for beskyttelse, er det sannsynlig at enten RMS deling program ikke er installert på datamaskinen, den nyeste versjonen er ikke installert, eller datamaskinen må startes på nytt for å fullføre installasjonen. Hvis du vil ha mer informasjon om hvordan du installerer programmet deling, se [Last ned og installer rettighetsadministrasjon deling av program](../Topic/Download_and_install_the_Rights_Management_sharing_application.md).
 
-2.  Specify the options that you want for this file in the [share protected dialog box](http://technet.microsoft.com/library/dn574738.aspx), and then click **Send**.
+2.  Angi alternativene du vil bruke for denne filen i den [dele beskyttet dialogboksen](http://technet.microsoft.com/library/dn574738.aspx), og klikk deretter **sende**.
 
-3.  You might quickly see a dialog box to tell you that the file is being protected, and then you see an email message created for you that tells the recipients that the attachments are protected with Microsoft RMS, and that they must sign in. When they click the link to sign in, they see instructions and links to ensure that they can open your protected attachment.
+3.  Du kan raskt se en dialogboks for å fortelle deg at filen er beskyttet, og deretter vil du se en e-postmelding opprettet for deg som ber mottakerne om at vedleggene er beskyttet med Microsoft RMS, og at de må logge seg på. Når de klikker koblingen for å logge på, kan de se instruksjoner og koblinger for å sikre at de kan åpne vedlegget beskyttet.
 
-    Example:
+    Eksempel:
 
     ![](../Image/ADRMS_MSRMSApp_EmailMessage.PNG)
 
-    Are you wondering: [What’s the .ppdf file that’s automatically created?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)
+    Du lurer på: [Hva er filen .ppdf som er opprettet automatisk?](../Topic/Dialog_box_options_for_the_Rights_Management_sharing_application.md#BKMK_PPDF)
 
-4.  Optional: You can change anything that you want in this email message. For example, you can add to or change the subject or text in the message.
+4.  Valgfritt: Du kan endre alt i denne e-postmeldingen. Du kan for eksempel legge til eller endre emnet eller teksten i meldingen.
 
     > [!WARNING]
-    > Although you can add or remove people from this email message, this does not change the permissions for the attachment that you specified in the **share protected** dialog box. If you want to change those permissions, for example, give a new person permissions to open the file, close the email message without saving or sending it, and return to step 1.
+    > Selv om du kan legge til eller fjerne brukere fra denne e-postmeldingen, dette endrer ikke tillatelsene for vedlegg som er angitt i den **del beskyttet** dialogboks. Hvis du vil endre tillatelser, for eksempel gi en ny person tillatelse til å åpne filen, lukker du e-postmeldingen uten å lagre eller sende den, og gå tilbake til trinn 1.
 
-5.  Send the email message.
+5.  Send e-postmeldingen.
 
-## Examples and other instructions
-For examples for how you might use the Rights Management sharing application, and how-to instructions, see the following sections from the Rights Management sharing application user guide:
+## Eksempler og andre instruksjoner
+For eksempler på hvordan du kan bruke IRM deling av programmet, og hvordan-instruksjoner, kan du se følgende deler fra Rights Management-brukerhåndboken for deling program:
 
--   [Examples for using the RMS sharing application](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
+-   [Eksempler for å bruke RMS deling av program](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingExamples)
 
--   [What do you want to do?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
+-   [Hva vil du gjøre?](../Topic/Rights_Management_sharing_application_user_guide.md#BKMK_SharingInstructions)
 
-## See Also
-[Rights Management sharing application user guide](../Topic/Rights_Management_sharing_application_user_guide.md)
+## Se også
+[Rights Management deling program Brukerhåndbok](../Topic/Rights_Management_sharing_application_user_guide.md)
 
